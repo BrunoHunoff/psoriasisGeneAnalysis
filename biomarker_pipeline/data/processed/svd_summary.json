@@ -1,0 +1,32 @@
+{
+  "n_components": 500,
+  "variance_captured_global": 0.3646209239959717,
+  "variance_threshold": 0.9,
+  "candidates_tested": [
+    50,
+    100,
+    200,
+    300,
+    500
+  ],
+  "variance_per_candidate": {
+    "50": 0.062544085085392,
+    "100": 0.10857661813497543,
+    "200": 0.18845908343791962,
+    "300": 0.24952170252799988,
+    "500": 0.3646209239959717
+  },
+  "total_rows": 3498,
+  "vector_shape": [
+    500
+  ],
+  "proteins": [
+    "IL12B_PROTEINA",
+    "IL23_A_PROTEINA",
+    "IL23_R_PROTEINA",
+    "TNFAIP3_PROTEINA",
+    "TNIP1_PROTEINA",
+    "TRAF3IP2_PROTEINA",
+    "hla_c_proteina"
+  ]
+}
