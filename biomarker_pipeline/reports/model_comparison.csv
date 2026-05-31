@@ -1,0 +1,7 @@
+model,projection,recall_loo,n_correct,mean_score,std_score
+Cosine Similarity,SVD,1.0,7,0.539669,0.050412
+Cosine Similarity,Random Proj.,1.0,7,0.464772,0.083411
+One-Class SVM,SVD,0.7143,5,1e-06,1e-06
+One-Class SVM,Random Proj.,0.7143,5,2e-06,3e-06
+Isolation Forest,SVD,0.8571,6,-0.483354,0.035147
+Isolation Forest,Random Proj.,1.0,7,-0.481461,0.02166

@@ -1,0 +1,9 @@
+{
+  "model": "isolation_forest",
+  "projection": "random",
+  "model_path": "models/isolation_forest_random.pkl",
+  "projection_path": "models/random_projection.pkl",
+  "recall_loo": 1.0,
+  "mean_score": -0.4815,
+  "selection_reason": "Recall LOO igual ao Cosine (7/7), mas com menor desvio padrao (0.022 vs 0.083) e fronteira treinada — mais discriminativo para triagem do proteoma"
+}

@@ -2,25 +2,27 @@
 set -e
 cd "$(dirname "$0")"
 
-# Ativa o venv se existir
 if [ -f "venv/bin/activate" ]; then
     source venv/bin/activate
 fi
 
 echo "=== Etapa 1: Perfil vetorial dos biomarcadores ==="
 
-echo "[1/3] Gerando matrizes posicionais k-mer..."
+echo "[1/4] Gerando matrizes posicionais k-mer..."
 python3 src/01_kmer_matrix.py
 
-echo "[2/3] SVD global + mean pooling..."
-python3 src/02_svd_global.py
+echo "[2/4] Projeção SVD global + mean pooling..."
+python3 src/02_project_svd.py
 
-echo "[3/3] Construindo perfil do biomarcador..."
-python3 src/03_profile.py
+echo "[3/4] Projeção Random + mean pooling..."
+python3 src/03_project_random.py
+
+echo "[4/4] Comparação SVD vs Random Projection..."
+python3 src/04_compare_projections.py
 
 echo ""
 echo "=== Concluído ==="
-echo "Perfil salvo em:  data/processed/profile_mean.npy"
-echo "Modelo SVD em:    models/svd_global.pkl"
-echo "Vetores em:       data/processed/vectors/"
-echo "Gráficos em:      reports/"
+echo "Vetores SVD em:    data/processed/svd/vectors/"
+echo "Vetores random em: data/processed/random/vectors/"
+echo "Modelos em:        models/"
+echo "Gráficos em:       reports/"

@@ -1,0 +1,53 @@
+{
+  "method": "svd",
+  "n_components": 500,
+  "variance_captured": 0.364621,
+  "variance_threshold": 0.9,
+  "candidates_tested": [
+    50,
+    100,
+    200,
+    300,
+    500
+  ],
+  "variance_per_candidate": {
+    "50": 0.062544,
+    "100": 0.108577,
+    "200": 0.188459,
+    "300": 0.249522,
+    "500": 0.364621
+  },
+  "vector_shape": [
+    500
+  ],
+  "proteins": {
+    "IL12B_PROTEINA": {
+      "n_rows": 326,
+      "vector_path": "data/processed/svd/vectors/IL12B_PROTEINA_vector.npy"
+    },
+    "IL23_A_PROTEINA": {
+      "n_rows": 187,
+      "vector_path": "data/processed/svd/vectors/IL23_A_PROTEINA_vector.npy"
+    },
+    "IL23_R_PROTEINA": {
+      "n_rows": 627,
+      "vector_path": "data/processed/svd/vectors/IL23_R_PROTEINA_vector.npy"
+    },
+    "TNFAIP3_PROTEINA": {
+      "n_rows": 788,
+      "vector_path": "data/processed/svd/vectors/TNFAIP3_PROTEINA_vector.npy"
+    },
+    "TNIP1_PROTEINA": {
+      "n_rows": 634,
+      "vector_path": "data/processed/svd/vectors/TNIP1_PROTEINA_vector.npy"
+    },
+    "TRAF3IP2_PROTEINA": {
+      "n_rows": 572,
+      "vector_path": "data/processed/svd/vectors/TRAF3IP2_PROTEINA_vector.npy"
+    },
+    "hla_c_proteina": {
+      "n_rows": 364,
+      "vector_path": "data/processed/svd/vectors/hla_c_proteina_vector.npy"
+    }
+  }
+}
