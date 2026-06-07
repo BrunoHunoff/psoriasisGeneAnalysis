@@ -1,15 +1,15 @@
 """
 Módulo 01 — Geração das matrizes posicionais k-mer.
 
-Para cada proteína, desliza uma janela de tamanho k=3 sobre a sequência e
-constrói uma matriz one-hot: cada linha i contém 1 na coluna do 3-mer
-encontrado na posição i e 0 nas demais.
+Lê sequências de duas fontes com labels distintos:
+  - data/raw/          → positivos (label=1): biomarcadores da psoríase
+  - data/raw_negativos/ → negativos (label=0): housekeeping / não ligados
 
-Shape da matriz por proteína: (L - k + 1, |vocab|) = (L-2, 8000)
+Cada sequência individual gera uma matriz one-hot (L-2, 8000) salva em
+data/processed/matrices/{key}_matrix.npy, onde key = {stem}_{idx:03d}.
 
-Essa é a representação "3D" descrita pelo orientador: rica em informação
-posicional, mas ainda incomparável entre proteínas de tamanhos diferentes.
-O SVD (módulo 02) fará a compressão para um vetor fixo comparável.
+Salva sequence_registry.json com metadados de todas as sequências,
+incluindo chave, label, arquivo de origem e shape da matriz.
 """
 
 import os
@@ -28,34 +28,32 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-RAW_DIR      = "data/raw"
-PROC_DIR     = "data/processed"
-MATRICES_DIR = os.path.join(PROC_DIR, "matrices")
-K            = 3
-AMINO        = "ACDEFGHIKLMNPQRSTVWY"
-FASTA_EXTS   = (".fasta", ".fa")
-VOCAB_PATH   = os.path.join(PROC_DIR, "kmer_vocab.json")
-IDS_PATH     = os.path.join(PROC_DIR, "sequence_ids.json")
-SHAPES_PATH  = os.path.join(PROC_DIR, "matrix_shapes.json")
+RAW_POS_DIR   = "data/raw"
+RAW_NEG_DIR   = "data/raw_negativos"
+PROC_DIR      = "data/processed"
+MATRICES_DIR  = os.path.join(PROC_DIR, "matrices")
+VOCAB_PATH    = os.path.join(PROC_DIR, "kmer_vocab.json")
+REGISTRY_PATH = os.path.join(PROC_DIR, "sequence_registry.json")
+
+K          = 3
+AMINO      = "ACDEFGHIKLMNPQRSTVWY"
+FASTA_EXTS = (".fasta", ".fa")
+
+LABEL_POSITIVE = 1
+LABEL_NEGATIVE = 0
 
 
 def build_vocab(amino: str, k: int) -> tuple[list[str], dict[str, int]]:
-    """
-    Gera todas as combinações possíveis de k aminoácidos.
-    Retorna (lista ordenada, mapa kmer→índice).
-    """
+    """Gera todas as combinações de k aminoácidos. Retorna (lista, mapa kmer→índice)."""
     vocab = ["".join(c) for c in itertools.product(amino, repeat=k)]
     return vocab, {kmer: idx for idx, kmer in enumerate(vocab)}
 
 
 def sequence_to_onehot_matrix(seq: str, vocab_index: dict[str, int], k: int) -> np.ndarray:
     """
-    Constrói a matriz posicional one-hot para uma sequência.
+    Constrói matriz posicional one-hot (L-k+1, |vocab|) para uma sequência.
 
-    Para cada posição i em [0, L-k], extrai o k-mer seq[i:i+k] e coloca 1
-    na coluna correspondente ao índice do k-mer no vocabulário.
-
-    Retorna matriz de shape (L - k + 1, |vocab|), dtype float32.
+    Cada linha i = 1 na coluna do k-mer na posição i, 0 nas demais.
     K-mers com caracteres fora do vocabulário resultam em linha de zeros.
     """
     n_vocab = len(vocab_index)
@@ -71,71 +69,101 @@ def sequence_to_onehot_matrix(seq: str, vocab_index: dict[str, int], k: int) -> 
     return matrix
 
 
-def load_fasta_files(raw_dir: str) -> list[tuple[str, str, str]]:
+def load_fasta_dir(directory: str, label: int) -> list[dict]:
     """
-    Carrega todos os FASTAs de raw_dir.
-    Retorna lista de (file_stem, sequence_id, sequence).
+    Carrega todas as sequências de todos os FASTAs em directory.
+
+    Retorna lista de dicts com: key, seq_id, protein, label, source_file, seq.
+    A chave é {stem}_{idx:03d} onde idx é o índice da sequência dentro do arquivo.
     """
-    if not os.path.isdir(raw_dir):
-        log.error("Diretório não encontrado: %s", raw_dir)
+    if not os.path.isdir(directory):
+        log.error("Diretório não encontrado: %s", directory)
         sys.exit(1)
 
     fasta_files = sorted(
-        f for f in os.listdir(raw_dir)
+        f for f in os.listdir(directory)
         if os.path.splitext(f)[1].lower() in FASTA_EXTS
     )
     if not fasta_files:
-        log.error(
-            "Nenhum arquivo .fasta/.fa encontrado em '%s'. "
-            "Adicione os FASTAs dos biomarcadores antes de rodar o pipeline.",
-            raw_dir,
-        )
+        log.error("Nenhum arquivo .fasta/.fa encontrado em '%s'.", directory)
         sys.exit(1)
 
     records = []
     for fname in fasta_files:
         stem = os.path.splitext(fname)[0]
-        path = os.path.join(raw_dir, fname)
+        path = os.path.join(directory, fname)
         seqs = list(SeqIO.parse(path, "fasta"))
-        log.info("Arquivo '%s': %d sequência(s).", fname, len(seqs))
-        for rec in seqs:
-            records.append((stem, rec.id, str(rec.seq).upper()))
+        log.info("  %s: %d sequência(s)  label=%d", fname, len(seqs), label)
+        for idx, rec in enumerate(seqs):
+            records.append({
+                "key": f"{stem}_{idx:03d}",
+                "seq_id": rec.id,
+                "protein": stem,
+                "label": label,
+                "source_file": fname,
+                "seq": str(rec.seq).upper(),
+            })
     return records
 
 
 def main():
     os.makedirs(MATRICES_DIR, exist_ok=True)
 
-    records = load_fasta_files(RAW_DIR)
     vocab_list, vocab_index = build_vocab(AMINO, K)
-
     vocab_for_json = {str(idx): kmer for idx, kmer in enumerate(vocab_list)}
     with open(VOCAB_PATH, "w") as f:
         json.dump(vocab_for_json, f)
     log.info("Vocabulário salvo: %s (%d k-mers)", VOCAB_PATH, len(vocab_list))
 
-    sequence_ids = []
-    matrix_shapes = {}   # {stem: [n_rows, n_cols]} — necessário para reagrupar após SVD global
-    total_rows = 0
+    log.info("Carregando positivos de '%s'...", RAW_POS_DIR)
+    pos_records = load_fasta_dir(RAW_POS_DIR, LABEL_POSITIVE)
 
-    for stem, seq_id, seq in records:
-        matrix = sequence_to_onehot_matrix(seq, vocab_index, K)
-        out_path = os.path.join(MATRICES_DIR, f"{stem}_matrix.npy")
+    log.info("Carregando negativos de '%s'...", RAW_NEG_DIR)
+    neg_records = load_fasta_dir(RAW_NEG_DIR, LABEL_NEGATIVE)
+
+    all_records = pos_records + neg_records
+    log.info(
+        "Total: %d sequências (%d positivas, %d negativas)",
+        len(all_records), len(pos_records), len(neg_records),
+    )
+
+    registry = []
+    total_windows = 0
+
+    for rec in all_records:
+        key = rec["key"]
+        seq = rec["seq"]
+        try:
+            matrix = sequence_to_onehot_matrix(seq, vocab_index, K)
+        except ValueError as e:
+            log.warning("Sequência ignorada (%s): %s", key, e)
+            continue
+
+        out_path = os.path.join(MATRICES_DIR, f"{key}_matrix.npy")
         np.save(out_path, matrix)
-        sequence_ids.append({"file_stem": stem, "sequence_id": seq_id})
-        matrix_shapes[stem] = list(matrix.shape)
-        total_rows += matrix.shape[0]
+        total_windows += matrix.shape[0]
+
+        registry.append({
+            "key": key,
+            "seq_id": rec["seq_id"],
+            "protein": rec["protein"],
+            "label": rec["label"],
+            "source_file": rec["source_file"],
+            "matrix_shape": list(matrix.shape),
+        })
         log.info(
-            "%-30s  len=%-4d  matrix=%s  linhas_acumuladas=%d",
-            seq_id, len(seq), matrix.shape, total_rows,
+            "%-40s  label=%d  len=%-5d  matrix=%s",
+            rec["seq_id"][:40], rec["label"], len(seq), matrix.shape,
         )
 
-    with open(IDS_PATH, "w") as f:
-        json.dump(sequence_ids, f, indent=2)
-    with open(SHAPES_PATH, "w") as f:
-        json.dump(matrix_shapes, f, indent=2)
-    log.info("IDs salvos: %s", IDS_PATH)
-    log.info("Shapes salvos: %s  (total de linhas: %d)", SHAPES_PATH, total_rows)
+    with open(REGISTRY_PATH, "w") as f:
+        json.dump(registry, f, indent=2)
+
+    n_pos = sum(1 for r in registry if r["label"] == LABEL_POSITIVE)
+    n_neg = sum(1 for r in registry if r["label"] == LABEL_NEGATIVE)
+    log.info("Registry salvo: %s", REGISTRY_PATH)
+    log.info("Sequências processadas : %d  (pos=%d, neg=%d)", len(registry), n_pos, n_neg)
+    log.info("Total de janelas k-mer : %d", total_windows)
 
 
 if __name__ == "__main__":
