@@ -11,12 +11,25 @@ e classifica proteínas como candidatas a biomarcador ou não.
 - Python 3.10+
 - Dependências listadas em `biomarker_pipeline/requirements.txt`
 
+**Linux / macOS (bash):**
+
 ```bash
 cd biomarker_pipeline
 python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+**Windows (PowerShell):**
+
+```powershell
+cd biomarker_pipeline
+python -m venv venv
+.\venv\Scripts\Activate.ps1     # se der erro de execução: Set-ExecutionPolicy -Scope Process -Bypass
+python -m pip install -r requirements.txt
+```
+
+> Funciona com Python 3.10 a 3.13. Todas as versões em `requirements.txt` têm wheels prontos para essa faixa, não é preciso compilador.
 
 ---
 
@@ -47,9 +60,18 @@ biomarker_pipeline/
 
 ### 1. Preparar os dados e vetores
 
+**Linux / macOS (bash):**
+
 ```bash
 cd biomarker_pipeline
 bash run_preparation.sh
+```
+
+**Windows (PowerShell):**
+
+```powershell
+cd biomarker_pipeline
+.\run_preparation.ps1
 ```
 
 Gera as matrizes k-mer e os vetores de 1000 componentes para todas as sequências.
