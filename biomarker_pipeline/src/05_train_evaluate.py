@@ -3,9 +3,16 @@ Módulo 05 — Treinamento e avaliação com cross-validation.
 
 Uso:
     python src/05_train_evaluate.py --model random_forest
+    python src/05_train_evaluate.py --model logistic_regression
+    python src/05_train_evaluate.py --model svm
+    python src/05_train_evaluate.py --model naive_bayes
+    python src/05_train_evaluate.py --model knn
+    python src/05_train_evaluate.py --model gradient_boosting
 
-Para adicionar um novo modelo: inclua uma entrada em MODEL_REGISTRY com o
-nome que será passado em --model e a instância do estimador configurado.
+Para adicionar um novo modelo: inclua uma entrada em MODEL_REGISTRY.
+Modelos sensíveis à escala (LR, SVM, kNN) já estão envolvidos em
+Pipeline(StandardScaler, modelo) — o scaler é ajustado dentro de cada
+fold, garantindo que dados de teste nunca vazam para o treino.
 
 Métricas por fold (média ± desvio padrão ao final):
     Accuracy, F1, Precisão, Sensibilidade, Especificidade, ROC-AUC, MCC
@@ -18,7 +25,13 @@ import logging
 import argparse
 import numpy as np
 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import (
     accuracy_score,
@@ -46,11 +59,42 @@ N_FOLDS      = 10
 RANDOM_STATE = 42
 
 # ── Adicione novos modelos aqui ──────────────────────────────────────────────
+def _scaled(model):
+    """Envolve um estimador em Pipeline com StandardScaler."""
+    return Pipeline([("scaler", StandardScaler()), ("model", model)])
+
+
 MODEL_REGISTRY = {
     "random_forest": RandomForestClassifier(
         n_estimators=100,
         random_state=RANDOM_STATE,
         n_jobs=-1,
+    ),
+    "gradient_boosting": GradientBoostingClassifier(
+        n_estimators=100,
+        learning_rate=0.1,
+        max_depth=3,
+        random_state=RANDOM_STATE,
+    ),
+    "logistic_regression": _scaled(
+        LogisticRegression(
+            max_iter=1000,
+            random_state=RANDOM_STATE,
+        )
+    ),
+    "svm": _scaled(
+        SVC(
+            kernel="rbf",
+            probability=True,
+            random_state=RANDOM_STATE,
+        )
+    ),
+    "naive_bayes": GaussianNB(),
+    "knn": _scaled(
+        KNeighborsClassifier(
+            n_neighbors=5,
+            n_jobs=-1,
+        )
     ),
 }
 # ────────────────────────────────────────────────────────────────────────────

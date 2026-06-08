@@ -1,0 +1,9 @@
+{
+  "model": "gradient_boosting",
+  "n_components": 1000,
+  "n_train": 223,
+  "n_positive": 111,
+  "n_negative": 112,
+  "classifier_path": "models/classifier_gradient_boosting_n1000.pkl",
+  "projector_path": "models/random_projection.pkl"
+}

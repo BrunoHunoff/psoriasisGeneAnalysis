@@ -1,0 +1,129 @@
+{
+  "model": "logistic_regression",
+  "n_folds": 10,
+  "n_samples": 223,
+  "n_positive": 111,
+  "n_negative": 112,
+  "fold_results": [
+    {
+      "accuracy": 0.9565217391304348,
+      "f1": 0.96,
+      "precision": 0.9230769230769231,
+      "sensitivity": 1.0,
+      "specificity": 0.9090909090909091,
+      "roc_auc": 0.9924242424242424,
+      "mcc": 0.9160572248286889
+    },
+    {
+      "accuracy": 0.9565217391304348,
+      "f1": 0.9565217391304348,
+      "precision": 0.9166666666666666,
+      "sensitivity": 1.0,
+      "specificity": 0.9166666666666666,
+      "roc_auc": 1.0,
+      "mcc": 0.9166666666666666
+    },
+    {
+      "accuracy": 0.9565217391304348,
+      "f1": 0.9523809523809523,
+      "precision": 1.0,
+      "sensitivity": 0.9090909090909091,
+      "specificity": 1.0,
+      "roc_auc": 0.9924242424242424,
+      "mcc": 0.9160572248286889
+    },
+    {
+      "accuracy": 0.9545454545454546,
+      "f1": 0.9565217391304348,
+      "precision": 0.9166666666666666,
+      "sensitivity": 1.0,
+      "specificity": 0.9090909090909091,
+      "roc_auc": 1.0,
+      "mcc": 0.9128709291752768
+    },
+    {
+      "accuracy": 0.9545454545454546,
+      "f1": 0.9523809523809523,
+      "precision": 1.0,
+      "sensitivity": 0.9090909090909091,
+      "specificity": 1.0,
+      "roc_auc": 0.9917355371900827,
+      "mcc": 0.9128709291752768
+    },
+    {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "mcc": 1.0
+    }
+  ],
+  "summary": {
+    "accuracy": {
+      "mean": 0.9778656126482212,
+      "std": 0.022144972059812532
+    },
+    "f1": {
+      "mean": 0.9777805383022773,
+      "std": 0.022313271717541966
+    },
+    "precision": {
+      "mean": 0.9756410256410255,
+      "std": 0.03724574114444603
+    },
+    "sensitivity": {
+      "mean": 0.9818181818181818,
+      "std": 0.036363636363636376
+    },
+    "specificity": {
+      "mean": 0.9734848484848484,
+      "std": 0.04054976876082619
+    },
+    "roc_auc": {
+      "mean": 0.9976584022038567,
+      "std": 0.0035812672176308473
+    },
+    "mcc": {
+      "mean": 0.9574522974674597,
+      "std": 0.042564190946088716
+    }
+  }
+}

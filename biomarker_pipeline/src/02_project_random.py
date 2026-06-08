@@ -17,6 +17,7 @@ import sys
 import json
 import pickle
 import logging
+import argparse
 import numpy as np
 
 from sklearn.random_projection import GaussianRandomProjection
@@ -68,7 +69,22 @@ def load_global_matrix(registry: list[dict], matrices_dir: str) -> np.ndarray:
     return np.vstack(blocks)
 
 
+def parse_args() -> argparse.Namespace:
+    """Parseia argumentos de linha de comando."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--n-components",
+        type=int,
+        default=N_COMPONENTS,
+        help=f"Número de componentes da projeção (padrão: {N_COMPONENTS}).",
+    )
+    return parser.parse_args()
+
+
 def main():
+    args = parse_args()
+    n_components = args.n_components
+
     for d in (VECTORS_DIR, MODELS_DIR):
         os.makedirs(d, exist_ok=True)
 
@@ -81,8 +97,9 @@ def main():
     log.info("Matriz global empilhada: %s  (%.1f MB)",
              X_global.shape, X_global.nbytes / 1e6)
 
-    transformer = GaussianRandomProjection(n_components=N_COMPONENTS, random_state=RANDOM_STATE)
-    X_projected = transformer.fit_transform(X_global)   # (total_windows, N_COMPONENTS)
+    log.info("N componentes: %d", n_components)
+    transformer = GaussianRandomProjection(n_components=n_components, random_state=RANDOM_STATE)
+    X_projected = transformer.fit_transform(X_global)
     log.info("Projeção concluída: %s", X_projected.shape)
 
     with open(MODEL_PATH, "wb") as f:
@@ -90,7 +107,7 @@ def main():
     log.info("Modelo salvo: %s", MODEL_PATH)
 
     # Mean pooling por sequência
-    X = np.zeros((n_seq, N_COMPONENTS), dtype=np.float32)
+    X = np.zeros((n_seq, n_components), dtype=np.float32)
     y = np.zeros(n_seq, dtype=np.int8)
     metadata = {}
 
@@ -126,7 +143,7 @@ def main():
     with open(SUMMARY_PATH, "w") as f:
         json.dump({
             "method": "random_projection",
-            "n_components": N_COMPONENTS,
+            "n_components": n_components,
             "random_state": RANDOM_STATE,
             "n_sequences": n_seq,
             "n_positive": int(y.sum()),

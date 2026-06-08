@@ -1,0 +1,22 @@
+# Ambientes virtuais
+venv/
+.venv/
+
+# Modelos treinados (gerados localmente, arquivos grandes)
+models/*.pkl
+
+# Dados processados intermediários (gerados pelo pipeline)
+data/processed/matrices/
+data/processed/vectors/
+data/processed/X.npy
+data/processed/y.npy
+data/processed/metadata.json
+data/processed/random_summary.json
+data/processed/sequence_registry.json
+data/processed/kmer_vocab.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.DS_Store
