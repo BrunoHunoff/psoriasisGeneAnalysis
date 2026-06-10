@@ -14,6 +14,10 @@ Modelos sensíveis à escala (LR, SVM, kNN) já estão envolvidos em
 Pipeline(StandardScaler, modelo) — o scaler é ajustado dentro de cada
 fold, garantindo que dados de teste nunca vazam para o treino.
 
+Usa StratifiedGroupKFold agrupando por proteína (campo "protein" do
+metadata.json), garantindo que ortólogos/isoformas da mesma proteína
+nunca apareçam simultaneamente em treino e teste.
+
 Métricas por fold (média ± desvio padrão ao final):
     Accuracy, F1, Precisão, Sensibilidade, Especificidade, ROC-AUC, MCC
 """
@@ -32,7 +36,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.metrics import (
     accuracy_score,
     f1_score,
@@ -50,10 +54,11 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-PROC_DIR     = "data/processed"
-REPORTS_DIR  = "reports"
-X_PATH       = os.path.join(PROC_DIR, "X.npy")
-Y_PATH       = os.path.join(PROC_DIR, "y.npy")
+PROC_DIR      = "data/processed"
+REPORTS_DIR   = "reports"
+X_PATH        = os.path.join(PROC_DIR, "X.npy")
+Y_PATH        = os.path.join(PROC_DIR, "y.npy")
+METADATA_PATH = os.path.join(PROC_DIR, "metadata.json")
 
 N_FOLDS      = 10
 RANDOM_STATE = 42
@@ -148,7 +153,7 @@ def summarize(fold_results: list[dict]) -> dict:
 def print_summary(model_name: str, summary: dict, n_folds: int) -> None:
     """Imprime tabela de resultados no log."""
     log.info("=" * 55)
-    log.info("Modelo: %s  (%d-fold CV)", model_name, n_folds)
+    log.info("Modelo: %s  (%d-fold CV — GroupKFold por proteína)", model_name, n_folds)
     log.info("=" * 55)
     log.info("%-16s  %8s  %8s", "Métrica", "Média", "Desvio")
     log.info("-" * 40)
@@ -178,17 +183,34 @@ def main() -> None:
 
     X = np.load(X_PATH)
     y = np.load(Y_PATH)
+
+    if not os.path.exists(METADATA_PATH):
+        log.error("%s não encontrado — rode 02_project_random.py primeiro.", METADATA_PATH)
+        sys.exit(1)
+    with open(METADATA_PATH) as f:
+        metadata = json.load(f)
+    groups = np.array([metadata[str(i)]["protein"] for i in range(len(y))])
+    n_unique_groups = len(set(groups))
+
     log.info("Dados carregados: X=%s  y=%s  (pos=%d, neg=%d)",
              X.shape, y.shape, int(y.sum()), int((y == 0).sum()))
+    log.info("Grupos por proteína: %d proteínas distintas", n_unique_groups)
+
+    n_folds = min(N_FOLDS, n_unique_groups)
+    if n_folds < N_FOLDS:
+        log.warning(
+            "Número de proteínas distintas (%d) < N_FOLDS (%d). "
+            "Usando %d folds.", n_unique_groups, N_FOLDS, n_folds,
+        )
 
     model = MODEL_REGISTRY[args.model]
     log.info("Modelo selecionado: %s", args.model)
     log.info("Configuração: %s", model)
 
-    skf = StratifiedKFold(n_splits=N_FOLDS, shuffle=True, random_state=RANDOM_STATE)
+    skf = StratifiedGroupKFold(n_splits=n_folds)
     fold_results = []
 
-    for fold, (train_idx, test_idx) in enumerate(skf.split(X, y), start=1):
+    for fold, (train_idx, test_idx) in enumerate(skf.split(X, y, groups), start=1):
         X_train, X_test = X[train_idx], X[test_idx]
         y_train, y_test = y[train_idx], y[test_idx]
 
@@ -200,17 +222,19 @@ def main() -> None:
         fold_results.append(metrics)
         log.info(
             "Fold %2d/%d — acc=%.4f  f1=%.4f  auc=%.4f  mcc=%.4f",
-            fold, N_FOLDS,
+            fold, n_folds,
             metrics["accuracy"], metrics["f1"],
             metrics["roc_auc"], metrics["mcc"],
         )
 
     summary = summarize(fold_results)
-    print_summary(args.model, summary, N_FOLDS)
+    print_summary(args.model, summary, n_folds)
 
     report = {
         "model": args.model,
-        "n_folds": N_FOLDS,
+        "cv_strategy": "StratifiedGroupKFold (agrupado por proteína)",
+        "n_folds": n_folds,
+        "n_unique_proteins": n_unique_groups,
         "n_samples": int(X.shape[0]),
         "n_positive": int(y.sum()),
         "n_negative": int((y == 0).sum()),
