@@ -1,0 +1,10 @@
+Tabela — Validação dos classificadores em proteínas de teste (N=1000 componentes, modelos treinados com GridSearchCV 10-fold CV)
+
+Proteína	Categoria	Classif. esperada	LR	SVM	RF	GB	NB	kNN
+INS	Negativa treinada	NEGATIVO	✓ 99,0%	✓ 99,6%	✓ 89,5%	✓ 100,0%	✓ 100,0%	✓ 100,0%
+PTPN22	Negativa não treinada	NEGATIVO	✓ 93,4%	✓ 99,6%	✓ 84,0%	✓ 100,0%	✓ 100,0%	✓ 66,7%
+IL12B	Positiva treinada	POSITIVO	✓ 99,7%	✓ 100,0%	✓ 93,5%	✓ 100,0%	✓ 100,0%	✓ 100,0%
+CARD14	Positiva não treinada — epitelial	POSITIVO	✗ 70,5%	✗ 51,2%	~ 52,5%	✗ 91,1%	✗ 100,0%	✓ 100,0%
+RUNX3	Positiva não treinada — imune sistêmica	POSITIVO	✓ 67,6%	✓ 90,3%	✗ 51,0%	✗ 100,0%	✗ 100,0%	✓ 100,0%
+Fonte: Elaborado pelos autores (2026).
+✓ = predição correta  |  ✗ = predição incorreta  |  ~ = correta mas confiança < 65%

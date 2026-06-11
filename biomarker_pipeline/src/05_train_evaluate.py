@@ -1,30 +1,19 @@
 """
-Módulo 05 — Treinamento e avaliação com cross-validation.
+Módulo 05 — Avaliação e treinamento com GridSearchCV.
+
+Usa GridSearchCV (10-fold StratifiedKFold) para encontrar os melhores
+hiperparâmetros de cada modelo e reportar as métricas de desempenho.
+O melhor modelo é salvo em models/ para uso em predição.
 
 Uso:
     python src/05_train_evaluate.py --model random_forest
     python src/05_train_evaluate.py --model logistic_regression
-    python src/05_train_evaluate.py --model svm
-    python src/05_train_evaluate.py --model naive_bayes
-    python src/05_train_evaluate.py --model knn
-    python src/05_train_evaluate.py --model gradient_boosting
-
-Para adicionar um novo modelo: inclua uma entrada em MODEL_REGISTRY.
-Modelos sensíveis à escala (LR, SVM, kNN) já estão envolvidos em
-Pipeline(StandardScaler, modelo) — o scaler é ajustado dentro de cada
-fold, garantindo que dados de teste nunca vazam para o treino.
-
-Usa StratifiedGroupKFold agrupando por proteína (campo "protein" do
-metadata.json), garantindo que ortólogos/isoformas da mesma proteína
-nunca apareçam simultaneamente em treino e teste.
-
-Métricas por fold (média ± desvio padrão ao final):
-    Accuracy, F1, Precisão, Sensibilidade, Especificidade, ROC-AUC, MCC
 """
 
 import os
 import sys
 import json
+import pickle
 import logging
 import argparse
 import numpy as np
@@ -36,13 +25,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import StratifiedGroupKFold
+from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.metrics import (
-    accuracy_score,
-    f1_score,
-    precision_score,
-    recall_score,
-    roc_auc_score,
+    make_scorer,
     matthews_corrcoef,
     confusion_matrix,
 )
@@ -56,190 +41,129 @@ log = logging.getLogger(__name__)
 
 PROC_DIR      = "data/processed"
 REPORTS_DIR   = "reports"
+MODELS_DIR    = "models"
 X_PATH        = os.path.join(PROC_DIR, "X.npy")
 Y_PATH        = os.path.join(PROC_DIR, "y.npy")
-METADATA_PATH = os.path.join(PROC_DIR, "metadata.json")
+SUMMARY_PATH  = os.path.join(PROC_DIR, "random_summary.json")
 
 N_FOLDS      = 10
 RANDOM_STATE = 42
 
-# ── Adicione novos modelos aqui ──────────────────────────────────────────────
+
 def _scaled(model):
-    """Envolve um estimador em Pipeline com StandardScaler."""
     return Pipeline([("scaler", StandardScaler()), ("model", model)])
 
 
 MODEL_REGISTRY = {
-    "random_forest": RandomForestClassifier(
-        n_estimators=100,
-        random_state=RANDOM_STATE,
-        n_jobs=-1,
-    ),
-    "gradient_boosting": GradientBoostingClassifier(
-        n_estimators=100,
-        learning_rate=0.1,
-        max_depth=3,
-        random_state=RANDOM_STATE,
-    ),
-    "logistic_regression": _scaled(
-        LogisticRegression(
-            max_iter=1000,
-            random_state=RANDOM_STATE,
-        )
-    ),
-    "svm": _scaled(
-        SVC(
-            kernel="rbf",
-            probability=True,
-            random_state=RANDOM_STATE,
-        )
-    ),
-    "naive_bayes": GaussianNB(),
-    "knn": _scaled(
-        KNeighborsClassifier(
-            n_neighbors=5,
-            n_jobs=-1,
-        )
-    ),
+    "logistic_regression": _scaled(LogisticRegression(max_iter=1000, random_state=RANDOM_STATE)),
+    "svm":                 _scaled(SVC(kernel="rbf", probability=True, random_state=RANDOM_STATE)),
+    "random_forest":       RandomForestClassifier(random_state=RANDOM_STATE, n_jobs=-1),
+    "gradient_boosting":   GradientBoostingClassifier(random_state=RANDOM_STATE),
+    "naive_bayes":         GaussianNB(),
+    "knn":                 _scaled(KNeighborsClassifier(n_jobs=-1)),
 }
-# ────────────────────────────────────────────────────────────────────────────
+
+PARAM_GRIDS = {
+    "logistic_regression": {"model__C": [0.01, 0.1, 1, 10, 100]},
+    "svm":                 {"model__C": [0.1, 1, 10], "model__gamma": ["scale", "auto"]},
+    "random_forest":       {"n_estimators": [50, 100, 200], "max_depth": [None, 10, 20]},
+    "gradient_boosting":   {"n_estimators": [50, 100, 200], "learning_rate": [0.05, 0.1, 0.2]},
+    "naive_bayes":         {"var_smoothing": [1e-9, 1e-7, 1e-5]},
+    "knn":                 {"model__n_neighbors": [3, 5, 7, 11]},
+}
 
 
-def parse_args() -> argparse.Namespace:
-    """Parseia argumentos de linha de comando."""
-    parser = argparse.ArgumentParser(description="Treina e avalia um modelo via cross-validation.")
-    parser.add_argument(
-        "--model",
-        required=True,
-        choices=list(MODEL_REGISTRY.keys()),
-        help="Nome do modelo a usar (definido em MODEL_REGISTRY).",
-    )
-    return parser.parse_args()
-
-
-def specificity_score(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """Calcula especificidade (True Negative Rate = TN / (TN + FP))."""
+def _specificity(y_true, y_pred):
     tn, fp, _, _ = confusion_matrix(y_true, y_pred).ravel()
     return tn / (tn + fp) if (tn + fp) > 0 else 0.0
 
 
-def evaluate_fold(
-    y_true: np.ndarray,
-    y_pred: np.ndarray,
-    y_prob: np.ndarray,
-) -> dict:
-    """Calcula todas as métricas para um único fold."""
-    return {
-        "accuracy":    accuracy_score(y_true, y_pred),
-        "f1":          f1_score(y_true, y_pred, zero_division=0),
-        "precision":   precision_score(y_true, y_pred, zero_division=0),
-        "sensitivity": recall_score(y_true, y_pred, zero_division=0),
-        "specificity": specificity_score(y_true, y_pred),
-        "roc_auc":     roc_auc_score(y_true, y_prob),
-        "mcc":         matthews_corrcoef(y_true, y_pred),
-    }
+SCORING = {
+    "accuracy":    "accuracy",
+    "f1":          "f1",
+    "precision":   "precision",
+    "sensitivity": "recall",
+    "specificity": make_scorer(_specificity),
+    "roc_auc":     "roc_auc",
+    "mcc":         make_scorer(matthews_corrcoef),
+}
 
 
-def summarize(fold_results: list[dict]) -> dict:
-    """Calcula média e desvio padrão de cada métrica sobre todos os folds."""
-    metrics = list(fold_results[0].keys())
-    summary = {}
-    for m in metrics:
-        values = [r[m] for r in fold_results]
-        summary[m] = {"mean": float(np.mean(values)), "std": float(np.std(values))}
-    return summary
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model", required=True, choices=list(MODEL_REGISTRY.keys()))
+    return parser.parse_args()
 
 
-def print_summary(model_name: str, summary: dict, n_folds: int) -> None:
-    """Imprime tabela de resultados no log."""
-    log.info("=" * 55)
-    log.info("Modelo: %s  (%d-fold CV — GroupKFold por proteína)", model_name, n_folds)
-    log.info("=" * 55)
-    log.info("%-16s  %8s  %8s", "Métrica", "Média", "Desvio")
-    log.info("-" * 40)
-    labels = {
-        "accuracy":    "Acurácia",
-        "f1":          "F1 Score",
-        "precision":   "Precisão",
-        "sensitivity": "Sensibilidade",
-        "specificity": "Especificidade",
-        "roc_auc":     "ROC-AUC",
-        "mcc":         "MCC",
-    }
-    for key, label in labels.items():
-        m = summary[key]
-        log.info("%-16s  %8.4f  %8.4f", label, m["mean"], m["std"])
-    log.info("=" * 55)
+def load_n_components() -> int:
+    if os.path.exists(SUMMARY_PATH):
+        with open(SUMMARY_PATH) as f:
+            return json.load(f).get("n_components", 0)
+    return 0
 
 
-def main() -> None:
+def main():
     args = parse_args()
     os.makedirs(REPORTS_DIR, exist_ok=True)
+    os.makedirs(MODELS_DIR, exist_ok=True)
 
-    for path, hint in ((X_PATH, "02_project_random.py"), (Y_PATH, "02_project_random.py")):
+    for path in (X_PATH, Y_PATH):
         if not os.path.exists(path):
-            log.error("%s não encontrado — rode %s primeiro.", path, hint)
+            log.error("%s não encontrado — rode 02_project_random.py primeiro.", path)
             sys.exit(1)
 
     X = np.load(X_PATH)
     y = np.load(Y_PATH)
+    n_components = load_n_components()
+    log.info("Dados: X=%s  y=%s  (pos=%d, neg=%d)  N=%d",
+             X.shape, y.shape, int(y.sum()), int((y == 0).sum()), n_components)
 
-    if not os.path.exists(METADATA_PATH):
-        log.error("%s não encontrado — rode 02_project_random.py primeiro.", METADATA_PATH)
-        sys.exit(1)
-    with open(METADATA_PATH) as f:
-        metadata = json.load(f)
-    groups = np.array([metadata[str(i)]["protein"] for i in range(len(y))])
-    n_unique_groups = len(set(groups))
+    model      = MODEL_REGISTRY[args.model]
+    param_grid = PARAM_GRIDS[args.model]
+    cv         = StratifiedKFold(n_splits=N_FOLDS, shuffle=True, random_state=RANDOM_STATE)
 
-    log.info("Dados carregados: X=%s  y=%s  (pos=%d, neg=%d)",
-             X.shape, y.shape, int(y.sum()), int((y == 0).sum()))
-    log.info("Grupos por proteína: %d proteínas distintas", n_unique_groups)
+    n_combinations = 1
+    for v in param_grid.values():
+        n_combinations *= len(v)
+    log.info("GridSearchCV: %d combinações × %d folds = %d fits",
+             n_combinations, N_FOLDS, n_combinations * N_FOLDS)
 
-    n_folds = min(N_FOLDS, n_unique_groups)
-    if n_folds < N_FOLDS:
-        log.warning(
-            "Número de proteínas distintas (%d) < N_FOLDS (%d). "
-            "Usando %d folds.", n_unique_groups, N_FOLDS, n_folds,
-        )
+    grid = GridSearchCV(
+        model,
+        param_grid,
+        cv=cv,
+        scoring=SCORING,
+        refit="roc_auc",
+        n_jobs=-1,
+        verbose=0,
+    )
+    grid.fit(X, y)
 
-    model = MODEL_REGISTRY[args.model]
-    log.info("Modelo selecionado: %s", args.model)
-    log.info("Configuração: %s", model)
+    best_idx = grid.best_index_
+    metrics = {}
+    for metric in SCORING:
+        metrics[metric] = {
+            "mean": float(grid.cv_results_[f"mean_test_{metric}"][best_idx]),
+            "std":  float(grid.cv_results_[f"std_test_{metric}"][best_idx]),
+        }
 
-    skf = StratifiedGroupKFold(n_splits=n_folds)
-    fold_results = []
+    log.info("Melhores parâmetros: %s", grid.best_params_)
+    log.info("ROC-AUC: %.4f ± %.4f", metrics["roc_auc"]["mean"], metrics["roc_auc"]["std"])
 
-    for fold, (train_idx, test_idx) in enumerate(skf.split(X, y, groups), start=1):
-        X_train, X_test = X[train_idx], X[test_idx]
-        y_train, y_test = y[train_idx], y[test_idx]
-
-        model.fit(X_train, y_train)
-        y_pred = model.predict(X_test)
-        y_prob = model.predict_proba(X_test)[:, 1]
-
-        metrics = evaluate_fold(y_test, y_pred, y_prob)
-        fold_results.append(metrics)
-        log.info(
-            "Fold %2d/%d — acc=%.4f  f1=%.4f  auc=%.4f  mcc=%.4f",
-            fold, n_folds,
-            metrics["accuracy"], metrics["f1"],
-            metrics["roc_auc"], metrics["mcc"],
-        )
-
-    summary = summarize(fold_results)
-    print_summary(args.model, summary, n_folds)
+    clf_path = os.path.join(MODELS_DIR, f"classifier_{args.model}_n{n_components}.pkl")
+    with open(clf_path, "wb") as f:
+        pickle.dump(grid.best_estimator_, f)
+    log.info("Melhor modelo salvo: %s", clf_path)
 
     report = {
-        "model": args.model,
-        "cv_strategy": "StratifiedGroupKFold (agrupado por proteína)",
-        "n_folds": n_folds,
-        "n_unique_proteins": n_unique_groups,
-        "n_samples": int(X.shape[0]),
-        "n_positive": int(y.sum()),
-        "n_negative": int((y == 0).sum()),
-        "fold_results": fold_results,
-        "summary": summary,
+        "model":        args.model,
+        "n_components": n_components,
+        "n_folds":      N_FOLDS,
+        "n_samples":    int(X.shape[0]),
+        "n_positive":   int(y.sum()),
+        "n_negative":   int((y == 0).sum()),
+        "best_params":  grid.best_params_,
+        "metrics":      metrics,
     }
     out_path = os.path.join(REPORTS_DIR, f"results_{args.model}.json")
     with open(out_path, "w") as f:

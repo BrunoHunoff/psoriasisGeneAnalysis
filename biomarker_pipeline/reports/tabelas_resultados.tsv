@@ -1,0 +1,47 @@
+Tabela 1 — Desempenho dos classificadores com N=300 componentes (média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	93.7% ± 4.5%	93.8% ± 4.6%	92.4% ± 5.5%	95.5% ± 6.0%	91.9% ± 6.4%	97.6% ± 2.1%	87.8% ± 8.9%
+SVM	92.9% ± 4.5%	92.5% ± 4.9%	96.6% ± 5.4%	89.2% ± 7.9%	96.4% ± 6.0%	98.5% ± 1.7%	86.4% ± 8.6%
+Random Forest	93.3% ± 4.6%	93.0% ± 4.8%	96.3% ± 4.5%	90.2% ± 7.4%	96.4% ± 4.5%	98.9% ± 0.9%	87.0% ± 9.0%
+Gradient Boosting	88.3% ± 6.2%	88.7% ± 5.6%	86.7% ± 6.7%	91.0% ± 5.8%	85.6% ± 8.4%	96.6% ± 2.3%	76.9% ± 12.2%
+Naive Bayes	70.4% ± 12.3%	65.2% ± 15.3%	77.1% ± 14.6%	57.8% ± 17.7%	82.8% ± 11.9%	73.2% ± 15.8%	42.5% ± 24.6%
+kNN	81.2% ± 8.4%	83.9% ± 6.5%	74.6% ± 8.6%	96.4% ± 4.4%	66.1% ± 14.7%	89.6% ± 4.2%	65.7% ± 14.9%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela 2 — Desempenho dos classificadores com N=400 componentes (média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	93.3% ± 4.6%	93.4% ± 4.6%	91.6% ± 5.1%	95.5% ± 6.0%	91.0% ± 5.8%	97.1% ± 3.0%	86.9% ± 9.0%
+SVM	92.9% ± 4.0%	92.3% ± 4.9%	96.6% ± 4.2%	89.2% ± 9.8%	96.4% ± 4.4%	98.5% ± 1.5%	86.5% ± 7.3%
+Random Forest	91.4% ± 4.8%	91.4% ± 4.8%	91.3% ± 5.3%	91.9% ± 6.4%	90.9% ± 5.7%	98.1% ± 1.9%	83.1% ± 9.5%
+Gradient Boosting	86.6% ± 4.0%	86.9% ± 4.1%	85.0% ± 7.3%	90.1% ± 8.6%	83.1% ± 10.1%	95.7% ± 3.0%	74.4% ± 7.5%
+Naive Bayes	70.4% ± 12.3%	65.0% ± 15.2%	77.9% ± 14.9%	56.9% ± 17.1%	83.7% ± 12.1%	73.5% ± 14.3%	42.6% ± 24.7%
+kNN	82.5% ± 8.4%	84.9% ± 6.8%	76.4% ± 9.6%	96.4% ± 6.0%	68.7% ± 15.4%	90.1% ± 4.6%	68.3% ± 14.8%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela 3 — Desempenho dos classificadores com N=500 componentes (média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	93.7% ± 4.5%	93.7% ± 4.8%	92.3% ± 4.4%	95.5% ± 7.3%	91.9% ± 4.9%	98.7% ± 1.6%	87.8% ± 9.0%
+SVM	93.7% ± 3.6%	93.3% ± 4.1%	97.4% ± 3.9%	90.1% ± 7.6%	97.3% ± 4.1%	99.0% ± 1.2%	88.1% ± 6.6%
+Random Forest	92.4% ± 4.0%	92.4% ± 4.0%	92.6% ± 6.5%	92.8% ± 6.8%	91.8% ± 7.6%	99.0% ± 1.5%	85.3% ± 7.9%
+Gradient Boosting	86.5% ± 5.1%	86.7% ± 5.1%	84.9% ± 5.5%	89.2% ± 7.9%	83.9% ± 6.9%	96.3% ± 1.8%	73.5% ± 10.1%
+Naive Bayes	70.4% ± 11.8%	64.9% ± 14.6%	78.2% ± 14.4%	56.9% ± 17.1%	83.7% ± 12.1%	74.6% ± 14.5%	42.8% ± 23.7%
+kNN	82.5% ± 7.4%	85.2% ± 5.5%	75.1% ± 7.9%	99.1% ± 2.7%	66.1% ± 14.2%	91.4% ± 5.2%	69.2% ± 12.1%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela 4 — Desempenho dos classificadores com N=1000 componentes (média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	97.4% ± 2.9%	97.3% ± 3.2%	97.6% ± 3.7%	97.3% ± 5.8%	97.3% ± 4.1%	99.8% ± 0.3%	95.0% ± 5.5%
+SVM	95.1% ± 3.1%	94.7% ± 3.5%	98.4% ± 3.2%	91.8% ± 7.6%	98.2% ± 3.6%	99.4% ± 0.7%	90.7% ± 5.8%
+Random Forest	95.1% ± 2.5%	94.9% ± 2.5%	97.6% ± 5.0%	92.8% ± 5.4%	97.3% ± 5.8%	99.3% ± 1.0%	90.6% ± 4.5%
+Gradient Boosting	87.0% ± 7.9%	87.8% ± 7.0%	83.7% ± 8.9%	92.8% ± 6.8%	81.2% ± 11.7%	95.5% ± 3.1%	74.9% ± 15.5%
+Naive Bayes	72.2% ± 11.4%	66.2% ± 14.8%	82.1% ± 14.2%	56.9% ± 17.1%	87.3% ± 10.9%	78.1% ± 14.8%	47.0% ± 22.7%
+kNN	81.2% ± 5.9%	84.3% ± 4.2%	73.1% ± 6.2%	100.0% ± 0.0%	62.5% ± 11.7%	89.5% ± 5.4%	67.5% ± 9.3%
+Fonte: Elaborado pelos autores (2026).
+
