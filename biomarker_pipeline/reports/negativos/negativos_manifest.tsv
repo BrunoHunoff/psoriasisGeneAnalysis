@@ -1,0 +1,377 @@
+arquivo	gene	categoria	fonte	evidencia	n_seqs	acessos_uniprot	tamanho_humano	ot_score_psoriase
+NPEPPSL1_paralogo_ERAP1_dificil.fasta	NPEPPSL1	paralogo_ERAP1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase M1 family'; identidade=39.5% com ERAP1	1	A6NEC2	478	0.000
+ANPEP_paralogo_ERAP1_dificil.fasta	ANPEP	paralogo_ERAP1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase M1 family'; identidade=35.2% com ERAP1	4	P15144,P97449,P15684,P79098	967	0.009
+ENPEP_paralogo_ERAP1_dificil.fasta	ENPEP	paralogo_ERAP1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase M1 family'; identidade=34.4% com ERAP1	4	Q07075,P16406,P50123,Q32LQ0	957	0.000
+LVRN_paralogo_ERAP1_dificil.fasta	LVRN	paralogo_ERAP1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase M1 family'; identidade=32.6% com ERAP1	4	Q6Q4G3,Q2KHK3,M3XFH7,A0A6J2ATK2	990	0.005
+TRHDE_paralogo_ERAP1_dificil.fasta	TRHDE	paralogo_ERAP1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase M1 family'; identidade=32.1% com ERAP1	3	Q9UKU6,Q8K093,Q10836	1069	0.000
+KDM2B_paralogo_FBXL19_dificil.fasta	KDM2B	paralogo_FBXL19_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF12937; identidade=49.4% com FBXL19	2	Q8NHM5,Q6P1G2	1336	0.000
+KDM2A_paralogo_FBXL19_dificil.fasta	KDM2A	paralogo_FBXL19_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF12937; identidade=40.5% com FBXL19	2	Q9Y2K7,P59997	1162	0.043
+TET3_paralogo_FBXL19_dificil.fasta	TET3	paralogo_FBXL19_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF02008; identidade=30.8% com FBXL19	2	O43151,Q8BG87	1795	0.012
+FBXL22_paralogo_FBXL19_dificil.fasta	FBXL22	paralogo_FBXL19_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF12937; identidade=30.7% com FBXL19	3	Q6P050,Q8C7B6,Q2HJF2	231	0.000
+FBXO41_paralogo_FBXL19_dificil.fasta	FBXO41	paralogo_FBXL19_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF12937; identidade=26.9% com FBXL19	2	Q8TF61,Q6NS60	875	0.000
+HLA-H_paralogo_HLA-B_dificil.fasta	HLA-H	paralogo_HLA-B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF00129; identidade=85.9% com HLA-B	1	P01893	362	0.015
+AZGP1_paralogo_HLA-B_dificil.fasta	AZGP1	paralogo_HLA-B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF00129; identidade=40.3% com HLA-B	4	P25311,Q64726,Q63678,Q3ZCH5	298	0.005
+MR1_paralogo_HLA-B_dificil.fasta	MR1	paralogo_HLA-B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF00129; identidade=38.4% com HLA-B	4	Q95460,Q8HWB0,O19477,C1ITJ8	341	0.010
+HFE_paralogo_HLA-B_dificil.fasta	HFE	paralogo_HLA-B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF00129; identidade=36.8% com HLA-B	4	Q30201,P70387,O35799,P60018	348	0.000
+MICB_paralogo_HLA-B_dificil.fasta	MICB	paralogo_HLA-B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF00129; identidade=30.9% com HLA-B	1	Q29980	383	0.014
+DDX49_paralogo_IFIH1_dificil.fasta	DDX49	paralogo_IFIH1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Helicase family'; identidade=28.6% com IFIH1	2	Q9Y6V7,Q4FZF3	483	0.000
+DDX39A_paralogo_IFIH1_dificil.fasta	DDX39A	paralogo_IFIH1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Helicase family'; identidade=27.2% com IFIH1	3	O00148,Q8VDW0,Q5U216	427	0.011
+DDX1_paralogo_IFIH1_dificil.fasta	DDX1	paralogo_IFIH1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Helicase family'; identidade=25.7% com IFIH1	4	Q92499,Q91VR5,Q641Y8,Q0IIK5	740	0.000
+DDX18_paralogo_IFIH1_dificil.fasta	DDX18	paralogo_IFIH1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Helicase family'; identidade=25.5% com IFIH1	2	Q9NVP1,Q8K363	670	0.000
+EIF4A2_paralogo_IFIH1_dificil.fasta	EIF4A2	paralogo_IFIH1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Helicase family'; identidade=25.3% com IFIH1	4	Q14240,P10630,Q5RKI1,Q3SZ65	407	0.000
+IL11_paralogo_IL23A_dificil.fasta	IL11	paralogo_IL23A_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'IL-6 superfamily'; identidade=25.4% com IL23A	4	P20809,P47873,Q99MF5,P20808	199	0.013
+CLCF1_paralogo_IL23A_dificil.fasta	CLCF1	paralogo_IL23A_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'IL-6 superfamily'; identidade=21.2% com IL23A	2	Q9UBD9,Q9QZM3	225	0.003
+LIFR_paralogo_IL23R_dificil.fasta	LIFR	paralogo_IL23R_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type I cytokine receptor family > Type 2 subfamily'; identidade=24.8% com IL23R	4	P42702,P42703,O70535,Q5XNR9	1097	0.008
+CSF3R_paralogo_IL23R_dificil.fasta	CSF3R	paralogo_IL23R_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type I cytokine receptor family > Type 2 subfamily'; identidade=24.5% com IL23R	2	Q99062,P40223	836	0.005
+IL13RA2_paralogo_IL23R_dificil.fasta	IL13RA2	paralogo_IL23R_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type I cytokine receptor family'; identidade=23.7% com IL23R	4	Q14627,O88786,Q8VHK6,Q95LF0	380	0.004
+IL13RA1_paralogo_IL23R_dificil.fasta	IL13RA1	paralogo_IL23R_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type I cytokine receptor family'; identidade=23.4% com IL23R	2	P78552,O09030	427	0.001
+IL3RA_paralogo_IL23R_dificil.fasta	IL3RA	paralogo_IL23R_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type I cytokine receptor family'; identidade=23.3% com IL23R	2	P26951,P26952	378	0.025
+IL10RB_paralogo_IL28RA_dificil.fasta	IL10RB	paralogo_IL28RA_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type II cytokine receptor family'; identidade=27.7% com IFNLR1	2	Q08334,Q61190	325	0.004
+IL10RA_paralogo_IL28RA_dificil.fasta	IL10RA	paralogo_IL28RA_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type II cytokine receptor family'; identidade=26.5% com IFNLR1	2	Q13651,Q61727	578	0.005
+IL22RA2_paralogo_IL28RA_dificil.fasta	IL22RA2	paralogo_IL28RA_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type II cytokine receptor family'; identidade=25.1% com IFNLR1	3	Q969J5,Q80XF5,Q7TNI4	263	0.050
+IFNAR2_paralogo_IL28RA_dificil.fasta	IFNAR2	paralogo_IL28RA_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Type II cytokine receptor family'; identidade=23.1% com IFNLR1	4	P48551,O35664,Q95141,Q95207	515	0.003
+KCNH6_paralogo_KCNH7_dificil.fasta	KCNH6	paralogo_KCNH7_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Potassium channel family > H (Eag) (TC 1.A.1.20) subfamily'; identidade=65.2% com KCNH7	2	Q9H252,O54853	958	0.000
+KCNH2_paralogo_KCNH7_dificil.fasta	KCNH2	paralogo_KCNH7_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Potassium channel family > H (Eag) (TC 1.A.1.20) subfamily'; identidade=60.8% com KCNH7	4	Q12809,O35219,O08962,Q9TUI4	1159	0.004
+KCNH4_paralogo_KCNH7_dificil.fasta	KCNH4	paralogo_KCNH7_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Potassium channel family > H (Eag) (TC 1.A.1.20) subfamily'; identidade=39.0% com KCNH7	2	Q9UQ05,Q9R1T9	1017	0.000
+KCNH5_paralogo_KCNH7_dificil.fasta	KCNH5	paralogo_KCNH7_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Potassium channel family > H (Eag) (TC 1.A.1.20) subfamily'; identidade=37.8% com KCNH7	3	Q8NCM2,Q920E3,Q9EPI9	988	0.000
+KCNH1_paralogo_KCNH7_dificil.fasta	KCNH1	paralogo_KCNH7_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Potassium channel family > H (Eag) (TC 1.A.1.20) subfamily'; identidade=36.3% com KCNH7	4	O95259,Q60603,Q63472,O18965	989	0.000
+LCE1C_paralogo_LCE3B_dificil.fasta	LCE1C	paralogo_LCE3B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'LCE family'; identidade=67.4% com LCE3B	1	Q5T751	118	0.004
+LCE1B_paralogo_LCE3B_dificil.fasta	LCE1B	paralogo_LCE3B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'LCE family'; identidade=67.4% com LCE3B	1	Q5T7P3	118	0.003
+LCE4A_paralogo_LCE3B_dificil.fasta	LCE4A	paralogo_LCE3B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'LCE family'; identidade=66.3% com LCE3B	1	Q5TA78	99	0.000
+LCE1A_paralogo_LCE3B_dificil.fasta	LCE1A	paralogo_LCE3B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'LCE family'; identidade=65.3% com LCE3B	1	Q5T7P2	110	0.001
+LCE2D_paralogo_LCE3B_dificil.fasta	LCE2D	paralogo_LCE3B_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'LCE family'; identidade=62.1% com LCE3B	1	Q5TA82	110	0.000
+NFKBIE_paralogo_NFKBIA_dificil.fasta	NFKBIE	paralogo_NFKBIA_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'NF-kappa-B inhibitor family'; identidade=36.9% com NFKBIA	2	O00221,O54910	500	0.000
+NFKBIB_paralogo_NFKBIA_dificil.fasta	NFKBIB	paralogo_NFKBIA_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'NF-kappa-B inhibitor family'; identidade=33.8% com NFKBIA	3	Q15653,Q60778,Q9JIA3	356	0.000
+NFKBID_paralogo_NFKBIA_dificil.fasta	NFKBID	paralogo_NFKBIA_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'NF-kappa-B inhibitor family'; identidade=23.6% com NFKBIA	2	Q8NI38,Q2TB02	313	0.000
+NOS1_paralogo_NOS2_dificil.fasta	NOS1	paralogo_NOS2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'NOS family'; identidade=54.6% com NOS2	4	P29475,Q9Z0J4,P29476,O19132	1434	0.009
+NOS3_paralogo_NOS2_dificil.fasta	NOS3	paralogo_NOS2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'NOS family'; identidade=51.6% com NOS2	4	P29474,P70313,Q62600,P29473	1203	0.043
+PRDX3_paralogo_PRDX5_dificil.fasta	PRDX3	paralogo_PRDX5_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peroxiredoxin family'; identidade=26.6% com PRDX5	4	P30048,P20108,Q9Z0V6,P35705	256	0.000
+PRDX4_paralogo_PRDX5_dificil.fasta	PRDX4	paralogo_PRDX5_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peroxiredoxin family'; identidade=23.8% com PRDX5	4	Q13162,O08807,Q9Z0V5,Q9BGI2	271	0.000
+PRDX2_paralogo_PRDX5_dificil.fasta	PRDX2	paralogo_PRDX5_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peroxiredoxin family'; identidade=22.7% com PRDX5	4	P32119,Q61171,P35704,Q9BGI3	198	0.012
+PRDX1_paralogo_PRDX5_dificil.fasta	PRDX1	paralogo_PRDX5_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peroxiredoxin family'; identidade=20.1% com PRDX5	4	Q06830,P35700,Q63716,Q5E947	199	0.019
+PRSS36_paralogo_PRSS53_dificil.fasta	PRSS36	paralogo_PRSS53_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase S1 family'; identidade=40.0% com PRSS53	3	Q5K4E3,Q5K2P8,Q5K2P9	855	0.007
+PRSS33_paralogo_PRSS53_dificil.fasta	PRSS33	paralogo_PRSS53_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase S1 family'; identidade=39.6% com PRSS53	2	Q8NF86,Q80WM7	280	0.003
+KLK9_paralogo_PRSS53_dificil.fasta	KLK9	paralogo_PRSS53_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase S1 family'; identidade=36.4% com PRSS53	2	Q9UKQ9,P07647	250	0.004
+GZMM_paralogo_PRSS53_dificil.fasta	GZMM	paralogo_PRSS53_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase S1 family'; identidade=35.8% com PRSS53	2	P51124,Q03238	257	0.000
+PRSS46P_paralogo_PRSS53_dificil.fasta	PRSS46P	paralogo_PRSS53_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase S1 family'; identidade=34.5% com PRSS53	1	E5RG02	174	0.000
+RELA_paralogo_REL_dificil.fasta	RELA	paralogo_REL_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF16179; identidade=43.0% com REL	3	Q04206,Q04207,Q7TQN4	551	0.044
+NFKB2_paralogo_REL_dificil.fasta	NFKB2	paralogo_REL_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF16179; identidade=29.1% com REL	2	Q00653,Q9WTK5	900	0.014
+NFATC3_paralogo_REL_dificil.fasta	NFATC3	paralogo_REL_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF16179; identidade=24.7% com REL	3	Q12968,P97305,A0A0G2JTY4	1075	0.002
+RNF166_paralogo_RNF114_dificil.fasta	RNF166	paralogo_RNF114_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF05605; identidade=45.6% com RNF114	3	Q96A37,Q3U9F6,Q6J1I7	237	0.000
+RNF138_paralogo_RNF114_dificil.fasta	RNF138	paralogo_RNF114_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF05605; identidade=34.6% com RNF114	4	Q8WVD3,Q9CQE0,Q99PD2,Q32LN5	245	0.000
+RNF125_paralogo_RNF114_dificil.fasta	RNF125	paralogo_RNF114_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF05605; identidade=31.1% com RNF114	3	Q96EQ8,Q9D9R0,Q95KF1	232	0.000
+RNF224_paralogo_RNF114_dificil.fasta	RNF224	paralogo_RNF114_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF13445; identidade=30.8% com RNF114	2	P0DH78,Q3UIW8	156	0.000
+TRAF7_paralogo_RNF114_dificil.fasta	TRAF7	paralogo_RNF114_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF13445; identidade=27.2% com RNF114	2	Q6Q0C0,Q922B6	670	0.000
+RPS6KA5_paralogo_RPS6KA4_dificil.fasta	RPS6KA5	paralogo_RPS6KA4_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > AGC Ser/Thr protein kinase family > S6 kinase subfamily'; identidade=64.4% com RPS6KA4	3	O75582,Q8C050,Q5R4K3	802	0.024
+RPS6KA3_paralogo_RPS6KA4_dificil.fasta	RPS6KA3	paralogo_RPS6KA4_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > AGC Ser/Thr protein kinase family > S6 kinase subfamily'; identidade=43.1% com RPS6KA4	2	P51812,P18654	740	0.009
+RPS6KA1_paralogo_RPS6KA4_dificil.fasta	RPS6KA1	paralogo_RPS6KA4_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > AGC Ser/Thr protein kinase family > S6 kinase subfamily'; identidade=42.7% com RPS6KA4	3	Q15418,P18653,Q63531	735	0.023
+RPS6KA6_paralogo_RPS6KA4_dificil.fasta	RPS6KA6	paralogo_RPS6KA4_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > AGC Ser/Thr protein kinase family > S6 kinase subfamily'; identidade=42.6% com RPS6KA4	2	Q9UK32,Q7TPS0	745	0.002
+RPS6KA2_paralogo_RPS6KA4_dificil.fasta	RPS6KA2	paralogo_RPS6KA4_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > AGC Ser/Thr protein kinase family > S6 kinase subfamily'; identidade=42.4% com RPS6KA4	2	Q15349,Q9WUT3	733	0.000
+STAT4_paralogo_STAT2_dificil.fasta	STAT4	paralogo_STAT2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Transcription factor STAT family'; identidade=41.2% com STAT2	2	Q14765,P42228	748	0.026
+STAT5A_paralogo_STAT2_dificil.fasta	STAT5A	paralogo_STAT2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Transcription factor STAT family'; identidade=29.5% com STAT2	4	P42229,P42230,Q62771,Q95115	794	0.006
+OTUD7A_paralogo_TNFAIP3_dificil.fasta	OTUD7A	paralogo_TNFAIP3_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase C64 family'; identidade=29.6% com TNFAIP3	2	Q8TE49,Q8R554	926	0.002
+OTUD7B_paralogo_TNFAIP3_dificil.fasta	OTUD7B	paralogo_TNFAIP3_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Peptidase C64 family'; identidade=28.6% com TNFAIP3	2	Q6GQQ9,B2RUR8	843	0.000
+CSK_paralogo_TYK2_dificil.fasta	CSK	paralogo_TYK2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > Tyr protein kinase family'; identidade=32.9% com TYK2	4	P41240,P41241,P32577,Q0VBZ0	450	0.001
+HCK_paralogo_TYK2_dificil.fasta	HCK	paralogo_TYK2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > Tyr protein kinase family'; identidade=31.9% com TYK2	4	P08631,P08103,P50545,Q95M30	526	0.001
+PTK6_paralogo_TYK2_dificil.fasta	PTK6	paralogo_TYK2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > Tyr protein kinase family'; identidade=31.9% com TYK2	2	Q13882,Q64434	451	0.004
+SRMS_paralogo_TYK2_dificil.fasta	SRMS	paralogo_TYK2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > Tyr protein kinase family'; identidade=31.8% com TYK2	2	Q9H3Y6,Q62270	488	0.000
+ZAP70_paralogo_TYK2_dificil.fasta	ZAP70	paralogo_TYK2_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Protein kinase superfamily > Tyr protein kinase family'; identidade=31.5% com TYK2	2	P43403,P43404	619	0.019
+UBE2L5_paralogo_UBE2L3_dificil.fasta	UBE2L5	paralogo_UBE2L3_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Ubiquitin-conjugating enzyme family'; identidade=97.4% com UBE2L3	1	A0A1B0GUS4	154	0.000
+UBE2D4_paralogo_UBE2L3_dificil.fasta	UBE2D4	paralogo_UBE2L3_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Ubiquitin-conjugating enzyme family'; identidade=39.5% com UBE2L3	1	Q9Y2X8	147	0.000
+UBE2D1_paralogo_UBE2L3_dificil.fasta	UBE2D1	paralogo_UBE2L3_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Ubiquitin-conjugating enzyme family'; identidade=38.8% com UBE2L3	4	P51668,P61080,D3ZDK2,Q2TA10	147	0.000
+UBE2D2_paralogo_UBE2L3_dificil.fasta	UBE2D2	paralogo_UBE2L3_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Ubiquitin-conjugating enzyme family'; identidade=38.1% com UBE2L3	4	P62837,P62838,P62839,Q1RMX2	147	0.000
+UBE2D3_paralogo_UBE2L3_dificil.fasta	UBE2D3	paralogo_UBE2L3_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	familia UniProt 'Ubiquitin-conjugating enzyme family'; identidade=37.4% com UBE2L3	4	P61077,P61079,P61078,Q3ZCF7	147	0.001
+ZMIZ2_paralogo_ZMIZ1_dificil.fasta	ZMIZ2	paralogo_ZMIZ1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF25527; identidade=63.6% com ZMIZ1	2	Q8NF64,Q8CIE2	920	0.000
+PIAS4_paralogo_ZMIZ1_dificil.fasta	PIAS4	paralogo_ZMIZ1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF02891; identidade=26.9% com ZMIZ1	2	Q8N2W9,Q9JM05	510	0.004
+PIAS3_paralogo_ZMIZ1_dificil.fasta	PIAS3	paralogo_ZMIZ1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF02891; identidade=24.4% com ZMIZ1	3	Q9Y6X2,O54714,O70260	628	0.014
+PIAS2_paralogo_ZMIZ1_dificil.fasta	PIAS2	paralogo_ZMIZ1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF02891; identidade=24.2% com ZMIZ1	3	O75928,Q8C5D8,Q6AZ28	621	0.000
+PIAS1_paralogo_ZMIZ1_dificil.fasta	PIAS1	paralogo_ZMIZ1_dificil	UniProt (familia/Pfam) + alinhamento BLOSUM62	dominio Pfam PF02891; identidade=22.6% com ZMIZ1	2	O75925,O88907	651	0.001
+ITGA4_Crohn.fasta	ITGA4	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.82; score_global=0.723	2	P13612,Q00651	1032	0.004
+ZBTB38_Crohn.fasta	ZBTB38	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.75; score_global=0.453	2	Q8NAP3,Q5EXX3	1195	0.000
+TNFSF8_Crohn.fasta	TNFSF8	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.72; score_global=0.440	2	P32971,P32972	234	0.009
+BCL2L11_Crohn.fasta	BCL2L11	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.71; score_global=0.433	3	O43521,O54918,O88498	198	0.005
+KLF3_Crohn.fasta	KLF3	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.71; score_global=0.429	2	P57682,Q60980	345	0.002
+ABO_Crohn.fasta	ABO	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.70; score_global=0.431	3	P16442,P38649,Q9ET32	354	0.014
+SLC7A10_Crohn.fasta	SLC7A10	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.69; score_global=0.418	3	Q9NS82,P63115,P63116	523	0.000
+SETBP1_Crohn.fasta	SETBP1	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.68; score_global=0.414	2	Q9Y6X0,Q9Z180	1596	0.017
+BIRC3_Crohn.fasta	BIRC3	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.66; score_global=0.409	3	Q13489,O08863,A1E2V0	604	0.004
+ELF1_Crohn.fasta	ELF1	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.66; score_global=0.400	3	P32519,Q60775,A0JN51	619	0.002
+ZFP36L1_Crohn.fasta	ZFP36L1	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.65; score_global=0.393	3	Q07352,P23950,P17431	338	0.009
+ADAP1_Crohn.fasta	ADAP1	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.62; score_global=0.381	1	O75689	374	0.000
+LDLRAP1_Crohn.fasta	LDLRAP1	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.61; score_global=0.373	3	Q5SW96,Q8C142,D3ZAR1	308	0.001
+LILRB3_Crohn.fasta	LILRB3	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.61; score_global=0.377	1	O75022	631	0.000
+HGFAC_Crohn.fasta	HGFAC	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.60; score_global=0.366	3	Q04756,Q9R098,Q6QNF4	655	0.010
+CIITA_Crohn.fasta	CIITA	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.60; score_global=0.370	2	P33076,P79621	1130	0.005
+SYNGR1_Crohn.fasta	SYNGR1	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.59; score_global=0.358	4	O43759,O55100,Q62876,Q5R703	233	0.002
+AKAP11_Crohn.fasta	AKAP11	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.59; score_global=0.357	2	Q9UKA4,Q62924	1901	0.000
+GTF2I_Crohn.fasta	GTF2I	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.57; score_global=0.346	4	P78347,Q9ESZ8,Q5U2Y1,A7MB80	998	0.003
+FRMPD2_Crohn.fasta	FRMPD2	Crohn	Open Targets (MONDO_0005011 Crohn disease)	genetic_association=0.56; score_global=0.341	2	Q68DX3,A0A140LI67	1309	0.000
+CCRL2_Colite_Ulcerativa.fasta	CCRL2	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.70; score_global=0.423	4	O00421,O35457,Q0II78,Q75ZH0	344	0.002
+IL17REL_Colite_Ulcerativa.fasta	IL17REL	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.67; score_global=0.411	1	Q6ZVW7	507	0.000
+FCGR2B_Colite_Ulcerativa.fasta	FCGR2B	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.67; score_global=0.410	1	P31994	310	0.032
+LCOR_Colite_Ulcerativa.fasta	LCOR	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.63; score_global=0.385	2	Q96JN0,Q6ZPI3	433	0.000
+TTC34_Colite_Ulcerativa.fasta	TTC34	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.56; score_global=0.343	2	A8MYJ7,Q8C0Q3	566	0.000
+SEMA6D_Colite_Ulcerativa.fasta	SEMA6D	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.56; score_global=0.344	3	Q8NFY4,Q76KF0,Q5R7F5	1073	0.000
+BTBD3_Colite_Ulcerativa.fasta	BTBD3	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.56; score_global=0.342	4	Q9Y2F9,P58545,F7ASZ0,M3XQV7	522	0.000
+LSP1_Colite_Ulcerativa.fasta	LSP1	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.56; score_global=0.346	2	P33241,P19973	339	0.010
+ERGIC1_Colite_Ulcerativa.fasta	ERGIC1	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.55; score_global=0.335	2	Q969X5,Q9DC16	290	0.000
+THSD7A_Colite_Ulcerativa.fasta	THSD7A	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.55; score_global=0.337	2	Q9UPZ6,Q69ZU6	1657	0.018
+NEU4_Colite_Ulcerativa.fasta	NEU4	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.55; score_global=0.338	2	Q8WWR8,Q8BZL1	484	0.000
+HSBP1_Colite_Ulcerativa.fasta	HSBP1	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.54; score_global=0.329	4	O75506,Q9CQZ1,Q8K3X8,Q3ZC22	76	0.000
+CRTC3_Colite_Ulcerativa.fasta	CRTC3	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.54; score_global=0.328	2	Q6UUV7,Q91X84	619	0.001
+FOXI2_Colite_Ulcerativa.fasta	FOXI2	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.54; score_global=0.325	3	Q6ZQN5,Q3I5G5,Q63248	318	0.000
+MYO16_Colite_Ulcerativa.fasta	MYO16	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.53; score_global=0.325	3	Q9Y6X6,Q5DU14,Q9ERC1	1858	0.003
+DAGLB_Colite_Ulcerativa.fasta	DAGLB	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.53; score_global=0.324	3	Q8NCG7,Q91WC9,P0C1S9	672	0.000
+SLC4A3_Colite_Ulcerativa.fasta	SLC4A3	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.53; score_global=0.322	4	P48751,P16283,P23348,O18917	1232	0.000
+SERTAD4_Colite_Ulcerativa.fasta	SERTAD4	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.52; score_global=0.317	2	Q9NUC0,A7DTG3	356	0.000
+STK38_Colite_Ulcerativa.fasta	STK38	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.52; score_global=0.318	4	Q15208,Q91VJ4,A2VDV2,Q5R8M1	465	0.000
+LMO3_Colite_Ulcerativa.fasta	LMO3	Colite_Ulcerativa	Open Targets (MONDO_0005101 ulcerative colitis)	genetic_association=0.52; score_global=0.314	4	Q8TAP4,Q8BZL8,Q99MB5,Q2KIA3	145	0.011
+LBH_Artrite_Reumatoide.fasta	LBH	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.88; score_global=0.546	4	Q53QV2,Q9CX60,A5PJU8,Q5RD13	105	0.000
+CD83_Artrite_Reumatoide.fasta	CD83	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.83; score_global=0.511	2	Q01151,O88324	205	0.022
+EOMES_Artrite_Reumatoide.fasta	EOMES	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.83; score_global=0.505	2	O95936,O54839	686	0.012
+AFF3_Artrite_Reumatoide.fasta	AFF3	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.81; score_global=0.505	2	P51826,P51827	1226	0.010
+CLNK_Artrite_Reumatoide.fasta	CLNK	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.80; score_global=0.497	2	Q7Z7G1,Q9QZE2	428	0.000
+CCN4_Artrite_Reumatoide.fasta	CCN4	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.71; score_global=0.451	3	O95388,O54775,Q99PP0	367	0.001
+AARS2_Artrite_Reumatoide.fasta	AARS2	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.71; score_global=0.429	3	Q5JTZ9,Q14CH7,D3ZX08	985	0.000
+DRC5_Artrite_Reumatoide.fasta	DRC5	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.70; score_global=0.429	3	Q5JU00,A6H639,Q4R642	501	0.000
+NCF2_Artrite_Reumatoide.fasta	NCF2	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.70; score_global=0.445	4	P19878,O70145,A7E3N2,O77775	526	0.011
+TREH_Artrite_Reumatoide.fasta	TREH	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.70; score_global=0.427	3	O43280,Q9JLT2,P19813	583	0.000
+ETV7_Artrite_Reumatoide.fasta	ETV7	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.70; score_global=0.429	1	Q9Y603	341	0.004
+ARAP1_Artrite_Reumatoide.fasta	ARAP1	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.69; score_global=0.423	2	Q96P48,Q4LDD4	1450	0.005
+TLR1_Artrite_Reumatoide.fasta	TLR1	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.68; score_global=0.429	2	Q15399,Q9EPQ1	786	0.009
+PLD4_Artrite_Reumatoide.fasta	PLD4	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.66; score_global=0.417	2	Q96BZ4,Q8BG07	506	0.000
+NAB1_Artrite_Reumatoide.fasta	NAB1	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.66; score_global=0.406	4	Q13506,Q61122,Q62722,O35589	487	0.004
+TCF7_Artrite_Reumatoide.fasta	TCF7	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.65; score_global=0.397	2	P36402,Q00417	384	0.004
+ENO4_Artrite_Reumatoide.fasta	ENO4	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.64; score_global=0.391	2	A6NNW6,Q8C042	625	0.000
+RBPJ_Artrite_Reumatoide.fasta	RBPJ	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.63; score_global=0.406	4	Q06330,P31266,Q3SZ41,Q5RFK6	500	0.004
+IRAK1_Artrite_Reumatoide.fasta	IRAK1	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.63; score_global=0.399	3	P51617,Q62406,Q2LGB3	712	0.027
+TXNDC11_Artrite_Reumatoide.fasta	TXNDC11	Artrite_Reumatoide	Open Targets (MONDO_0008383 rheumatoid arthritis)	genetic_association=0.62; score_global=0.378	3	Q6PKC3,Q8K2W3,A4FUW8	985	0.000
+ATRIP_Lupus.fasta	ATRIP	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.87; score_global=0.527	3	Q8WXE1,Q8BMG1,Q9N077	791	0.000
+SHISA5_Lupus.fasta	SHISA5	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.87; score_global=0.526	4	Q8N114,Q9D7I0,Q5XIH2,Q3T0A9	240	0.000
+SLC15A4_Lupus.fasta	SLC15A4	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.81; score_global=0.517	4	Q8N697,Q91W98,O09014,A6QQL0	577	0.013
+RASGRP3_Lupus.fasta	RASGRP3	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.79; score_global=0.496	1	Q8IV61	690	0.018
+IKZF2_Lupus.fasta	IKZF2	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.70; score_global=0.432	2	Q9UKS7,P81183	526	0.008
+TRIB2_Lupus.fasta	TRIB2	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.66; score_global=0.400	4	Q92519,Q8K4K3,Q5GLH2,Q28283	343	0.012
+IKBKB_Lupus.fasta	IKBKB	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.65; score_global=0.415	4	O14920,O88351,Q9QY78,Q95KV0	756	0.011
+ST8SIA4_Lupus.fasta	ST8SIA4	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.64; score_global=0.394	4	Q92187,Q64692,Q6ZXC9,P61645	359	0.000
+MFSD6_Lupus.fasta	MFSD6	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.64; score_global=0.391	3	Q6ZSS7,Q8CBH5,A1DWM3	791	0.009
+TERT_Lupus.fasta	TERT	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.62; score_global=0.380	4	O14746,O70372,Q673L6,Q27ID4	1132	0.017
+FRMD4A_Lupus.fasta	FRMD4A	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.61; score_global=0.370	2	Q9P2Q2,Q8BIE6	1039	0.010
+C1R_Lupus.fasta	C1R	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.61; score_global=0.557	4	P00736,Q5R1W3,Q4R577,Q5R544	705	0.001
+SAT1_Lupus.fasta	SAT1	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.61; score_global=0.376	4	P21673,P48026,Q3T0Q0,Q28999	171	0.004
+IGHG1_Lupus.fasta	IGHG1	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.61; score_global=0.373	2	P01857,P01868	399	0.004
+DNASE1_Lupus.fasta	DNASE1	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.60; score_global=0.510	4	P24855,P49183,P21704,P00639	282	0.018
+CFH_Lupus.fasta	CFH	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.59; score_global=0.393	3	P08603,P06909,Q28085	1231	0.013
+ITGAM_Lupus.fasta	ITGAM	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.59; score_global=0.416	3	P11215,P05555,P11578	1152	0.040
+CDKN1B_Lupus.fasta	CDKN1B	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.59; score_global=0.365	4	P46527,P46414,Q6SLL5,O19001	198	0.013
+TPCN2_Lupus.fasta	TPCN2	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.57; score_global=0.363	2	Q8NHX9,Q8BWC0	752	0.000
+LRRC18_Lupus.fasta	LRRC18	Lupus	Open Targets (MONDO_0007915 systemic lupus erythematosus)	genetic_association=0.55; score_global=0.339	3	Q8N456,Q9CQ07,Q66HD6	261	0.000
+CTSH_Diabetes_Tipo1.fasta	CTSH	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.89; score_global=0.558	4	P09668,P49935,P00786,Q3T0I2	335	0.009
+SIRPG_Diabetes_Tipo1.fasta	SIRPG	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.87; score_global=0.546	1	Q9P1W8	387	0.011
+KCNQ1_Diabetes_Tipo1.fasta	KCNQ1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.73; score_global=0.452	4	P51787,P97414,Q9Z0N7,Q9TTJ7	676	0.000
+PGM1_Diabetes_Tipo1.fasta	PGM1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.72; score_global=0.443	4	P36871,Q9D0F9,P38652,Q08DP0	562	0.007
+C1QTNF6_Diabetes_Tipo1.fasta	C1QTNF6	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.71; score_global=0.449	3	Q9BXI9,Q6IR41,Q3T1I2	278	0.000
+PRKD2_Diabetes_Tipo1.fasta	PRKD2	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.67; score_global=0.408	3	Q9BZL6,Q8BZ03,Q5XIS9	878	0.002
+LIPJ_Diabetes_Tipo1.fasta	LIPJ	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.65; score_global=0.394	1	Q5W064	366	0.000
+GP2_Diabetes_Tipo1.fasta	GP2	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.63; score_global=0.389	4	P55259,Q9D733,P19218,P25291	537	0.000
+GRB10_Diabetes_Tipo1.fasta	GRB10	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.63; score_global=0.383	4	Q13322,Q60760,P0CE43,B5KFD7	594	0.002
+PAM_Diabetes_Tipo1.fasta	PAM	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.62; score_global=0.379	4	P19021,P97467,P14925,P10731	973	0.000
+RPH3A_Diabetes_Tipo1.fasta	RPH3A	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.60; score_global=0.363	4	Q9Y2J0,P47708,P47709,Q06846	694	0.002
+IRS1_Diabetes_Tipo1.fasta	IRS1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.60; score_global=0.385	4	P35568,P35569,P35570,Q28224	1242	0.014
+HBP1_Diabetes_Tipo1.fasta	HBP1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.60; score_global=0.370	4	O60381,Q8R316,Q62661,Q2KJ34	514	0.000
+AGO1_Diabetes_Tipo1.fasta	AGO1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.56; score_global=0.344	2	Q9UL18,Q8CJG1	857	0.000
+TLL1_Diabetes_Tipo1.fasta	TLL1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.56; score_global=0.345	2	O43897,Q62381	1013	0.000
+ARHGAP12_Diabetes_Tipo1.fasta	ARHGAP12	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.56; score_global=0.342	3	Q8IWW6,Q8C0D4,Q9BE31	846	0.005
+SLC16A11_Diabetes_Tipo1.fasta	SLC16A11	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.56; score_global=0.342	2	Q8NCK7,Q5NC32	447	0.000
+SHC4_Diabetes_Tipo1.fasta	SHC4	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.54; score_global=0.331	2	Q6S5L8,Q6S5L9	630	0.000
+LINGO1_Diabetes_Tipo1.fasta	LINGO1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.54; score_global=0.329	4	Q96FE5,Q9D1T0,Q5RDJ4,Q9N008	620	0.000
+ANXA1_Diabetes_Tipo1.fasta	ANXA1	Diabetes_Tipo1	Open Targets (MONDO_0005147 type 1 diabetes mellitus)	genetic_association=0.54; score_global=0.346	4	P04083,P10107,P07150,P46193	346	0.024
+ARMC12_Doenca_Celiaca.fasta	ARMC12	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.59; score_global=0.358	2	Q5T9G4,Q80X86	340	0.000
+NLRP5_Doenca_Celiaca.fasta	NLRP5	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.58; score_global=0.351	3	P59047,Q9R1M5,Q647I9	1200	0.000
+FANCE_Doenca_Celiaca.fasta	FANCE	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.56; score_global=0.337	1	Q9HB96	536	0.005
+BMS1_Doenca_Celiaca.fasta	BMS1	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.55; score_global=0.334	1	Q14692	1282	0.000
+NLGN1_Doenca_Celiaca.fasta	NLGN1	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.53; score_global=0.325	3	Q8N2Q7,Q99K10,Q62765	863	0.000
+SCLT1_Doenca_Celiaca.fasta	SCLT1	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.52; score_global=0.317	3	Q96NL6,G5E861,Q8CJ99	688	0.000
+FRMD4B_Doenca_Celiaca.fasta	FRMD4B	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.50; score_global=0.309	2	Q9Y2L6,Q920B0	1034	0.005
+RTRAF_Doenca_Celiaca.fasta	RTRAF	Doenca_Celiaca	Open Targets (MONDO_0005130 celiac disease)	genetic_association=0.50; score_global=0.306	3	Q9Y224,Q9CQE8,Q5R8I2	244	0.000
+NLRP10_Dermatite_Atopica.fasta	NLRP10	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.88; score_global=0.553	2	Q86W26,Q8CCN1	655	0.004
+D2HGDH_Dermatite_Atopica.fasta	D2HGDH	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.85; score_global=0.520	4	Q8N465,Q8CIM3,P84850,Q1JPD3	521	0.000
+MC1R_Dermatite_Atopica.fasta	MC1R	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.84; score_global=0.522	4	Q01726,Q01727,P47798,Q9TU05	317	0.026
+ZNF217_Dermatite_Atopica.fasta	ZNF217	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.84; score_global=0.508	1	O75362	1048	0.003
+ZNF652_Dermatite_Atopica.fasta	ZNF652	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.82; score_global=0.504	3	Q9Y2D9,Q5DU09,A1L1J6	606	0.010
+DOK2_Dermatite_Atopica.fasta	DOK2	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.81; score_global=0.491	3	O60496,O70469,A7MBB8	412	0.000
+TNFRSF11A_Dermatite_Atopica.fasta	TNFRSF11A	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.80; score_global=0.489	2	Q9Y6Q6,O35305	616	0.019
+BATF3_Dermatite_Atopica.fasta	BATF3	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.77; score_global=0.471	3	Q9NR55,Q9D275,P97876	127	0.007
+SPSB1_Dermatite_Atopica.fasta	SPSB1	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.74; score_global=0.450	3	Q96BD6,Q9D5L7,Q5E9X6	273	0.000
+GLB1_Dermatite_Atopica.fasta	GLB1	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.73; score_global=0.448	4	P16278,P23780,Q58D55,Q9TRY9	677	0.004
+KLF5_Dermatite_Atopica.fasta	KLF5	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.73; score_global=0.448	2	Q13887,Q9Z0Z7	457	0.009
+OTULINL_Dermatite_Atopica.fasta	OTULINL	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.73; score_global=0.441	3	Q9NUU6,Q3TVP5,Q3B7D8	356	0.000
+RYBP_Dermatite_Atopica.fasta	RYBP	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.72; score_global=0.440	2	Q8N488,Q8CCI5	228	0.000
+GSAP_Dermatite_Atopica.fasta	GSAP	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.72; score_global=0.435	2	A4D1B5,Q3TCV3	854	0.000
+ZBTB7A_Dermatite_Atopica.fasta	ZBTB7A	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.71; score_global=0.433	3	O95365,O88939,Q9QZ48	584	0.001
+NFILZ_Dermatite_Atopica.fasta	NFILZ	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.71; score_global=0.431	1	A0A5F9ZHS7	289	0.000
+BNC2_Dermatite_Atopica.fasta	BNC2	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.70; score_global=0.428	2	Q6ZN30,Q8BMQ3	1099	0.000
+ITPKA_Dermatite_Atopica.fasta	ITPKA	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.70; score_global=0.425	3	P23677,Q8R071,P17105	461	0.000
+KDELR2_Dermatite_Atopica.fasta	KDELR2	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.69; score_global=0.419	4	P33947,Q9CQM2,Q5U305,Q2KJ37	212	0.000
+FCER1G_Dermatite_Atopica.fasta	FCER1G	Dermatite_Atopica	Open Targets (MONDO_0004980 atopic eczema)	genetic_association=0.69; score_global=0.421	4	P30273,P20491,P20411,Q9BDR7	86	0.007
+IRAG1_Asma.fasta	IRAG1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.94; score_global=0.578	3	Q9Y6F6,Q9WUX5,Q9N1F0	904	0.003
+NPNT_Asma.fasta	NPNT	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.92; score_global=0.561	3	Q6UXI9,Q91V88,Q5RBP1	565	0.000
+TBL1XR1_Asma.fasta	TBL1XR1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.92; score_global=0.558	2	Q9BZK7,Q8BHJ5	514	0.000
+ADORA1_Asma.fasta	ADORA1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.85; score_global=0.733	4	P30542,Q60612,P25099,P28190	326	0.000
+SERPING1_Asma.fasta	SERPING1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.85; score_global=0.530	3	P05155,P97290,Q6P734	500	0.006
+CDHR3_Asma.fasta	CDHR3	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.84; score_global=0.525	2	Q6ZTQ4,Q8BL00	885	0.000
+ELAVL2_Asma.fasta	ELAVL2	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.83; score_global=0.508	4	Q12926,Q60899,Q8CH84,Q5R9Z6	359	0.010
+ITGB8_Asma.fasta	ITGB8	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.82; score_global=0.500	3	P26012,Q0VBD0,P26013	769	0.015
+TPD52L3_Asma.fasta	TPD52L3	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.81; score_global=0.493	1	Q96J77	140	0.000
+IPCEF1_Asma.fasta	IPCEF1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.78; score_global=0.475	3	Q8WWN9,Q5DU31,Q80VL0	437	0.001
+TLR10_Asma.fasta	TLR10	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.78; score_global=0.486	2	Q9BXR5,Q6GV17	811	0.001
+TGFBR1_Asma.fasta	TGFBR1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.77; score_global=0.471	4	P36897,Q64729,P80204,O46680	503	0.030
+RIN3_Asma.fasta	RIN3	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.76; score_global=0.460	2	Q8TB24,P59729	985	0.000
+COL16A1_Asma.fasta	COL16A1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.75; score_global=0.457	2	Q07092,Q8BLX7	1604	0.006
+ZNF512B_Asma.fasta	ZNF512B	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.74; score_global=0.448	2	Q96KM6,Q6PHP4	892	0.000
+NEK6_Asma.fasta	NEK6	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.73; score_global=0.447	4	Q9HC98,Q9ES70,P59895,A2BD05	313	0.000
+MECOM_Asma.fasta	MECOM	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.73; score_global=0.444	2	Q03112,P14404	1230	0.009
+SLC25A46_Asma.fasta	SLC25A46	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.72; score_global=0.442	3	Q96AG3,Q9CQS4,Q5EB62	418	0.000
+EXD1_Asma.fasta	EXD1	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.72; score_global=0.437	2	Q8NHP7,Q8CDF7	514	0.000
+SIK2_Asma.fasta	SIK2	Asma	Open Targets (MONDO_0004979 asthma)	genetic_association=0.72; score_global=0.436	3	Q9H0K1,Q8CFH6,Q5REX1	926	0.026
+PDE1A_Vitiligo.fasta	PDE1A	Vitiligo	Open Targets (MONDO_0008661 vitiligo)	genetic_association=0.53; score_global=0.324	3	P54750,Q61481,P14100	535	0.002
+PTPN1_Vitiligo.fasta	PTPN1	Vitiligo	Open Targets (MONDO_0008661 vitiligo)	genetic_association=0.52; score_global=0.317	3	P18031,P35821,P20417	435	0.045
+ADAMTS3_Vitiligo.fasta	ADAMTS3	Vitiligo	Open Targets (MONDO_0008661 vitiligo)	genetic_association=0.50; score_global=0.306	1	O15072	1205	0.000
+GRXCR1_Alopecia_Areata.fasta	GRXCR1	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.57; score_global=0.344	2	A8MXD5,Q50H32	290	0.000
+SENP2_Alopecia_Areata.fasta	SENP2	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.56; score_global=0.338	4	Q9HC62,Q91ZX6,Q9EQE1,Q5R7K7	589	0.000
+SPATA17_Alopecia_Areata.fasta	SPATA17	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.56; score_global=0.337	3	Q96L03,Q9D552,Q4R7Z7	361	0.003
+TOP2B_Alopecia_Areata.fasta	TOP2B	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.55; score_global=0.337	3	Q02880,Q64511,Q64399	1626	0.000
+SLC24A2_Alopecia_Areata.fasta	SLC24A2	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.55; score_global=0.334	3	Q9UI40,Q8BUN9,O54701	661	0.000
+TMEM106B_Alopecia_Areata.fasta	TMEM106B	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.55; score_global=0.333	4	Q9NUM4,Q80X71,Q6AYA5,Q3ZC25	274	0.000
+EPS15_Alopecia_Areata.fasta	EPS15	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.53; score_global=0.319	2	P42566,P42567	896	0.000
+ADGB_Alopecia_Areata.fasta	ADGB	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.52; score_global=0.319	2	Q8N7X0,G3UZ78	1667	0.000
+SI_Alopecia_Areata.fasta	SI	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.52; score_global=0.314	4	P14410,P23739,P56729,P07768	1827	0.000
+NDST3_Alopecia_Areata.fasta	NDST3	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.51; score_global=0.309	2	O95803,Q9EQH7	873	0.000
+KIF2B_Alopecia_Areata.fasta	KIF2B	Alopecia_Areata	Open Targets (MONDO_0005340 alopecia areata)	genetic_association=0.51; score_global=0.308	4	Q8N4N8,Q8C0N1,Q5XI51,A6H750	673	0.000
+TSHR_Doenca_de_Graves.fasta	TSHR	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.85; score_global=0.537	4	P16473,P47750,P21463,Q27987	764	0.010
+NRG1_Doenca_de_Graves.fasta	NRG1	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.82; score_global=0.496	3	Q02297,Q6DR98,P43322	640	0.002
+TICAM1_Doenca_de_Graves.fasta	TICAM1	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.72; score_global=0.438	3	Q8IUC6,Q80UF7,Q4JF29	712	0.002
+PRDM11_Doenca_de_Graves.fasta	PRDM11	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.70; score_global=0.423	2	Q9NQV5,A2AGX3	511	0.000
+TCHP_Doenca_de_Graves.fasta	TCHP	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.59; score_global=0.359	3	Q9BT92,Q3TVW5,Q5RE49	498	0.006
+CFDP1_Doenca_de_Graves.fasta	CFDP1	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.55; score_global=0.337	4	Q9UEE9,O88271,Q75UQ2,Q8HXY9	299	0.001
+FOXA2_Doenca_de_Graves.fasta	FOXA2	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.55; score_global=0.332	3	Q9Y261,P35583,P32182	457	0.002
+BLID_Doenca_de_Graves.fasta	BLID	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.54; score_global=0.331	1	Q8IZY5	108	0.000
+LPAR4_Doenca_de_Graves.fasta	LPAR4	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.54; score_global=0.330	2	Q99677,Q8BLG2	370	0.004
+CPT1C_Doenca_de_Graves.fasta	CPT1C	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.54; score_global=0.329	3	Q8TCG5,Q8BGD5,F1LN46	803	0.000
+SLAMF6_Doenca_de_Graves.fasta	SLAMF6	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.54; score_global=0.326	2	Q96DU3,Q9ET39	332	0.000
+MDFIC2_Doenca_de_Graves.fasta	MDFIC2	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.53; score_global=0.323	1	A0A1B0GVS7	189	0.000
+PAH_Doenca_de_Graves.fasta	PAH	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.53; score_global=0.330	4	P00439,P16331,P04176,Q2KIH7	452	0.000
+ITPK1_Doenca_de_Graves.fasta	ITPK1	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.52; score_global=0.314	3	Q13572,Q8BYN3,P0C0T1	414	0.000
+CDCA7_Doenca_de_Graves.fasta	CDCA7	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.52; score_global=0.314	4	Q9BWT1,Q9D0M2,Q4KM91,Q32PH1	371	0.010
+FGF7_Doenca_de_Graves.fasta	FGF7	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.51; score_global=0.313	4	P21781,P36363,Q02195,Q9N198	194	0.022
+DEF6_Doenca_de_Graves.fasta	DEF6	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.51; score_global=0.310	2	Q9H4E7,Q8C2K1	631	0.000
+CCDC63_Doenca_de_Graves.fasta	CCDC63	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.51; score_global=0.309	4	Q8NA47,Q8CDV6,Q4V8F7,Q2T9W3	563	0.000
+POU5F1B_Doenca_de_Graves.fasta	POU5F1B	Doenca_de_Graves	Open Targets (MONDO_0005364 Graves disease)	genetic_association=0.51; score_global=0.308	1	Q06416	359	0.000
+IL12RB1_Esclerose_Sistemica.fasta	IL12RB1	Esclerose_Sistemica	Open Targets (MONDO_0005100 systemic sclerosis)	genetic_association=0.59; score_global=0.365	2	P42701,Q60837	662	0.015
+TRMU_Sjogren.fasta	TRMU	Sjogren	Open Targets (MONDO_0010030 Sjogren syndrome)	genetic_association=0.57; score_global=0.345	4	O75648,Q9DAT5,B1WC37,Q5RB73	421	0.000
+PATJ_Sjogren.fasta	PATJ	Sjogren	Open Targets (MONDO_0010030 Sjogren syndrome)	genetic_association=0.52; score_global=0.318	4	Q8NI35,Q63ZW7,F1MAD2,E2QYC9	1801	0.004
+C1GALT1_Sjogren.fasta	C1GALT1	Sjogren	Open Targets (MONDO_0010030 Sjogren syndrome)	genetic_association=0.51; score_global=0.313	4	Q9NS00,Q9JJ06,Q9JJ05,Q0VC84	363	0.004
+TMEM163_Colangite_Biliar_Primaria.fasta	TMEM163	Colangite_Biliar_Primaria	Open Targets (MONDO_0005388 primary biliary cholangitis)	genetic_association=0.78; score_global=0.476	4	Q8TC26,Q8C996,A9CMA6,A6QQX9	289	0.002
+POU2AF1_Colangite_Biliar_Primaria.fasta	POU2AF1	Colangite_Biliar_Primaria	Open Targets (MONDO_0005388 primary biliary cholangitis)	genetic_association=0.74; score_global=0.451	3	Q16633,Q64693,Q2KJA4	256	0.009
+EXOC3L4_Colangite_Biliar_Primaria.fasta	EXOC3L4	Colangite_Biliar_Primaria	Open Targets (MONDO_0005388 primary biliary cholangitis)	genetic_association=0.72; score_global=0.437	2	Q17RC7,Q6DIA2	722	0.000
+CD58_Colangite_Biliar_Primaria.fasta	CD58	Colangite_Biliar_Primaria	Open Targets (MONDO_0005388 primary biliary cholangitis)	genetic_association=0.66; score_global=0.408	1	P19256	250	0.021
+TIMMDC1_Colangite_Biliar_Primaria.fasta	TIMMDC1	Colangite_Biliar_Primaria	Open Targets (MONDO_0005388 primary biliary cholangitis)	genetic_association=0.57; score_global=0.350	3	Q9NPL8,Q8BUY5,Q6AY94	285	0.000
+PHLDB1_Colangite_Biliar_Primaria.fasta	PHLDB1	Colangite_Biliar_Primaria	Open Targets (MONDO_0005388 primary biliary cholangitis)	genetic_association=0.57; score_global=0.348	3	Q86UU1,Q6PDH0,Q63312	1377	0.000
+ALKAL1_nao_ligados_psioriase_dificil.fasta	ALKAL1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q6UXT8	2	Q6UXT8,J3QPP8	129	0.000
+ALKAL2_nao_ligados_psioriase_dificil.fasta	ALKAL2	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q6UX46	3	Q6UX46,Q80UG6,B2RZ42	152	0.005
+BMP1_nao_ligados_psioriase_dificil.fasta	BMP1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P13497	2	P13497,P98063	986	0.000
+BMP10_nao_ligados_psioriase_dificil.fasta	BMP10	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O95393	3	O95393,Q9R229,Q4AEG6	424	0.000
+BMP15_nao_ligados_psioriase_dificil.fasta	BMP15	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O95972	4	O95972,Q9Z0L4,Q6PX77,Q9MZE2	392	0.000
+BMP2_nao_ligados_psioriase_dificil.fasta	BMP2	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P12643	4	P12643,P21274,P49001,O46564	396	0.020
+BMP3_nao_ligados_psioriase_dificil.fasta	BMP3	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P12645	4	P12645,Q8BHE5,P49002,P22444	472	0.000
+BMP8A_nao_ligados_psioriase_dificil.fasta	BMP8A	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q7Z5Y6	2	Q7Z5Y6,P34821	402	0.000
+BMP8B_nao_ligados_psioriase_dificil.fasta	BMP8B	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P34820	2	P34820,P55105	402	0.000
+C17ORF99_nao_ligados_psioriase_dificil.fasta	C17ORF99	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q6UX52	1	Q6UX52	265	0.000
+C1QTNF4_nao_ligados_psioriase_dificil.fasta	C1QTNF4	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9BXJ3	2	Q9BXJ3,Q8R066	329	0.000
+CCL1_nao_ligados_psioriase_dificil.fasta	CCL1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P22362	2	P22362,P10146	96	0.022
+CCL14_nao_ligados_psioriase_dificil.fasta	CCL14	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q16627	1	Q16627	93	0.004
+CCL15_nao_ligados_psioriase_dificil.fasta	CCL15	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q16663	1	Q16663	113	0.004
+CCL16_nao_ligados_psioriase_dificil.fasta	CCL16	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O15467	1	O15467	120	0.000
+CCL17_nao_ligados_psioriase_dificil.fasta	CCL17	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q92583	4	Q92583,Q9WUZ6,Q9ERE0,Q95N01	94	0.035
+CCL19_nao_ligados_psioriase_dificil.fasta	CCL19	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q99731	2	Q99731,O70460	98	0.022
+CCL23_nao_ligados_psioriase_dificil.fasta	CCL23	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P55773	2	P55773,Q8HYP4	120	0.008
+CCL24_nao_ligados_psioriase_dificil.fasta	CCL24	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O00175	3	O00175,Q9JKC0,Q68Y86	119	0.015
+CCL25_nao_ligados_psioriase_dificil.fasta	CCL25	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O15444	4	O15444,O35903,Q4PR21,Q68A93	150	0.004
+CCL26_nao_ligados_psioriase_dificil.fasta	CCL26	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9Y258	2	Q9Y258,Q64H35	94	0.024
+CCL27_nao_ligados_psioriase_dificil.fasta	CCL27	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9Y4X3	2	Q9Y4X3,Q9Z1X0	112	0.034
+CCL5_nao_ligados_psioriase_dificil.fasta	CCL5	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P13501	4	P13501,P30882,P50231,O97919	91	0.046
+CER1_nao_ligados_psioriase_dificil.fasta	CER1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O95813	2	O95813,O55233	267	0.000
+CKLF_nao_ligados_psioriase_dificil.fasta	CKLF	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9UBR5	3	Q9UBR5,Q9DAS1,Q9JK79	152	0.028
+CMTM1_nao_ligados_psioriase_dificil.fasta	CMTM1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q8IZ96	1	Q8IZ96	169	0.000
+CMTM2_nao_ligados_psioriase_dificil.fasta	CMTM2	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q8TAZ6	1	Q8TAZ6	248	0.000
+CMTM3_nao_ligados_psioriase_dificil.fasta	CMTM3	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q96MX0	2	Q96MX0,Q99LJ5	182	0.000
+CMTM5_nao_ligados_psioriase_dificil.fasta	CMTM5	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q96DZ9	2	Q96DZ9,Q9D6G9	223	0.000
+CMTM7_nao_ligados_psioriase_dificil.fasta	CMTM7	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q96FZ5	2	Q96FZ5,Q9ESD6	175	0.000
+CMTM8_nao_ligados_psioriase_dificil.fasta	CMTM8	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q8IZV2	3	Q8IZV2,Q9CZR4,Q1RMP9	173	0.000
+CSF1_nao_ligados_psioriase_dificil.fasta	CSF1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P09603	3	P09603,P07141,Q8JZQ0	554	0.049
+CXCL12_nao_ligados_psioriase_dificil.fasta	CXCL12	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P48061	3	P48061,P40224,O62657	93	0.038
+FAM3B_nao_ligados_psioriase_dificil.fasta	FAM3B	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P58499	2	P58499,Q9D309	235	0.000
+FLT3LG_nao_ligados_psioriase_dificil.fasta	FLT3LG	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P49771	2	P49771,P49772	235	0.004
+GDF1_nao_ligados_psioriase_dificil.fasta	GDF1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P27539	2	P27539,P20863	372	0.000
+GDF10_nao_ligados_psioriase_dificil.fasta	GDF10	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P55107	4	P55107,P97737,P55108,Q08DX6	478	0.000
+GDF11_nao_ligados_psioriase_dificil.fasta	GDF11	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O95390	3	O95390,Q9Z1W4,Q9Z217	407	0.013
+GDF15_nao_ligados_psioriase_dificil.fasta	GDF15	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q99988	4	Q99988,Q9Z0J7,Q9Z0J6,G7PWZ3	308	0.039
+GDF2_nao_ligados_psioriase_dificil.fasta	GDF2	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9UK05	2	Q9UK05,Q9WV56	429	0.000
+GDF3_nao_ligados_psioriase_dificil.fasta	GDF3	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9NR23	2	Q9NR23,Q07104	364	0.000
+GDF7_nao_ligados_psioriase_dificil.fasta	GDF7	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q7Z4P5	3	Q7Z4P5,P43029,Q9BDW8	450	0.002
+GDF9_nao_ligados_psioriase_dificil.fasta	GDF9	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O60383	4	O60383,Q07105,Q9GK68,O77681	454	0.000
+GPI_nao_ligados_psioriase_dificil.fasta	GPI	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P06744	4	P06744,P06745,Q6P6V0,Q3ZBD7	558	0.009
+IFNB1_nao_ligados_psioriase_dificil.fasta	IFNB1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P01574	4	P01574,P01575,P70499,P01578	187	0.028
+IFNL1_nao_ligados_psioriase_dificil.fasta	IFNL1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q8IU54	1	Q8IU54	200	0.026
+IFNL2_nao_ligados_psioriase_dificil.fasta	IFNL2	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q8IZJ0	2	Q8IZJ0,Q4VK74	200	0.005
+IFNL3_nao_ligados_psioriase_dificil.fasta	IFNL3	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q8IZI9	2	Q8IZI9,Q8CGK6	196	0.005
+IFNL4_nao_ligados_psioriase_dificil.fasta	IFNL4	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	K9M1U5	1	K9M1U5	179	0.000
+IFNW1_nao_ligados_psioriase_dificil.fasta	IFNW1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P05000	2	P05000,P07352	195	0.000
+IL17B_nao_ligados_psioriase_dificil.fasta	IL17B	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9UHF5	3	Q9UHF5,Q9QXT6,Q9EQI6	180	0.011
+IL17D_nao_ligados_psioriase_dificil.fasta	IL17D	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q8TAD2	1	Q8TAD2	202	0.018
+IL25_nao_ligados_psioriase_dificil.fasta	IL25	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9H293	2	Q9H293,Q8VHH8	177	0.031
+IL7_nao_ligados_psioriase_dificil.fasta	IL7	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P13232	4	P13232,P10168,P56478,P26895	177	0.024
+LEFTY1_nao_ligados_psioriase_dificil.fasta	LEFTY1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O75610	2	O75610,Q64280	366	0.000
+LEFTY2_nao_ligados_psioriase_dificil.fasta	LEFTY2	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O00292	2	O00292,P57785	366	0.000
+LIF_nao_ligados_psioriase_dificil.fasta	LIF	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P15018	4	P15018,P09056,P17777,Q27956	202	0.007
+LTB_nao_ligados_psioriase_dificil.fasta	LTB	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q06643	4	Q06643,P41155,Q9TSV8,Q5TM22	244	0.013
+MSMP_nao_ligados_psioriase_dificil.fasta	MSMP	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q1L6U9	2	Q1L6U9,B1AWI6	139	0.000
+MSTN_nao_ligados_psioriase_dificil.fasta	MSTN	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O14793	4	O14793,O08689,O35312,O18836	375	0.000
+NODAL_nao_ligados_psioriase_dificil.fasta	NODAL	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q96S42	2	Q96S42,P43021	347	0.000
+TAFA5_nao_ligados_psioriase_dificil.fasta	TAFA5	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q7Z5A7	4	Q7Z5A7,Q91WE9,M0R7X9,Q3ZBS2	132	0.000
+THNSL2_nao_ligados_psioriase_dificil.fasta	THNSL2	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q86YJ6	4	Q86YJ6,Q80W22,Q5M7T9,Q5RFE6	484	0.000
+THPO_nao_ligados_psioriase_dificil.fasta	THPO	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P40225	4	P40225,P40226,P49745,P42705	353	0.000
+TNFSF10_nao_ligados_psioriase_dificil.fasta	TNFSF10	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P50591	2	P50591,P50592	281	0.028
+TNFSF13_nao_ligados_psioriase_dificil.fasta	TNFSF13	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O75888	2	O75888,Q9D777	250	0.002
+TNFSF13B_nao_ligados_psioriase_dificil.fasta	TNFSF13B	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q9Y275	2	Q9Y275,Q9WU72	285	0.036
+TNFSF14_nao_ligados_psioriase_dificil.fasta	TNFSF14	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	O43557	2	O43557,Q9QYH9	240	0.019
+TNFSF9_nao_ligados_psioriase_dificil.fasta	TNFSF9	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	P41273	2	P41273,P41274	254	0.016
+VSTM1_nao_ligados_psioriase_dificil.fasta	VSTM1	nao_ligados_psioriase_dificil	UniProt (KW-0202 Cytokine)	Q6UX27	1	Q6UX27	236	0.000
+ACKR1_nao_ligados_psioriase_dificil.fasta	ACKR1	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q16570	4	Q16570,Q9QUI6,Q9GLX0,Q95LF2	336	0.005
+ACKR3_nao_ligados_psioriase_dificil.fasta	ACKR3	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P25106	4	P25106,P56485,O89039,P11613	362	0.003
+ACKR4_nao_ligados_psioriase_dificil.fasta	ACKR4	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q9NPB9	3	Q9NPB9,Q924I3,P35350	350	0.000
+CCR4_nao_ligados_psioriase_dificil.fasta	CCR4	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P51679	3	P51679,P51680,Q8MJW8	360	0.043
+CCR8_nao_ligados_psioriase_dificil.fasta	CCR8	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P51685	3	P51685,P56484,O97665	355	0.005
+CCR9_nao_ligados_psioriase_dificil.fasta	CCR9	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P51686	3	P51686,Q9WUT7,Q1WLP9	369	0.003
+CMKLR1_nao_ligados_psioriase_dificil.fasta	CMKLR1	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q99788	3	Q99788,P97468,O35786	373	0.017
+CXCR5_nao_ligados_psioriase_dificil.fasta	CXCR5	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P32302	3	P32302,Q04683,P34997	372	0.030
+FZD4_nao_ligados_psioriase_dificil.fasta	FZD4	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q9ULV1	3	Q9ULV1,Q61088,Q9QZH0	537	0.003
+GFRA1_nao_ligados_psioriase_dificil.fasta	GFRA1	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P56159	3	P56159,P97785,Q62997	465	0.009
+GFRA2_nao_ligados_psioriase_dificil.fasta	GFRA2	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	O00451	4	O00451,O08842,Q5E9X0,Q5RAD6	464	0.000
+GFRA3_nao_ligados_psioriase_dificil.fasta	GFRA3	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	O60609	2	O60609,O35118	400	0.018
+GFRA4_nao_ligados_psioriase_dificil.fasta	GFRA4	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q9GZZ7	3	Q9GZZ7,Q9JJT2,Q9EPI2	299	0.000
+GFRAL_nao_ligados_psioriase_dificil.fasta	GFRAL	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q6UXV0	3	Q6UXV0,Q6SJE0,D3ZB94	394	0.000
+GPR17_nao_ligados_psioriase_dificil.fasta	GPR17	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q13304	3	Q13304,Q6NS65,Q09QM4	367	0.000
+GPR25_nao_ligados_psioriase_dificil.fasta	GPR25	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	O00155	2	O00155,P0C5I1	361	0.000
+GPR75_nao_ligados_psioriase_dificil.fasta	GPR75	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	O95800	2	O95800,Q6X632	540	0.000
+IFNAR1_nao_ligados_psioriase_dificil.fasta	IFNAR1	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P17181	4	P17181,P33896,Q04790,Q764M8	557	0.015
+IL11RA_nao_ligados_psioriase_dificil.fasta	IL11RA	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q14626	2	Q14626,Q5RF19	422	0.005
+IL17RB_nao_ligados_psioriase_dificil.fasta	IL17RB	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q9NRM6	2	Q9NRM6,Q9JIP3	502	0.005
+IL17RC_nao_ligados_psioriase_dificil.fasta	IL17RC	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q8NAC3	2	Q8NAC3,Q8K4C2	791	0.033
+IL17RD_nao_ligados_psioriase_dificil.fasta	IL17RD	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q8NFM7	2	Q8NFM7,Q8JZL1	739	0.019
+IL1RAPL2_nao_ligados_psioriase_dificil.fasta	IL1RAPL2	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q9NP60	2	Q9NP60,Q9ERS6	686	0.000
+IL1RL1_nao_ligados_psioriase_dificil.fasta	IL1RL1	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q01638	3	Q01638,P14719,Q62611	556	0.000
+IL1RL2_nao_ligados_psioriase_dificil.fasta	IL1RL2	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	Q9HB29	3	Q9HB29,Q9ERS7,Q62929	575	0.000
+MAS1_nao_ligados_psioriase_dificil.fasta	MAS1	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P04201	3	P04201,P30554,P12526	325	0.000
+MPL_nao_ligados_psioriase_dificil.fasta	MPL	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P40238	2	P40238,Q08351	635	0.000
+XCR1_nao_ligados_psioriase_dificil.fasta	XCR1	nao_ligados_psioriase_dificil	UniProt (GO:0004896 cytokine receptor)	P46094	2	P46094,Q9R0M1	333	0.000
