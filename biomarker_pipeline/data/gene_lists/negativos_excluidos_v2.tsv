@@ -1,0 +1,39 @@
+gene	nivel	subcategoria	origem	motivo
+ATG16L1	intermediario	Crohn	TCC I	a <250 kb de uma região de psoríase (Dand 2025)
+CD3E	dificil	imune_nao_psoriase	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.030[clinical=0.05] | OpenTargets:psoriatic arthritis:score=0.074[clinical=0.12]
+COL1A1	facil	housekeeping	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.059[animal_model=0.46] | OpenTargets:psoriatic arthritis:score=0.057[animal_model=0.47]
+CTLA4	intermediario	Artrite_Reumatoide	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.077[genetic_association=0.08,rna_expression=0.23] | GWASCatalog:MONDO_0005083
+ENO1	facil	housekeeping	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.080
+GAPDH	facil	housekeeping	TCC I	a <250 kb de uma região de psoríase (Dand 2025)
+HBB	facil	housekeeping	TCC I	associação com psoríase: OpenTargets:psoriatic arthritis:score=0.038[rna_expression=0.31]
+IFNG	dificil	imune_nao_psoriase	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.136[clinical=0.06,genetic_association=0.14,rna_expression=0.27] | OpenTargets:psoriatic arthritis:score=0.100
+IL10	dificil	imune_nao_psoriase	TCC I	a <250 kb de uma região de psoríase (Dand 2025)
+IL2	dificil	imune_nao_psoriase	TCC I	a <250 kb de uma região de psoríase (Dand 2025)
+IL5	dificil	imune_nao_psoriase	TCC I	a <250 kb de uma região de psoríase (Dand 2025)
+INS	facil	housekeeping	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.091[genetic_association=0.04] | positivo/entrada do projeto
+IRGM	intermediario	Crohn	TCC I	a <250 kb de uma região de psoríase (Dand 2025)
+NOD2	intermediario	Crohn	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.355[genetic_association=0.57,rna_expression=0.15] | GWASCatalog:MONDO_0005083
+PADI4	intermediario	Artrite_Reumatoide	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.031[rna_expression=0.13] | OpenTargets:psoriatic arthritis:score=0.059[rna_expression=0.15]
+PKM	facil	housekeeping	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.082
+PTPN22	intermediario	Artrite_Reumatoide	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.450[genetic_association=0.70] | OpenTargets:psoriatic arthritis:score=0.055 | GWASCatalog:MONDO_0005083 | positivo/entrada do projeto
+SOD1	facil	housekeeping	TCC I	associação com psoríase: OpenTargets:psoriatic arthritis:score=0.033[animal_model=0.26]
+TUBB	facil	housekeeping	TCC I	associação com psoríase: OpenTargets:psoriasis:score=0.084[clinical=0.14]
+MICB	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+KCNH4	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+LCE1C	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+LCE1B	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+LCE4A	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+LCE1A	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+LCE2D	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+PRSS36	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+RELA	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	a <250 kb de uma região de psoríase (Dand 2025)
+STAT5A	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	positivo (TCC I ou v2)
+TNFSF8	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	a <250 kb de uma região de psoríase (Dand 2025)
+BCL2L11	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	a <250 kb de uma região de psoríase (Dand 2025)
+SLC7A10	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	a <250 kb de uma região de psoríase (Dand 2025)
+CIITA	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	a <250 kb de uma região de psoríase (Dand 2025)
+FCGR2B	intermediario	Colite_Ulcerativa	00_fetch_negatives (Open Targets (MONDO_0005101 ulcerative colitis))	a <250 kb de uma região de psoríase (Dand 2025)
+PLD4	intermediario	Artrite_Reumatoide	00_fetch_negatives (Open Targets (MONDO_0008383 rheumatoid arthritis))	a <250 kb de uma região de psoríase (Dand 2025)
+GDF15	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	a <250 kb de uma região de psoríase (Dand 2025)
+GDF9	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	a <250 kb de uma região de psoríase (Dand 2025)
+IL1RL2	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	a <250 kb de uma região de psoríase (Dand 2025)

@@ -1,0 +1,5111 @@
+{
+  "lista": "data/gene_lists/negativos_candidatos_v2.txt",
+  "out_dir": "data/negativos_pool_v2",
+  "taxon": 40674,
+  "max_seqs": 4,
+  "min_length": 50,
+  "max_length": 2000,
+  "residuos_excluidos": [
+    "B",
+    "X",
+    "Z"
+  ],
+  "aliases": {
+    "DDX58": "RIGI",
+    "PTRF": "CAVIN1",
+    "C1orf68": "KPLCE",
+    "IL28RA": "IFNLR1",
+    "ADC": "AZIN2"
+  },
+  "descartados_simbolo": [
+    "P69905 (HBA1; HBA2, Homo sapiens (Human))",
+    "Q8N490 (PNKD, Homo sapiens (Human))",
+    "Q8TES7 (FBF1, Homo sapiens (Human))",
+    "Q6IB77 (GLYAT, Homo sapiens (Human))",
+    "Q69ZP3 (Pnkd, Mus musculus (Mouse))",
+    "P22777 (Serpine1, Mus musculus (Mouse))",
+    "P69906 (HBA1; HBA2, Pan paniscus (Pygmy chimpanzee) (Bonobo))",
+    "P01959 (HBA1; HBA2, Equus asinus (Donkey) (Equus africanus asinus))",
+    "P69907 (HBA1; HBA2, Pan troglodytes (Chimpanzee))",
+    "P06635 (HBA1; HBA2, Pongo pygmaeus (Bornean orangutan))",
+    "P60323 (NANOS3, Homo sapiens (Human))",
+    "Q8WY41 (NANOS1, Homo sapiens (Human))",
+    "P15949 (Klk1b9, Mus musculus (Mouse))",
+    "P60324 (Nanos3, Mus musculus (Mouse))",
+    "P97484 (Pirb, Mus musculus (Mouse))",
+    "P52801 (Efna2, Mus musculus (Mouse))",
+    "P70711 (Ube2d2b, Rattus norvegicus (Rat))",
+    "Q9H2B4 (SLC26A1, Homo sapiens (Human))",
+    "Q9H2H9 (SLC38A1, Homo sapiens (Human))",
+    "Q8CFG9 (C1rb, Mus musculus (Mouse))",
+    "Q8CG16 (C1ra, Mus musculus (Mouse))",
+    "P58735 (Slc26a1, Mus musculus (Mouse))",
+    "P45380 (Slc26a1, Rattus norvegicus (Rat))",
+    "Q9JM15 (Slc38a1, Rattus norvegicus (Rat))",
+    "Q86T20 (SMIM29, Homo sapiens (Human))",
+    "Q8IV16 (GPIHBP1, Homo sapiens (Human))",
+    "O75592 (MYCBP2, Homo sapiens (Human))",
+    "Q9D1N2 (Gpihbp1, Mus musculus (Mouse))",
+    "Q7TSV4 (Pgm2, Mus musculus (Mouse))",
+    "Q7TPH6 (Mycbp2, Mus musculus (Mouse))",
+    "Q01524 (DEFA6, Homo sapiens (Human))",
+    "Q60696 (Pmel, Mus musculus (Mouse))",
+    "Q9JKM5 (S1pr5, Rattus norvegicus (Rat))",
+    "Q13887 (KLF5, Homo sapiens (Human))",
+    "Q9EPW2 (Klf15, Mus musculus (Mouse))",
+    "Q9UK39 (NOCT, Homo sapiens (Human))",
+    "Q9ULM6 (CNOT6, Homo sapiens (Human))",
+    "Q64385 (Il11ra1, Mus musculus (Mouse))",
+    "Q9ET55 (Noct, Rattus norvegicus (Rat))",
+    "O35710 (Noct, Mus musculus (Mouse))",
+    "Q8K3P5 (Cnot6, Mus musculus (Mouse))",
+    "Q6AXU9 (Cnot6, Rattus norvegicus (Rat))",
+    "E0CX11 (STMP1, Homo sapiens (Human))",
+    "Q6NW34 (RMP64, Homo sapiens (Human))",
+    "Q96E09 (PABIR1, Homo sapiens (Human))",
+    "O75367 (MACROH2A1, Homo sapiens (Human))",
+    "Q8N0W3 (FCSK, Homo sapiens (Human))",
+    "Q96IL0 (COA8, Homo sapiens (Human))",
+    "Q9QZQ8 (Macroh2a1, Mus musculus (Mouse))",
+    "Q9CQW7 (Coa8, Mus musculus (Mouse))",
+    "Q02874 (Macroh2a1, Rattus norvegicus (Rat))",
+    "Q6IPR1 (ETFRF1, Homo sapiens (Human))",
+    "Q96EF9 (ZHX1-C8orf76, Homo sapiens (Human))",
+    "Q7TMC8 (Fcsk, Mus musculus (Mouse))",
+    "Q91V16 (Etfrf1, Mus musculus (Mouse))",
+    "Q9DB52 (Pabir1, Mus musculus (Mouse))",
+    "Q6AYT4 (Pabir1, Rattus norvegicus (Rat))",
+    "Q148E1 (COA8, Bos taurus (Bovine))",
+    "Q32Q90 (Coa8, Rattus norvegicus (Rat))",
+    "Q0VCR0 (ETFRF1, Bos taurus (Bovine))",
+    "Q5TAX3 (TUT4, Homo sapiens (Human))",
+    "Q9GZS3 (SKIC8, Homo sapiens (Human))",
+    "Q9NQQ7 (SLC35H1, Homo sapiens (Human))",
+    "B2RX14 (Tut4, Mus musculus (Mouse))",
+    "Q8TCC3 (MRPL30, Homo sapiens (Human))",
+    "Q9BZE1 (MRPL37, Homo sapiens (Human))",
+    "Q4V7A0 (Skic8, Rattus norvegicus (Rat))",
+    "Q9ERF3 (Skic8, Mus musculus (Mouse))",
+    "Q8VCX2 (Slc35h1, Mus musculus (Mouse))",
+    "Q32LN7 (SKIC8, Bos taurus (Bovine))"
+  ],
+  "genes": {
+    "ACTB": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ACTB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ALB": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ALB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ALDOA": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ALDOA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pan troglodytes (Chimpanzee)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ATP5F1A": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ATP5F1A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CAT": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CAT",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": [
+        "O62839"
+      ]
+    },
+    "HBA1": {
+      "status": "sem_humano",
+      "n_seqs": 0,
+      "nome_primario": "Hba1",
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LDHA": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LDHA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PGK1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PGK1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TPI1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TPI1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TRAF1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TRAF1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "VIM": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "VIM",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NPEPPSL1": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "NPEPPSL1",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ANPEP": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ANPEP",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ENPEP": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ENPEP",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LVRN": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LVRN",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Felis catus (Cat) (Felis silvestris catus)",
+        "Acinonyx jubatus (Cheetah)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TRHDE": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TRHDE",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KDM2B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "KDM2B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KDM2A": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "KDM2A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TET3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TET3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FBXL22": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "FBXL22",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FBXO41": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FBXO41",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HLA-H": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "HLA-H",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "AZGP1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "AZGP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MR1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "MR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HFE": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "HFE",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pan troglodytes (Chimpanzee)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DDX49": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "DDX49",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DDX39A": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "DDX39A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DDX1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "DDX1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DDX18": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "DDX18",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EIF4A2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "EIF4A2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL11": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IL11",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CLCF1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CLCF1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LIFR": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LIFR",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CSF3R": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CSF3R",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL13RA2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IL13RA2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL13RA1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL13RA1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL3RA": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL3RA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL10RB": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL10RB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL10RA": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL10RA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL22RA2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "IL22RA2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNAR2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IFNAR2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Ovis aries (Sheep)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KCNH6": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "KCNH6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KCNH2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "KCNH2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KCNH5": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "KCNH5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KCNH1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "KCNH1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NFKBIE": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NFKBIE",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NFKBIB": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "NFKBIB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NFKBID": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NFKBID",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NOS1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "NOS1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Oryctolagus cuniculus (Rabbit)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NOS3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "NOS3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRDX3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PRDX3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRDX4": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PRDX4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRDX2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PRDX2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRDX1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PRDX1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRSS33": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "PRSS33",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KLK9": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "KLK9",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GZMM": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "GZMM",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRSS46P": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "PRSS46P",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NFKB2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NFKB2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NFATC3": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "NFATC3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RNF166": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RNF166",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RNF138": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "RNF138",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RNF125": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RNF125",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RNF224": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "RNF224",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TRAF7": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TRAF7",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RPS6KA5": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RPS6KA5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RPS6KA3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "RPS6KA3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RPS6KA1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RPS6KA1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RPS6KA6": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "RPS6KA6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RPS6KA2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "RPS6KA2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "STAT4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "STAT4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "OTUD7A": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "OTUD7A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "OTUD7B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "OTUD7B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CSK": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CSK",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HCK": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "HCK",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PTK6": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "PTK6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SRMS": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "SRMS",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZAP70": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ZAP70",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "UBE2L5": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "UBE2L5",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "UBE2D4": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "UBE2D4",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "UBE2D1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "UBE2D1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "UBE2D2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "UBE2D2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "UBE2D3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "UBE2D3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZMIZ2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ZMIZ2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PIAS4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "PIAS4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PIAS3": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "PIAS3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PIAS2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "PIAS2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PIAS1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "PIAS1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ITGA4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ITGA4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZBTB38": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ZBTB38",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KLF3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "KLF3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ABO": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ABO",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SETBP1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "SETBP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BIRC3": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "BIRC3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ELF1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ELF1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZFP36L1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ZFP36L1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ADAP1": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "ADAP1",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LDLRAP1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "LDLRAP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LILRB3": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "LILRB3",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HGFAC": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "HGFAC",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SYNGR1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "SYNGR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "AKAP11": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "AKAP11",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GTF2I": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "GTF2I",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FRMPD2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FRMPD2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCRL2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CCRL2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL17REL": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "IL17REL",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LCOR": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "LCOR",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TTC34": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TTC34",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SEMA6D": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SEMA6D",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BTBD3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "BTBD3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Callithrix jacchus (White-tufted-ear marmoset) (Simia Jacchus)",
+        "Mustela putorius furo (European domestic ferret) (Mustela furo)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LSP1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "LSP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ERGIC1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ERGIC1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "THSD7A": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "THSD7A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NEU4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NEU4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HSBP1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "HSBP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CRTC3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CRTC3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FOXI2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FOXI2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MYO16": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "MYO16",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DAGLB": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "DAGLB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLC4A3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "SLC4A3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Oryctolagus cuniculus (Rabbit)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SERTAD4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "SERTAD4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "STK38": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "STK38",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LMO3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LMO3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LBH": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LBH",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CD83": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CD83",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EOMES": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "EOMES",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "AFF3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "AFF3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CLNK": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CLNK",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCN4": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CCN4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "AARS2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "AARS2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DRC5": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "DRC5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NCF2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "NCF2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TREH": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TREH",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Oryctolagus cuniculus (Rabbit)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ETV7": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "ETV7",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ARAP1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ARAP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TLR1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TLR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NAB1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "NAB1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Mesocricetus auratus (Golden hamster)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TCF7": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TCF7",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ENO4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ENO4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RBPJ": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "RBPJ",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IRAK1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "IRAK1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TXNDC11": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TXNDC11",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ATRIP": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ATRIP",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SHISA5": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "SHISA5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLC15A4": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "SLC15A4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RASGRP3": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "RASGRP3",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IKZF2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IKZF2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TRIB2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TRIB2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IKBKB": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IKBKB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ST8SIA4": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ST8SIA4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Pan troglodytes (Chimpanzee)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MFSD6": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "MFSD6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TERT": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TERT",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FRMD4A": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FRMD4A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C1R": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "C1R",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Pan troglodytes (Chimpanzee)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SAT1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "SAT1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IGHG1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IGHG1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DNASE1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "DNASE1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CFH": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CFH",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ITGAM": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ITGAM",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Cavia porcellus (Guinea pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CDKN1B": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CDKN1B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)",
+        "Felis catus (Cat) (Felis silvestris catus)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TPCN2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TPCN2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LRRC18": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "LRRC18",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CTSH": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CTSH",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SIRPG": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "SIRPG",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KCNQ1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "KCNQ1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": [
+        "Q9MYS6"
+      ]
+    },
+    "PGM1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PGM1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C1QTNF6": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "C1QTNF6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRKD2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "PRKD2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LIPJ": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "LIPJ",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GP2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "GP2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GRB10": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "GRB10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PAM": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PAM",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RPH3A": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "RPH3A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IRS1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IRS1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Chlorocebus aethiops (Green monkey) (Cercopithecus aethiops)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HBP1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "HBP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "AGO1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "AGO1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TLL1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TLL1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ARHGAP12": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ARHGAP12",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLC16A11": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "SLC16A11",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SHC4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "SHC4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LINGO1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LINGO1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ANXA1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ANXA1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ARMC12": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ARMC12",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NLRP5": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "NLRP5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FANCE": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "FANCE",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMS1": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "BMS1",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NLGN1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "NLGN1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SCLT1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SCLT1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FRMD4B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FRMD4B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RTRAF": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RTRAF",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NLRP10": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NLRP10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "D2HGDH": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "D2HGDH",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MC1R": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "MC1R",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": [
+        "Q864F9",
+        "Q864G7",
+        "Q864K7",
+        "Q864G0",
+        "Q864H1",
+        "Q864H8"
+      ]
+    },
+    "ZNF217": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "ZNF217",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZNF652": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ZNF652",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DOK2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "DOK2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TNFRSF11A": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TNFRSF11A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BATF3": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "BATF3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SPSB1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SPSB1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GLB1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "GLB1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KLF5": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "KLF5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "OTULINL": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "OTULINL",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RYBP": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "RYBP",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GSAP": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GSAP",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZBTB7A": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ZBTB7A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NFILZ": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "NFILZ",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BNC2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "BNC2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ITPKA": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ITPKA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KDELR2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "KDELR2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FCER1G": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "FCER1G",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IRAG1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "IRAG1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NPNT": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "NPNT",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TBL1XR1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TBL1XR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ADORA1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ADORA1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SERPING1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SERPING1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CDHR3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CDHR3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ELAVL2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ELAVL2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ITGB8": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ITGB8",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Oryctolagus cuniculus (Rabbit)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TPD52L3": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "TPD52L3",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IPCEF1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "IPCEF1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TLR10": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TLR10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TGFBR1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TGFBR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RIN3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "RIN3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "COL16A1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "COL16A1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZNF512B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ZNF512B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NEK6": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "NEK6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MECOM": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "MECOM",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLC25A46": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SLC25A46",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EXD1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "EXD1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SIK2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SIK2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PDE1A": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "PDE1A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PTPN1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "PTPN1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ADAMTS3": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "ADAMTS3",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GRXCR1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GRXCR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SENP2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "SENP2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SPATA17": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SPATA17",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TOP2B": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TOP2B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Cricetulus longicaudatus (Long-tailed dwarf hamster)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLC24A2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SLC24A2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TMEM106B": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TMEM106B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EPS15": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "EPS15",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ADGB": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ADGB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SI": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "SI",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Rattus norvegicus (Rat)",
+        "Sus scrofa (Pig)",
+        "Oryctolagus cuniculus (Rabbit)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NDST3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NDST3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "KIF2B": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "KIF2B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TSHR": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TSHR",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NRG1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "NRG1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TICAM1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TICAM1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PRDM11": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "PRDM11",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TCHP": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TCHP",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CFDP1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CFDP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FOXA2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "FOXA2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BLID": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "BLID",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LPAR4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "LPAR4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CPT1C": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CPT1C",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLAMF6": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "SLAMF6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MDFIC2": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "MDFIC2",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PAH": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PAH",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ITPK1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ITPK1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CDCA7": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CDCA7",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FGF7": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "FGF7",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "DEF6": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "DEF6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCDC63": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CCDC63",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "POU5F1B": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "POU5F1B",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL12RB1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL12RB1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TRMU": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TRMU",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PATJ": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PATJ",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C1GALT1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "C1GALT1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TMEM163": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TMEM163",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "POU2AF1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "POU2AF1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EXOC3L4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "EXOC3L4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CD58": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "CD58",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TIMMDC1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TIMMDC1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PHLDB1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "PHLDB1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ALKAL1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ALKAL1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ALKAL2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ALKAL2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMP1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "BMP1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMP10": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "BMP10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMP15": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "BMP15",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Ovis aries (Sheep)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMP2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "BMP2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Oryctolagus cuniculus (Rabbit)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMP3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "BMP3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMP8A": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "BMP8A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "BMP8B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "BMP8B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C17ORF99": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "C17orf99",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C1QTNF4": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "C1QTNF4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CCL1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL14": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "CCL14",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL15": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "CCL15",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL16": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "CCL16",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL17": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CCL17",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL19": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CCL19",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL23": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CCL23",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Macaca mulatta (Rhesus macaque)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL24": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CCL24",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL25": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CCL25",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Sus scrofa (Pig)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL26": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CCL26",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL27": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CCL27",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCL5": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CCL5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CER1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CER1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CKLF": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CKLF",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CMTM1": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "CMTM1",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CMTM2": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "CMTM2",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CMTM3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CMTM3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CMTM5": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CMTM5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CMTM7": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CMTM7",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CMTM8": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CMTM8",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CSF1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CSF1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CXCL12": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CXCL12",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Felis catus (Cat) (Felis silvestris catus)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FAM3B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FAM3B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FLT3LG": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FLT3LG",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GDF1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GDF1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GDF10": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "GDF10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GDF11": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "GDF11",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GDF2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GDF2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GDF3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GDF3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GDF7": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "GDF7",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Chlorocebus aethiops (Green monkey) (Cercopithecus aethiops)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GPI": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "GPI",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNB1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IFNB1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNL1": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "IFNL1",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNL2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IFNL2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNL3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IFNL3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNL4": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "IFNL4",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNW1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IFNW1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL17B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL17B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL17D": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "IL17D",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL25": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL25",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL7": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IL7",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LEFTY1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "LEFTY1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LEFTY2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "LEFTY2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LIF": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LIF",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LTB": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "LTB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Macaca mulatta (Rhesus macaque)",
+        "Pan troglodytes (Chimpanzee)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MSMP": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "MSMP",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MSTN": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "MSTN",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NODAL": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NODAL",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TAFA5": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TAFA5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "THNSL2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "THNSL2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "THPO": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "THPO",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TNFSF10": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TNFSF10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TNFSF13": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TNFSF13",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TNFSF13B": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TNFSF13B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TNFSF14": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TNFSF14",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TNFSF9": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TNFSF9",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "VSTM1": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "VSTM1",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ACKR1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ACKR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Macaca mulatta (Rhesus macaque)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ACKR3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "ACKR3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ACKR4": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ACKR4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCR4": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CCR4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Canis lupus familiaris (Dog) (Canis familiaris)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCR8": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CCR8",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Macaca mulatta (Rhesus macaque)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCR9": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CCR9",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Ovis aries (Sheep)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CMKLR1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CMKLR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CXCR5": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CXCR5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FZD4": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "FZD4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GFRA1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "GFRA1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GFRA2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "GFRA2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GFRA3": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GFRA3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GFRA4": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "GFRA4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GFRAL": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "GFRAL",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GPR17": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "GPR17",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GPR25": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GPR25",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GPR75": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GPR75",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IFNAR1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "IFNAR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Sus scrofa (Pig)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL11RA": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL11RA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL17RB": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL17RB",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL17RC": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL17RC",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL17RD": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL17RD",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL1RAPL2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "IL1RAPL2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "IL1RL1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "IL1RL1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MAS1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "MAS1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MPL": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "MPL",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "XCR1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "XCR1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ACOT13": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ACOT13",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ANO6": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ANO6",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "AP1B1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "AP1B1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "APEX1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "APEX1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": [
+        "A1YES6"
+      ]
+    },
+    "APOPT1": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ASH2L": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "ASH2L",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Sciurus carolinensis (Eastern gray squirrel)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C3ORF17": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C7ORF73": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "C8ORF76": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "C8orf76",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CAMTA2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CAMTA2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCDC12": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "CCDC12",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CCDC124": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CCDC124",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CD82": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "CD82",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CIAO1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CIAO1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "COPS3": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "COPS3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CTNNBL1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CTNNBL1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "CYB5B": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "CYB5B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EIF1B": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "EIF1B",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Sus scrofa (Pig)",
+        "Macaca fascicularis (Crab-eating macaque) (Cynomolgus monkey)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ERICH1": {
+      "status": "ok",
+      "n_seqs": 1,
+      "nome_primario": "ERICH1",
+      "organismos": [
+        "Homo sapiens (Human)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EXOC8": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "EXOC8",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "EXT2": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "EXT2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FAM122A": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FASTK": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "FASTK",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "FUK": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "GPKOW": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "GPKOW",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "H2AFY": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HCCS": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "HCCS",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "HCFC1": {
+      "status": "descartado_tamanho_ou_residuo",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [
+        "P51610 (2035 aa)",
+        "D3ZN95 (2034 aa)",
+        "Q61191 (2045 aa)",
+        "P51611 (2090 aa)"
+      ],
+      "descartados_residuos": []
+    },
+    "LSM10": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "LSM10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "LYRM5": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MAN2A2": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "MAN2A2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "METRN": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "METRN",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MRPL2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "MRPL2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "MRPL28": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "MRPL28",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NOM1": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "NOM1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NPLOC4": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "NPLOC4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "NQO2": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "NQO2",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PDCD5": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PDCD5",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PHF10": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PHF10",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "PSME1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "PSME1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RHBDD3": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RHBDD3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RNF34": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "RNF34",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RNF4": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RNF4",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "RWDD1": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "RWDD1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLC30A9": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SLC30A9",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Pongo abelii (Sumatran orangutan) (Pongo pygmaeus abelii)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SLC35C2": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SNRNP48": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "SNRNP48",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "SNRPG": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "SNRPG",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TBC1D20": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "TBC1D20",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "THAP3": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "THAP3",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TMUB1": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "TMUB1",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TTC32": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TTC32",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "TXLNA": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "TXLNA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "UBXN2A": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "UBXN2A",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "VAPA": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "VAPA",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "WBP11": {
+      "status": "ok",
+      "n_seqs": 3,
+      "nome_primario": "WBP11",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "WDR55": {
+      "status": "ok",
+      "n_seqs": 4,
+      "nome_primario": "WDR55",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)",
+        "Rattus norvegicus (Rat)",
+        "Bos taurus (Bovine)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "WDR61": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZCCHC11": {
+      "status": "nao_encontrado",
+      "n_seqs": 0,
+      "nome_primario": null,
+      "organismos": [],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    },
+    "ZFYVE19": {
+      "status": "ok",
+      "n_seqs": 2,
+      "nome_primario": "ZFYVE19",
+      "organismos": [
+        "Homo sapiens (Human)",
+        "Mus musculus (Mouse)"
+      ],
+      "descartados_tamanho": [],
+      "descartados_residuos": []
+    }
+  }
+}

@@ -111,7 +111,7 @@ Números por modelo × N: `reports/results_{modelo}_n{N}.json` e `reports/experi
 4. **Os notebooks estão quebrados** — referenciam artefatos da pipeline antiga. Não use como fonte de verdade.
 5. **`models/random_projection.pkl` é sobrescrito a cada execução de 02.** Sempre reajuste 02 → 05/06 na mesma sessão.
 6. **`models/*.pkl` está no `.gitignore`**, mas alguns `.pkl` já foram commitados antes da regra.
-7. **`01_kmer_matrix.py` lê `data/raw_negativos/` inteiro.** Desde o commit `8a20e30` (Igor) esse diretório tem 406 arquivos / 1.132 seqs, não os 30 / 112 do TCC I — **rodar a pipeline hoje não reproduz o TCC I**. Os arquivos novos precisam ir para `data/raw_negativos_v2/`.
+7. **`01_kmer_matrix.py` só lê `data/raw/` + `data/raw_negativos/` (TCC I).** Para o TCC II será preciso apontá-lo para os diretórios v2. `00_fetch_negatives.py` (Igor) ainda escreve em `data/raw_negativos/` — rodá-lo de novo volta a misturar com o TCC I; os 376 arquivos dele foram movidos para `data/raw_negativos_igor/`.
 8. **CLAUDE.md está no `.gitignore`** (commit `d45db7d`). Ele e outros arquivos não versionados já se perderam uma vez — faça backup ou versione o que importa.
 
 ---
@@ -156,24 +156,26 @@ Mesmos filtros de `00_fetch_negatives.py` para que taxonomia e tamanho não vire
 | `data/raw/` | **TCC I, congelado** — 28 genes, 111 seqs |
 | `data/raw_v2/` | **Treino TCC II** — 96 genes, 316 seqs (Mammalia) |
 | `data/teste_cego_v2/` | **Teste cego** — 46 genes, 147 seqs. Fora: CHD7 e WNK1 (> 2000 aa), TMEM75 (hoje LINC02912) |
-| `data/raw_negativos/` | 30 arquivos do TCC I + 376 do Igor (misturados — ver §4.7) |
+| `data/raw_negativos/` | **TCC I, congelado** — 30 arquivos, 112 seqs (idêntico a `cc6a498`) |
+| `data/raw_negativos_igor/` | 376 arquivos originais do `00_fetch_negatives.py` — só referência; substituídos pelo pool recoletado |
+| `data/negativos_pool_v2/` | Pool de negativos recoletado com os critérios das positivas — 416 genes, 1.159 seqs |
+| `data/raw_negativos_v2/` | **Negativos de treino** — 111 genes, 316 seqs (106 fácil / 105 interm. / 105 difícil) |
+| `data/teste_cego_negativos_v2/` | **Negativos do teste cego** — 56 genes, 147 seqs (49 / 49 / 49) |
 | `reports/coleta/*.json` | status por gene, organismos e descartes de cada coleta |
 
-### Negativas (Igor, `00_fetch_negatives.py`, commit `8a20e30`)
+### Negativas — candidatos, coleta e amostragem
 
-Fontes: parálogos dos 28 positivos do TCC I (família UniProt/Pfam + BLOSUM62), genes de outras doenças imunomediadas (Open Targets), citocinas/receptores. Exclusão por Open Targets, GWAS Catalog e texto UniProt. Mammalia, máx. 4/gene.
+Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` (mesmos critérios das positivas — o Igor não filtrava fragmentos nem X/Z/B) → `00_sample_negatives.py`.
 
-| Nível | TCC I | Novos | 
-|---|---|---|
-| Fácil — housekeeping | 18 genes / 72 seqs | **0** |
-| Intermediário — outras doenças imunes | 7 / 20 | 191 / 534 |
-| Difícil — imunes não-psoríase | 5 / 20 | 98 / 254 |
-| Difícil — parálogos | — | 87 / 232 |
+- **Níveis:** fácil = housekeeping (TCC I + 60 sorteados com `RANDOM_STATE` de Eisenberg & Levanon 2013, `data/gene_lists/eisenberg2013_housekeeping.txt`); intermediário = outras doenças imunomediadas (TCC I + Open Targets do Igor); difícil = imunes não-psoríase + parálogos (Igor).
+- **Exclusões:** positivos de qualquer conjunto; **todo gene codificador a <250 kb de qualquer das 109 regiões da Dand** (Known e Newly); `reports/negativos/psoriase_exclusao.tsv` do Igor; PTPN22. Lista em `data/gene_lists/negativos_excluidos_v2.tsv`. Isso derruba **19 das 30 negativas do TCC I**, incluindo INS (Open Targets genetic_association 0,04), IL2/IL5/IL10 (<250 kb de loci da Dand), NOD2, CTLA4. STAT5A também cai (positivo).
+- **Amostragem:** 1:1 em sequências com os positivos de cada conjunto; ⅓ por nível; por **gene** (homólogos nunca se dividem entre treino e teste cego); subcategorias em rodízio dentro do nível; o último gene de cada nível pode entrar com parte das seqs para fechar a conta. Relatório: `reports/coleta/amostragem_negativos_v2.tsv`.
+- 12 candidatos sem seq humana válida: símbolos de 2013 renomeados (APOPT1→COA8, FUK→FCSK, H2AFY→MACROH2A1, …), HBA1 (nome primário "HBA1; HBA2"), HCFC1 (> 2000 aa). Há folga no pool, não foram tratados.
 
 ### Pendências
 
-1. **Reorganizar negativas:** mover os 376 arquivos do Igor para `data/raw_negativos_v2/`; **remover `STAT5A_paralogo_STAT2_dificil.fasta`** (STAT5A é positivo de treino, região 91 — o filtro do Igor só compara com os 28 genes do TCC I).
-2. **Amostragem sistemática:** proporção-alvo por nível (decisão do grupo: ⅓ cada ou a do TCC I) e amostra estratificada até 1:1 com as 316 positivas; **separar genes negativos para o teste cego** (sem negativas o teste cego só mede sensibilidade). Coletar mais housekeeping (nível vazio).
+1. ~~Reorganizar e amostrar negativas~~ — feito (ver acima).
+2. **INS na comparação com o TCC I:** INS era a "negativa treinada" da validação externa, mas os critérios v2 a excluem dos negativos — na v2 ela vira negativa não treinada. Decidir se força a inclusão ou se reporta a mudança.
 3. **CV agrupada por gene** (§4.1) antes do fine tuning.
 4. **Homólogos byte-idênticos em `raw_v2`:** 7 grupos (CFL1 ×4, FASLG ×3, PSMA6 ×3, UBE2L3 ×3, IL4/KLRK1/PTEN ×2). Inofensivos com CV agrupada por gene; deduplicar se a CV não for agrupada.
 5. **Erros herdados no TCC I (`data/raw/`, congelado):** `PRDX5.fasta` tem `P83200` (fragmento de 16 aa com X); `NOS2.fasta` tem 2 seqs de NANOS2, `PRDX5.fasta` tem Prdx6, `FBXL19.fasta` tem FBXL19-AS1; `TNIP1.fasta` tem uma vírgula solta; `data/raw_negativos/HBB_housekeeping_facil.fasta` contém X/Z/B. Vale nota de limitação no documento.

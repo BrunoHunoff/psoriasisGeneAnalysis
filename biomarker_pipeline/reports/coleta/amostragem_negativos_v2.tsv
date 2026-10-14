@@ -1,0 +1,168 @@
+gene	nivel	subcategoria	origem	conjunto	n_seqs_usadas	n_seqs_pool
+SNRNP48	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	2	2
+FASTK	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	2	2
+UBXN2A	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	3	3
+CAT	facil	housekeeping	TCC I	teste_cego	4	4
+COPS3	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	4	4
+ERICH1	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	1	1
+VAPA	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	4	4
+WDR55	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	4	4
+NPLOC4	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	3	3
+EIF1B	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	4	4
+C8ORF76	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	1	1
+TBC1D20	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	3	3
+MRPL28	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	3	3
+PGK1	facil	housekeeping	TCC I	teste_cego	4	4
+MRPL2	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	4	4
+RWDD1	facil	housekeeping	Eisenberg & Levanon (2013)	teste_cego	3	3
+GRXCR1	intermediario	Alopecia_Areata	00_fetch_negatives (Open Targets (MONDO_0005340 alopecia areata))	teste_cego	2	2
+TLR1	intermediario	Artrite_Reumatoide	00_fetch_negatives (Open Targets (MONDO_0008383 rheumatoid arthritis))	teste_cego	2	2
+TPD52L3	intermediario	Asma	00_fetch_negatives (Open Targets (MONDO_0004979 asthma))	teste_cego	1	1
+PHLDB1	intermediario	Colangite_Biliar_Primaria	00_fetch_negatives (Open Targets (MONDO_0005388 primary biliary cholangitis))	teste_cego	2	2
+LSP1	intermediario	Colite_Ulcerativa	00_fetch_negatives (Open Targets (MONDO_0005101 ulcerative colitis))	teste_cego	2	2
+LILRB3	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	teste_cego	1	1
+NLRP10	intermediario	Dermatite_Atopica	00_fetch_negatives (Open Targets (MONDO_0004980 atopic eczema))	teste_cego	2	2
+PAM	intermediario	Diabetes_Tipo1	00_fetch_negatives (Open Targets (MONDO_0005147 type 1 diabetes mellitus))	teste_cego	4	4
+ARMC12	intermediario	Doenca_Celiaca	00_fetch_negatives (Open Targets (MONDO_0005130 celiac disease))	teste_cego	2	2
+NRG1	intermediario	Doenca_de_Graves	00_fetch_negatives (Open Targets (MONDO_0005364 Graves disease))	teste_cego	3	3
+IL12RB1	intermediario	Esclerose_Sistemica	00_fetch_negatives (Open Targets (MONDO_0005100 systemic sclerosis))	teste_cego	2	2
+RASGRP3	intermediario	Lupus	00_fetch_negatives (Open Targets (MONDO_0007915 systemic lupus erythematosus))	teste_cego	1	1
+TRMU	intermediario	Sjogren	00_fetch_negatives (Open Targets (MONDO_0010030 Sjogren syndrome))	teste_cego	4	4
+PTPN1	intermediario	Vitiligo	00_fetch_negatives (Open Targets (MONDO_0008661 vitiligo))	teste_cego	3	3
+NDST3	intermediario	Alopecia_Areata	00_fetch_negatives (Open Targets (MONDO_0005340 alopecia areata))	teste_cego	2	2
+TXNDC11	intermediario	Artrite_Reumatoide	00_fetch_negatives (Open Targets (MONDO_0008383 rheumatoid arthritis))	teste_cego	3	3
+EXD1	intermediario	Asma	00_fetch_negatives (Open Targets (MONDO_0004979 asthma))	teste_cego	2	2
+CD58	intermediario	Colangite_Biliar_Primaria	00_fetch_negatives (Open Targets (MONDO_0005388 primary biliary cholangitis))	teste_cego	1	1
+ERGIC1	intermediario	Colite_Ulcerativa	00_fetch_negatives (Open Targets (MONDO_0005101 ulcerative colitis))	teste_cego	2	2
+ZFP36L1	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	teste_cego	3	3
+ZNF652	intermediario	Dermatite_Atopica	00_fetch_negatives (Open Targets (MONDO_0004980 atopic eczema))	teste_cego	3	3
+ARHGAP12	intermediario	Diabetes_Tipo1	00_fetch_negatives (Open Targets (MONDO_0005147 type 1 diabetes mellitus))	teste_cego	2	3
+IL17RD	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	teste_cego	2	2
+PRDX1	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	4	4
+GDF7	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	teste_cego	3	3
+CSF3R	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	2	2
+BMP2	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	teste_cego	4	4
+HCK	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	4	4
+GDF1	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	teste_cego	2	2
+UBE2D4	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	1	1
+IL1RL1	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	teste_cego	3	3
+DDX1	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	4	4
+ALKAL2	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	teste_cego	3	3
+IL3RA	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	2	2
+CCL24	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	teste_cego	3	3
+FBXL22	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	3	3
+IFNL4	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	teste_cego	1	1
+PRDX3	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	4	4
+GDF11	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	teste_cego	3	3
+RPS6KA3	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	teste_cego	1	2
+ALDOA	facil	housekeeping	TCC I	treino	4	4
+EXOC8	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+TMUB1	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+ANO6	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+METRN	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+CAMTA2	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+RHBDD3	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+EXT2	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+ZFYVE19	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+GPKOW	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+ACOT13	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+TPI1	facil	housekeeping	TCC I	treino	4	4
+HCCS	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+TTC32	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+CYB5B	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+MAN2A2	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+PSME1	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+LDHA	facil	housekeeping	TCC I	treino	4	4
+CCDC12	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+PDCD5	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+RNF4	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+NOM1	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+TXLNA	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+CCDC124	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+SNRPG	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+WBP11	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+ALB	facil	housekeeping	TCC I	treino	4	4
+LSM10	facil	housekeeping	Eisenberg & Levanon (2013)	treino	2	2
+PHF10	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+AP1B1	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+NQO2	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+SLC30A9	facil	housekeeping	Eisenberg & Levanon (2013)	treino	3	3
+APEX1	facil	housekeeping	Eisenberg & Levanon (2013)	treino	4	4
+VIM	facil	housekeeping	TCC I	treino	4	4
+SCLT1	intermediario	Doenca_Celiaca	00_fetch_negatives (Open Targets (MONDO_0005130 celiac disease))	treino	3	3
+CFDP1	intermediario	Doenca_de_Graves	00_fetch_negatives (Open Targets (MONDO_0005364 Graves disease))	treino	4	4
+IGHG1	intermediario	Lupus	00_fetch_negatives (Open Targets (MONDO_0007915 systemic lupus erythematosus))	treino	2	2
+PATJ	intermediario	Sjogren	00_fetch_negatives (Open Targets (MONDO_0010030 Sjogren syndrome))	treino	4	4
+ADAMTS3	intermediario	Vitiligo	00_fetch_negatives (Open Targets (MONDO_0008661 vitiligo))	treino	1	1
+SLC24A2	intermediario	Alopecia_Areata	00_fetch_negatives (Open Targets (MONDO_0005340 alopecia areata))	treino	3	3
+LBH	intermediario	Artrite_Reumatoide	00_fetch_negatives (Open Targets (MONDO_0008383 rheumatoid arthritis))	treino	4	4
+TGFBR1	intermediario	Asma	00_fetch_negatives (Open Targets (MONDO_0004979 asthma))	treino	4	4
+TIMMDC1	intermediario	Colangite_Biliar_Primaria	00_fetch_negatives (Open Targets (MONDO_0005388 primary biliary cholangitis))	treino	3	3
+SLC4A3	intermediario	Colite_Ulcerativa	00_fetch_negatives (Open Targets (MONDO_0005101 ulcerative colitis))	treino	4	4
+BIRC3	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	treino	3	3
+SPSB1	intermediario	Dermatite_Atopica	00_fetch_negatives (Open Targets (MONDO_0004980 atopic eczema))	treino	3	3
+GRB10	intermediario	Diabetes_Tipo1	00_fetch_negatives (Open Targets (MONDO_0005147 type 1 diabetes mellitus))	treino	4	4
+RTRAF	intermediario	Doenca_Celiaca	00_fetch_negatives (Open Targets (MONDO_0005130 celiac disease))	treino	3	3
+CPT1C	intermediario	Doenca_de_Graves	00_fetch_negatives (Open Targets (MONDO_0005364 Graves disease))	treino	3	3
+ST8SIA4	intermediario	Lupus	00_fetch_negatives (Open Targets (MONDO_0007915 systemic lupus erythematosus))	treino	4	4
+C1GALT1	intermediario	Sjogren	00_fetch_negatives (Open Targets (MONDO_0010030 Sjogren syndrome))	treino	4	4
+PDE1A	intermediario	Vitiligo	00_fetch_negatives (Open Targets (MONDO_0008661 vitiligo))	treino	3	3
+EPS15	intermediario	Alopecia_Areata	00_fetch_negatives (Open Targets (MONDO_0005340 alopecia areata))	treino	2	2
+AFF3	intermediario	Artrite_Reumatoide	00_fetch_negatives (Open Targets (MONDO_0008383 rheumatoid arthritis))	treino	2	2
+TBL1XR1	intermediario	Asma	00_fetch_negatives (Open Targets (MONDO_0004979 asthma))	treino	2	2
+EXOC3L4	intermediario	Colangite_Biliar_Primaria	00_fetch_negatives (Open Targets (MONDO_0005388 primary biliary cholangitis))	treino	2	2
+CCRL2	intermediario	Colite_Ulcerativa	00_fetch_negatives (Open Targets (MONDO_0005101 ulcerative colitis))	treino	4	4
+AKAP11	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	treino	2	2
+ITPKA	intermediario	Dermatite_Atopica	00_fetch_negatives (Open Targets (MONDO_0004980 atopic eczema))	treino	3	3
+PRKD2	intermediario	Diabetes_Tipo1	00_fetch_negatives (Open Targets (MONDO_0005147 type 1 diabetes mellitus))	treino	3	3
+BMS1	intermediario	Doenca_Celiaca	00_fetch_negatives (Open Targets (MONDO_0005130 celiac disease))	treino	1	1
+CDCA7	intermediario	Doenca_de_Graves	00_fetch_negatives (Open Targets (MONDO_0005364 Graves disease))	treino	4	4
+TRIB2	intermediario	Lupus	00_fetch_negatives (Open Targets (MONDO_0007915 systemic lupus erythematosus))	treino	4	4
+SI	intermediario	Alopecia_Areata	00_fetch_negatives (Open Targets (MONDO_0005340 alopecia areata))	treino	4	4
+AARS2	intermediario	Artrite_Reumatoide	00_fetch_negatives (Open Targets (MONDO_0008383 rheumatoid arthritis))	treino	3	3
+CDHR3	intermediario	Asma	00_fetch_negatives (Open Targets (MONDO_0004979 asthma))	treino	2	2
+TMEM163	intermediario	Colangite_Biliar_Primaria	00_fetch_negatives (Open Targets (MONDO_0005388 primary biliary cholangitis))	treino	4	4
+MYO16	intermediario	Colite_Ulcerativa	00_fetch_negatives (Open Targets (MONDO_0005101 ulcerative colitis))	treino	3	3
+FRMPD2	intermediario	Crohn	00_fetch_negatives (Open Targets (MONDO_0005011 Crohn disease))	treino	1	2
+GDF2	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+NFKBIB	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	3	3
+BMP8B	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+PIAS2	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	3	3
+CMTM7	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+RNF138	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	4	4
+CCR9	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	treino	3	3
+PRSS46P	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	1	1
+CXCL12	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	3	3
+KCNH2	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	4	4
+CCL1	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+SRMS	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+CXCR5	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	treino	3	3
+KDM2A	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+CSF1	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	3	3
+OTUD7B	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+TNFSF9	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+RPS6KA5	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	3	3
+CMTM1	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	1	1
+ZAP70	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+CCL19	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+KLK9	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+CCL25	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	4	4
+CLCF1	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+MPL	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	treino	2	2
+TET3	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+ACKR4	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	treino	3	3
+KCNH1	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	4	4
+TNFSF14	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+PTK6	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+GFRA4	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (GO:0004896 cytokine receptor))	treino	3	3
+UBE2D2	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	4	4
+IFNL1	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	1	1
+PIAS3	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	3	3
+FLT3LG	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+IL11	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	4	4
+TNFSF13B	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+IL13RA1	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+IL25	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	2	2
+NFKB2	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	2	2
+CMTM8	dificil	imune_nao_psoriase	00_fetch_negatives (UniProt (KW-0202 Cytokine))	treino	3	3
+PRDX4	dificil	paralogo	00_fetch_negatives (UniProt (familia/Pfam) + alinhamento BLOSUM62)	treino	3	4
