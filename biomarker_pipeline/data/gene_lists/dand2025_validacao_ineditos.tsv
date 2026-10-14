@@ -1,0 +1,51 @@
+regiao	chr	bloco_ld	pav	twas	alvo_terapeutico	mais_proximo	genes_escolhidos	nivel_evidencia	base	excluir_validacao	motivo
+2	1	chr1:11711076-12266177		KIAA2013, MFN2, MIIP		MFN2 (within)	MFN2	B	TWAS	nao	
+3	1	chr1:15686534-17547392		RP11-169K16.8		FBLIM1 (-43 KB); UQCRHL (+6 KB)	UQCRHL	D	mais próximo (intergênico)	nao	
+6	1	chr1:31218841-34056003		ADC		AZIN2 (within)	ADC	B	TWAS	nao	
+10	1	chr1:160650693-161975082				FCGR2A (-18 KB); HSPA6 (+1 KB)	HSPA6	D	mais próximo (intergênico)	nao	
+11	1	chr1:168370940-169578628				TBX19 (-257 KB); XCL2 (+6 KB)	XCL2	D	mais próximo (intergênico)	nao	
+15	2	chr2:23218061-28672561				ADCY3 (within)	ADCY3	C	dentro do gene	nao	
+17	2	chr2:101338963-105130553				MAP4K4 (-286 KB); IL1R2 (+8 KB)	IL1R2	D	mais próximo (intergênico)	nao	
+18	2	chr2:107780988-112030011	ACOXL			ACOXL (within)	ACOXL	A	PAV	nao	
+20	2	chr2:197067152-199655638				RFTN2 (within)	RFTN2	C	dentro do gene	nao	
+21	2	chr2:230385553-231844050				SP140 (within)	SP140	C	dentro do gene	nao	
+22	2	chr2:233550331-234141356				INPP5D (within)	INPP5D	C	dentro do gene	nao	
+23	2	chr2:238811039-239951115				SCLY (within)	SCLY	C	dentro do gene	nao	
+26	3	chr3:154801181-168271146				TIPARP (-150 KB); LEKR1 (+2 KB)	LEKR1	D	mais próximo (intergênico)	nao	
+27	3	chr3:187461130-188326593				LPP (within)	LPP	C	dentro do gene	nao	
+28	3	chr3:189043925-189452847				TPRG1 (-331 KB); TP63 (+129 KB)	TP63	D	mais próximo (intergênico)	sim	bloco de LD adjacente à região 29 (Known); TP63, único gene codificador a <250 kb, já está no treino
+30	3	chr3:196317113-198022430				FBXO45 (-54 KB); NRROS (+17 KB)	NRROS	D	mais próximo (intergênico)	nao	
+31	4	chr4:115297875-126481149				Signal 1: IL2 (-132 KB); IL21 (+33 KB); Signal 2: IL21 (-59 KB); BBS12 (+52 KB)	IL21	D	mais próximo (intergênico)	nao	
+32	5	chr5:34566074-36433954	IL7R			SPEF2 (-229 KB); IL7R (+10 KB)	IL7R	A	PAV	nao	
+34	5	chr5:55883560-56335503				ANKRD55 (-529 KB); MAP3K1 (+53 KB)	MAP3K1	D	mais próximo (intergênico)	nao	
+45	7	chr7:16654963-17593990			AHR (e.g. by tapinarof)	AGR3 (-244 KB); AHR (+173 KB)	AHR	A	alvo terapêutico	nao	
+46	7	chr7:28712513-29197970	CPVL			CPVL (within)	CPVL	A	PAV	nao	
+48	7	chr7:127908745-129931330		IRF5		KCP (-16 KB); IRF5 (+11 KB)	IRF5	B	TWAS	nao	
+49	8	chr8:59726957-62003563				Signal 1: CHD7 (-251 KB); CLVS1 (+359 KB); Signal 2: CHD7 (-261 KB); CLVS1 (+349 KB)	CHD7	D	mais próximo (intergênico)	nao	
+50	8	chr8:80770876-81331520				TPD52 (-215 KB); ZBTB10 (+100 KB)	ZBTB10	D	mais próximo (intergênico)	nao	
+51	8	chr8:126411670-126764777				NSMCE2 (-335 KB); TRIB1 (+3 KB)	TRIB1	D	mais próximo (intergênico)	nao	
+52	8	chr8:129309450-130380941				TMEM75 (-601 KB); GSDMC (+1238 KB)	TMEM75	D	mais próximo (intergênico)	nao	
+56	10	chr10:5985447-6270160				IL2RA (within)	IL2RA	C	dentro do gene	nao	
+57	10	chr10:6270161-6618515				PRKCQ (within)	PRKCQ	C	dentro do gene	nao	
+62	10	chr10:92876528-95396109				KIF11 (-77 KB); HHEX (+20 KB)	HHEX	D	mais próximo (intergênico)	nao	
+64	11	chr11:36091454-36397338				PRR5L (within)	PRR5L	C	dentro do gene	nao	
+65	11	chr11:36397339-36897877				PRR5L (within)	PRR5L	C	dentro do gene	nao	
+67	11	chr11:70381300-76516253				EMSY (-126 KB); LRRC32 (+100 KB)	LRRC32	D	mais próximo (intergênico)	nao	
+69	11	chr11:117298216-120390709	POU2F3	POU2F3		POU2F3 (within)	POU2F3	A	PAV	nao	
+71	12	chr12:669954-1079588				WNK1 (within)	WNK1	C	dentro do gene	nao	
+72	12	chr12:5750131-6478092				SCNN1A (within)	SCNN1A	C	dentro do gene	nao	
+75	12	chr12:94514599-94922415				PLXNC1 (within)	PLXNC1	C	dentro do gene	nao	
+83	14	chr14:105095763-107349540				GPR132 (-1 KB); JAG2 (+102 KB)	GPR132	D	mais próximo (intergênico)	nao	
+85	15	chr15:69959886-70342564				RPLP1 (-289 KB); TLE3 (+357 KB)	RPLP1	D	mais próximo (intergênico)	nao	
+86	15	chr15:81133059-87694252				PDE8A (within)	PDE8A	C	dentro do gene	nao	
+89	17	chr17:4455699-5737306	PELP1	ALOX15, ARRB2		PELP1 (-3 KB); ARRB2 (+3 KB)	PELP1	A	PAV	nao	
+96	19	chr19:609759-1285288				ARID3A (within)	ARID3A	C	dentro do gene	nao	
+97	19	chr19:3906651-4551554	FSD1, STAP2			STAP2 (within)	FSD1, STAP2	A	PAV	nao	
+99	19	chr19:17783937-19065462		SSBP4, ELL	PDE4C (e.g. by apremilast)	ELL (within)	PDE4C	A	alvo terapêutico	nao	
+100	19	chr19:32573487-34140146	PEPD	CEBPG		CEBPG (-10 KB); PEPD (+138 KB)	PEPD	A	PAV	nao	
+102	20	chr20:45930662-48176258				PREX1 (within)	PREX1	C	dentro do gene	nao	
+104	20	chr20:49595820-51901210				NFATC2 (within)	NFATC2	C	dentro do gene	nao	
+105	21	chr21:37997683-41109472				ETS2 (-105 KB); PSMG1 (+273 KB)	ETS2	D	mais próximo (intergênico)	nao	
+106	22	chr22:1-17713187			IL17RA (e.g. by brodalumab)	IL17RA (within)	IL17RA	A	alvo terapêutico	nao	
+107	22	chr22:19717883-20948848		MED15		MED15 (within)	MED15	B	TWAS	nao	
+109	22	chr22:37004484-37559474				PVALB (-42 KB); NCF4 (+2 KB)	NCF4	D	mais próximo (intergênico)	nao	

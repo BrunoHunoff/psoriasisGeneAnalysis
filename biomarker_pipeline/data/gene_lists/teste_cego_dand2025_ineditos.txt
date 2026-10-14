@@ -1,0 +1,53 @@
+# Positivos do TESTE CEGO — regiões Newly reported
+# Fonte: Dand et al. (2025), Nat Commun 16:2051, Supplementary Data 20 (dand2025_supplementary_data20.xlsx). Gerado por src/00_build_gene_lists.py.
+# Nível de evidência por região em dand2025_validacao_ineditos.tsv (A=PAV/alvo terapêutico, B=TWAS, C=dentro do gene, D=mais próximo)
+# 49 genes
+MFN2
+UQCRHL
+ADC
+HSPA6
+XCL2
+ADCY3
+IL1R2
+ACOXL
+RFTN2
+SP140
+INPP5D
+SCLY
+LEKR1
+LPP
+NRROS
+IL21
+IL7R
+MAP3K1
+AHR
+CPVL
+IRF5
+CHD7
+ZBTB10
+TRIB1
+TMEM75
+IL2RA
+PRKCQ
+HHEX
+PRR5L
+LRRC32
+POU2F3
+WNK1
+SCNN1A
+PLXNC1
+GPR132
+RPLP1
+PDE8A
+PELP1
+ARID3A
+FSD1
+STAP2
+PDE4C
+PEPD
+PREX1
+NFATC2
+ETS2
+IL17RA
+MED15
+NCF4
