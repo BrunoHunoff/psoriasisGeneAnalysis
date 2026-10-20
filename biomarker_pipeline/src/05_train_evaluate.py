@@ -3,11 +3,11 @@ Módulo 05 — Avaliação e treinamento com GridSearchCV.
 
 Usa GridSearchCV (10-fold StratifiedKFold) para encontrar os melhores
 hiperparâmetros de cada modelo e reportar as métricas de desempenho.
-O melhor modelo é salvo em models/ para uso em predição.
+O melhor modelo é salvo em {models_dir}/ para uso em predição.
 
 Uso:
-    python src/05_train_evaluate.py --model random_forest
-    python src/05_train_evaluate.py --model logistic_regression
+    python src/05_train_evaluate.py --model random_forest --dataset tcc2
+    python src/05_train_evaluate.py --model logistic_regression --dataset tcc2
 """
 
 import os
@@ -32,19 +32,14 @@ from sklearn.metrics import (
     confusion_matrix,
 )
 
+from common import add_dataset_arg, classifier_path, dataset_paths
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[logging.StreamHandler(sys.stdout)],
 )
 log = logging.getLogger(__name__)
-
-PROC_DIR      = "data/processed"
-REPORTS_DIR   = "reports"
-MODELS_DIR    = "models"
-X_PATH        = os.path.join(PROC_DIR, "X.npy")
-Y_PATH        = os.path.join(PROC_DIR, "y.npy")
-SUMMARY_PATH  = os.path.join(PROC_DIR, "random_summary.json")
 
 N_FOLDS      = 10
 RANDOM_STATE = 42
@@ -92,31 +87,30 @@ SCORING = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", required=True, choices=list(MODEL_REGISTRY.keys()))
+    add_dataset_arg(parser)
     return parser.parse_args()
-
-
-def load_n_components() -> int:
-    if os.path.exists(SUMMARY_PATH):
-        with open(SUMMARY_PATH) as f:
-            return json.load(f).get("n_components", 0)
-    return 0
 
 
 def main():
     args = parse_args()
-    os.makedirs(REPORTS_DIR, exist_ok=True)
-    os.makedirs(MODELS_DIR, exist_ok=True)
+    paths = dataset_paths(args.dataset)
+    reports_dir, models_dir = paths["reports_dir"], paths["models_dir"]
+    x_path = os.path.join(paths["proc_dir"], "X.npy")
+    y_path = os.path.join(paths["proc_dir"], "y.npy")
+    os.makedirs(reports_dir, exist_ok=True)
+    os.makedirs(models_dir, exist_ok=True)
 
-    for path in (X_PATH, Y_PATH):
+    for path in (x_path, y_path):
         if not os.path.exists(path):
-            log.error("%s não encontrado — rode 02_project_random.py primeiro.", path)
+            log.error("%s não encontrado — rode 02_project_random.py --dataset %s primeiro.",
+                      path, args.dataset)
             sys.exit(1)
 
-    X = np.load(X_PATH)
-    y = np.load(Y_PATH)
-    n_components = load_n_components()
-    log.info("Dados: X=%s  y=%s  (pos=%d, neg=%d)  N=%d",
-             X.shape, y.shape, int(y.sum()), int((y == 0).sum()), n_components)
+    X = np.load(x_path)
+    y = np.load(y_path)
+    n_components = X.shape[1]
+    log.info("Dataset %s — X=%s  y=%s  (pos=%d, neg=%d)  N=%d",
+             args.dataset, X.shape, y.shape, int(y.sum()), int((y == 0).sum()), n_components)
 
     model      = MODEL_REGISTRY[args.model]
     param_grid = PARAM_GRIDS[args.model]
@@ -150,13 +144,14 @@ def main():
     log.info("Melhores parâmetros: %s", grid.best_params_)
     log.info("ROC-AUC: %.4f ± %.4f", metrics["roc_auc"]["mean"], metrics["roc_auc"]["std"])
 
-    clf_path = os.path.join(MODELS_DIR, f"classifier_{args.model}_n{n_components}.pkl")
+    clf_path = classifier_path(models_dir, args.model, n_components)
     with open(clf_path, "wb") as f:
         pickle.dump(grid.best_estimator_, f)
     log.info("Melhor modelo salvo: %s", clf_path)
 
     report = {
         "model":        args.model,
+        "dataset":      args.dataset,
         "n_components": n_components,
         "n_folds":      N_FOLDS,
         "n_samples":    int(X.shape[0]),
@@ -165,7 +160,7 @@ def main():
         "best_params":  grid.best_params_,
         "metrics":      metrics,
     }
-    out_path = os.path.join(REPORTS_DIR, f"results_{args.model}.json")
+    out_path = os.path.join(reports_dir, f"results_{args.model}.json")
     with open(out_path, "w") as f:
         json.dump(report, f, indent=2)
     log.info("Resultados salvos: %s", out_path)

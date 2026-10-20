@@ -4,6 +4,7 @@ venv/
 
 # Modelos treinados (gerados localmente, arquivos grandes)
 models/*.pkl
+models/**/*.pkl
 
 # Dados processados intermediários (gerados pelo pipeline)
 data/processed/matrices/
@@ -14,6 +15,7 @@ data/processed/metadata.json
 data/processed/random_summary.json
 data/processed/sequence_registry.json
 data/processed/kmer_vocab.json
+data/processed_v2/
 
 # Python
 __pycache__/

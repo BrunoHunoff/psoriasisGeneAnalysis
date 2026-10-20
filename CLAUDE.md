@@ -50,21 +50,27 @@ biomarker_pipeline/
 │   ├── 00_build_gene_lists.py # TCC II: SD20 da Dand 2025 → listas de genes de treino e de teste cego
 │   ├── 00_fetch_uniprot.py    # TCC II: lista de genes → FASTAs Swiss-Prot + homólogos (positivos)
 │   ├── 00_fetch_negatives.py  # TCC II (Igor): coleta de negativos difíceis → data/raw_negativos/
-│   ├── 01_kmer_matrix.py      # FASTA → matrices/{key}_matrix.npy + sequence_registry.json + kmer_vocab.json
-│   ├── 02_project_random.py   # --n-components N → X.npy, y.npy, metadata.json, random_summary.json, models/random_projection.pkl
-│   ├── 05_train_evaluate.py   # --model M → GridSearchCV 10-fold → reports/results_{M}.json + models/classifier_{M}_n{N}.pkl
-│   ├── 06_train_final.py      # --model M → treina em 100% dos dados → classifier_{M}_n1000.pkl + _meta.json
+│   ├── common.py              # DATASETS (tcc1/tcc2 → diretórios de entrada e saída) + vetorização k-mer compartilhada
+│   ├── 01_kmer_matrix.py      # FASTA → matrices/{key}_matrix.npz (esparsa) + sequence_registry.json + kmer_vocab.json
+│   ├── 02_project_random.py   # --n-components N (padrão 1000) → X.npy, y.npy, metadata.json, random_summary.json, random_projection.pkl
+│   ├── 05_train_evaluate.py   # --model M → GridSearchCV 10-fold → results_{M}.json + classifier_{M}_n{N}.pkl
+│   ├── 06_train_final.py      # --model M → treina em 100% com os best_params do 05 → classifier_{M}_n{N}.pkl + _meta.json
 │   ├── 07_predict.py          # --model M [--fasta …] → prediz FASTAs de data/input/
+│   ├── 08_blind_test.py       # TCC II: --model M|all → teste cego (rodar UMA vez) → reports/v2/teste_cego_*.json + tabelas_teste_cego.tsv
 │   ├── run_experiments.py     # orquestra 02+05 para N ∈ {300,400,500,1000} × 6 modelos → tabelas_resultados.tsv
 │   └── run_predictions.py     # roda os 6 modelos nas 5 proteínas de validação externa → tabelas_predicoes.tsv
-├── data/{raw,raw_negativos,raw_v2,teste_cego_v2,gene_lists,input,processed}/
-├── models/    # *.pkl gitignored; *_meta.json versionados
-├── reports/   # results_{modelo}_n{N}.json, tabelas_*.tsv, experimento2/*.md, negativos/, coleta/
+├── data/{raw,raw_negativos,raw_v2,raw_negativos_v2,teste_cego_v2,teste_cego_negativos_v2,gene_lists,input,processed,processed_v2}/
+├── models/    # TCC I; models/v2/ = TCC II. *.pkl gitignored; *_meta.json versionados
+├── reports/   # TCC I: results_{modelo}_n{N}.json, tabelas_*.tsv, experimento2/; reports/v2/ = TCC II; negativos/, coleta/
 ├── notebooks/ # 01_EDA, 02_scree_plot, 03_results — DESATUALIZADOS, ver §4
 └── run_preparation.{sh,ps1}
 ```
 
 **Não existem `03_*.py` nem `04_*.py`** — a numeração tem lacuna herdada de uma versão anterior da pipeline (que usava SVD e one-class classification). Não é um arquivo faltando.
+
+**Datasets (`--dataset`, padrão `tcc2`, definidos em `common.DATASETS`):** `tcc1` lê `data/raw` + `data/raw_negativos` e grava em `data/processed`, `models/`, `reports/` (os caminhos dos quadros do TCC I); `tcc2` lê `data/raw_v2` + `data/raw_negativos_v2` e grava em `data/processed_v2`, `models/v2/`, `reports/v2/`. Um nunca sobrescreve o outro.
+
+**Matrizes esparsas:** desde 2026-10-20 o 01 salva as matrizes one-hot em CSR (`.npz`) e o 02 empilha em esparso. A densa do TCC II teria ~325 mil janelas × 8.000 (~10 GB). A projeção gaussiana só depende de `n_features` e `RANDOM_STATE`, então o resultado é **idêntico bit a bit** — verificado: `X.npy` do TCC I e os 24 `results_*_n*.json` reproduzidos sem nenhuma diferença.
 
 `sequence_registry.json` é o contrato entre 01 e 02: a **ordem** das entradas define o empilhamento da matriz global e o reagrupamento no pooling. Não reordenar.
 
@@ -74,10 +80,11 @@ biomarker_pipeline/
 cd biomarker_pipeline
 python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 
-bash run_preparation.sh                                   # 01 + 02 (ver ressalva §4)
-python src/run_experiments.py                             # experimento completo (4 N × 6 modelos)
-python src/06_train_final.py --model logistic_regression  # modelo final
-python src/run_predictions.py                             # validação externa em lote
+bash run_preparation.sh tcc2                                             # 01 + 02 (args: dataset, N)
+python src/run_experiments.py --dataset tcc2                             # 4 N × 6 modelos (CV + fine tuning)
+python src/06_train_final.py --model logistic_regression --dataset tcc2  # modelo final (best_params do 05)
+python src/run_predictions.py --dataset tcc2                             # 5 proteínas da validação do TCC I
+python src/08_blind_test.py --model all                                  # teste cego — UMA vez, no final
 ```
 
 ### Modelos (`--model`)
@@ -105,14 +112,16 @@ Números por modelo × N: `reports/results_{modelo}_n{N}.json` e `reports/experi
 
 ## 4. Armadilhas conhecidas (leia antes de mexer)
 
-1. **Sem agrupamento por proteína na CV.** `05_train_evaluate.py` usa `StratifiedKFold`. O commit `647049b` usava `StratifiedGroupKFold` agrupando pelo campo `protein` do `metadata.json`; isso foi perdido no refactor para `GridSearchCV` (`cc6a498`). Com até 10 homólogos por gene, **as métricas atuais provavelmente estão otimistas**. Corrigir **antes** de qualquer fine tuning do TCC II.
-2. **`N_COMPONENTS` está triplicado e inconsistente.** `02_project_random.py` tem default `500`; `06_train_final.py` e `07_predict.py` têm `1000` hard-coded. Para o fluxo N=1000, rode `python src/02_project_random.py --n-components 1000` antes de 06/07.
+1. **CV sem agrupamento por gene — decisão consciente.** `05_train_evaluate.py` usa `StratifiedKFold`: homólogos do mesmo gene podem cair em treino e teste do mesmo fold, então a CV mede "reconhece proteínas/homólogos do treino". O orientador considerou desnecessário agrupar; o grupo decidiu manter (2026-10-15). A generalização para **proteínas novas** é medida pelo teste cego (`08_blind_test.py`), separado por gene por construção. No texto, não apresentar a métrica da CV como generalização. (O commit `647049b` tinha `StratifiedGroupKFold`, se um dia quiserem a comparação.)
+2. ~~`N_COMPONENTS` triplicado~~ — resolvido em 2026-10-20: 02 tem padrão 1000; 05/06 tiram N de `X.shape[1]`; 07/run_predictions/08 tiram N do `random_projection.pkl`.
 3. **`05_train_evaluate.py` sempre escreve `reports/results_{modelo}.json`** (sem `_n{N}`). É `run_experiments.py` que copia para o nome com sufixo.
 4. **Os notebooks estão quebrados** — referenciam artefatos da pipeline antiga. Não use como fonte de verdade.
-5. **`models/random_projection.pkl` é sobrescrito a cada execução de 02.** Sempre reajuste 02 → 05/06 na mesma sessão.
+5. **`random_projection.pkl` é sobrescrito a cada execução de 02** (um por dataset). `run_experiments.py` termina em N=1000, então projetor e classificadores ficam coerentes; se rodar 02 com outro N, rode 05/06 de novo.
 6. **`models/*.pkl` está no `.gitignore`**, mas alguns `.pkl` já foram commitados antes da regra.
-7. **`01_kmer_matrix.py` só lê `data/raw/` + `data/raw_negativos/` (TCC I).** Para o TCC II será preciso apontá-lo para os diretórios v2. `00_fetch_negatives.py` (Igor) ainda escreve em `data/raw_negativos/` — rodá-lo de novo volta a misturar com o TCC I; os 376 arquivos dele foram movidos para `data/raw_negativos_igor/`.
+7. **`00_fetch_negatives.py` (Igor) ainda escreve em `data/raw_negativos/`** — rodá-lo de novo volta a misturar com o TCC I; os 376 arquivos dele foram movidos para `data/raw_negativos_igor/`.
 8. **CLAUDE.md está no `.gitignore`** (commit `d45db7d`). Ele e outros arquivos não versionados já se perderam uma vez — faça backup ou versione o que importa.
+9. **`06_train_final.py` ignorava o fine tuning (corrigido em 2026-10-20).** Treinava com hiperparâmetros fixos (LR C=1, kNN k=5…) e salvava com o mesmo nome do modelo ajustado do 05, sobrescrevendo-o. Agora lê `best_params` de `results_{modelo}_n{N}.json`. Os números publicados no TCC I vieram dos modelos ajustados (o sandbox reproduziu RUNX3 67,6% LR / 90,3% SVM exatos).
+10. **Teste cego: rodar uma vez.** `08_blind_test.py` recusa sobrescrever `reports/v2/teste_cego_{modelo}.json` sem `--force`. Escolha de modelo e hiperparâmetros só pela CV.
 
 ---
 
@@ -176,7 +185,8 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 
 1. ~~Reorganizar e amostrar negativas~~ — feito (ver acima).
 2. **INS na comparação com o TCC I:** INS era a "negativa treinada" da validação externa, mas os critérios v2 a excluem dos negativos — na v2 ela vira negativa não treinada. Decidir se força a inclusão ou se reporta a mudança.
-3. **CV agrupada por gene** (§4.1) antes do fine tuning.
+3. ~~CV agrupada por gene~~ — decidido manter `StratifiedKFold` (§4.1).
+7. **Pipeline pronta para o TCC II (2026-10-20), ainda não rodada com os dados reais:** `bash run_preparation.sh tcc2` → `run_experiments.py --dataset tcc2` → escolher modelo pela CV → `06 --dataset tcc2` → `run_predictions.py --dataset tcc2` → `08_blind_test.py` uma vez.
 4. **Homólogos byte-idênticos em `raw_v2`:** 7 grupos (CFL1 ×4, FASLG ×3, PSMA6 ×3, UBE2L3 ×3, IL4/KLRK1/PTEN ×2). Inofensivos com CV agrupada por gene; deduplicar se a CV não for agrupada.
 5. **Erros herdados no TCC I (`data/raw/`, congelado):** `PRDX5.fasta` tem `P83200` (fragmento de 16 aa com X); `NOS2.fasta` tem 2 seqs de NANOS2, `PRDX5.fasta` tem Prdx6, `FBXL19.fasta` tem FBXL19-AS1; `TNIP1.fasta` tem uma vírgula solta; `data/raw_negativos/HBB_housekeeping_facil.fasta` contém X/Z/B. Vale nota de limitação no documento.
 6. **`PTPN22` não é "negativa não treinada".** O TCC I descreve assim a PTPN22 de `data/input/`, mas `PTPN22_Artrite_Reumatoide.fasta` está nos negativos de treino desde o commit `cc6a498`. Conferir a seq e corrigir o texto ou o arquivo.

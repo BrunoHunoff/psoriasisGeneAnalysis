@@ -2,14 +2,21 @@
 Módulo 02 — Random Projection e geração dos vetores finais.
 
 Para cada sequência individual:
-  1. Empilha todas as matrizes k-mer em matriz global
+  1. Empilha todas as matrizes k-mer em matriz global (esparsa)
   2. Aplica GaussianRandomProjection (eixos aleatórios, sem viés dos dados)
   3. Reagrupa linhas por sequência e aplica mean pooling → vetor (N,)
 
-Saídas principais para classificação:
-  data/processed/X.npy          — (n_seq, N_COMPONENTS) uma linha por sequência
-  data/processed/y.npy          — (n_seq,) labels 1/0
-  data/processed/metadata.json  — mapeamento índice→{key, seq_id, protein, label}
+A projeção gaussiana depende só do número de colunas (8.000) e do RANDOM_STATE, então a
+matriz esparsa produz exatamente os mesmos vetores que a versão densa usada no TCC I.
+
+Saídas principais para classificação ({proc_dir} conforme o dataset, ver common.DATASETS):
+  {proc_dir}/X.npy          — (n_seq, N_COMPONENTS) uma linha por sequência
+  {proc_dir}/y.npy          — (n_seq,) labels 1/0
+  {proc_dir}/metadata.json  — mapeamento índice→{key, seq_id, protein, label}
+  {models_dir}/random_projection.pkl
+
+Uso:
+    python src/02_project_random.py --dataset tcc2 --n-components 1000
 """
 
 import os
@@ -20,7 +27,10 @@ import logging
 import argparse
 import numpy as np
 
+from scipy import sparse
 from sklearn.random_projection import GaussianRandomProjection
+
+from common import add_dataset_arg, dataset_paths, projector_path
 
 logging.basicConfig(
     level=logging.INFO,
@@ -29,18 +39,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-PROC_DIR        = "data/processed"
-MATRICES_DIR    = os.path.join(PROC_DIR, "matrices")
-VECTORS_DIR     = os.path.join(PROC_DIR, "vectors")
-MODELS_DIR      = "models"
-REGISTRY_PATH   = os.path.join(PROC_DIR, "sequence_registry.json")
-MODEL_PATH      = os.path.join(MODELS_DIR, "random_projection.pkl")
-SUMMARY_PATH    = os.path.join(PROC_DIR, "random_summary.json")
-X_PATH          = os.path.join(PROC_DIR, "X.npy")
-Y_PATH          = os.path.join(PROC_DIR, "y.npy")
-METADATA_PATH   = os.path.join(PROC_DIR, "metadata.json")
-
-N_COMPONENTS = 500
+N_COMPONENTS = 1000   # configuração final do TCC I
 RANDOM_STATE = 42
 
 
@@ -53,7 +52,7 @@ def load_registry(path: str) -> list[dict]:
         return json.load(f)
 
 
-def load_global_matrix(registry: list[dict], matrices_dir: str) -> np.ndarray:
+def load_global_matrix(registry: list[dict], matrices_dir: str) -> sparse.csr_matrix:
     """
     Carrega as matrizes individuais na ordem do registry e empilha em matriz global.
 
@@ -61,17 +60,18 @@ def load_global_matrix(registry: list[dict], matrices_dir: str) -> np.ndarray:
     """
     blocks = []
     for entry in registry:
-        path = os.path.join(matrices_dir, f"{entry['key']}_matrix.npy")
+        path = os.path.join(matrices_dir, f"{entry['key']}_matrix.npz")
         if not os.path.exists(path):
-            log.error("Matriz não encontrada: %s", path)
+            log.error("Matriz não encontrada: %s — rode 01_kmer_matrix.py com o mesmo --dataset.", path)
             sys.exit(1)
-        blocks.append(np.load(path))
-    return np.vstack(blocks)
+        blocks.append(sparse.load_npz(path))
+    return sparse.vstack(blocks, format="csr")
 
 
 def parse_args() -> argparse.Namespace:
     """Parseia argumentos de linha de comando."""
     parser = argparse.ArgumentParser()
+    add_dataset_arg(parser)
     parser.add_argument(
         "--n-components",
         type=int,
@@ -84,27 +84,38 @@ def parse_args() -> argparse.Namespace:
 def main():
     args = parse_args()
     n_components = args.n_components
+    paths = dataset_paths(args.dataset)
+    proc_dir, models_dir = paths["proc_dir"], paths["models_dir"]
+    matrices_dir  = os.path.join(proc_dir, "matrices")
+    vectors_dir   = os.path.join(proc_dir, "vectors")
+    registry_path = os.path.join(proc_dir, "sequence_registry.json")
+    model_path    = projector_path(models_dir)
+    summary_path  = os.path.join(proc_dir, "random_summary.json")
+    x_path        = os.path.join(proc_dir, "X.npy")
+    y_path        = os.path.join(proc_dir, "y.npy")
+    metadata_path = os.path.join(proc_dir, "metadata.json")
+    log.info("Dataset: %s", args.dataset)
 
-    for d in (VECTORS_DIR, MODELS_DIR):
+    for d in (vectors_dir, models_dir):
         os.makedirs(d, exist_ok=True)
 
-    registry = load_registry(REGISTRY_PATH)
+    registry = load_registry(registry_path)
     n_seq = len(registry)
     log.info("Registry carregado: %d sequências", n_seq)
 
-    X_global = load_global_matrix(registry, MATRICES_DIR)
+    X_global = load_global_matrix(registry, matrices_dir)
     total_windows, n_features = X_global.shape
-    log.info("Matriz global empilhada: %s  (%.1f MB)",
-             X_global.shape, X_global.nbytes / 1e6)
+    log.info("Matriz global empilhada: %s  (esparsa, %d valores não nulos)",
+             X_global.shape, X_global.nnz)
 
     log.info("N componentes: %d", n_components)
     transformer = GaussianRandomProjection(n_components=n_components, random_state=RANDOM_STATE)
-    X_projected = transformer.fit_transform(X_global)
+    X_projected = np.asarray(transformer.fit_transform(X_global))
     log.info("Projeção concluída: %s", X_projected.shape)
 
-    with open(MODEL_PATH, "wb") as f:
+    with open(model_path, "wb") as f:
         pickle.dump(transformer, f)
-    log.info("Modelo salvo: %s", MODEL_PATH)
+    log.info("Modelo salvo: %s", model_path)
 
     # Mean pooling por sequência
     X = np.zeros((n_seq, n_components), dtype=np.float32)
@@ -127,7 +138,7 @@ def main():
             "source_file": entry["source_file"],
         }
 
-        vec_path = os.path.join(VECTORS_DIR, f"{entry['key']}_vector.npy")
+        vec_path = os.path.join(vectors_dir, f"{entry['key']}_vector.npy")
         np.save(vec_path, vector)
         start += n_rows
 
@@ -136,13 +147,14 @@ def main():
             i, entry["seq_id"][:40], entry["label"], n_rows, vector.shape,
         )
 
-    np.save(X_PATH, X)
-    np.save(Y_PATH, y)
-    with open(METADATA_PATH, "w") as f:
+    np.save(x_path, X)
+    np.save(y_path, y)
+    with open(metadata_path, "w") as f:
         json.dump(metadata, f, indent=2)
-    with open(SUMMARY_PATH, "w") as f:
+    with open(summary_path, "w") as f:
         json.dump({
             "method": "random_projection",
+            "dataset": args.dataset,
             "n_components": n_components,
             "random_state": RANDOM_STATE,
             "n_sequences": n_seq,
@@ -152,9 +164,9 @@ def main():
             "total_windows": total_windows,
         }, f, indent=2)
 
-    log.info("X salvo: %s  %s", X_PATH, X.shape)
-    log.info("y salvo: %s  (pos=%d, neg=%d)", Y_PATH, int(y.sum()), int((y == 0).sum()))
-    log.info("metadata salvo: %s", METADATA_PATH)
+    log.info("X salvo: %s  %s", x_path, X.shape)
+    log.info("y salvo: %s  (pos=%d, neg=%d)", y_path, int(y.sum()), int((y == 0).sum()))
+    log.info("metadata salvo: %s", metadata_path)
 
 
 if __name__ == "__main__":

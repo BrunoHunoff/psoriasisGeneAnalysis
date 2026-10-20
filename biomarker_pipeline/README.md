@@ -58,30 +58,41 @@ pip install -r requirements.txt
 
 ## Execução
 
+Todos os scripts recebem `--dataset tcc1` (dataset congelado do TCC I) ou `--dataset tcc2`
+(expansão Dand et al., 2025 — padrão). Cada dataset grava em diretórios próprios
+(`data/processed` / `models` / `reports` para tcc1; `data/processed_v2` / `models/v2` /
+`reports/v2` para tcc2), então um nunca sobrescreve o outro.
+
 ### Preparação (matrizes k-mer + projeção)
 
 ```bash
-bash run_preparation.sh              # Linux/macOS
-# .\run_preparation.ps1              # Windows
+bash run_preparation.sh tcc2         # Linux/macOS  (args: dataset, N — padrão tcc2 1000)
+# .\run_preparation.ps1 tcc2         # Windows
 ```
 
 ### Experimentos completos (4 valores de N × 6 modelos)
 
 ```bash
-python src/run_experiments.py
+python src/run_experiments.py --dataset tcc2
 ```
 
-### Treino final e predição de uma proteína nova
+### Treino final (hiperparâmetros vencedores do GridSearchCV) e predição de uma proteína nova
 
 ```bash
-python src/06_train_final.py --model svm
-python src/07_predict.py --model svm --fasta data/input/sua_proteina.fasta
+python src/06_train_final.py --model svm --dataset tcc2
+python src/07_predict.py --model svm --dataset tcc2 --fasta data/input/sua_proteina.fasta
 ```
 
-### Validação externa em lote
+### Validação externa em lote (5 proteínas do TCC I)
 
 ```bash
-python src/run_predictions.py
+python src/run_predictions.py --dataset tcc2
+```
+
+### Teste cego do TCC II — rodar UMA vez, com o modelo final já escolhido
+
+```bash
+python src/08_blind_test.py --model all
 ```
 
 ---

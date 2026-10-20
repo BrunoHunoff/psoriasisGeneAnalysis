@@ -1,29 +1,23 @@
 """
 Script de predição em lote para proteínas de validação.
 
-Roda todos os modelos treinados nas proteínas de data/input/ e gera
-tabela no formato de validação em reports/tabelas_predicoes.tsv.
+Roda todos os modelos treinados nas proteínas de data/input/ (validação externa do
+TCC I) e gera tabela no formato de validação em {reports_dir}/tabelas_predicoes.tsv.
+No TCC II as mesmas 5 proteínas são repetidas para comparar com o TCC I.
 
 Uso:
-    python src/run_predictions.py
+    python src/run_predictions.py --dataset tcc2
 """
 
 import os
 import sys
 import pickle
-import itertools
-import numpy as np
+import argparse
 from datetime import date
 from Bio import SeqIO
 
-INPUT_DIR   = "data/input"
-MODELS_DIR  = "models"
-REPORTS_DIR = "reports"
-TSV_PATH    = os.path.join(REPORTS_DIR, "tabelas_predicoes.tsv")
-
-K            = 3
-AMINO        = "ACDEFGHIKLMNPQRSTVWY"
-N_COMPONENTS = 1000
+from common import (INPUT_DIR, add_dataset_arg, build_vocab, classifier_path, dataset_paths,
+                    projector_path, sequence_to_vector)
 
 MODELS = [
     ("logistic_regression", "LR"),
@@ -34,35 +28,29 @@ MODELS = [
     ("knn",                 "kNN"),
 ]
 
-# Metadados de cada proteína de validação: nome_arquivo → (nome, categoria, esperado)
+# Metadados de cada proteína de validação, por dataset: nome_arquivo → (nome, categoria, esperado)
 # esperado: 1 = POSITIVO, 0 = NEGATIVO
 PROTEIN_META = {
-    "INS_housekeeping_negativa_treinada":    ("INS",    "Negativa treinada",                    0),
-    "PTPN22_Artrite_Reumatoide":             ("PTPN22", "Negativa não treinada",                0),
-    "IL12B_Postivia_Treinada":               ("IL12B",  "Positiva treinada",                    1),
-    "CARD14_Postiva":                        ("CARD14", "Positiva não treinada — epitelial",     1),
-    "RUNX3_Positiva":                        ("RUNX3",  "Positiva não treinada — imune sistêmica", 1),
+    # Rótulos como publicados no TCC I (a PTPN22 humana estava, na verdade, nos negativos de treino)
+    "tcc1": {
+        "INS_housekeeping_negativa_treinada":    ("INS",    "Negativa treinada",                    0),
+        "PTPN22_Artrite_Reumatoide":             ("PTPN22", "Negativa não treinada",                0),
+        "IL12B_Postivia_Treinada":               ("IL12B",  "Positiva treinada",                    1),
+        "CARD14_Postiva":                        ("CARD14", "Positiva não treinada — epitelial",     1),
+        "RUNX3_Positiva":                        ("RUNX3",  "Positiva não treinada — imune sistêmica", 1),
+    },
+    # TCC II: INS e PTPN22 foram excluídas dos negativos pelos critérios v2; RUNX3 e CARD14
+    # reservadas fora do treino (00_build_gene_lists.TCC1_VALIDATION_HOLDOUT)
+    "tcc2": {
+        "INS_housekeeping_negativa_treinada":    ("INS",    "Negativa não treinada (excluída dos negativos v2)", 0),
+        "PTPN22_Artrite_Reumatoide":             ("PTPN22", "Negativa não treinada",                0),
+        "IL12B_Postivia_Treinada":               ("IL12B",  "Positiva treinada",                    1),
+        "CARD14_Postiva":                        ("CARD14", "Positiva não treinada — epitelial",     1),
+        "RUNX3_Positiva":                        ("RUNX3",  "Positiva não treinada — imune sistêmica", 1),
+    },
 }
 
 CONFIDENCE_THRESHOLD = 65.0  # abaixo disso → ~
-
-
-def build_vocab() -> dict:
-    vocab = ["".join(c) for c in itertools.product(AMINO, repeat=K)]
-    return {kmer: idx for idx, kmer in enumerate(vocab)}
-
-
-def sequence_to_vector(seq: str, vocab: dict, projector) -> np.ndarray | None:
-    n_windows = len(seq) - K + 1
-    if n_windows <= 0:
-        return None
-    n_vocab = len(vocab)
-    matrix = np.zeros((n_windows, n_vocab), dtype=np.float32)
-    for i in range(n_windows):
-        kmer = seq[i: i + K]
-        if kmer in vocab:
-            matrix[i, vocab[kmer]] = 1.0
-    return projector.transform(matrix).mean(axis=0).astype(np.float32)
 
 
 def fmt_result(pred: int, confidence: float, expected: int) -> str:
@@ -75,21 +63,28 @@ def fmt_result(pred: int, confidence: float, expected: int) -> str:
 
 
 def main():
-    os.makedirs(REPORTS_DIR, exist_ok=True)
+    parser = argparse.ArgumentParser()
+    add_dataset_arg(parser)
+    args = parser.parse_args()
+    paths = dataset_paths(args.dataset)
+    models_dir, reports_dir = paths["models_dir"], paths["reports_dir"]
+    tsv_path = os.path.join(reports_dir, "tabelas_predicoes.tsv")
+    os.makedirs(reports_dir, exist_ok=True)
 
-    proj_path = os.path.join(MODELS_DIR, "random_projection.pkl")
+    proj_path = projector_path(models_dir)
     if not os.path.exists(proj_path):
-        print(f"[ERRO] {proj_path} não encontrado. Rode 02_project_random.py primeiro.")
+        print(f"[ERRO] {proj_path} não encontrado. Rode 02_project_random.py --dataset {args.dataset} primeiro.")
         sys.exit(1)
     with open(proj_path, "rb") as f:
         projector = pickle.load(f)
-    print(f"Projector carregado: N={projector.n_components_} componentes")
+    n_components = projector.n_components_
+    print(f"Dataset {args.dataset} — projector carregado: N={n_components} componentes")
 
-    vocab = build_vocab()
+    _, vocab = build_vocab()
 
     # carrega sequências
     sequences = []
-    for stem, meta in PROTEIN_META.items():
+    for stem, meta in PROTEIN_META[args.dataset].items():
         found = False
         for ext in (".fasta", ".fa"):
             path = os.path.join(INPUT_DIR, stem + ext)
@@ -109,7 +104,7 @@ def main():
     # carrega classificadores
     classifiers = {}
     for model_key, _ in MODELS:
-        clf_path = os.path.join(MODELS_DIR, f"classifier_{model_key}_n{N_COMPONENTS}.pkl")
+        clf_path = classifier_path(models_dir, model_key, n_components)
         if os.path.exists(clf_path):
             with open(clf_path, "rb") as f:
                 classifiers[model_key] = pickle.load(f)
@@ -162,7 +157,7 @@ def main():
     lines = []
     lines.append(
         f"Tabela — Validação dos classificadores em proteínas de teste "
-        f"(N={N_COMPONENTS} componentes, modelos treinados com GridSearchCV 10-fold CV)"
+        f"(dataset {args.dataset}, N={n_components} componentes, modelos treinados com GridSearchCV 10-fold CV)"
     )
     lines.append("")
 
@@ -184,10 +179,10 @@ def main():
     lines.append(f"Fonte: Elaborado pelos autores ({ano}).")
     lines.append(f"✓ = predição correta  |  ✗ = predição incorreta  |  ~ = correta mas confiança < {CONFIDENCE_THRESHOLD:.0f}%")
 
-    with open(TSV_PATH, "w", encoding="utf-8") as f:
+    with open(tsv_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    print(f"Tabela salva em: {TSV_PATH}")
+    print(f"Tabela salva em: {tsv_path}")
     print("Cole no Google Docs para formatar automaticamente.")
 
 

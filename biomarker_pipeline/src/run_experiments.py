@@ -2,17 +2,24 @@
 Script de orquestração — roda 02 + 05 para múltiplos tamanhos de vetor e modelos.
 
 Uso:
-    python src/run_experiments.py
+    python src/run_experiments.py --dataset tcc2
 
-Salva resultados em reports/results_{model}_n{N}.json e gera tabelas
-em reports/tabelas_resultados.tsv (copiar e colar no Google Docs).
+Salva resultados em {reports_dir}/results_{model}_n{N}.json e gera tabelas
+em {reports_dir}/tabelas_resultados.tsv (copiar e colar no Google Docs).
+reports_dir = reports/ (tcc1) ou reports/v2/ (tcc2) — ver common.DATASETS.
+
+O último N de N_VALUES (1000) é o que fica salvo em random_projection.pkl e nos
+classificadores — é a configuração usada por 06/07/08.
 """
 
 import os
 import sys
 import json
+import argparse
 import subprocess
 from datetime import date
+
+from common import add_dataset_arg, dataset_paths
 
 MODELS = [
     "logistic_regression",
@@ -42,18 +49,16 @@ METRIC_LABELS = {
     "mcc":         "MCC",
 }
 
-N_VALUES    = [300, 400, 500, 1000]
-REPORTS_DIR = "reports"
-TSV_PATH    = os.path.join(REPORTS_DIR, "tabelas_resultados.tsv")
+N_VALUES    = [300, 400, 500, 1000]   # manter 1000 por último (configuração final)
 
 
 def run(cmd: list[str]) -> int:
     return subprocess.run(cmd).returncode
 
 
-def save_result(model: str, n: int) -> dict | None:
-    src = os.path.join(REPORTS_DIR, f"results_{model}.json")
-    dst = os.path.join(REPORTS_DIR, f"results_{model}_n{n}.json")
+def save_result(reports_dir: str, model: str, n: int) -> dict | None:
+    src = os.path.join(reports_dir, f"results_{model}.json")
+    dst = os.path.join(reports_dir, f"results_{model}_n{n}.json")
     if not os.path.exists(src):
         return None
     with open(src) as f:
@@ -64,8 +69,8 @@ def save_result(model: str, n: int) -> dict | None:
     return data.get("metrics")
 
 
-def load_result(model: str, n: int) -> dict | None:
-    path = os.path.join(REPORTS_DIR, f"results_{model}_n{n}.json")
+def load_result(reports_dir: str, model: str, n: int) -> dict | None:
+    path = os.path.join(reports_dir, f"results_{model}_n{n}.json")
     if not os.path.exists(path):
         return None
     with open(path) as f:
@@ -76,7 +81,7 @@ def fmt(mean: float, std: float) -> str:
     return f"{mean*100:.1f}% ± {std*100:.1f}%"
 
 
-def build_tsv(results: dict) -> str:
+def build_tsv(results: dict, dataset: str) -> str:
     lines = []
     ano = date.today().year
     table_num = 0
@@ -85,7 +90,7 @@ def build_tsv(results: dict) -> str:
         table_num += 1
         lines.append(
             f"Tabela {table_num} — Desempenho dos classificadores com N={n} componentes "
-            f"(média ± desvio padrão, {10}-fold cross-validation com GridSearchCV)"
+            f"(dataset {dataset}; média ± desvio padrão, {10}-fold cross-validation com GridSearchCV)"
         )
         lines.append("")
 
@@ -139,38 +144,44 @@ def print_terminal(results: dict) -> None:
 
 
 def main():
-    os.makedirs(REPORTS_DIR, exist_ok=True)
+    parser = argparse.ArgumentParser()
+    add_dataset_arg(parser)
+    args = parser.parse_args()
+    reports_dir = dataset_paths(args.dataset)["reports_dir"]
+    tsv_path = os.path.join(reports_dir, "tabelas_resultados.tsv")
+    os.makedirs(reports_dir, exist_ok=True)
     results = {}
+    dataset_arg = ["--dataset", args.dataset]
 
     for n in N_VALUES:
         print(f"\n{'#'*60}")
         print(f"# Gerando vetores N={n}")
         print(f"{'#'*60}")
-        rc = run([sys.executable, "src/02_project_random.py", "--n-components", str(n)])
+        rc = run([sys.executable, "src/02_project_random.py", "--n-components", str(n)] + dataset_arg)
         if rc != 0:
             print(f"[ERRO] 02_project_random.py falhou para N={n}.")
             sys.exit(1)
 
         for model in MODELS:
             print(f"\n  → {model}  (N={n})")
-            rc = run([sys.executable, "src/05_train_evaluate.py", "--model", model])
+            rc = run([sys.executable, "src/05_train_evaluate.py", "--model", model] + dataset_arg)
             if rc != 0:
                 print(f"  [ERRO] {model} falhou para N={n}.")
                 continue
-            metrics = save_result(model, n)
+            metrics = save_result(reports_dir, model, n)
             if metrics:
                 results[(n, model)] = metrics
 
     print_terminal(results)
 
-    tsv = build_tsv(results)
-    with open(TSV_PATH, "w", encoding="utf-8") as f:
+    tsv = build_tsv(results, args.dataset)
+    with open(tsv_path, "w", encoding="utf-8") as f:
         f.write(tsv)
 
     print(f"\n{'='*60}")
-    print(f"  Tabelas salvas em: {TSV_PATH}")
+    print(f"  Tabelas salvas em: {tsv_path}")
     print(f"  Para usar no Google Docs:")
-    print(f"    1. Abra o arquivo {TSV_PATH}")
+    print(f"    1. Abra o arquivo {tsv_path}")
     print(f"    2. Selecione todo o conteúdo de uma tabela")
     print(f"    3. Cole no Google Docs — ele cria a tabela automaticamente")
     print(f"{'='*60}")

@@ -1,25 +1,31 @@
 """
 Módulo 01 — Geração das matrizes posicionais k-mer.
 
-Lê sequências de duas fontes com labels distintos:
-  - data/raw/          → positivos (label=1): biomarcadores da psoríase
-  - data/raw_negativos/ → negativos (label=0): housekeeping / não ligados
+Lê sequências de duas fontes com labels distintos (diretórios em common.DATASETS):
+  - tcc1: data/raw/    → positivos (label=1) | data/raw_negativos/    → negativos (label=0)
+  - tcc2: data/raw_v2/ → positivos (label=1) | data/raw_negativos_v2/ → negativos (label=0)
 
-Cada sequência individual gera uma matriz one-hot (L-2, 8000) salva em
-data/processed/matrices/{key}_matrix.npy, onde key = {stem}_{idx:03d}.
+Cada sequência individual gera uma matriz one-hot (L-2, 8000), salva em formato esparso
+em {proc_dir}/matrices/{key}_matrix.npz, onde key = {stem}_{idx:03d}.
 
 Salva sequence_registry.json com metadados de todas as sequências,
 incluindo chave, label, arquivo de origem e shape da matriz.
+
+Uso:
+    python src/01_kmer_matrix.py --dataset tcc2
 """
 
 import os
 import sys
 import json
 import logging
-import itertools
-import numpy as np
+import argparse
 
 from Bio import SeqIO
+from scipy import sparse
+
+from common import (AMINO, FASTA_EXTS, K, add_dataset_arg, build_vocab, dataset_paths,
+                    sequence_to_onehot_matrix)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,45 +34,8 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-RAW_POS_DIR   = "data/raw"
-RAW_NEG_DIR   = "data/raw_negativos"
-PROC_DIR      = "data/processed"
-MATRICES_DIR  = os.path.join(PROC_DIR, "matrices")
-VOCAB_PATH    = os.path.join(PROC_DIR, "kmer_vocab.json")
-REGISTRY_PATH = os.path.join(PROC_DIR, "sequence_registry.json")
-
-K          = 3
-AMINO      = "ACDEFGHIKLMNPQRSTVWY"
-FASTA_EXTS = (".fasta", ".fa")
-
 LABEL_POSITIVE = 1
 LABEL_NEGATIVE = 0
-
-
-def build_vocab(amino: str, k: int) -> tuple[list[str], dict[str, int]]:
-    """Gera todas as combinações de k aminoácidos. Retorna (lista, mapa kmer→índice)."""
-    vocab = ["".join(c) for c in itertools.product(amino, repeat=k)]
-    return vocab, {kmer: idx for idx, kmer in enumerate(vocab)}
-
-
-def sequence_to_onehot_matrix(seq: str, vocab_index: dict[str, int], k: int) -> np.ndarray:
-    """
-    Constrói matriz posicional one-hot (L-k+1, |vocab|) para uma sequência.
-
-    Cada linha i = 1 na coluna do k-mer na posição i, 0 nas demais.
-    K-mers com caracteres fora do vocabulário resultam em linha de zeros.
-    """
-    n_vocab = len(vocab_index)
-    n_windows = len(seq) - k + 1
-    if n_windows <= 0:
-        raise ValueError(f"Sequência curta demais para k={k}: len={len(seq)}")
-
-    matrix = np.zeros((n_windows, n_vocab), dtype=np.float32)
-    for i in range(n_windows):
-        kmer = seq[i : i + k]
-        if kmer in vocab_index:
-            matrix[i, vocab_index[kmer]] = 1.0
-    return matrix
 
 
 def load_fasta_dir(directory: str, label: int) -> list[dict]:
@@ -107,19 +76,29 @@ def load_fasta_dir(directory: str, label: int) -> list[dict]:
 
 
 def main():
-    os.makedirs(MATRICES_DIR, exist_ok=True)
+    parser = argparse.ArgumentParser()
+    add_dataset_arg(parser)
+    args = parser.parse_args()
+    paths = dataset_paths(args.dataset)
+    raw_pos_dir, raw_neg_dir = paths["pos_dir"], paths["neg_dir"]
+    matrices_dir  = os.path.join(paths["proc_dir"], "matrices")
+    vocab_path    = os.path.join(paths["proc_dir"], "kmer_vocab.json")
+    registry_path = os.path.join(paths["proc_dir"], "sequence_registry.json")
+    log.info("Dataset: %s", args.dataset)
+
+    os.makedirs(matrices_dir, exist_ok=True)
 
     vocab_list, vocab_index = build_vocab(AMINO, K)
     vocab_for_json = {str(idx): kmer for idx, kmer in enumerate(vocab_list)}
-    with open(VOCAB_PATH, "w") as f:
+    with open(vocab_path, "w") as f:
         json.dump(vocab_for_json, f)
-    log.info("Vocabulário salvo: %s (%d k-mers)", VOCAB_PATH, len(vocab_list))
+    log.info("Vocabulário salvo: %s (%d k-mers)", vocab_path, len(vocab_list))
 
-    log.info("Carregando positivos de '%s'...", RAW_POS_DIR)
-    pos_records = load_fasta_dir(RAW_POS_DIR, LABEL_POSITIVE)
+    log.info("Carregando positivos de '%s'...", raw_pos_dir)
+    pos_records = load_fasta_dir(raw_pos_dir, LABEL_POSITIVE)
 
-    log.info("Carregando negativos de '%s'...", RAW_NEG_DIR)
-    neg_records = load_fasta_dir(RAW_NEG_DIR, LABEL_NEGATIVE)
+    log.info("Carregando negativos de '%s'...", raw_neg_dir)
+    neg_records = load_fasta_dir(raw_neg_dir, LABEL_NEGATIVE)
 
     all_records = pos_records + neg_records
     log.info(
@@ -139,8 +118,8 @@ def main():
             log.warning("Sequência ignorada (%s): %s", key, e)
             continue
 
-        out_path = os.path.join(MATRICES_DIR, f"{key}_matrix.npy")
-        np.save(out_path, matrix)
+        out_path = os.path.join(matrices_dir, f"{key}_matrix.npz")
+        sparse.save_npz(out_path, matrix)
         total_windows += matrix.shape[0]
 
         registry.append({
@@ -156,12 +135,12 @@ def main():
             rec["seq_id"][:40], rec["label"], len(seq), matrix.shape,
         )
 
-    with open(REGISTRY_PATH, "w") as f:
+    with open(registry_path, "w") as f:
         json.dump(registry, f, indent=2)
 
     n_pos = sum(1 for r in registry if r["label"] == LABEL_POSITIVE)
     n_neg = sum(1 for r in registry if r["label"] == LABEL_NEGATIVE)
-    log.info("Registry salvo: %s", REGISTRY_PATH)
+    log.info("Registry salvo: %s", registry_path)
     log.info("Sequências processadas : %d  (pos=%d, neg=%d)", len(registry), n_pos, n_neg)
     log.info("Total de janelas k-mer : %d", total_windows)
 

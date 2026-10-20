@@ -76,6 +76,10 @@ cd biomarker_pipeline
 
 Gera as matrizes k-mer e os vetores de 1000 componentes para todas as sequências.
 
+Por padrão os scripts usam o dataset do TCC II (`--dataset tcc2`). Para reproduzir o TCC I,
+rode `bash run_preparation.sh tcc1` e passe `--dataset tcc1` aos demais scripts — detalhes em
+`biomarker_pipeline/README.md`.
+
 ### 2. Avaliar os modelos (cross-validation)
 
 ```bash

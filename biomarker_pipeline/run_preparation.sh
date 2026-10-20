@@ -1,6 +1,9 @@
 #!/bin/bash
+# Uso: bash run_preparation.sh [tcc1|tcc2] [N]     (padrão: tcc2 1000)
 set -e
-echo "=== Pipeline de preparação — Random Projection ==="
+DATASET="${1:-tcc2}"
+N="${2:-1000}"
+echo "=== Pipeline de preparação — Random Projection (dataset ${DATASET}, N=${N}) ==="
 
 # Ativa o venv se existir
 if [ -f ".venv/bin/activate" ]; then
@@ -10,16 +13,17 @@ elif [ -f "venv/bin/activate" ]; then
 fi
 
 echo "[1/2] Gerando matrizes posicionais k-mer..."
-python src/01_kmer_matrix.py
+python src/01_kmer_matrix.py --dataset "${DATASET}"
 
 echo "[2/2] Projeção Random + vetores finais..."
-python src/02_project_random.py
+python src/02_project_random.py --dataset "${DATASET}" --n-components "${N}"
 
+if [ "${DATASET}" = "tcc1" ]; then PROC="data/processed"; MODELS="models"; else PROC="data/processed_v2"; MODELS="models/v2"; fi
 echo ""
 echo "=== Preparação concluída ==="
 echo "Arrays para classificação:"
-echo "  data/processed/X.npy        — (n_seq, 500)"
-echo "  data/processed/y.npy        — (n_seq,) labels 1/0"
-echo "  data/processed/metadata.json"
-echo "Vetores individuais: data/processed/vectors/"
-echo "Modelo:              models/random_projection.pkl"
+echo "  ${PROC}/X.npy        — (n_seq, ${N})"
+echo "  ${PROC}/y.npy        — (n_seq,) labels 1/0"
+echo "  ${PROC}/metadata.json"
+echo "Vetores individuais: ${PROC}/vectors/"
+echo "Modelo:              ${MODELS}/random_projection.pkl"
