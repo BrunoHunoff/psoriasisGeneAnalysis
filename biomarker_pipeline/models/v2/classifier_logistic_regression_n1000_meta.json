@@ -1,0 +1,13 @@
+{
+  "model": "logistic_regression",
+  "dataset": "tcc2",
+  "n_components": 1000,
+  "best_params": {
+    "model__C": 0.1
+  },
+  "n_train": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "classifier_path": "models/v2/classifier_logistic_regression_n1000.pkl",
+  "projector_path": "models/v2/random_projection.pkl"
+}

@@ -25,3 +25,6 @@ __pycache__/
 
 # Claude
 CLAUDE.md
+# Cópia genérica do último N gravada pelo 05 (a versão com _n{N} é a que vale)
+reports/**/results_*.json
+!reports/**/results_*_n[0-9]*.json

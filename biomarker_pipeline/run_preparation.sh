@@ -5,11 +5,11 @@ DATASET="${1:-tcc2}"
 N="${2:-1000}"
 echo "=== Pipeline de preparação — Random Projection (dataset ${DATASET}, N=${N}) ==="
 
-# Ativa o venv se existir
-if [ -f ".venv/bin/activate" ]; then
-    source .venv/bin/activate
-elif [ -f "venv/bin/activate" ]; then
+# Ativa o venv do projeto (venv/, o do requirements.txt) se existir; .venv/ só como alternativa
+if [ -f "venv/bin/activate" ]; then
     source venv/bin/activate
+elif [ -f ".venv/bin/activate" ]; then
+    source .venv/bin/activate
 fi
 
 echo "[1/2] Gerando matrizes posicionais k-mer..."

@@ -1,0 +1,14 @@
+{
+  "model": "random_forest",
+  "dataset": "tcc2",
+  "n_components": 1000,
+  "best_params": {
+    "max_depth": null,
+    "n_estimators": 200
+  },
+  "n_train": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "classifier_path": "models/v2/classifier_random_forest_n1000.pkl",
+  "projector_path": "models/v2/random_projection.pkl"
+}

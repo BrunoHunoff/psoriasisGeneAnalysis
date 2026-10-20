@@ -7,7 +7,7 @@ Set-Location -Path $PSScriptRoot
 
 Write-Host "=== Pipeline de preparação — Random Projection (dataset $Dataset, N=$N) ==="
 
-# Define o Python a usar: venv do projeto se existir, senão o python do PATH
+# Define o Python a usar: venv do projeto (venv/) se existir, senão .venv/, senão o python do PATH
 if (Test-Path ".\venv\Scripts\python.exe") {
     $py = ".\venv\Scripts\python.exe"
 } elseif (Test-Path ".\.venv\Scripts\python.exe") {

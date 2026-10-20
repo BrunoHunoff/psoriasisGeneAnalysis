@@ -186,10 +186,28 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 1. ~~Reorganizar e amostrar negativas~~ — feito (ver acima).
 2. **INS na comparação com o TCC I:** INS era a "negativa treinada" da validação externa, mas os critérios v2 a excluem dos negativos — na v2 ela vira negativa não treinada. Decidir se força a inclusão ou se reporta a mudança.
 3. ~~CV agrupada por gene~~ — decidido manter `StratifiedKFold` (§4.1).
-7. **Pipeline pronta para o TCC II (2026-10-20), ainda não rodada com os dados reais:** `bash run_preparation.sh tcc2` → `run_experiments.py --dataset tcc2` → escolher modelo pela CV → `06 --dataset tcc2` → `run_predictions.py --dataset tcc2` → `08_blind_test.py` uma vez.
+7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados). Falta: `bash run_preparation.sh tcc2` → `run_experiments.py --dataset tcc2` → escolher modelo pela CV → `06 --dataset tcc2` → `run_predictions.py --dataset tcc2` → `08_blind_test.py` uma vez.
 4. **Homólogos byte-idênticos em `raw_v2`:** 7 grupos (CFL1 ×4, FASLG ×3, PSMA6 ×3, UBE2L3 ×3, IL4/KLRK1/PTEN ×2). Inofensivos com CV agrupada por gene; deduplicar se a CV não for agrupada.
 5. **Erros herdados no TCC I (`data/raw/`, congelado):** `PRDX5.fasta` tem `P83200` (fragmento de 16 aa com X); `NOS2.fasta` tem 2 seqs de NANOS2, `PRDX5.fasta` tem Prdx6, `FBXL19.fasta` tem FBXL19-AS1; `TNIP1.fasta` tem uma vírgula solta; `data/raw_negativos/HBB_housekeeping_facil.fasta` contém X/Z/B. Vale nota de limitação no documento.
 6. **`PTPN22` não é "negativa não treinada".** O TCC I descreve assim a PTPN22 de `data/input/`, mas `PTPN22_Artrite_Reumatoide.fasta` está nos negativos de treino desde o commit `cc6a498`. Conferir a seq e corrigir o texto ou o arquivo.
+
+### Resultados TCC II — linha de base (2026-10-20, mesmos grids do TCC I)
+
+632 seqs (316/316), N ∈ {300,400,500,1000} × 6 modelos, 10-fold `StratifiedKFold`. Arquivos em `reports/v2/`.
+
+| N=1000 | ROC-AUC v2 | (TCC I) | MCC v2 | (TCC I) | Melhores parâmetros |
+|---|---|---|---|---|---|
+| SVM | 99,6 ± 0,3 | 99,4 | 93,1 | 90,7 | C=10, gamma=scale |
+| Regressão Logística | 98,4 ± 1,2 | 99,8 | 85,7 | 95,0 | C=0,1 |
+| Gradient Boosting | 97,8 ± 1,5 | 95,5 | 82,1 | 74,9 | lr=0,2, 200 estágios |
+| Random Forest | 97,7 ± 1,0 | 99,3 | 83,2 | 90,6 | 200 árvores, profundidade livre |
+| kNN | 94,3 ± 1,7 | 89,5 | 68,7 | 67,5 | k=3 |
+| Naive Bayes | 90,7 ± 2,8 | 78,1 | 64,7 | 47,0 | var_smoothing=1e-9 |
+
+- SVM passa a ser o melhor; LR e RF caem (negativas mais difíceis); NB e kNN melhoram. kNN inverteu o perfil: agora especificidade alta (97%) e sensibilidade baixa (68%). N=1000 continua o melhor N para quase todos.
+- **Vários vencedores na borda do grid** (SVM C=10, RF/GB 200, GB lr=0,2, NB 1e-9, kNN k=3) → é aí que o fine tuning deve ampliar.
+- **Validação externa (5 proteínas, `reports/v2/tabelas_predicoes.tsv`) piorou nas negativas:** INS e PTPN22, agora realmente fora do treino, são chamadas de positivas por LR/SVM/RF/GB. No TCC I as duas estavam no treino (INS declarada; PTPN22 por engano, ver Pendências 6), então o acerto de antes era memorização. PTPN22 tem associação genética com psoríase no Open Targets (score 0,45) — foi por isso que os critérios v2 a excluíram das negativas; o rótulo "negativa" dela é discutível. RUNX3 passou a errar em LR/SVM; CARD14 acerta em LR (68%). n=5: anedótico — o teste cego é a medida de verdade.
+- Contraste CV alta × proteínas não vistas erradas é coerente com a CV medir reconhecimento de homólogos (§4.1).
 
 ### Arquivos perdidos em 2026-10-10
 
