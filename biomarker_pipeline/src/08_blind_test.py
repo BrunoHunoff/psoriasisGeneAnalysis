@@ -6,28 +6,34 @@ da escolha de hiperparâmetros:
   - positivos: genes dos loci "Newly reported" de Dand et al. (2025) — data/teste_cego_v2/
   - negativos: genes sorteados à parte por 00_sample_negatives.py — data/teste_cego_negativos_v2/
 
-⚠️ RODE UMA ÚNICA VEZ, depois de escolher o modelo final pela validação cruzada.
-Se o resultado for usado para voltar e ajustar o modelo, o teste deixa de ser cego.
-Por isso o script recusa sobrescrever um resultado existente sem --force.
+⚠️ RODE UMA ÚNICA VEZ POR ETAPA (--tag), depois de escolher o modelo pela validação cruzada:
+  antes  — modelos escolhidos pela CV com os grids da linha de base
+  depois — modelos após o fine tuning (grids ampliados)
+As grades do fine tuning e a regra de escolha do modelo principal precisam estar registradas
+por escrito ANTES do "antes"; se o resultado de uma etapa for usado para voltar e ajustar o
+modelo, o teste deixa de ser cego. Por isso o script recusa sobrescrever um resultado
+existente sem --force.
 
-A sequência é vetorizada com o MESMO projetor do treino (models/v2/random_projection.pkl).
+A sequência é vetorizada com a mesma representação e a mesma projeção do treino (refeita a
+partir de representação, N e seed — common.kmer_vectors); a representação do _meta.json do
+classificador precisa bater com a pedida.
 Métricas em dois níveis:
   - por sequência (cada homólogo conta)
   - por gene (média de P(positivo) entre os homólogos do gene) — a unidade biológica
 e quebradas por nível de evidência dos positivos (A/B/C/D, dand2025_validacao_ineditos.tsv)
 e por nível de dificuldade dos negativos (fácil/intermediário/difícil).
 
-Saídas (reports/v2/):
-  teste_cego_{modelo}.json   — métricas e predições por sequência e por gene
-  tabelas_teste_cego.tsv     — tabelas para o Google Docs (todos os modelos já avaliados)
+Saídas (reports/v2/, qualquer que seja a representação — ela fica registrada no JSON):
+  teste_cego_{tag}_{modelo}.json   — métricas e predições por sequência e por gene
+  tabelas_teste_cego_{tag}.tsv     — tabelas para o Google Docs (todos os modelos já avaliados na etapa)
 
-Pré-requisito:
+Pré-requisito (mesma representação e mesmo --n-components):
     python src/run_experiments.py --dataset tcc2
     python src/06_train_final.py --model <modelo> --dataset tcc2
 
 Uso:
-    python src/08_blind_test.py --model logistic_regression
-    python src/08_blind_test.py --model all
+    python src/08_blind_test.py --tag antes --model logistic_regression
+    python src/08_blind_test.py --tag antes --model all --k 4 --n-components 4000
 """
 
 import os
@@ -44,8 +50,8 @@ from Bio import SeqIO
 from sklearn.metrics import (accuracy_score, f1_score, matthews_corrcoef, precision_score,
                              recall_score, roc_auc_score)
 
-from common import (FASTA_EXTS, build_vocab, classifier_path, dataset_paths, projector_path,
-                    sequence_to_vector)
+from common import (FASTA_EXTS, add_representation_args, classifier_path, dataset_paths,
+                    patterns_from_args, rep_name, sequences_to_vectors, vector_dim)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -57,6 +63,7 @@ log = logging.getLogger(__name__)
 DATASET         = "tcc2"   # único dataset com conjunto de teste cego
 EVIDENCE_TSV    = "data/gene_lists/dand2025_validacao_ineditos.tsv"
 THRESHOLD       = 0.5
+TAGS            = ("antes", "depois")
 MODELS = {
     "logistic_regression": "Regressão Logística",
     "svm":                 "SVM",
@@ -88,11 +95,14 @@ NEG_LEVELS = {
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Teste cego do TCC II (rodar uma única vez).")
+    parser = argparse.ArgumentParser(description="Teste cego do TCC II (rodar uma única vez por etapa).")
     parser.add_argument("--model", required=True, choices=list(MODELS) + ["all"],
                         help="Modelo final a avaliar, ou 'all' para todos os treinados.")
+    parser.add_argument("--tag", required=True, choices=TAGS,
+                        help="Etapa: antes ou depois do fine tuning.")
     parser.add_argument("--force", action="store_true",
                         help="Sobrescreve um resultado de teste cego já existente.")
+    add_representation_args(parser)
     return parser.parse_args()
 
 
@@ -176,34 +186,46 @@ def pct(x: float) -> str:
     return f"{x*100:.1f}%".replace(".", ",")
 
 
-def build_tsv(results: dict) -> str:
+def config_label(r: dict) -> str:
+    n = f"N={r['n_components']}" if r.get("projecao", True) else f"sem projeção ({r['n_components']})"
+    return f"{r.get('representacao', 'k3')}, {n}"
+
+
+def build_tsv(results: dict, tag: str) -> str:
     ano = date.today().year
     fonte = f"Fonte: Elaborado pelos autores ({ano})."
+    configs = {config_label(r) for r in results.values()}
+    # Uma representação para todos os modelos → vai no título; senão, ao lado de cada modelo
+    suffix = f"; {configs.pop()}" if len(configs) == 1 else ""
+    label = {m: MODELS[m] + ("" if suffix else f" ({config_label(r)})") for m, r in results.items()}
     lines = []
     for unit, title in (("por_sequencia", "por sequência"), ("por_gene", "por gene (média entre homólogos)")):
         n = next(iter(results.values()))["metricas"][unit]["n"]
-        lines += [f"Tabela — Teste cego (loci inéditos de Dand et al., 2025), métricas {title}; n={n}", "",
+        lines += [f"Tabela — Teste cego {tag} do fine tuning (loci inéditos de Dand et al., 2025), "
+                  f"métricas {title}; n={n}{suffix}", "",
                   "\t".join(["Modelo"] + list(METRIC_LABELS.values()))]
         for model, r in results.items():
             m = r["metricas"][unit]
-            lines.append("\t".join([MODELS[model]] + [pct(m[k]) if k != "mcc" else f"{m[k]:.3f}".replace(".", ",")
-                                                     for k in METRIC_LABELS]))
+            lines.append("\t".join([label[model]] + [pct(m[k]) if k != "mcc" else f"{m[k]:.3f}".replace(".", ",")
+                                                    for k in METRIC_LABELS]))
         lines += [fonte, "", ""]
 
-    lines += ["Tabela — Teste cego: sensibilidade por nível de evidência do locus (por gene)", "",
+    lines += [f"Tabela — Teste cego {tag} do fine tuning: sensibilidade por nível de evidência do locus "
+              f"(por gene){suffix}", "",
               "\t".join(["Modelo"] + list(EVIDENCE_LEVELS.values()))]
     for model, r in results.items():
-        row = [MODELS[model]]
+        row = [label[model]]
         for lvl in EVIDENCE_LEVELS:
             d = r["sensibilidade_por_evidencia"].get(lvl)
             row.append(f"{d['acertos']}/{d['n_genes']} ({pct(d['taxa'])})" if d else "N/D")
         lines.append("\t".join(row))
     lines += [fonte, "", ""]
 
-    lines += ["Tabela — Teste cego: especificidade por nível de dificuldade do negativo (por gene)", "",
+    lines += [f"Tabela — Teste cego {tag} do fine tuning: especificidade por nível de dificuldade do "
+              f"negativo (por gene){suffix}", "",
               "\t".join(["Modelo"] + list(NEG_LEVELS.values()))]
     for model, r in results.items():
-        row = [MODELS[model]]
+        row = [label[model]]
         for lvl in NEG_LEVELS:
             d = r["especificidade_por_nivel"].get(lvl)
             row.append(f"{d['acertos']}/{d['n_genes']} ({pct(d['taxa'])})" if d else "N/D")
@@ -214,18 +236,13 @@ def build_tsv(results: dict) -> str:
 
 def main():
     args = parse_args()
-    paths = dataset_paths(DATASET)
-    models_dir, reports_dir = paths["models_dir"], paths["reports_dir"]
+    patterns = patterns_from_args(args)
+    rep = rep_name(patterns)
+    n_components = vector_dim(patterns, args.n_components)
+    paths = dataset_paths(DATASET, patterns)
+    models_dir = paths["models_dir"]
+    reports_dir = dataset_paths(DATASET)["reports_dir"]   # reports/v2/, para qualquer representação
     os.makedirs(reports_dir, exist_ok=True)
-
-    proj_path = projector_path(models_dir)
-    if not os.path.exists(proj_path):
-        log.error("%s não encontrado — rode run_experiments.py --dataset %s e 06_train_final.py antes.",
-                  proj_path, DATASET)
-        sys.exit(1)
-    with open(proj_path, "rb") as f:
-        projector = pickle.load(f)
-    n_components = projector.n_components_
 
     models = list(MODELS) if args.model == "all" else [args.model]
     classifiers, metas = {}, {}
@@ -234,40 +251,41 @@ def main():
         meta_path = clf_path.replace(".pkl", "_meta.json")
         if not os.path.exists(clf_path) or not os.path.exists(meta_path):
             msg = (f"Modelo final não encontrado: {clf_path} (+ _meta.json) — rode "
-                   f"06_train_final.py --model {model} --dataset {DATASET}")
+                   f"06_train_final.py --model {model} --dataset {DATASET} com a mesma representação "
+                   f"e o mesmo --n-components")
             if args.model == "all":
                 log.warning(msg + ". Pulando.")
                 continue
             log.error(msg)
             sys.exit(1)
-        out_json = os.path.join(reports_dir, f"teste_cego_{model}.json")
+        with open(meta_path) as f:
+            meta = json.load(f)
+        if meta.get("patterns", ["111"]) != list(patterns) or meta.get("n_components") != n_components:
+            log.error("%s foi treinado com %s, N=%s — não bate com %s, N=%d. Rode 06_train_final.py de novo.",
+                      meta_path, meta.get("representation", "k3"), meta.get("n_components"), rep, n_components)
+            sys.exit(1)
+        out_json = os.path.join(reports_dir, f"teste_cego_{args.tag}_{model}.json")
         if os.path.exists(out_json) and not args.force:
-            log.error("O teste cego de %s já foi rodado (%s). Rodar de novo só faz sentido se o modelo "
-                      "NÃO foi alterado com base nesse resultado; nesse caso use --force.", model, out_json)
+            log.error("O teste cego %s de %s já foi rodado (%s). Rodar de novo só faz sentido se o modelo "
+                      "NÃO foi alterado com base nesse resultado; nesse caso use --force.",
+                      args.tag, model, out_json)
             sys.exit(1)
         with open(clf_path, "rb") as f:
             classifiers[model] = pickle.load(f)
-        with open(meta_path) as f:
-            metas[model] = json.load(f)
+        metas[model] = meta
     if not classifiers:
-        log.error("Nenhum modelo final disponível para N=%d.", n_components)
+        log.error("Nenhum modelo final disponível para %s, N=%d.", rep, n_components)
         sys.exit(1)
 
     evidence = load_evidence_levels(EVIDENCE_TSV)
     records = load_blind_set(paths["blind_pos_dir"], paths["blind_neg_dir"], evidence)
-    _, vocab_index = build_vocab()
-    vectors, kept = [], []
-    for rec in records:
-        v = sequence_to_vector(rec["seq"], vocab_index, projector)
-        if v is None:
-            log.warning("Sequência curta demais, ignorada: %s", rec["seq_id"])
-            continue
-        vectors.append(v)
-        kept.append(rec)
-    X = np.vstack(vectors)
+    X, kept_idx = sequences_to_vectors([r["seq"] for r in records], patterns, args.n_components)
+    for i in sorted(set(range(len(records))) - set(kept_idx)):
+        log.warning("Sequência curta demais, ignorada: %s", records[i]["seq_id"])
+    kept = [records[i] for i in kept_idx]
     y = np.array([r["label"] for r in kept])
-    log.info("Teste cego: %d sequências (pos=%d, neg=%d), N=%d",
-             len(y), int(y.sum()), int((y == 0).sum()), n_components)
+    log.info("Teste cego %s: %d sequências (pos=%d, neg=%d), representação %s, N=%d",
+             args.tag, len(y), int(y.sum()), int((y == 0).sum()), rep, n_components)
 
     results = {}
     for model, clf in classifiers.items():
@@ -278,6 +296,10 @@ def main():
         result = {
             "modelo": model,
             "dataset": DATASET,
+            "etapa": args.tag,
+            "representacao": rep,
+            "padroes": list(patterns),
+            "projecao": bool(args.n_components),
             "n_components": n_components,
             "hiperparametros": metas[model].get("best_params"),
             "limiar": THRESHOLD,
@@ -292,7 +314,7 @@ def main():
             "sequencias": [{"seq_id": r["seq_id"], "gene": r["gene"], "label": r["label"],
                             "nivel": r["nivel"], "proba": float(p)} for r, p in zip(kept, proba)],
         }
-        with open(os.path.join(reports_dir, f"teste_cego_{model}.json"), "w") as f:
+        with open(os.path.join(reports_dir, f"teste_cego_{args.tag}_{model}.json"), "w") as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
         results[model] = result
         ms, mg = result["metricas"]["por_sequencia"], result["metricas"]["por_gene"]
@@ -300,17 +322,17 @@ def main():
                  model, ms["roc_auc"], ms["sensitivity"], ms["specificity"],
                  mg["roc_auc"], mg["sensitivity"], mg["specificity"])
 
-    # A tabela reúne todos os modelos já avaliados, não só os desta execução
+    # A tabela reúne todos os modelos já avaliados na etapa, não só os desta execução
     all_results = {}
     for model in MODELS:
-        path = os.path.join(reports_dir, f"teste_cego_{model}.json")
+        path = os.path.join(reports_dir, f"teste_cego_{args.tag}_{model}.json")
         if os.path.exists(path):
             with open(path) as f:
                 all_results[model] = json.load(f)
-    tsv_path = os.path.join(reports_dir, "tabelas_teste_cego.tsv")
+    tsv_path = os.path.join(reports_dir, f"tabelas_teste_cego_{args.tag}.tsv")
     with open(tsv_path, "w", encoding="utf-8") as f:
-        f.write(build_tsv(all_results))
-    log.info("Resultados: %s/teste_cego_{modelo}.json  |  Tabelas: %s", reports_dir, tsv_path)
+        f.write(build_tsv(all_results, args.tag))
+    log.info("Resultados: %s/teste_cego_%s_{modelo}.json  |  Tabelas: %s", reports_dir, args.tag, tsv_path)
 
 
 if __name__ == "__main__":

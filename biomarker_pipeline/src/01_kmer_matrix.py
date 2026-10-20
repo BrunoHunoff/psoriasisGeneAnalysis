@@ -5,14 +5,18 @@ Lê sequências de duas fontes com labels distintos (diretórios em common.DATAS
   - tcc1: data/raw/    → positivos (label=1) | data/raw_negativos/    → negativos (label=0)
   - tcc2: data/raw_v2/ → positivos (label=1) | data/raw_negativos_v2/ → negativos (label=0)
 
-Cada sequência individual gera uma matriz one-hot (L-2, 8000), salva em formato esparso
-em {proc_dir}/matrices/{key}_matrix.npz, onde key = {stem}_{idx:03d}.
+Cada sequência individual gera uma matriz one-hot (L-s+1, n_kmers), salva em formato
+esparso em {proc_dir}/matrices/{key}_matrix.npz, onde key = {stem}_{idx:03d}. Com o k=3
+contínuo do TCC I é (L-2, 8000); --k e --pattern escolhem outra representação, gravada
+em {proc_dir}/{representação}/ (ver common.py).
 
 Salva sequence_registry.json com metadados de todas as sequências,
 incluindo chave, label, arquivo de origem e shape da matriz.
 
 Uso:
     python src/01_kmer_matrix.py --dataset tcc2
+    python src/01_kmer_matrix.py --dataset tcc2 --k 4
+    python src/01_kmer_matrix.py --dataset tcc2 --pattern 1101 1011
 """
 
 import os
@@ -24,8 +28,8 @@ import argparse
 from Bio import SeqIO
 from scipy import sparse
 
-from common import (AMINO, FASTA_EXTS, K, add_dataset_arg, build_vocab, dataset_paths,
-                    sequence_to_onehot_matrix)
+from common import (FASTA_EXTS, add_dataset_arg, add_representation_args, dataset_paths,
+                    feature_names, patterns_from_args, rep_name, sequence_to_kmer_matrix)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -78,17 +82,19 @@ def load_fasta_dir(directory: str, label: int) -> list[dict]:
 def main():
     parser = argparse.ArgumentParser()
     add_dataset_arg(parser)
+    add_representation_args(parser, n_components=False)
     args = parser.parse_args()
-    paths = dataset_paths(args.dataset)
+    patterns = patterns_from_args(args)
+    paths = dataset_paths(args.dataset, patterns)
     raw_pos_dir, raw_neg_dir = paths["pos_dir"], paths["neg_dir"]
     matrices_dir  = os.path.join(paths["proc_dir"], "matrices")
     vocab_path    = os.path.join(paths["proc_dir"], "kmer_vocab.json")
     registry_path = os.path.join(paths["proc_dir"], "sequence_registry.json")
-    log.info("Dataset: %s", args.dataset)
+    log.info("Dataset: %s  |  representação: %s %s", args.dataset, rep_name(patterns), list(patterns))
 
     os.makedirs(matrices_dir, exist_ok=True)
 
-    vocab_list, vocab_index = build_vocab(AMINO, K)
+    vocab_list = feature_names(patterns)
     vocab_for_json = {str(idx): kmer for idx, kmer in enumerate(vocab_list)}
     with open(vocab_path, "w") as f:
         json.dump(vocab_for_json, f)
@@ -113,7 +119,7 @@ def main():
         key = rec["key"]
         seq = rec["seq"]
         try:
-            matrix = sequence_to_onehot_matrix(seq, vocab_index, K)
+            matrix = sequence_to_kmer_matrix(seq, patterns)
         except ValueError as e:
             log.warning("Sequência ignorada (%s): %s", key, e)
             continue

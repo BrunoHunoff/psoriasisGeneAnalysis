@@ -5,8 +5,12 @@ Roda todos os modelos treinados nas proteínas de data/input/ (validação exter
 TCC I) e gera tabela no formato de validação em {reports_dir}/tabelas_predicoes.tsv.
 No TCC II as mesmas 5 proteínas são repetidas para comparar com o TCC I.
 
+Representação (--k / --pattern) e N (--n-components, 0 = sem projeção) escolhem os
+classificadores; a tabela vai para o diretório de relatórios da representação.
+
 Uso:
     python src/run_predictions.py --dataset tcc2
+    python src/run_predictions.py --dataset tcc2 --k 4 --n-components 4000
 """
 
 import os
@@ -16,8 +20,8 @@ import argparse
 from datetime import date
 from Bio import SeqIO
 
-from common import (INPUT_DIR, add_dataset_arg, build_vocab, classifier_path, dataset_paths,
-                    projector_path, sequence_to_vector)
+from common import (INPUT_DIR, add_dataset_arg, add_representation_args, classifier_path,
+                    dataset_paths, patterns_from_args, rep_name, sequences_to_vectors, vector_dim)
 
 MODELS = [
     ("logistic_regression", "LR"),
@@ -65,22 +69,17 @@ def fmt_result(pred: int, confidence: float, expected: int) -> str:
 def main():
     parser = argparse.ArgumentParser()
     add_dataset_arg(parser)
+    add_representation_args(parser)
     args = parser.parse_args()
-    paths = dataset_paths(args.dataset)
+    patterns = patterns_from_args(args)
+    n_components = vector_dim(patterns, args.n_components)
+    rep = rep_name(patterns)
+    paths = dataset_paths(args.dataset, patterns)
     models_dir, reports_dir = paths["models_dir"], paths["reports_dir"]
     tsv_path = os.path.join(reports_dir, "tabelas_predicoes.tsv")
     os.makedirs(reports_dir, exist_ok=True)
-
-    proj_path = projector_path(models_dir)
-    if not os.path.exists(proj_path):
-        print(f"[ERRO] {proj_path} não encontrado. Rode 02_project_random.py --dataset {args.dataset} primeiro.")
-        sys.exit(1)
-    with open(proj_path, "rb") as f:
-        projector = pickle.load(f)
-    n_components = projector.n_components_
-    print(f"Dataset {args.dataset} — projector carregado: N={n_components} componentes")
-
-    _, vocab = build_vocab()
+    print(f"Dataset {args.dataset} — representação {rep}, N={n_components}"
+          f"{'' if args.n_components else ' (sem projeção)'}")
 
     # carrega sequências
     sequences = []
@@ -111,13 +110,17 @@ def main():
         else:
             print(f"[AVISO] Modelo não encontrado: {clf_path}")
 
+    if not classifiers:
+        print(f"[ERRO] Nenhum classificador para N={n_components} em {models_dir} — rode "
+              f"06_train_final.py com a mesma representação e o mesmo --n-components.")
+        sys.exit(1)
+
     # predições
     results = {}
-    for stem, seq, _ in sequences:
-        vector = sequence_to_vector(seq, vocab, projector)
-        if vector is None:
-            continue
-        X = vector.reshape(1, -1)
+    X_all, kept = sequences_to_vectors([seq for _, seq, _ in sequences], patterns, args.n_components)
+    for row, idx in enumerate(kept):
+        stem = sequences[idx][0]
+        X = X_all[row].reshape(1, -1)
         for model_key, _ in MODELS:
             clf = classifiers.get(model_key)
             if clf is None:
@@ -157,7 +160,8 @@ def main():
     lines = []
     lines.append(
         f"Tabela — Validação dos classificadores em proteínas de teste "
-        f"(dataset {args.dataset}, N={n_components} componentes, modelos treinados com GridSearchCV 10-fold CV)"
+        f"(dataset {args.dataset}, representação {rep}, N={n_components}"
+        f"{'' if args.n_components else ' sem projeção'}, modelos treinados com GridSearchCV 10-fold CV)"
     )
     lines.append("")
 

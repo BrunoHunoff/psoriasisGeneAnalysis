@@ -4,12 +4,14 @@ Módulo 07 — Predição de novas proteínas.
 Coloque um ou mais arquivos FASTA em data/input/ e rode:
 
     python src/07_predict.py --model svm --dataset tcc2
+    python src/07_predict.py --model svm --dataset tcc2 --k 4 --n-components 4000
 
 Para cada sequência encontrada, o script imprime se ela é um candidato
 a biomarcador da psoríase (POSITIVO) ou não (NEGATIVO), com a confiança
-da predição.
+da predição. A sequência é vetorizada com a mesma representação e a mesma
+projeção do treino (refeita a partir de representação, N e seed — common.kmer_vectors).
 
-Pré-requisito: rode antes
+Pré-requisito: rode antes, com a mesma representação e o mesmo --n-components,
     python src/06_train_final.py --model svm --dataset tcc2
 """
 
@@ -22,8 +24,9 @@ import argparse
 
 from Bio import SeqIO
 
-from common import (FASTA_EXTS, INPUT_DIR, add_dataset_arg, build_vocab, classifier_path,
-                    dataset_paths, projector_path, sequence_to_vector)
+from common import (FASTA_EXTS, INPUT_DIR, add_dataset_arg, add_representation_args,
+                    classifier_path, dataset_paths, patterns_from_args, rep_name,
+                    sequences_to_vectors, vector_dim)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -48,6 +51,7 @@ def parse_args() -> argparse.Namespace:
         help="Arquivo FASTA específico (opcional). Se omitido, processa todos em data/input/.",
     )
     add_dataset_arg(parser)
+    add_representation_args(parser)
     return parser.parse_args()
 
 
@@ -84,45 +88,39 @@ def load_fasta_files(input_dir: str, specific: str | None) -> list[tuple[str, st
 def main():
     args = parse_args()
     os.makedirs(INPUT_DIR, exist_ok=True)
-    models_dir = dataset_paths(args.dataset)["models_dir"]
-
-    proj_path = projector_path(models_dir)
-    if not os.path.exists(proj_path):
-        log.error("Projector não encontrado: %s\n  → rode 02_project_random.py --dataset %s primeiro.",
-                  proj_path, args.dataset)
-        sys.exit(1)
-    with open(proj_path, "rb") as f:
-        projector = pickle.load(f)
-    n_components = projector.n_components_
+    patterns = patterns_from_args(args)
+    n_components = vector_dim(patterns, args.n_components)
+    models_dir = dataset_paths(args.dataset, patterns)["models_dir"]
 
     clf_path = classifier_path(models_dir, args.model, n_components)
     if not os.path.exists(clf_path):
         log.error(
             "Classificador não encontrado: %s\n"
-            "  → rode primeiro: python src/06_train_final.py --model %s --dataset %s",
+            "  → rode primeiro: python src/06_train_final.py --model %s --dataset %s "
+            "(com a mesma representação e o mesmo --n-components)",
             clf_path, args.model, args.dataset,
         )
         sys.exit(1)
     with open(clf_path, "rb") as f:
         clf = pickle.load(f)
-
-    _, vocab_index = build_vocab()
-    log.info("Modelo '%s' carregado. Vocabulário: %d k-mers.", args.model, len(vocab_index))
+    log.info("Modelo '%s' carregado. Representação %s, N=%d.", args.model, rep_name(patterns), n_components)
 
     records = load_fasta_files(INPUT_DIR, args.fasta)
     log.info("Total de sequências a predizer: %d\n", len(records))
+    X_all, kept = sequences_to_vectors([seq for _, seq in records], patterns, args.n_components)
+    rows = {i: row for row, i in enumerate(kept)}
 
     print("=" * 65)
-    print(f"  RESULTADOS — modelo: {args.model}  |  dataset: {args.dataset}  |  N={n_components}")
+    print(f"  RESULTADOS — modelo: {args.model}  |  dataset: {args.dataset}  |  "
+          f"{rep_name(patterns)}  |  N={n_components}")
     print("=" * 65)
 
-    for seq_id, seq in records:
-        vector = sequence_to_vector(seq, vocab_index, projector)
-        if vector is None:
+    for i, (seq_id, seq) in enumerate(records):
+        if i not in rows:
             print(f"  {'[IGNORADA]':<12}  {seq_id}  (sequência muito curta)")
             continue
 
-        X = vector.reshape(1, -1)
+        X = X_all[rows[i]].reshape(1, -1)
         pred  = clf.predict(X)[0]
         proba = clf.predict_proba(X)[0]
         confidence = proba[pred] * 100

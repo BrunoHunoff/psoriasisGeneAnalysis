@@ -5,14 +5,16 @@ Treina o modelo escolhido em TODOS os dados de treino (sem holdout), com os
 hiperparâmetros vencedores do GridSearchCV (05_train_evaluate.py / run_experiments.py),
 e salva o classificador para predição de novas proteínas.
 
-N vem dos próprios vetores (X.npy gerado por 02_project_random.py), então o nome do
-classificador sempre corresponde ao projetor salvo em {models_dir}/random_projection.pkl.
+Representação (--k / --pattern) e N (--n-components, 0 = sem projeção) escolhem os
+vetores X_n{dim}.npy e o results_{modelo}_n{dim}.json de onde vêm os hiperparâmetros.
+O _meta.json registra a representação, que 07/08 usam para vetorizar sequências novas.
 
-Pré-requisito: 02 e 05 rodados com o mesmo --dataset e o mesmo N (run_experiments.py
-termina em N=1000; para outro N, rode 02 --n-components N e 05 de novo).
+Pré-requisito: 02 e 05 rodados com o mesmo --dataset, representação e N
+(run_experiments.py faz os dois).
 
 Uso:
     python src/06_train_final.py --model logistic_regression --dataset tcc2
+    python src/06_train_final.py --model svm --dataset tcc2 --k 4 --n-components 4000
 """
 
 import os
@@ -32,7 +34,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.base import clone
 
-from common import add_dataset_arg, classifier_path, dataset_paths, projector_path
+from common import (add_dataset_arg, add_representation_args, classifier_path, dataset_paths,
+                    patterns_from_args, rep_name, results_path, vector_dim, x_path)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -73,45 +76,44 @@ def parse_args() -> argparse.Namespace:
         help="Modelo a treinar.",
     )
     add_dataset_arg(parser)
+    add_representation_args(parser)
     return parser.parse_args()
 
 
 def load_best_params(reports_dir: str, model: str, n_components: int) -> dict:
     """Hiperparâmetros vencedores do GridSearchCV para (modelo, N)."""
-    candidates = [os.path.join(reports_dir, f"results_{model}_n{n_components}.json"),
-                  os.path.join(reports_dir, f"results_{model}.json")]
-    for path in candidates:
-        if os.path.exists(path):
-            with open(path) as f:
-                report = json.load(f)
-            if report.get("n_components") == n_components:
-                log.info("Hiperparâmetros de %s: %s", path, report["best_params"])
-                return report["best_params"]
+    path = results_path(reports_dir, model, n_components)
+    if os.path.exists(path):
+        with open(path) as f:
+            report = json.load(f)
+        log.info("Hiperparâmetros de %s: %s", path, report["best_params"])
+        return report["best_params"]
     log.error("Sem resultado do GridSearchCV para %s com N=%d em %s — rode antes "
-              "run_experiments.py (ou 05_train_evaluate.py) com o mesmo --dataset.",
+              "run_experiments.py (ou 05_train_evaluate.py) com o mesmo --dataset e a mesma representação.",
               model, n_components, reports_dir)
     sys.exit(1)
 
 
 def main():
     args = parse_args()
-    paths = dataset_paths(args.dataset)
+    patterns = patterns_from_args(args)
+    n_components = vector_dim(patterns, args.n_components)
+    paths = dataset_paths(args.dataset, patterns)
     models_dir = paths["models_dir"]
-    x_path = os.path.join(paths["proc_dir"], "X.npy")
+    in_x_path = x_path(paths["proc_dir"], n_components)
     y_path = os.path.join(paths["proc_dir"], "y.npy")
     os.makedirs(models_dir, exist_ok=True)
 
-    for path in (x_path, y_path):
+    for path in (in_x_path, y_path):
         if not os.path.exists(path):
-            log.error("%s não encontrado — rode 02_project_random.py --dataset %s primeiro.",
-                      path, args.dataset)
+            log.error("%s não encontrado — rode 02_project_random.py --dataset %s com a mesma "
+                      "representação e --n-components %d primeiro.", path, args.dataset, args.n_components)
             sys.exit(1)
 
-    X = np.load(x_path)
+    X = np.load(in_x_path)
     y = np.load(y_path)
-    n_components = X.shape[1]
-    log.info("Dataset %s — X=%s  y=%s  (pos=%d, neg=%d)",
-             args.dataset, X.shape, y.shape, int(y.sum()), int((y == 0).sum()))
+    log.info("Dataset %s, representação %s — X=%s  y=%s  (pos=%d, neg=%d)",
+             args.dataset, rep_name(patterns), X.shape, y.shape, int(y.sum()), int((y == 0).sum()))
 
     best_params = load_best_params(paths["reports_dir"], args.model, n_components)
     clf = clone(MODEL_REGISTRY[args.model]).set_params(**best_params)
@@ -127,21 +129,25 @@ def main():
     meta = {
         "model": args.model,
         "dataset": args.dataset,
+        "representation": rep_name(patterns),
+        "patterns": list(patterns),
+        "projection": bool(args.n_components),
+        "random_state": RANDOM_STATE,
         "n_components": n_components,
         "best_params": best_params,
         "n_train": int(len(y)),
         "n_positive": int(y.sum()),
         "n_negative": int((y == 0).sum()),
         "classifier_path": out_path,
-        "projector_path": projector_path(models_dir),
     }
     meta_path = out_path.replace(".pkl", "_meta.json")
     with open(meta_path, "w") as f:
         json.dump(meta, f, indent=2)
     log.info("Metadata salvo: %s", meta_path)
     log.info("Pronto. Para predizer novas proteínas:")
-    log.info("  python src/07_predict.py --model %s --dataset %s --fasta data/input/sua_proteina.fasta",
-             args.model, args.dataset)
+    rep_args = " ".join(["--pattern", *patterns] if args.pattern else ["--k", str(args.k)])
+    log.info("  python src/07_predict.py --model %s --dataset %s %s --n-components %d "
+             "--fasta data/input/sua_proteina.fasta", args.model, args.dataset, rep_args, args.n_components)
 
 
 if __name__ == "__main__":

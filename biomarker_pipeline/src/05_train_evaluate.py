@@ -2,12 +2,14 @@
 Módulo 05 — Avaliação e treinamento com GridSearchCV.
 
 Usa GridSearchCV (10-fold StratifiedKFold) para encontrar os melhores
-hiperparâmetros de cada modelo e reportar as métricas de desempenho.
-O melhor modelo é salvo em {models_dir}/ para uso em predição.
+hiperparâmetros de cada modelo e reportar as métricas de desempenho, nos vetores
+X_n{dim}.npy gerados pelo 02 com a mesma representação e o mesmo --n-components.
+Resultados em {reports_dir}/results_{modelo}_n{dim}.json; o melhor modelo é salvo em
+{models_dir}/classifier_{modelo}_n{dim}.pkl.
 
 Uso:
     python src/05_train_evaluate.py --model random_forest --dataset tcc2
-    python src/05_train_evaluate.py --model logistic_regression --dataset tcc2
+    python src/05_train_evaluate.py --model svm --dataset tcc2 --k 4 --n-components 4000
 """
 
 import os
@@ -32,7 +34,8 @@ from sklearn.metrics import (
     confusion_matrix,
 )
 
-from common import add_dataset_arg, classifier_path, dataset_paths
+from common import (add_dataset_arg, add_representation_args, classifier_path, dataset_paths,
+                    patterns_from_args, rep_name, results_path, vector_dim, x_path)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -88,29 +91,32 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", required=True, choices=list(MODEL_REGISTRY.keys()))
     add_dataset_arg(parser)
+    add_representation_args(parser)
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    paths = dataset_paths(args.dataset)
+    patterns = patterns_from_args(args)
+    n_components = vector_dim(patterns, args.n_components)
+    paths = dataset_paths(args.dataset, patterns)
     reports_dir, models_dir = paths["reports_dir"], paths["models_dir"]
-    x_path = os.path.join(paths["proc_dir"], "X.npy")
+    in_x_path = x_path(paths["proc_dir"], n_components)
     y_path = os.path.join(paths["proc_dir"], "y.npy")
     os.makedirs(reports_dir, exist_ok=True)
     os.makedirs(models_dir, exist_ok=True)
 
-    for path in (x_path, y_path):
+    for path in (in_x_path, y_path):
         if not os.path.exists(path):
-            log.error("%s não encontrado — rode 02_project_random.py --dataset %s primeiro.",
-                      path, args.dataset)
+            log.error("%s não encontrado — rode 02_project_random.py --dataset %s com a mesma "
+                      "representação e --n-components %d primeiro.", path, args.dataset, args.n_components)
             sys.exit(1)
 
-    X = np.load(x_path)
+    X = np.load(in_x_path)
     y = np.load(y_path)
-    n_components = X.shape[1]
-    log.info("Dataset %s — X=%s  y=%s  (pos=%d, neg=%d)  N=%d",
-             args.dataset, X.shape, y.shape, int(y.sum()), int((y == 0).sum()), n_components)
+    log.info("Dataset %s, representação %s — X=%s  y=%s  (pos=%d, neg=%d)  N=%d%s",
+             args.dataset, rep_name(patterns), X.shape, y.shape, int(y.sum()), int((y == 0).sum()),
+             n_components, "" if args.n_components else " (sem projeção)")
 
     model      = MODEL_REGISTRY[args.model]
     param_grid = PARAM_GRIDS[args.model]
@@ -152,6 +158,9 @@ def main():
     report = {
         "model":        args.model,
         "dataset":      args.dataset,
+        "representation": rep_name(patterns),
+        "patterns":     list(patterns),
+        "projection":   bool(args.n_components),
         "n_components": n_components,
         "n_folds":      N_FOLDS,
         "n_samples":    int(X.shape[0]),
@@ -160,7 +169,7 @@ def main():
         "best_params":  grid.best_params_,
         "metrics":      metrics,
     }
-    out_path = os.path.join(reports_dir, f"results_{args.model}.json")
+    out_path = results_path(reports_dir, args.model, n_components)
     with open(out_path, "w") as f:
         json.dump(report, f, indent=2)
     log.info("Resultados salvos: %s", out_path)
