@@ -1,0 +1,47 @@
+{
+  "model": "naive_bayes",
+  "dataset": "tcc2",
+  "representation": "k3_1011",
+  "patterns": [
+    "1011"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "n_folds": 10,
+  "n_samples": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "best_params": {
+    "var_smoothing": 1e-09
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.7848214285714286,
+      "std": 0.05547081121591222
+    },
+    "f1": {
+      "mean": 0.7304664570230608,
+      "std": 0.08506249960957235
+    },
+    "precision": {
+      "mean": 0.9529288640881199,
+      "std": 0.03561468633378414
+    },
+    "sensitivity": {
+      "mean": 0.6023185483870968,
+      "std": 0.11896549433765272
+    },
+    "specificity": {
+      "mean": 0.9685483870967742,
+      "std": 0.024209504147152384
+    },
+    "roc_auc": {
+      "mean": 0.9324927545362904,
+      "std": 0.022309685175606848
+    },
+    "mcc": {
+      "mean": 0.6164281682683841,
+      "std": 0.08882584864940132
+    }
+  }
+}

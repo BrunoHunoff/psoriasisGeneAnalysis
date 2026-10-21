@@ -1,0 +1,48 @@
+{
+  "model": "svm",
+  "dataset": "tcc2",
+  "representation": "k3_1011",
+  "patterns": [
+    "1011"
+  ],
+  "projection": true,
+  "n_components": 1000,
+  "n_folds": 10,
+  "n_samples": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "best_params": {
+    "model__C": 10,
+    "model__gamma": "scale"
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.9556547619047618,
+      "std": 0.02732720779270687
+    },
+    "f1": {
+      "mean": 0.9558306609073398,
+      "std": 0.027393498121159748
+    },
+    "precision": {
+      "mean": 0.9535512262089586,
+      "std": 0.03457700915924743
+    },
+    "sensitivity": {
+      "mean": 0.9586693548387096,
+      "std": 0.028796082373156662
+    },
+    "specificity": {
+      "mean": 0.9524193548387097,
+      "std": 0.035356488732982166
+    },
+    "roc_auc": {
+      "mean": 0.994178427419355,
+      "std": 0.007074609414489687
+    },
+    "mcc": {
+      "mean": 0.9118296320186315,
+      "std": 0.05467320158331377
+    }
+  }
+}

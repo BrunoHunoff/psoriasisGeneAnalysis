@@ -1,0 +1,47 @@
+{
+  "model": "knn",
+  "dataset": "tcc2",
+  "representation": "k3_1101",
+  "patterns": [
+    "1101"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "n_folds": 10,
+  "n_samples": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "best_params": {
+    "model__n_neighbors": 3
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.8180059523809524,
+      "std": 0.04088123207795836
+    },
+    "f1": {
+      "mean": 0.7782749569484138,
+      "std": 0.057397969778283396
+    },
+    "precision": {
+      "mean": 0.9823015873015872,
+      "std": 0.02748840200699123
+    },
+    "sensitivity": {
+      "mean": 0.6491935483870968,
+      "std": 0.08501994853752631
+    },
+    "specificity": {
+      "mean": 0.9873991935483872,
+      "std": 0.020822084415390903
+    },
+    "roc_auc": {
+      "mean": 0.942445816532258,
+      "std": 0.027525873322756682
+    },
+    "mcc": {
+      "mean": 0.678244472422558,
+      "std": 0.06728838674585083
+    }
+  }
+}

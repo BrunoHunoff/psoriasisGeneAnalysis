@@ -1,0 +1,48 @@
+{
+  "model": "gradient_boosting",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 2000,
+  "n_folds": 10,
+  "n_samples": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "best_params": {
+    "learning_rate": 0.2,
+    "n_estimators": 200
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.936780753968254,
+      "std": 0.03073004742066391
+    },
+    "f1": {
+      "mean": 0.934669698335437,
+      "std": 0.032310125786235634
+    },
+    "precision": {
+      "mean": 0.958031915839897,
+      "std": 0.031554987778568806
+    },
+    "sensitivity": {
+      "mean": 0.9147177419354838,
+      "std": 0.056611955464909304
+    },
+    "specificity": {
+      "mean": 0.9588709677419356,
+      "std": 0.0318675964652891
+    },
+    "roc_auc": {
+      "mean": 0.9830582157258064,
+      "std": 0.01203100558304781
+    },
+    "mcc": {
+      "mean": 0.8763497387303463,
+      "std": 0.060534764591982
+    }
+  }
+}

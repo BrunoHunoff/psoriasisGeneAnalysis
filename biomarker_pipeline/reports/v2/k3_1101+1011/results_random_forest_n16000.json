@@ -1,0 +1,49 @@
+{
+  "model": "random_forest",
+  "dataset": "tcc2",
+  "representation": "k3_1101+1011",
+  "patterns": [
+    "1101",
+    "1011"
+  ],
+  "projection": false,
+  "n_components": 16000,
+  "n_folds": 10,
+  "n_samples": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "best_params": {
+    "max_depth": null,
+    "n_estimators": 200
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.9698660714285714,
+      "std": 0.016593448186410942
+    },
+    "f1": {
+      "mean": 0.969827385875773,
+      "std": 0.016443837302929747
+    },
+    "precision": {
+      "mean": 0.9719513685239491,
+      "std": 0.025279146262583443
+    },
+    "sensitivity": {
+      "mean": 0.9682459677419356,
+      "std": 0.02009186635886568
+    },
+    "specificity": {
+      "mean": 0.9714717741935484,
+      "std": 0.026011385446892393
+    },
+    "roc_auc": {
+      "mean": 0.9975333921370968,
+      "std": 0.00223864107791958
+    },
+    "mcc": {
+      "mean": 0.9402352170041258,
+      "std": 0.032832511353733114
+    }
+  }
+}

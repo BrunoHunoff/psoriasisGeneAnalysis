@@ -1,0 +1,11 @@
+Tabela 1 — Desempenho dos classificadores com vetor sem projeção (400 k-mers) (dataset tcc2, representação k=2; média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	89.5% ± 3.9%	89.5% ± 3.9%	90.2% ± 5.6%	89.2% ± 5.9%	89.9% ± 6.2%	94.2% ± 4.0%	79.4% ± 7.7%
+SVM	95.9% ± 4.2%	96.0% ± 4.0%	95.2% ± 5.6%	96.8% ± 3.2%	95.0% ± 6.1%	99.4% ± 0.9%	91.9% ± 8.2%
+Random Forest	96.2% ± 2.8%	96.2% ± 2.7%	96.3% ± 4.1%	96.2% ± 2.0%	96.2% ± 4.4%	99.5% ± 0.6%	92.5% ± 5.5%
+Gradient Boosting	93.0% ± 3.2%	93.1% ± 3.0%	93.0% ± 4.7%	93.3% ± 3.0%	92.7% ± 5.3%	98.5% ± 1.7%	86.2% ± 6.3%
+Naive Bayes	78.3% ± 3.6%	77.0% ± 4.3%	81.9% ± 4.9%	73.1% ± 6.9%	83.6% ± 5.3%	86.3% ± 3.2%	57.3% ± 7.0%
+kNN	87.5% ± 5.1%	86.2% ± 5.6%	95.8% ± 5.7%	78.5% ± 6.3%	96.5% ± 4.8%	96.0% ± 2.7%	76.3% ± 10.0%
+Fonte: Elaborado pelos autores (2026).
+

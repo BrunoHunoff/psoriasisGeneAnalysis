@@ -1,0 +1,47 @@
+{
+  "model": "logistic_regression",
+  "dataset": "tcc2",
+  "representation": "k3_1101",
+  "patterns": [
+    "1101"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "n_folds": 10,
+  "n_samples": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "best_params": {
+    "model__C": 0.01
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.9493799603174603,
+      "std": 0.021012214486715555
+    },
+    "f1": {
+      "mean": 0.9491447914583476,
+      "std": 0.02118803583328355
+    },
+    "precision": {
+      "mean": 0.954250924052501,
+      "std": 0.03822550010742576
+    },
+    "sensitivity": {
+      "mean": 0.9461693548387098,
+      "std": 0.037383294812113145
+    },
+    "specificity": {
+      "mean": 0.9524193548387097,
+      "std": 0.04066337837404614
+    },
+    "roc_auc": {
+      "mean": 0.9903540826612904,
+      "std": 0.010586222405484671
+    },
+    "mcc": {
+      "mean": 0.900699296078994,
+      "std": 0.041690673702808996
+    }
+  }
+}

@@ -1,0 +1,35 @@
+Tabela 1 — Desempenho dos classificadores com N=1000 componentes (dataset tcc2, representação k=3 (1011); média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	94.1% ± 2.2%	94.1% ± 2.2%	94.7% ± 3.3%	93.7% ± 2.4%	94.6% ± 3.5%	97.8% ± 1.9%	88.4% ± 4.5%
+SVM	95.6% ± 2.7%	95.6% ± 2.7%	95.4% ± 3.5%	95.9% ± 2.9%	95.2% ± 3.5%	99.4% ± 0.7%	91.2% ± 5.5%
+Random Forest	91.3% ± 2.6%	90.9% ± 2.9%	94.6% ± 2.1%	87.7% ± 4.7%	94.9% ± 2.1%	98.2% ± 0.8%	82.9% ± 5.0%
+Gradient Boosting	89.7% ± 4.3%	89.8% ± 4.0%	89.7% ± 6.2%	90.2% ± 3.6%	89.3% ± 6.9%	97.1% ± 1.5%	79.6% ± 8.4%
+Naive Bayes	77.4% ± 4.5%	72.5% ± 7.2%	91.1% ± 5.3%	61.2% ± 10.2%	93.7% ± 4.4%	91.0% ± 3.6%	58.3% ± 7.8%
+kNN	83.2% ± 4.1%	79.9% ± 5.4%	98.6% ± 3.1%	67.4% ± 7.5%	99.0% ± 2.1%	95.4% ± 2.3%	70.2% ± 7.2%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela 2 — Desempenho dos classificadores com N=4000 componentes (dataset tcc2, representação k=3 (1011); média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	96.7% ± 1.8%	96.6% ± 1.9%	96.9% ± 2.0%	96.5% ± 3.6%	96.8% ± 2.0%	99.3% ± 1.1%	93.4% ± 3.6%
+SVM	96.4% ± 2.8%	96.4% ± 2.9%	95.7% ± 3.2%	97.1% ± 3.3%	95.6% ± 3.2%	99.6% ± 0.5%	92.8% ± 5.7%
+Random Forest	92.3% ± 2.0%	91.9% ± 2.3%	95.8% ± 3.5%	88.6% ± 4.8%	95.9% ± 3.4%	98.5% ± 0.7%	85.0% ± 3.8%
+Gradient Boosting	93.2% ± 2.4%	93.1% ± 2.5%	94.7% ± 3.7%	91.8% ± 4.3%	94.6% ± 4.1%	98.3% ± 1.1%	86.6% ± 4.7%
+Naive Bayes	78.5% ± 5.5%	73.0% ± 8.5%	95.3% ± 3.6%	60.2% ± 11.9%	96.9% ± 2.4%	93.2% ± 2.2%	61.6% ± 8.9%
+kNN	82.3% ± 4.1%	78.4% ± 5.9%	98.8% ± 2.5%	65.6% ± 8.7%	99.1% ± 2.0%	95.1% ± 2.5%	68.8% ± 6.5%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela 3 — Desempenho dos classificadores com vetor sem projeção (8000 k-mers) (dataset tcc2, representação k=3 (1011); média ± desvio padrão, 10-fold cross-validation com GridSearchCV)
+
+Modelo	Acurácia	F1 Score	Precisão	Sensibilidade	Especificidade	ROC-AUC	MCC
+Regressão Logística	97.1% ± 1.2%	97.1% ± 1.2%	98.4% ± 2.0%	95.9% ± 2.5%	98.4% ± 2.1%	99.7% ± 0.6%	94.4% ± 2.3%
+SVM	95.2% ± 2.0%	95.0% ± 2.2%	100.0% ± 0.0%	90.5% ± 4.0%	100.0% ± 0.0%	99.7% ± 0.2%	91.0% ± 3.6%
+Random Forest	98.4% ± 1.7%	98.4% ± 1.8%	98.7% ± 1.6%	98.1% ± 3.2%	98.8% ± 1.5%	99.7% ± 0.5%	96.9% ± 3.4%
+Gradient Boosting	95.3% ± 1.9%	95.2% ± 2.0%	94.8% ± 2.7%	95.9% ± 3.8%	94.6% ± 2.8%	99.4% ± 0.5%	90.7% ± 3.8%
+Naive Bayes	92.4% ± 2.0%	92.3% ± 2.0%	93.4% ± 3.1%	91.5% ± 3.7%	93.4% ± 3.3%	92.8% ± 1.7%	85.0% ± 4.1%
+kNN	81.3% ± 4.1%	76.9% ± 5.9%	99.3% ± 2.1%	63.3% ± 9.5%	99.4% ± 1.9%	95.8% ± 1.7%	67.5% ± 6.2%
+Fonte: Elaborado pelos autores (2026).
+

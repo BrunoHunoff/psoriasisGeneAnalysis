@@ -195,7 +195,7 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 1. ~~Reorganizar e amostrar negativas~~ — feito (ver acima).
 2. **INS na comparação com o TCC I:** INS era a "negativa treinada" da validação externa, mas os critérios v2 a excluem dos negativos — na v2 ela vira negativa não treinada. Decidir se força a inclusão ou se reporta a mudança.
 3. ~~CV agrupada por gene~~ — decidido manter `StratifiedKFold` (§4.1).
-7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). Falta, na ordem: (1) grade de representação via `run_experiments.py` — k=2 sem projeção; k=3 N 2000, 4000, 0; k=3 `1101`, `1011` e `1101 1011` com N 1000, 4000, 0; k=4 N 1000, 2000, 4000, 10000 e sem projeção só SVM+LR → (2) escolher k e N pela CV (`tabelas_representacoes.tsv`) → (3) **registrar por escrito as grades do fine tuning e a regra de escolha do modelo principal** → (4) `06` + `08 --tag antes` → (5) fine tuning (grades ampliadas em SVM, LR, RF, GB — ainda não implementado no 05) → (6) `08 --tag depois` → (7) documento e apresentação.
+7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). ~~(1) grade de representação~~ rodada em 2026-10-20 (ver "Grade de representação" abaixo). Falta, na ordem: (2) escolher k e N pela CV (`tabelas_representacoes.tsv`) → (3) **registrar por escrito as grades do fine tuning e a regra de escolha do modelo principal** → (4) `06` + `08 --tag antes` → (5) fine tuning (grades ampliadas em SVM, LR, RF, GB — ainda não implementado no 05) → (6) `08 --tag depois` → (7) documento e apresentação.
 4. **Homólogos byte-idênticos em `raw_v2`:** 7 grupos (CFL1 ×4, FASLG ×3, PSMA6 ×3, UBE2L3 ×3, IL4/KLRK1/PTEN ×2). Inofensivos com CV agrupada por gene; deduplicar se a CV não for agrupada.
 5. **Erros herdados no TCC I (`data/raw/`, congelado):** `PRDX5.fasta` tem `P83200` (fragmento de 16 aa com X); `NOS2.fasta` tem 2 seqs de NANOS2, `PRDX5.fasta` tem Prdx6, `FBXL19.fasta` tem FBXL19-AS1; `TNIP1.fasta` tem uma vírgula solta; `data/raw_negativos/HBB_housekeeping_facil.fasta` contém X/Z/B. Vale nota de limitação no documento.
 6. **`PTPN22` não é "negativa não treinada".** O TCC I descreve assim a PTPN22 de `data/input/`, mas `PTPN22_Artrite_Reumatoide.fasta` está nos negativos de treino desde o commit `cc6a498`. Conferir a seq e corrigir o texto ou o arquivo.
@@ -217,6 +217,27 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 - **Vários vencedores na borda do grid** (SVM C=10, RF/GB 200, GB lr=0,2, NB 1e-9, kNN k=3) → é aí que o fine tuning deve ampliar.
 - **Validação externa (5 proteínas, `reports/v2/tabelas_predicoes.tsv`) piorou nas negativas:** INS e PTPN22, agora realmente fora do treino, são chamadas de positivas por LR/SVM/RF/GB. No TCC I as duas estavam no treino (INS declarada; PTPN22 por engano, ver Pendências 6), então o acerto de antes era memorização. PTPN22 tem associação genética com psoríase no Open Targets (score 0,45) — foi por isso que os critérios v2 a excluíram das negativas; o rótulo "negativa" dela é discutível. RUNX3 passou a errar em LR/SVM; CARD14 acerta em LR (68%). n=5: anedótico — o teste cego é a medida de verdade.
 - Contraste CV alta × proteínas não vistas erradas é coerente com a CV medir reconhecimento de homólogos (§4.1).
+
+### Grade de representação (2026-10-20, mesmos grids e CV da linha de base)
+
+128 resultados: k=2 sem projeção; k=3 N 300–4000 e sem projeção; k=3 espaçado `1101`, `1011` e combinado com N 1000, 4000 e sem projeção; k=4 N 1000–10000 e sem projeção (só SVM e LR). Resumo em `reports/v2/tabelas_representacoes.tsv`; detalhes em `reports/v2/{representação}/`.
+
+| MCC (%) | SVM | LR | RF | GB | NB |
+|---|---|---|---|---|---|
+| k3, N=1000 (linha de base) | 93,1 ± 5,4 | 85,7 ± 8,4 | 83,2 ± 2,2 | 82,1 ± 6,3 | 64,7 ± 7,5 |
+| k3, N=2000 | 95,0 ± 3,5 | 91,2 ± 4,4 | 87,4 ± 4,6 | 87,6 ± 6,1 | 68,8 ± 7,7 |
+| k3, N=4000 | 95,3 ± 3,8 | 94,7 ± 3,2 | 85,5 ± 4,1 | 87,5 ± 6,6 | 68,3 ± 6,6 |
+| k3, sem projeção (8000) | 92,1 ± 4,4 | 94,4 ± 3,9 | 94,7 ± 5,6 | 89,1 ± 3,3 | 85,8 ± 6,7 |
+| k3 `1011`, sem projeção | 91,0 ± 3,6 | 94,4 ± 2,3 | **96,9 ± 3,4** | 90,7 ± 3,8 | 85,0 ± 4,1 |
+| k3 `1101+1011`, sem projeção (16000) | 89,5 ± 3,3 | 93,7 ± 4,9 | 94,0 ± 3,3 | 92,5 ± 4,7 | 91,5 ± 3,8 |
+| k2, sem projeção (400) | 91,9 ± 8,2 | 79,4 ± 7,7 | 92,5 ± 5,5 | 86,2 ± 6,3 | 57,3 ± 7,0 |
+| k4, N=10000 | 92,3 ± 3,5 | 92,6 ± 3,9 | 83,6 ± 4,6 | 82,2 ± 5,2 | 73,2 ± 11,0 |
+| k4, sem projeção (160000) | 86,0 ± 4,1 | 95,1 ± 3,7 | — | — | — |
+
+- **ROC-AUC saturou:** as melhores configurações ficam em 99,5–99,9%, com diferenças menores que o desvio entre folds. O MCC discrimina mais, mas os desvios (3–5 pontos) também se sobrepõem entre as melhores. Pela regra de parada do plano, nenhuma representação supera **com folga** o k=3; a CV mede reconhecimento de homólogos (§4.1), então o teste cego é que decide.
+- **Padrões consistentes:** (a) N maior ajuda LR e SVM até ~2000–4000, coerente com Johnson-Lindenstrauss; (b) **sem projeção, os modelos de árvore e o NB sobem muito** (RF 83 → 95, NB 65 → 86) — a projeção mistura os k-mers e atrapalha splits por feature; (c) **k=4 não supera k=3** no mesmo N; (d) k-mers espaçados não superam o contínuo de forma consistente; (e) k=2 com só 400 dimensões chega perto do k=3 N=1000 em SVM e RF.
+- **Bordas do grid** (para o fine tuning): kNN k=3 (21 de 21 configurações), RF 200 árvores (21), GB lr=0,2 e 200 estágios (20), NB var_smoothing=1e-9 (16), LR C=0,01 (7, nas dimensões altas).
+- **Custo:** GB é o gargalo (k3 sem projeção ~15 min; grade toda ~2h15 em 15 núcleos). **k=4 sem projeção com os 15 workers esgotou o swap** (o SVC converte 570 × 160 mil para float64, ~1–2,5 GB por worker) — rodar com `LOKY_MAX_CPU_COUNT=6` (11 min).
 
 ### Arquivos perdidos em 2026-10-10
 
