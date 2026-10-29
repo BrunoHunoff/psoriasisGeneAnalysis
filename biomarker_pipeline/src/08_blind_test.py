@@ -6,13 +6,14 @@ da escolha de hiperparâmetros:
   - positivos: genes dos loci "Newly reported" de Dand et al. (2025) — data/teste_cego_v2/
   - negativos: genes sorteados à parte por 00_sample_negatives.py — data/teste_cego_negativos_v2/
 
-⚠️ RODE UMA ÚNICA VEZ POR ETAPA (--tag), depois de escolher o modelo pela validação cruzada:
-  antes  — modelos escolhidos pela CV com os grids da linha de base
-  depois — modelos após o fine tuning (grids ampliados)
-As grades do fine tuning e a regra de escolha do modelo principal precisam estar registradas
-por escrito ANTES do "antes"; se o resultado de uma etapa for usado para voltar e ajustar o
-modelo, o teste deixa de ser cego. Por isso o script recusa sobrescrever um resultado
-existente sem --force.
+⚠️ RODE UMA ÚNICA VEZ POR BRAÇO (--tag), seguindo docs/plano_otimizacao.md:
+  antes                — braço 0: modelos da linha de base (grids do 05)
+  otimizado_misturado  — braço A: otimização de hiperparâmetros com CV de genes misturados
+  otimizado_por_gene   — braço B: a mesma otimização com CV separada por gene
+O plano (espaços de busca, orçamento, métrica, regra do modelo principal) foi registrado ANTES
+do braço 0; se o resultado de um braço for usado para voltar e ajustar os modelos, o teste
+deixa de ser cego. Por isso o script recusa sobrescrever um resultado existente sem --force,
+e --n-components é obrigatório (o padrão 1000 dos outros scripts não vale aqui).
 
 A sequência é vetorizada com a mesma representação e a mesma projeção do treino (refeita a
 partir de representação, N e seed — common.kmer_vectors); a representação do _meta.json do
@@ -32,8 +33,8 @@ Pré-requisito (mesma representação e mesmo --n-components):
     python src/06_train_final.py --model <modelo> --dataset tcc2
 
 Uso:
-    python src/08_blind_test.py --tag antes --model logistic_regression
-    python src/08_blind_test.py --tag antes --model all --k 4 --n-components 4000
+    python src/08_blind_test.py --tag antes --model all --n-components 4000
+    python src/08_blind_test.py --tag antes --model svm --n-components 4000
 """
 
 import os
@@ -63,7 +64,12 @@ log = logging.getLogger(__name__)
 DATASET         = "tcc2"   # único dataset com conjunto de teste cego
 EVIDENCE_TSV    = "data/gene_lists/dand2025_validacao_ineditos.tsv"
 THRESHOLD       = 0.5
-TAGS            = ("antes", "depois")
+TAGS            = ("antes", "otimizado_misturado", "otimizado_por_gene")
+TAG_LABELS = {
+    "antes":               "braço 0 — linha de base",
+    "otimizado_misturado": "braço A — otimizado, CV de genes misturados",
+    "otimizado_por_gene":  "braço B — otimizado, CV separada por gene",
+}
 MODELS = {
     "logistic_regression": "Regressão Logística",
     "svm":                 "SVM",
@@ -99,10 +105,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model", required=True, choices=list(MODELS) + ["all"],
                         help="Modelo final a avaliar, ou 'all' para todos os treinados.")
     parser.add_argument("--tag", required=True, choices=TAGS,
-                        help="Etapa: antes ou depois do fine tuning.")
+                        help="Braço do experimento (docs/plano_otimizacao.md).")
     parser.add_argument("--force", action="store_true",
                         help="Sobrescreve um resultado de teste cego já existente.")
-    add_representation_args(parser)
+    add_representation_args(parser, require_n_components=True)
     return parser.parse_args()
 
 
@@ -201,7 +207,7 @@ def build_tsv(results: dict, tag: str) -> str:
     lines = []
     for unit, title in (("por_sequencia", "por sequência"), ("por_gene", "por gene (média entre homólogos)")):
         n = next(iter(results.values()))["metricas"][unit]["n"]
-        lines += [f"Tabela — Teste cego {tag} do fine tuning (loci inéditos de Dand et al., 2025), "
+        lines += [f"Tabela — Teste cego, {TAG_LABELS[tag]} (loci inéditos de Dand et al., 2025), "
                   f"métricas {title}; n={n}{suffix}", "",
                   "\t".join(["Modelo"] + list(METRIC_LABELS.values()))]
         for model, r in results.items():
@@ -210,7 +216,7 @@ def build_tsv(results: dict, tag: str) -> str:
                                                     for k in METRIC_LABELS]))
         lines += [fonte, "", ""]
 
-    lines += [f"Tabela — Teste cego {tag} do fine tuning: sensibilidade por nível de evidência do locus "
+    lines += [f"Tabela — Teste cego, {TAG_LABELS[tag]}: sensibilidade por nível de evidência do locus "
               f"(por gene){suffix}", "",
               "\t".join(["Modelo"] + list(EVIDENCE_LEVELS.values()))]
     for model, r in results.items():
@@ -221,7 +227,7 @@ def build_tsv(results: dict, tag: str) -> str:
         lines.append("\t".join(row))
     lines += [fonte, "", ""]
 
-    lines += [f"Tabela — Teste cego {tag} do fine tuning: especificidade por nível de dificuldade do "
+    lines += [f"Tabela — Teste cego, {TAG_LABELS[tag]}: especificidade por nível de dificuldade do "
               f"negativo (por gene){suffix}", "",
               "\t".join(["Modelo"] + list(NEG_LEVELS.values()))]
     for model, r in results.items():

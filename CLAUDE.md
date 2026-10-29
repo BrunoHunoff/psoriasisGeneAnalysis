@@ -25,7 +25,7 @@ FASTA → matriz posicional one-hot de k-mers (L-k+1, 8000)
 - `k = 3` → vocabulário `20³ = 8.000` k-mers (20 aminoácidos canônicos, `ACDEFGHIKLMNPQRSTVWY`).
 - No TCC I a projeção era ajustada **sobre a matriz global empilhada de todas as janelas** e só depois as linhas eram reagrupadas por sequência para o mean pooling. Desde 2026-10-20 cada sequência é projetada separadamente, com a mesma matriz gaussiana — resultado idêntico bit a bit (ver §2, "Projeção").
 - `N` avaliado em `{300, 400, 500, 1000}` no TCC I. **N=1000 é a configuração final do TCC I** e o padrão de `--n-components` em todos os scripts.
-- TCC II: k e N viram parâmetros (`--k`, `--pattern`, `--n-components`, 0 = sem projeção) para a grade de representação — ver §2 e §6.
+- TCC II: k e N viram parâmetros (`--k`, `--pattern`, `--n-components`, 0 = sem projeção) para a grade de representação — ver §2 e §6. **Configuração escolhida para o TCC II: k=3 contínuo, N=4000** (decisão de 2026-10-29, §6). O padrão dos scripts continua 1000 — passar `--n-components 4000` explicitamente.
 - Base metodológica: Guo et al. (2021), k-mers + classificação proteica.
 
 ### Dataset do TCC I (223 sequências, ~1:1)
@@ -57,12 +57,14 @@ biomarker_pipeline/
 │   ├── 05_train_evaluate.py   # --model M → GridSearchCV 10-fold → results_{M}_n{dim}.json + classifier_{M}_n{dim}.pkl
 │   ├── 06_train_final.py      # --model M → treina em 100% com os best_params do 05 → classifier_{M}_n{dim}.pkl + _meta.json
 │   ├── 07_predict.py          # --model M [--fasta …] → prediz FASTAs de data/input/
-│   ├── 08_blind_test.py       # TCC II: --tag antes|depois --model M|all → teste cego (UMA vez por etapa) → reports/v2/teste_cego_{tag}_*.json + tabelas_teste_cego_{tag}.tsv
+│   ├── 08_blind_test.py       # TCC II: --tag {antes|otimizado_misturado|otimizado_por_gene} --n-components N (obrigatório) --model M|all → teste cego (UMA vez por braço) → reports/v2/teste_cego_{tag}_*.json + tabelas_teste_cego_{tag}.tsv
 │   ├── run_experiments.py     # orquestra 01+02+05 para uma representação × --n-values × --models → tabelas_resultados.tsv + tabelas_representacoes.tsv
-│   └── run_predictions.py     # roda os 6 modelos nas 5 proteínas de validação externa → tabelas_predicoes.tsv
+│   ├── run_predictions.py     # roda os 6 modelos nas 5 proteínas de validação externa → tabelas_predicoes.tsv
+│   └── relatorios/            # geradores dos PDFs de reports/v2/ (reportlab; fontes Arial do macOS)
 ├── data/{raw,raw_negativos,raw_v2,raw_negativos_v2,teste_cego_v2,teste_cego_negativos_v2,gene_lists,input,processed,processed_v2}/
 ├── models/    # TCC I; models/v2/ = TCC II. *.pkl gitignored; *_meta.json versionados
 ├── reports/   # TCC I: results_{modelo}_n{N}.json, tabelas_*.tsv, experimento2/; reports/v2/ = TCC II; negativos/, coleta/
+├── docs/      # plano_otimizacao.md — PRÉ-REGISTRO do experimento final (três braços); ler antes de rodar o teste cego
 ├── notebooks/ # 01_EDA, 02_scree_plot, 03_results — DESATUALIZADOS, ver §4
 └── run_preparation.{sh,ps1}
 ```
@@ -91,7 +93,8 @@ python src/run_experiments.py --dataset tcc2 --k 4 --n-values 1000 4000 0 --mode
 python src/run_experiments.py --dataset tcc2 --resumo                    # só refaz as tabelas a partir dos JSONs
 python src/06_train_final.py --model svm --dataset tcc2 --k 4 --n-components 4000   # modelo final (best_params do 05)
 python src/run_predictions.py --dataset tcc2 --k 4 --n-components 4000   # 5 proteínas da validação do TCC I
-python src/08_blind_test.py --tag antes --model all --k 4 --n-components 4000       # teste cego — UMA vez por etapa
+python src/08_blind_test.py --tag antes --model all --n-components 4000            # teste cego — UMA vez por braço (docs/plano_otimizacao.md)
+python src/relatorios/melhor_k_n_por_modelo.py                           # PDF da melhor representação por modelo
 ```
 
 As tabelas de `run_experiments` são refeitas a partir de **todos** os `results_*_n*.json` existentes (não só os da execução): `tabelas_resultados.tsv` por representação e `reports/v2/tabelas_representacoes.tsv` com ROC-AUC e MCC de todas as representações × N (para escolher k e N).
@@ -130,13 +133,13 @@ Números por modelo × N: `reports/results_{modelo}_n{N}.json` e `reports/experi
 7. **`00_fetch_negatives.py` (Igor) ainda escreve em `data/raw_negativos/`** — rodá-lo de novo volta a misturar com o TCC I; os 376 arquivos dele foram movidos para `data/raw_negativos_igor/`.
 8. **CLAUDE.md está no `.gitignore`** (commit `d45db7d`). Ele e outros arquivos não versionados já se perderam uma vez — faça backup ou versione o que importa.
 9. **`06_train_final.py` ignorava o fine tuning (corrigido em 2026-10-20).** Treinava com hiperparâmetros fixos (LR C=1, kNN k=5…) e salvava com o mesmo nome do modelo ajustado do 05, sobrescrevendo-o. Agora lê `best_params` de `results_{modelo}_n{N}.json`. Os números publicados no TCC I vieram dos modelos ajustados (o sandbox reproduziu RUNX3 67,6% LR / 90,3% SVM exatos).
-10. **Teste cego: rodar uma vez por etapa.** `08_blind_test.py --tag antes|depois` (obrigatório) recusa sobrescrever `reports/v2/teste_cego_{tag}_{modelo}.json` sem `--force`. Escolha de modelo e hiperparâmetros só pela CV. Rodar duas vezes (antes/depois do fine tuning) só vale porque as grades do fine tuning e a regra de escolha do modelo são registradas por escrito **antes** do "antes" (plano em §6). Para testar o script sem tocar no conjunto cego, aponte `blind_pos_dir`/`blind_neg_dir`/`reports_dir` de `common.DATASETS["tcc2"]` para cópias de FASTAs de treino num diretório temporário.
+10. **Teste cego: rodar uma vez por braço.** `08_blind_test.py --tag {antes|otimizado_misturado|otimizado_por_gene}` (obrigatório) recusa sobrescrever `reports/v2/teste_cego_{tag}_{modelo}.json` sem `--force`, e `--n-components` é **obrigatório** no 08 (o padrão 1000 dos outros scripts gastaria o teste com modelos N=1000, que existem com `_meta.json`). Escolha de modelo e hiperparâmetros só pela CV. Rodar o teste três vezes só vale porque o plano completo (`biomarker_pipeline/docs/plano_otimizacao.md`) foi commitado **antes** do braço 0, e porque os três braços são todos reportados. Para testar o script sem tocar no conjunto cego, aponte `blind_pos_dir`/`blind_neg_dir`/`reports_dir` de `common.DATASETS["tcc2"]` para cópias de FASTAs de treino num diretório temporário.
 
 ---
 
 ## 5. Convenções de código
 
-- Python 3.10+ (testado até 3.13). Deps fixadas em `requirements.txt`. Venv em `biomarker_pipeline/venv/`. `certifi` é necessário para HTTPS no Python do macOS (`CERTIFICATE_VERIFY_FAILED`); `openpyxl` para ler a SD20.
+- Python 3.11+ (venv em 3.13.7). Deps fixadas em `requirements.txt` — **alinhado em 2026-10-29 às versões do venv que geraram todos os resultados** (scikit-learn 1.8.0, numpy 2.4.6, scipy 1.17.1; antes listava 1.5.2/2.2.6, que nunca foram as usadas). Instalar exatamente essas versões em qualquer outra máquina (VM). Venv em `biomarker_pipeline/venv/`. `certifi` é necessário para HTTPS no Python do macOS (`CERTIFICATE_VERIFY_FAILED`); `openpyxl` para ler a SD20.
 - **Português** em docstrings, comentários, logs e nomes de relatórios. Identificadores em inglês.
 - Constantes em CAIXA_ALTA no topo de cada script; **sem arquivo de config** — parâmetros por `argparse` ou editando a constante.
 - Todo script tem docstring de módulo com o "Uso:", `logging` para stdout no formato `%(asctime)s [%(levelname)s] %(message)s`, e `main()` sob `if __name__ == "__main__"`.
@@ -195,8 +198,8 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 1. ~~Reorganizar e amostrar negativas~~ — feito (ver acima).
 2. **INS na comparação com o TCC I:** INS era a "negativa treinada" da validação externa, mas os critérios v2 a excluem dos negativos — na v2 ela vira negativa não treinada. Decidir se força a inclusão ou se reporta a mudança.
 3. ~~CV agrupada por gene~~ — decidido manter `StratifiedKFold` (§4.1).
-7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). ~~(1) grade de representação~~ rodada em 2026-10-20 (ver "Grade de representação" abaixo). Falta, na ordem: (2) escolher k e N pela CV (`tabelas_representacoes.tsv`) → (3) **registrar por escrito as grades do fine tuning e a regra de escolha do modelo principal** → (4) `06` + `08 --tag antes` → (5) fine tuning (grades ampliadas em SVM, LR, RF, GB — ainda não implementado no 05) → (6) `08 --tag depois` → (7) documento e apresentação.
-4. **Homólogos byte-idênticos em `raw_v2`:** 7 grupos (CFL1 ×4, FASLG ×3, PSMA6 ×3, UBE2L3 ×3, IL4/KLRK1/PTEN ×2). Inofensivos com CV agrupada por gene; deduplicar se a CV não for agrupada.
+7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). ~~(1) grade de representação~~ rodada em 2026-10-20; ~~(2) escolher k e N~~ k=3, N=4000 em 2026-10-29 (ver "Decisão de representação" abaixo). ~~(3) registrar o plano~~ — **experimento final definido em 2026-10-29: três braços, pré-registrados em `biomarker_pipeline/docs/plano_otimizacao.md`** (ver "Experimento final" abaixo). Falta, na ordem do plano: braço 0 (`06` para os 6 modelos + `08 --tag antes --n-components 4000`) → implementar a otimização (Optuna) dos braços A e B → piloto na VM e aprovação do custo → rodada completa → teste cego de cada braço → documento e apresentação.
+4. ~~Sequências idênticas no treino~~ — **decidido manter** (orientador, reafirmado em 2026-10-29: mostram que o modelo reconhece o que já viu). Não são erro de coleta: são entradas UniProt de **espécies diferentes** com proteína 100% idêntica (ortólogos muito conservados — ex. UBE2L3 de humano, camundongo e boi). Positivos: 7 grupos, 12 seqs redundantes (CFL1, FASLG, IL4, KLRK1, PSMA6, PTEN, UBE2L3); negativos: 6 grupos, 9 (ACOT13, PDCD5, RTRAF, SNRPG, ST8SIA4, UBE2D2) — 21 de 632. Não deduplicar; se citar no texto, dizer que são ortólogos idênticos.
 5. **Erros herdados no TCC I (`data/raw/`, congelado):** `PRDX5.fasta` tem `P83200` (fragmento de 16 aa com X); `NOS2.fasta` tem 2 seqs de NANOS2, `PRDX5.fasta` tem Prdx6, `FBXL19.fasta` tem FBXL19-AS1; `TNIP1.fasta` tem uma vírgula solta; `data/raw_negativos/HBB_housekeeping_facil.fasta` contém X/Z/B. Vale nota de limitação no documento.
 6. **`PTPN22` não é "negativa não treinada".** O TCC I descreve assim a PTPN22 de `data/input/`, mas `PTPN22_Artrite_Reumatoide.fasta` está nos negativos de treino desde o commit `cc6a498`. Conferir a seq e corrigir o texto ou o arquivo.
 
@@ -238,6 +241,54 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 - **Padrões consistentes:** (a) N maior ajuda LR e SVM até ~2000–4000, coerente com Johnson-Lindenstrauss; (b) **sem projeção, os modelos de árvore e o NB sobem muito** (RF 83 → 95, NB 65 → 86) — a projeção mistura os k-mers e atrapalha splits por feature; (c) **k=4 não supera k=3** no mesmo N; (d) k-mers espaçados não superam o contínuo de forma consistente; (e) k=2 com só 400 dimensões chega perto do k=3 N=1000 em SVM e RF.
 - **Bordas do grid** (para o fine tuning): kNN k=3 (21 de 21 configurações), RF 200 árvores (21), GB lr=0,2 e 200 estágios (20), NB var_smoothing=1e-9 (16), LR C=0,01 (7, nas dimensões altas).
 - **Custo:** GB é o gargalo (k3 sem projeção ~15 min; grade toda ~2h15 em 15 núcleos). **k=4 sem projeção com os 15 workers esgotou o swap** (o SVC converte 570 × 160 mil para float64, ~1–2,5 GB por worker) — rodar com `LOKY_MAX_CPU_COUNT=6` (11 min).
+
+### Decisão de representação (2026-10-29): k=3 contínuo, N=4000
+
+Um k e um N únicos para todos os modelos, como no TCC I (o melhor por modelo foi considerado e descartado: mais seleção sobre a CV enviesada e metodologia menos comparável). Ranking médio dos 4 modelos principais: k3 N=4000 empata em 1º com k3 sem projeção (4,2); k3 N=1000 fica em 11,0.
+
+| MCC (%), k=3 | N=1000 | N=2000 | N=4000 | sem projeção |
+|---|---|---|---|---|
+| SVM | 93,1 | 95,0 | **95,3** | 92,1 |
+| LR | 85,7 | 91,2 | **94,7** | 94,4 |
+| GB | 82,1 | 87,6 | 87,5 | 89,1 |
+| kNN | 68,7 | 68,5 | 68,1 | 68,2 |
+| RF | 83,2 | 87,4 | 85,5 | **94,7** |
+| NB | 64,7 | 68,8 | 68,3 | **85,8** |
+
+**Como sustentar (defesa):** o vetor sem projeção entra no texto como **condição de controle / teto**, não é escondido.
+1. **Sem perda nos modelos que usam a projeção:** em SVM, LR, GB e kNN o vetor completo não ganha além do desvio entre folds; o SVM (melhor modelo) tem com N=4000 o melhor MCC de toda a grade. Mesma informação com metade das dimensões.
+2. **N escolhido por saturação, com regra definida antes** (parar quando o ganho < desvio entre folds): de 2000 → 4000 só a LR ainda ganha (+3,4 vs dp 3,2); de 4000 → sem projeção, nenhum modelo baseado na projeção ganha. Johnson-Lindenstrauss para 632 seqs: distorção ≤ 25% (N=1000), ≤ 17% (2000), ≤ 12% (4000) — explica a melhora sobre o TCC I e a estabilização.
+3. **Escalabilidade:** sem projeção a dimensão é 20^k (400 / 8.000 / 160.000 / 3,2 mi); com projeção é sempre N. Evidência da própria grade: k=4 sem projeção esgotou a memória com paralelismo total e RF/GB nem foram rodados nele.
+
+**Assumir:** a diferença 4000 × 8000 está dentro do ruído — o argumento é "tão bom quanto, com metade das dimensões e escalável", não "melhor". **RF e NB perdem com a projeção** (−9 e −17 pontos): avaliam uma variável por vez, e a projeção espalha cada k-mer por todos os componentes — interação modelo × representação, reportar e explicar. Perda de interpretabilidade (componentes não são k-mers) vai como limitação. Alternativa considerada: N=2000 (redução 4×, igual a 4000 em tudo menos LR, −3,5).
+
+**Trabalhos futuros — k maior com dataset maior.** A projeção resolve o problema **computacional** de k maior; só mais dados resolvem o **estatístico** (k-mers exclusivos de um gene viram impressão digital → memorização). Fração dos k-mers observados presentes em ≥ 2 genes, subamostrando genes do treino (2026-10-29):
+
+| Genes | k=3 | k=4 | k=5 |
+|---|---|---|---|
+| 51 (≈ TCC I) | 81% | 20% | 3% |
+| 103 | 94% | 33% | 4% |
+| 155 | 96% | 42% | 6% |
+| 207 (TCC II) | 98% | 49% | 8% |
+
+N=4000 mantém distorção ≤ 15% até 20 mil proteínas (JL é logarítmico em n e independente de k). Ressalvas: a projeção não cria informação (preserva também a geometria de "cada proteína isolada"); "dataset maior" = mais **genes** distintos, não mais homólogos, e os positivos só crescem com novos GWAS (21 loci em Tsoi 2012 → 109 em Dand 2025). Caminho concreto: após o teste cego, os genes dos loci inéditos podem entrar no treino de um modelo final. O código já gera a projeção em blocos — k=5 com N=4000 é viável em princípio (não testado).
+
+### Experimento final (2026-10-29) — três braços, pré-registrados
+
+**Fonte de verdade: `biomarker_pipeline/docs/plano_otimizacao.md`** — espaços de busca, orçamento, validações, limiar, comitê, regra de reporte e registro de desvios. O commit que o introduziu é o pré-registro; depois do braço 0 o plano não muda (desvios só no registro do próprio arquivo, nunca motivados pelo teste cego). Resumo:
+
+| Braço | Tag no 08 | Hiperparâmetros |
+|---|---|---|
+| 0 — linha de base | `antes` | grids do 05, `StratifiedKFold` 10, refit ROC-AUC (`results_*_n4000.json` existentes); LR, SVM, RF, GB, NB, kNN |
+| A — otimizado, genes misturados | `otimizado_misturado` | busca bayesiana (Optuna/TPE), `RepeatedStratifiedKFold` 5×10, objetivo MCC |
+| B — otimizado, separado por gene | `otimizado_por_gene` | a mesma busca com `StratifiedGroupKFold` (grupo = gene) 5×10 |
+
+- A e B só diferem no divisor de folds. Modelos otimizados: LR (L1/L2/elastic net), SVM (RBF/linear), árvores (RF/Extra Trees), boosting (GB/HistGB), MLP, e um comitê (média das probabilidades). NB e kNN só no braço 0. Limiar de decisão ajustado pelo MCC fora do fold; teste cego de A e B reportado com o limiar ajustado e com 0,5.
+- **Métrica principal do TCC II: MCC** (ROC-AUC secundária — saturou). **Modelo principal de cada braço:** maior MCC médio na validação do próprio braço, desempate ROC-AUC (regra aprovada em 2026-10-29; no braço 0 dá SVM, 95,3).
+- **Regra de reporte:** os três braços e todos os modelos são reportados; a comparação entre braços é o resultado. Não apresentar o melhor braço/modelo escolhido depois do teste cego como estimativa não enviesada.
+- O braço B **não** muda a decisão de §4.1 (a CV reportada da linha de base continua `StratifiedKFold`): a separação por gene entra só como critério de escolha dos hiperparâmetros do braço B.
+- **Terminologia:** "otimização de hiperparâmetros", não "fine tuning" (fine tuning = continuar o treino de um modelo pré-treinado; aqui a representação é fixa e os classificadores são treinados do zero — não há o que ajustar). Defesa: representação fixa e não aprendida é escolha de projeto; fine tuning de verdade (ESM-2, ProtBERT) fica como trabalho futuro/comparação.
+- **Infraestrutura:** Azure, assinatura "Azure subscription 1" (Sponsorship, conta brunobateraf@gmail.com — a do Foundry/TeighAI; limite de gasto **desligado**, conferir saldo de créditos). East US, `Standard_F32als_v7` (32 núcleos físicos AMD, 64 GB, US$ 1,94/h), grupo de recursos `tcc-otimizacao`, apagado ao fim. Cota: 65 vCPUs regionais (16 já usados pela VM `teigh-agent`, de outro projeto — não mexer); Fasv6/FSv2 indisponíveis na assinatura; spot com cota de 3 vCPUs. Custo medido no Mac (2026-10-29): GB 3–6 min de CPU por treino de 1000 árvores, RF segundos a ~3 min, SVM/LR < 1 s. Estimativa preliminar US$ 100–200 para A+B; o piloto refina antes da rodada completa.
 
 ### Arquivos perdidos em 2026-10-10
 

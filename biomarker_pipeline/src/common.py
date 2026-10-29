@@ -75,7 +75,7 @@ def add_dataset_arg(parser) -> None:
     )
 
 
-def add_representation_args(parser, n_components: bool = True) -> None:
+def add_representation_args(parser, n_components: bool = True, require_n_components: bool = False) -> None:
     parser.add_argument(
         "--k", type=int, default=K,
         help=f"Tamanho do k-mer contínuo (padrão: {K}). Ignorado se --pattern for dado.",
@@ -86,8 +86,10 @@ def add_representation_args(parser, n_components: bool = True) -> None:
     )
     if n_components:
         parser.add_argument(
-            "--n-components", type=int, default=1000,
-            help="Dimensão da projeção gaussiana; 0 = sem projeção (padrão: 1000).",
+            "--n-components", type=int, required=require_n_components,
+            default=None if require_n_components else 1000,
+            help="Dimensão da projeção gaussiana; 0 = sem projeção"
+                 + (" (obrigatório)." if require_n_components else " (padrão: 1000)."),
         )
 
 
