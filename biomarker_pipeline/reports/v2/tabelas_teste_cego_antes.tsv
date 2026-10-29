@@ -1,0 +1,46 @@
+Tabela — Teste cego, braço 0 — linha de base (loci inéditos de Dand et al., 2025), métricas por sequência; n=294; k3, N=4000
+
+Modelo	Acurácia	Precisão	Sensibilidade	Especificidade	F1 Score	MCC	ROC-AUC
+Regressão Logística	55,4%	56,1%	50,3%	60,5%	53,0%	0,109	55,4%
+SVM	56,1%	57,5%	46,9%	65,3%	51,7%	0,125	55,7%
+Random Forest	57,1%	61,5%	38,1%	76,2%	47,1%	0,155	57,1%
+Gradient Boosting	55,1%	56,3%	45,6%	64,6%	50,4%	0,104	58,8%
+Naive Bayes	56,5%	66,7%	25,9%	87,1%	37,3%	0,163	62,8%
+kNN	49,0%	28,6%	1,4%	96,6%	2,6%	-0,067	48,3%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço 0 — linha de base (loci inéditos de Dand et al., 2025), métricas por gene (média entre homólogos); n=102; k3, N=4000
+
+Modelo	Acurácia	Precisão	Sensibilidade	Especificidade	F1 Score	MCC	ROC-AUC
+Regressão Logística	51,0%	45,7%	45,7%	55,4%	45,7%	0,010	54,8%
+SVM	56,9%	52,6%	43,5%	67,9%	47,6%	0,117	52,8%
+Random Forest	60,8%	60,7%	37,0%	80,4%	45,9%	0,193	56,9%
+Gradient Boosting	58,8%	55,9%	41,3%	73,2%	47,5%	0,153	58,2%
+Naive Bayes	58,8%	64,3%	19,6%	91,1%	30,0%	0,154	60,9%
+kNN	53,9%	33,3%	2,2%	96,4%	4,1%	-0,041	49,0%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço 0 — linha de base: sensibilidade por nível de evidência do locus (por gene); k3, N=4000
+
+Modelo	A — variante codificante / alvo terapêutico	B — TWAS	C — sinal dentro do gene	D — gene mais próximo (intergênico)
+Regressão Logística	5/11 (45,5%)	2/4 (50,0%)	8/15 (53,3%)	6/16 (37,5%)
+SVM	3/11 (27,3%)	1/4 (25,0%)	7/15 (46,7%)	9/16 (56,2%)
+Random Forest	5/11 (45,5%)	2/4 (50,0%)	5/15 (33,3%)	5/16 (31,2%)
+Gradient Boosting	3/11 (27,3%)	3/4 (75,0%)	7/15 (46,7%)	6/16 (37,5%)
+Naive Bayes	2/11 (18,2%)	1/4 (25,0%)	4/15 (26,7%)	2/16 (12,5%)
+kNN	0/11 (0,0%)	0/4 (0,0%)	0/15 (0,0%)	1/16 (6,2%)
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço 0 — linha de base: especificidade por nível de dificuldade do negativo (por gene); k3, N=4000
+
+Modelo	Fácil (housekeeping)	Intermediário (outras doenças imunes)	Difícil (imunes não-psoríase e parálogos)
+Regressão Logística	9/16 (56,2%)	9/22 (40,9%)	13/18 (72,2%)
+SVM	10/16 (62,5%)	14/22 (63,6%)	14/18 (77,8%)
+Random Forest	11/16 (68,8%)	17/22 (77,3%)	17/18 (94,4%)
+Gradient Boosting	14/16 (87,5%)	11/22 (50,0%)	16/18 (88,9%)
+Naive Bayes	14/16 (87,5%)	19/22 (86,4%)	18/18 (100,0%)
+kNN	15/16 (93,8%)	22/22 (100,0%)	17/18 (94,4%)
+Fonte: Elaborado pelos autores (2026).

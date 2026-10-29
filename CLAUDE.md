@@ -198,7 +198,7 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 1. ~~Reorganizar e amostrar negativas~~ — feito (ver acima).
 2. **INS na comparação com o TCC I:** INS era a "negativa treinada" da validação externa, mas os critérios v2 a excluem dos negativos — na v2 ela vira negativa não treinada. Decidir se força a inclusão ou se reporta a mudança.
 3. ~~CV agrupada por gene~~ — decidido manter `StratifiedKFold` (§4.1).
-7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). ~~(1) grade de representação~~ rodada em 2026-10-20; ~~(2) escolher k e N~~ k=3, N=4000 em 2026-10-29 (ver "Decisão de representação" abaixo). ~~(3) registrar o plano~~ — **experimento final definido em 2026-10-29: três braços, pré-registrados em `biomarker_pipeline/docs/plano_otimizacao.md`** (ver "Experimento final" abaixo). Falta, na ordem do plano: braço 0 (`06` para os 6 modelos + `08 --tag antes --n-components 4000`) → implementar a otimização (Optuna) dos braços A e B → piloto na VM e aprovação do custo → rodada completa → teste cego de cada braço → documento e apresentação.
+7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). ~~(1) grade de representação~~ rodada em 2026-10-20; ~~(2) escolher k e N~~ k=3, N=4000 em 2026-10-29 (ver "Decisão de representação" abaixo). ~~(3) registrar o plano~~ — **experimento final definido em 2026-10-29: três braços, pré-registrados em `biomarker_pipeline/docs/plano_otimizacao.md`** (ver "Experimento final" abaixo). ~~braço 0~~ rodado em 2026-10-29 (ver "Resultado do braço 0" abaixo). Falta, na ordem do plano: implementar a otimização (Optuna) dos braços A e B → piloto na VM e aprovação do custo → rodada completa → teste cego de cada braço → documento e apresentação.
 4. ~~Sequências idênticas no treino~~ — **decidido manter** (orientador, reafirmado em 2026-10-29: mostram que o modelo reconhece o que já viu). Não são erro de coleta: são entradas UniProt de **espécies diferentes** com proteína 100% idêntica (ortólogos muito conservados — ex. UBE2L3 de humano, camundongo e boi). Positivos: 7 grupos, 12 seqs redundantes (CFL1, FASLG, IL4, KLRK1, PSMA6, PTEN, UBE2L3); negativos: 6 grupos, 9 (ACOT13, PDCD5, RTRAF, SNRPG, ST8SIA4, UBE2D2) — 21 de 632. Não deduplicar; se citar no texto, dizer que são ortólogos idênticos.
 5. **Erros herdados no TCC I (`data/raw/`, congelado):** `PRDX5.fasta` tem `P83200` (fragmento de 16 aa com X); `NOS2.fasta` tem 2 seqs de NANOS2, `PRDX5.fasta` tem Prdx6, `FBXL19.fasta` tem FBXL19-AS1; `TNIP1.fasta` tem uma vírgula solta; `data/raw_negativos/HBB_housekeeping_facil.fasta` contém X/Z/B. Vale nota de limitação no documento.
 6. **`PTPN22` não é "negativa não treinada".** O TCC I descreve assim a PTPN22 de `data/input/`, mas `PTPN22_Artrite_Reumatoide.fasta` está nos negativos de treino desde o commit `cc6a498`. Conferir a seq e corrigir o texto ou o arquivo.
@@ -289,6 +289,27 @@ N=4000 mantém distorção ≤ 15% até 20 mil proteínas (JL é logarítmico em
 - O braço B **não** muda a decisão de §4.1 (a CV reportada da linha de base continua `StratifiedKFold`): a separação por gene entra só como critério de escolha dos hiperparâmetros do braço B.
 - **Terminologia:** "otimização de hiperparâmetros", não "fine tuning" (fine tuning = continuar o treino de um modelo pré-treinado; aqui a representação é fixa e os classificadores são treinados do zero — não há o que ajustar). Defesa: representação fixa e não aprendida é escolha de projeto; fine tuning de verdade (ESM-2, ProtBERT) fica como trabalho futuro/comparação.
 - **Infraestrutura:** Azure, assinatura "Azure subscription 1" (Sponsorship, conta brunobateraf@gmail.com — a do Foundry/TeighAI; limite de gasto **desligado**, conferir saldo de créditos). East US, `Standard_F32als_v7` (32 núcleos físicos AMD, 64 GB, US$ 1,94/h), grupo de recursos `tcc-otimizacao`, apagado ao fim. Cota: 65 vCPUs regionais (16 já usados pela VM `teigh-agent`, de outro projeto — não mexer); Fasv6/FSv2 indisponíveis na assinatura; spot com cota de 3 vCPUs. Custo medido no Mac (2026-10-29): GB 3–6 min de CPU por treino de 1000 árvores, RF segundos a ~3 min, SVM/LR < 1 s. Estimativa preliminar US$ 100–200 para A+B; o piloto refina antes da rodada completa.
+
+### Resultado do braço 0 — teste cego "antes" (2026-10-29)
+
+Rodado uma única vez, depois do pré-registro (`793a8ed`): 6 modelos finais com k=3, N=4000 e os hiperparâmetros da linha de base (`06` → `08 --tag antes --n-components 4000`). Arquivos: `reports/v2/teste_cego_antes_*.json`, `tabelas_teste_cego_antes.tsv`. 294 seqs (147/147), 102 genes (46/56).
+
+| Modelo | CV (genes misturados): ROC-AUC / MCC | Teste cego por gene: ROC-AUC [IC 95%] | MCC por gene | Sens. / Espec. por gene |
+|---|---|---|---|---|
+| SVM (principal) | 99,7 / 95,3 | 0,53 [0,42; 0,64] | 0,12 | 0,43 / 0,68 |
+| LR | 99,6 / 94,7 | 0,55 [0,43; 0,66] | 0,01 | 0,46 / 0,55 |
+| RF | 98,7 / 85,5 | 0,57 [0,45; 0,68] | 0,19 | 0,37 / 0,80 |
+| GB | 98,5 / 87,5 | 0,58 [0,47; 0,69] | 0,15 | 0,41 / 0,73 |
+| NB | 93,9 / 68,3 | 0,61 [0,50; 0,72] | 0,15 | 0,20 / 0,91 |
+| kNN | 93,9 / 68,1 | 0,49 [0,42; 0,56] | −0,04 | 0,02 / 0,96 |
+
+IC 95%: bootstrap por gene (5000 reamostragens, estratificado por classe). **Nenhum modelo se distingue do acaso** (todos os IC contêm 0,5; o NB no limite).
+
+- **A CV de genes misturados não prevê a generalização:** ~99,7 de ROC-AUC na CV contra ~0,55 em genes novos. Confirma §4.1 — a CV mede reconhecimento de homólogos do treino.
+- **Sem gradiente por nível de evidência** (SVM: A 3/11, B 1/4, C 7/15, D 9/16) → o fracasso não vem de rótulos fracos do nível D.
+- **Negativos difíceis não são mais confundidos que os fáceis** (SVM, P(positivo) média: difícil 0,37, fácil 0,42, intermediário 0,45; positivos 0,41–0,48) → o modelo não aprendeu "imune × housekeeping"; para genes nunca vistos, devolve probabilidades pouco informativas, em torno de 0,4–0,5, qualquer que seja a classe.
+- Coerente com a validação externa das 5 proteínas (INS, PTPN22 e RUNX3 erradas).
+- **Leitura para o TCC:** resultado negativo, central e defensável — pré-registrado, teste separado por gene por construção. Os braços A e B seguem como registrados: o B testa diretamente se escolher hiperparâmetros com CV separada por gene muda isso.
 
 ### Arquivos perdidos em 2026-10-10
 

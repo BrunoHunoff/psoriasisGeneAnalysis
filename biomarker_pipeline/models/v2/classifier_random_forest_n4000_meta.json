@@ -1,0 +1,19 @@
+{
+  "model": "random_forest",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "best_params": {
+    "max_depth": null,
+    "n_estimators": 200
+  },
+  "n_train": 632,
+  "n_positive": 316,
+  "n_negative": 316,
+  "classifier_path": "models/v2/classifier_random_forest_n4000.pkl"
+}
