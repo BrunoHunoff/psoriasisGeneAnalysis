@@ -28,3 +28,7 @@ CLAUDE.md
 # Cópia genérica do último N gravada pelo 05 (a versão com _n{N} é a que vale)
 reports/**/results_*.json
 !reports/**/results_*_n[0-9]*.json
+
+# Estudos do Optuna (SQLite, retomáveis) — o histórico versionado fica em tentativas_*.csv
+reports/**/optuna_*.db
+reports/**/optuna_*.db-journal

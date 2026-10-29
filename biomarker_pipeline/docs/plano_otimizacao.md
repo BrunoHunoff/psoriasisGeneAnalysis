@@ -138,4 +138,7 @@ aleatória) e classificadores treinados do zero, então não há modelo pré-tre
 
 | Data | Desvio | Motivo |
 |---|---|---|
-| — | — | — |
+| 2026-10-29 | **Regressão Logística:** o parâmetro `penalty` está obsoleto no scikit-learn 1.8; os três tipos de regularização passam a ser expressos por `l1_ratio` (L2 = 0, L1 = 1, elastic net ∈ [0,05; 0,95]), com solver saga. Mesmo modelo, mesma faixa de C. | Mudança de API da biblioteca. Esclarecimento de implementação, antes de qualquer resultado dos braços A e B. |
+| 2026-10-29 | **Regra de borda em faixas lineares:** "até o limite válido" implementado como ampliar uma largura da faixa naquela direção, sem passar do limite válido do parâmetro (ex.: subamostragem ≤ 1; amostras por folha ≥ 1). Faixas logarítmicas: 10×, como no plano. | O texto do plano não definia o passo para parâmetros sem limite natural (ex.: número de estágios). Esclarecimento, antes de qualquer resultado. |
+| 2026-10-29 | **Modelo principal (seção 8):** "maior MCC médio na validação do braço" = o MCC médio das 50 avaliações com limiar 0,5, que é a própria função objetivo da busca; desempate pelo ROC-AUC médio. | Esclarecimento, antes de qualquer resultado. |
+| 2026-10-29 | **Rodada-piloto em diretório separado** (`otimizacao_piloto/`), sem regra de borda e sem treino final; o piloto não entra no histórico da busca da rodada completa. Implementação: `src/09_optimize_hyperparams.py` (Optuna 5.0.0); teste cego dos braços A e B pelo `08_blind_test.py`, com o limiar de cada modelo lido do `_meta.json`. | Separar medição de custo da busca de verdade. Esclarecimento, antes de qualquer resultado. |

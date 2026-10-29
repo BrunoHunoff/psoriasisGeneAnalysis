@@ -24,17 +24,22 @@ Métricas em dois níveis:
 e quebradas por nível de evidência dos positivos (A/B/C/D, dand2025_validacao_ineditos.tsv)
 e por nível de dificuldade dos negativos (fácil/intermediário/difícil).
 
+Braços A e B: modelos de models/v2/otimizacao/{misturado|por_gene}/ (09_optimize_hyperparams.py) —
+LR, SVM, árvores, boosting, MLP e comitê (média das probabilidades dos cinco). Cada um usa o limiar
+de decisão ajustado na validação do braço (_meta.json); as métricas saem nesse limiar (principal)
+e também com 0,5, para comparar com o braço 0.
+
 Saídas (reports/v2/, qualquer que seja a representação — ela fica registrada no JSON):
   teste_cego_{tag}_{modelo}.json   — métricas e predições por sequência e por gene
   tabelas_teste_cego_{tag}.tsv     — tabelas para o Google Docs (todos os modelos já avaliados na etapa)
 
 Pré-requisito (mesma representação e mesmo --n-components):
-    python src/run_experiments.py --dataset tcc2
-    python src/06_train_final.py --model <modelo> --dataset tcc2
+    braço 0:     python src/06_train_final.py --model <modelo> --dataset tcc2 --n-components 4000
+    braços A/B:  python src/09_optimize_hyperparams.py --arm {misturado|por_gene} --model all --n-components 4000
 
 Uso:
     python src/08_blind_test.py --tag antes --model all --n-components 4000
-    python src/08_blind_test.py --tag antes --model svm --n-components 4000
+    python src/08_blind_test.py --tag otimizado_por_gene --model all --n-components 4000
 """
 
 import os
@@ -70,6 +75,15 @@ TAG_LABELS = {
     "otimizado_misturado": "braço A — otimizado, CV de genes misturados",
     "otimizado_por_gene":  "braço B — otimizado, CV separada por gene",
 }
+TAG_ARM = {"otimizado_misturado": "misturado", "otimizado_por_gene": "por_gene"}   # tag → pasta do 09
+OPT_MODELS = {
+    "logistic_regression": "Regressão Logística",
+    "svm":                 "SVM",
+    "trees":               "Árvores (RF/ET)",
+    "boosting":            "Boosting (GB/HistGB)",
+    "mlp":                 "MLP",
+    "comite":              "Comitê",
+}
 MODELS = {
     "logistic_regression": "Regressão Logística",
     "svm":                 "SVM",
@@ -102,8 +116,8 @@ NEG_LEVELS = {
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Teste cego do TCC II (rodar uma única vez por etapa).")
-    parser.add_argument("--model", required=True, choices=list(MODELS) + ["all"],
-                        help="Modelo final a avaliar, ou 'all' para todos os treinados.")
+    parser.add_argument("--model", required=True, choices=list(dict.fromkeys([*MODELS, *OPT_MODELS])) + ["all"],
+                        help="Modelo final a avaliar, ou 'all' para todos os do braço.")
     parser.add_argument("--tag", required=True, choices=TAGS,
                         help="Braço do experimento (docs/plano_otimizacao.md).")
     parser.add_argument("--force", action="store_true",
@@ -148,8 +162,8 @@ def load_blind_set(pos_dir: str, neg_dir: str, evidence: dict[str, str]) -> list
     return records
 
 
-def compute_metrics(y_true: np.ndarray, proba: np.ndarray) -> dict:
-    y_pred = (proba >= THRESHOLD).astype(int)
+def compute_metrics(y_true: np.ndarray, proba: np.ndarray, threshold: float = THRESHOLD) -> dict:
+    y_pred = (proba >= threshold).astype(int)
     tn = int(((y_true == 0) & (y_pred == 0)).sum())
     fp = int(((y_true == 0) & (y_pred == 1)).sum())
     return {
@@ -164,13 +178,13 @@ def compute_metrics(y_true: np.ndarray, proba: np.ndarray) -> dict:
     }
 
 
-def gene_table(records: list[dict], proba: np.ndarray) -> list[dict]:
+def gene_table(records: list[dict], proba: np.ndarray, threshold: float = THRESHOLD) -> list[dict]:
     """Agrega por gene: média de P(positivo) entre os homólogos."""
     genes: dict[tuple, list[float]] = {}
     for rec, p in zip(records, proba):
         genes.setdefault((rec["gene"], rec["label"], rec["nivel"]), []).append(float(p))
     return [{"gene": g, "label": lbl, "nivel": lvl, "n_seqs": len(ps),
-             "proba_media": float(np.mean(ps)), "pred": int(np.mean(ps) >= THRESHOLD)}
+             "proba_media": float(np.mean(ps)), "pred": int(np.mean(ps) >= threshold)}
             for (g, lbl, lvl), ps in sorted(genes.items())]
 
 
@@ -203,18 +217,26 @@ def build_tsv(results: dict, tag: str) -> str:
     configs = {config_label(r) for r in results.values()}
     # Uma representação para todos os modelos → vai no título; senão, ao lado de cada modelo
     suffix = f"; {configs.pop()}" if len(configs) == 1 else ""
-    label = {m: MODELS[m] + ("" if suffix else f" ({config_label(r)})") for m, r in results.items()}
+    names = MODELS if tag == "antes" else OPT_MODELS
+    label = {m: names[m] + ("" if suffix else f" ({config_label(r)})")
+             + ("" if tag == "antes" else f" — limiar {r['limiar']:.2f}".replace(".", ","))
+             for m, r in results.items()}
     lines = []
-    for unit, title in (("por_sequencia", "por sequência"), ("por_gene", "por gene (média entre homólogos)")):
-        n = next(iter(results.values()))["metricas"][unit]["n"]
-        lines += [f"Tabela — Teste cego, {TAG_LABELS[tag]} (loci inéditos de Dand et al., 2025), "
-                  f"métricas {title}; n={n}{suffix}", "",
-                  "\t".join(["Modelo"] + list(METRIC_LABELS.values()))]
-        for model, r in results.items():
-            m = r["metricas"][unit]
-            lines.append("\t".join([label[model]] + [pct(m[k]) if k != "mcc" else f"{m[k]:.3f}".replace(".", ",")
-                                                    for k in METRIC_LABELS]))
-        lines += [fonte, "", ""]
+    tables = [("metricas", "", label)]
+    if tag != "antes":   # braços A e B: limiar ajustado (principal) e 0,5 (comparação com o braço 0)
+        tables = [("metricas", ", limiar ajustado na validação", label),
+                  ("metricas_limiar_0_5", ", limiar 0,5", {m: names[m] for m in results})]
+    for key, thr_title, row_label in tables:
+        for unit, title in (("por_sequencia", "por sequência"), ("por_gene", "por gene (média entre homólogos)")):
+            n = next(iter(results.values()))[key][unit]["n"]
+            lines += [f"Tabela — Teste cego, {TAG_LABELS[tag]} (loci inéditos de Dand et al., 2025), "
+                      f"métricas {title}{thr_title}; n={n}{suffix}", "",
+                      "\t".join(["Modelo"] + list(METRIC_LABELS.values()))]
+            for model, r in results.items():
+                m = r[key][unit]
+                lines.append("\t".join([row_label[model]] + [pct(m[k]) if k != "mcc" else f"{m[k]:.3f}".replace(".", ",")
+                                                            for k in METRIC_LABELS]))
+            lines += [fonte, "", ""]
 
     lines += [f"Tabela — Teste cego, {TAG_LABELS[tag]}: sensibilidade por nível de evidência do locus "
               f"(por gene){suffix}", "",
@@ -246,19 +268,28 @@ def main():
     rep = rep_name(patterns)
     n_components = vector_dim(patterns, args.n_components)
     paths = dataset_paths(DATASET, patterns)
-    models_dir = paths["models_dir"]
+    optimized = args.tag != "antes"
+    names = OPT_MODELS if optimized else MODELS
+    models_dir = (os.path.join(paths["models_dir"], "otimizacao", TAG_ARM[args.tag]) if optimized
+                  else paths["models_dir"])
     reports_dir = dataset_paths(DATASET)["reports_dir"]   # reports/v2/, para qualquer representação
     os.makedirs(reports_dir, exist_ok=True)
+    if args.model != "all" and args.model not in names:
+        log.error("O modelo %s não faz parte do %s (modelos: %s).", args.model, TAG_LABELS[args.tag], ", ".join(names))
+        sys.exit(1)
+    prereq = ("06_train_final.py --model {m} --dataset tcc2" if not optimized else
+              "09_optimize_hyperparams.py --arm " + TAG_ARM.get(args.tag, "") + " --model {m}")
 
-    models = list(MODELS) if args.model == "all" else [args.model]
+    models = list(names) if args.model == "all" else [args.model]
     classifiers, metas = {}, {}
     for model in models:
         clf_path = classifier_path(models_dir, model, n_components)
         meta_path = clf_path.replace(".pkl", "_meta.json")
-        if not os.path.exists(clf_path) or not os.path.exists(meta_path):
+        needed = ([classifier_path(models_dir, m, n_components) for m in json.load(open(meta_path))["membros"]]
+                  if model == "comite" and os.path.exists(meta_path) else [clf_path])
+        if not os.path.exists(meta_path) or not all(os.path.exists(p) for p in needed):
             msg = (f"Modelo final não encontrado: {clf_path} (+ _meta.json) — rode "
-                   f"06_train_final.py --model {model} --dataset {DATASET} com a mesma representação "
-                   f"e o mesmo --n-components")
+                   f"{prereq.format(m=model)} com a mesma representação e o mesmo --n-components")
             if args.model == "all":
                 log.warning(msg + ". Pulando.")
                 continue
@@ -276,8 +307,11 @@ def main():
                       "NÃO foi alterado com base nesse resultado; nesse caso use --force.",
                       args.tag, model, out_json)
             sys.exit(1)
-        with open(clf_path, "rb") as f:
-            classifiers[model] = pickle.load(f)
+        loaded = []
+        for path in needed:
+            with open(path, "rb") as f:
+                loaded.append(pickle.load(f))
+        classifiers[model] = loaded   # um modelo, ou os membros do comitê
         metas[model] = meta
     if not classifiers:
         log.error("Nenhum modelo final disponível para %s, N=%d.", rep, n_components)
@@ -294,9 +328,10 @@ def main():
              args.tag, len(y), int(y.sum()), int((y == 0).sum()), rep, n_components)
 
     results = {}
-    for model, clf in classifiers.items():
-        proba = clf.predict_proba(X)[:, 1]
-        genes = gene_table(kept, proba)
+    for model, clfs in classifiers.items():
+        proba = np.mean([c.predict_proba(X)[:, 1] for c in clfs], axis=0)   # comitê: média dos membros
+        threshold = metas[model].get("limiar", THRESHOLD) if optimized else THRESHOLD
+        genes = gene_table(kept, proba, threshold)
         g_true = np.array([g["label"] for g in genes])
         g_proba = np.array([g["proba_media"] for g in genes])
         result = {
@@ -307,12 +342,12 @@ def main():
             "padroes": list(patterns),
             "projecao": bool(args.n_components),
             "n_components": n_components,
-            "hiperparametros": metas[model].get("best_params"),
-            "limiar": THRESHOLD,
+            "hiperparametros": metas[model].get("best_params", {"membros": metas[model].get("membros")}),
+            "limiar": threshold,
             "executado_em": datetime.now().isoformat(timespec="seconds"),
             "metricas": {
-                "por_sequencia": compute_metrics(y, proba),
-                "por_gene": compute_metrics(g_true, g_proba),
+                "por_sequencia": compute_metrics(y, proba, threshold),
+                "por_gene": compute_metrics(g_true, g_proba, threshold),
             },
             "sensibilidade_por_evidencia": breakdown(genes, 1),
             "especificidade_por_nivel": breakdown(genes, 0),
@@ -320,17 +355,20 @@ def main():
             "sequencias": [{"seq_id": r["seq_id"], "gene": r["gene"], "label": r["label"],
                             "nivel": r["nivel"], "proba": float(p)} for r, p in zip(kept, proba)],
         }
+        if optimized:
+            result["metricas_limiar_0_5"] = {"por_sequencia": compute_metrics(y, proba),
+                                             "por_gene": compute_metrics(g_true, g_proba)}
         with open(os.path.join(reports_dir, f"teste_cego_{args.tag}_{model}.json"), "w") as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
         results[model] = result
         ms, mg = result["metricas"]["por_sequencia"], result["metricas"]["por_gene"]
-        log.info("%-20s  seq: ROC-AUC=%.3f sens=%.3f esp=%.3f | gene: ROC-AUC=%.3f sens=%.3f esp=%.3f",
-                 model, ms["roc_auc"], ms["sensitivity"], ms["specificity"],
-                 mg["roc_auc"], mg["sensitivity"], mg["specificity"])
+        log.info("%-20s  limiar %.2f  seq: ROC-AUC=%.3f sens=%.3f esp=%.3f | gene: ROC-AUC=%.3f MCC=%.3f "
+                 "sens=%.3f esp=%.3f", model, threshold, ms["roc_auc"], ms["sensitivity"], ms["specificity"],
+                 mg["roc_auc"], mg["mcc"], mg["sensitivity"], mg["specificity"])
 
     # A tabela reúne todos os modelos já avaliados na etapa, não só os desta execução
     all_results = {}
-    for model in MODELS:
+    for model in names:
         path = os.path.join(reports_dir, f"teste_cego_{args.tag}_{model}.json")
         if os.path.exists(path):
             with open(path) as f:
