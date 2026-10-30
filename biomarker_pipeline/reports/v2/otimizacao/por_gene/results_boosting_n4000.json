@@ -1,0 +1,151 @@
+{
+  "model": "boosting",
+  "braco": "por_gene",
+  "tag": "otimizado_por_gene",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "validacao": "StratifiedGroupKFold 10 folds × 5 repetições, grupo = gene",
+  "objetivo": "MCC médio nas 50 avaliações, limiar 0,5",
+  "orcamento": 100,
+  "tentativas": 150,
+  "tentativas_com_falha": 0,
+  "extensoes_de_faixa": [
+    {
+      "apos_tentativas": 100,
+      "faixas": {
+        "gb_learning_rate": [
+          0.0005,
+          0.5
+        ]
+      }
+    }
+  ],
+  "faixas_finais": {
+    "gb_n_estimators": [
+      100,
+      2000
+    ],
+    "gb_learning_rate": [
+      0.0005,
+      0.5
+    ],
+    "gb_max_depth": [
+      1,
+      6
+    ],
+    "gb_subsample": [
+      0.5,
+      1.0
+    ],
+    "hgb_max_iter": [
+      100,
+      2000
+    ],
+    "hgb_learning_rate": [
+      0.005,
+      0.5
+    ],
+    "hgb_max_leaf_nodes": [
+      4,
+      64
+    ],
+    "hgb_min_samples_leaf": [
+      5,
+      50
+    ],
+    "hgb_l2_regularization": [
+      1e-06,
+      10.0
+    ],
+    "hgb_max_features": [
+      0.05,
+      1.0
+    ]
+  },
+  "melhor_tentativa": 103,
+  "best_params": {
+    "tipo": "gradient_boosting",
+    "gb_n_estimators": 387,
+    "gb_learning_rate": 0.003760679673671449,
+    "gb_max_depth": 5,
+    "gb_subsample": 0.9017672283185437
+  },
+  "estimador": "GradientBoostingClassifier(learning_rate=0.003760679673671449, max_depth=5,\n                           n_estimators=387, random_state=42,\n                           subsample=0.9017672283185437)",
+  "metrics": {
+    "mcc": {
+      "mean": 0.16281686213106616,
+      "std": 0.1896295765189116
+    },
+    "roc_auc": {
+      "mean": 0.603844506048387,
+      "std": 0.10701957577091539
+    },
+    "accuracy": {
+      "mean": 0.5802579365079366,
+      "std": 0.09237391061380604
+    },
+    "precision": {
+      "mean": 0.5940148726206723,
+      "std": 0.10443828432333417
+    },
+    "sensitivity": {
+      "mean": 0.5150806451612904,
+      "std": 0.1352015527741032
+    },
+    "specificity": {
+      "mean": 0.6454435483870968,
+      "std": 0.12945511608725802
+    },
+    "f1": {
+      "mean": 0.5457023043691783,
+      "std": 0.11094364066061091
+    }
+  },
+  "limiar": 0.49,
+  "metrics_fora_do_fold_no_limiar": {
+    "mcc": {
+      "mean": 0.16490089450749434,
+      "std": 0.04524414644199246
+    },
+    "roc_auc": {
+      "mean": 0.6013859958340009,
+      "std": 0.02666945130434266
+    },
+    "accuracy": {
+      "mean": 0.5822784810126583,
+      "std": 0.022577289850299952
+    },
+    "precision": {
+      "mean": 0.5867407332276654,
+      "std": 0.02372816659551012
+    },
+    "sensitivity": {
+      "mean": 0.5569620253164557,
+      "std": 0.031199386187003124
+    },
+    "specificity": {
+      "mean": 0.6075949367088607,
+      "std": 0.028516152724224843
+    },
+    "f1": {
+      "mean": 0.571216116523423,
+      "std": 0.025275626352963012
+    }
+  },
+  "ambiente": {
+    "python": "3.13.7",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.6",
+    "optuna": "5.0.0",
+    "commit": "d7f16e95c1b6e8a94573f2eb6a378864b1dc838b",
+    "maquina": "tcc-otimizacao-vm",
+    "cpus": 32
+  },
+  "concluido_em": "2026-10-30T20:36:09",
+  "duracao_horas": 16.74
+}

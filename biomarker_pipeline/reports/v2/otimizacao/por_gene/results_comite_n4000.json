@@ -1,0 +1,91 @@
+{
+  "model": "comite",
+  "braco": "por_gene",
+  "tag": "otimizado_por_gene",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "membros": [
+    "logistic_regression",
+    "svm",
+    "trees",
+    "boosting",
+    "mlp"
+  ],
+  "combinacao": "média simples das probabilidades",
+  "metrics": {
+    "mcc": {
+      "mean": 0.1708421872603817,
+      "std": 0.1850106626681572
+    },
+    "roc_auc": {
+      "mean": 0.6125478830645161,
+      "std": 0.11684920050901644
+    },
+    "accuracy": {
+      "mean": 0.5819642857142857,
+      "std": 0.08910687059703999
+    },
+    "precision": {
+      "mean": 0.6078435644045723,
+      "std": 0.12486642521281129
+    },
+    "sensitivity": {
+      "mean": 0.4377620967741936,
+      "std": 0.16403323069025247
+    },
+    "specificity": {
+      "mean": 0.7268145161290324,
+      "std": 0.10464544842051217
+    },
+    "f1": {
+      "mean": 0.4976641916298437,
+      "std": 0.1472586970620361
+    }
+  },
+  "limiar": 0.5,
+  "metrics_fora_do_fold_no_limiar": {
+    "mcc": {
+      "mean": 0.17129095781357037,
+      "std": 0.01677320628276657
+    },
+    "roc_auc": {
+      "mean": 0.6165057683063612,
+      "std": 0.017345975173246365
+    },
+    "accuracy": {
+      "mean": 0.5819620253164557,
+      "std": 0.008092855602876259
+    },
+    "precision": {
+      "mean": 0.6153843190666788,
+      "std": 0.011488140150926798
+    },
+    "sensitivity": {
+      "mean": 0.43734177215189873,
+      "std": 0.015425389375891073
+    },
+    "specificity": {
+      "mean": 0.7265822784810128,
+      "std": 0.013215577859380427
+    },
+    "f1": {
+      "mean": 0.5111682993631145,
+      "std": 0.012504843054002443
+    }
+  },
+  "ambiente": {
+    "python": "3.13.7",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.6",
+    "optuna": "5.0.0",
+    "commit": "d7f16e95c1b6e8a94573f2eb6a378864b1dc838b",
+    "maquina": "tcc-otimizacao-vm",
+    "cpus": 32
+  },
+  "concluido_em": "2026-10-30T20:54:51"
+}

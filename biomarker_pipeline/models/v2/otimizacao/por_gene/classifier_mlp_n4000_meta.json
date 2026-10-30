@@ -1,0 +1,23 @@
+{
+  "model": "mlp",
+  "braco": "por_gene",
+  "tag": "otimizado_por_gene",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "best_params": {
+    "camadas": 1,
+    "neuronios_1": 142,
+    "alpha": 0.001002589629054302,
+    "learning_rate_init": 0.00018597383489686088,
+    "lote": 32
+  },
+  "limiar": 0.35,
+  "n_train": 632,
+  "classifier_path": "models/v2/otimizacao/por_gene/classifier_mlp_n4000.pkl"
+}

@@ -1,0 +1,107 @@
+{
+  "model": "logistic_regression",
+  "braco": "por_gene",
+  "tag": "otimizado_por_gene",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "validacao": "StratifiedGroupKFold 10 folds × 5 repetições, grupo = gene",
+  "objetivo": "MCC médio nas 50 avaliações, limiar 0,5",
+  "orcamento": 50,
+  "tentativas": 50,
+  "tentativas_com_falha": 0,
+  "extensoes_de_faixa": [],
+  "faixas_finais": {
+    "C": [
+      1e-05,
+      1000.0
+    ],
+    "l1_ratio": [
+      0.05,
+      0.95
+    ]
+  },
+  "melhor_tentativa": 25,
+  "best_params": {
+    "regularizacao": "elasticnet",
+    "C": 0.005525789109310385,
+    "l1_ratio": 0.40573705166367807
+  },
+  "estimador": "Pipeline(steps=[('scaler', StandardScaler()),\n                ('model',\n                 LogisticRegression(C=0.005525789109310385,\n                                    l1_ratio=0.40573705166367807, max_iter=5000,\n                                    random_state=42, solver='saga'))])",
+  "metrics": {
+    "mcc": {
+      "mean": 0.1678507236418917,
+      "std": 0.20061724477477214
+    },
+    "roc_auc": {
+      "mean": 0.6283064516129033,
+      "std": 0.11938223619308061
+    },
+    "accuracy": {
+      "mean": 0.5822718253968254,
+      "std": 0.09907103917203355
+    },
+    "precision": {
+      "mean": 0.5945609025810251,
+      "std": 0.11314696914174874
+    },
+    "sensitivity": {
+      "mean": 0.5634274193548388,
+      "std": 0.1314665845916899
+    },
+    "specificity": {
+      "mean": 0.6017137096774193,
+      "std": 0.16891831823180453
+    },
+    "f1": {
+      "mean": 0.5715858596294151,
+      "std": 0.10263035024322854
+    }
+  },
+  "limiar": 0.5,
+  "metrics_fora_do_fold_no_limiar": {
+    "mcc": {
+      "mean": 0.1647049257018461,
+      "std": 0.05290359541636357
+    },
+    "roc_auc": {
+      "mean": 0.607608956897933,
+      "std": 0.03100987509776413
+    },
+    "accuracy": {
+      "mean": 0.5822784810126582,
+      "std": 0.026438732372411938
+    },
+    "precision": {
+      "mean": 0.585696502532903,
+      "std": 0.027499712316530193
+    },
+    "sensitivity": {
+      "mean": 0.5632911392405063,
+      "std": 0.02531645569620254
+    },
+    "specificity": {
+      "mean": 0.6012658227848101,
+      "std": 0.03028730661773519
+    },
+    "f1": {
+      "mean": 0.574227940779214,
+      "std": 0.025923575944236076
+    }
+  },
+  "ambiente": {
+    "python": "3.13.7",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.6",
+    "optuna": "5.0.0",
+    "commit": "d7f16e95c1b6e8a94573f2eb6a378864b1dc838b",
+    "maquina": "tcc-otimizacao-vm",
+    "cpus": 32
+  },
+  "concluido_em": "2026-10-29T23:07:29",
+  "duracao_horas": 0.55
+}

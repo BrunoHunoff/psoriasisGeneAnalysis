@@ -1,0 +1,10 @@
+Tabela — Otimização de hiperparâmetros, braço B — CV separada por gene (k=3, N=4000; média ± desvio padrão nas 50 avaliações da validação 5×10 do braço; modelo principal = maior MCC)
+
+Modelo	MCC	ROC-AUC	Sensibilidade	Especificidade	Limiar ajustado	MCC fora do fold no limiar	Tentativas	Melhores hiperparâmetros
+Regressão Logística	16,8% ± 20,1%	62,8% ± 11,9%	56,3% ± 13,1%	60,2% ± 16,9%	0,50	16,5% ± 5,3%	50	{"regularizacao": "elasticnet", "C": 0.005525789109310385, "l1_ratio": 0.40573705166367807}
+SVM	14,6% ± 18,3%	58,0% ± 11,4%	44,7% ± 15,6%	69,1% ± 13,0%	0,48	14,3% ± 2,5%	150	{"kernel": "rbf", "C": 7990.646995880247, "gamma": 8.077836171503548e-05}
+Árvores (RF/ET)	5,0% ± 19,9%	52,8% ± 12,1%	30,5% ± 13,4%	74,1% ± 11,5%	0,57	14,2% ± 1,4%	150	{"tipo": "random_forest", "max_features": 541, "min_samples_leaf": 4, "max_samples": 0.940666130651568}
+Boosting (GB/HistGB)	16,3% ± 19,0%	60,4% ± 10,7%	51,5% ± 13,5%	64,5% ± 12,9%	0,49	16,5% ± 4,5%	150	{"tipo": "gradient_boosting", "gb_n_estimators": 387, "gb_learning_rate": 0.003760679673671449, "gb_max_depth": 5, "gb_subsample": 0.9017672283185437}
+MLP (principal)	18,7% ± 19,3%	61,6% ± 12,5%	47,9% ± 16,8%	70,1% ± 11,8%	0,35	19,2% ± 1,3%	100	{"camadas": 1, "neuronios_1": 142, "alpha": 0.001002589629054302, "learning_rate_init": 0.00018597383489686088, "lote": 32}
+Comitê	17,1% ± 18,5%	61,3% ± 11,7%	43,8% ± 16,4%	72,7% ± 10,5%	0,50	17,1% ± 1,7%	—	{"membros": ["logistic_regression", "svm", "trees", "boosting", "mlp"]}
+Fonte: Elaborado pelos autores (2026).

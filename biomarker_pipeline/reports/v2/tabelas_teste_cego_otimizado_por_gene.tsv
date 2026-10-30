@@ -1,0 +1,70 @@
+Tabela — Teste cego, braço B — otimizado, CV separada por gene (loci inéditos de Dand et al., 2025), métricas por sequência, limiar ajustado na validação; n=294; k3, N=4000
+
+Modelo	Acurácia	Precisão	Sensibilidade	Especificidade	F1 Score	MCC	ROC-AUC
+Regressão Logística — limiar 0,50	57,1%	57,0%	58,5%	55,8%	57,7%	0,143	59,6%
+SVM — limiar 0,48	55,1%	55,9%	48,3%	61,9%	51,8%	0,103	54,7%
+Árvores (RF/ET) — limiar 0,57	52,0%	100,0%	4,1%	100,0%	7,8%	0,144	59,1%
+Boosting (GB/HistGB) — limiar 0,49	54,8%	55,2%	50,3%	59,2%	52,7%	0,096	58,8%
+MLP — limiar 0,35	51,0%	50,9%	55,8%	46,3%	53,2%	0,021	52,5%
+Comitê — limiar 0,50	55,4%	57,4%	42,2%	68,7%	48,6%	0,113	56,0%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço B — otimizado, CV separada por gene (loci inéditos de Dand et al., 2025), métricas por gene (média entre homólogos), limiar ajustado na validação; n=102; k3, N=4000
+
+Modelo	Acurácia	Precisão	Sensibilidade	Especificidade	F1 Score	MCC	ROC-AUC
+Regressão Logística — limiar 0,50	54,9%	50,0%	56,5%	53,6%	53,1%	0,100	55,7%
+SVM — limiar 0,48	51,0%	45,2%	41,3%	58,9%	43,2%	0,002	54,5%
+Árvores (RF/ET) — limiar 0,57	55,9%	100,0%	2,2%	100,0%	4,3%	0,110	58,0%
+Boosting (GB/HistGB) — limiar 0,49	57,8%	53,3%	52,2%	62,5%	52,7%	0,147	59,2%
+MLP — limiar 0,35	47,1%	43,3%	56,5%	39,3%	49,1%	-0,042	49,4%
+Comitê — limiar 0,50	54,9%	50,0%	39,1%	67,9%	43,9%	0,073	52,9%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço B — otimizado, CV separada por gene (loci inéditos de Dand et al., 2025), métricas por sequência, limiar 0,5; n=294; k3, N=4000
+
+Modelo	Acurácia	Precisão	Sensibilidade	Especificidade	F1 Score	MCC	ROC-AUC
+Regressão Logística	57,1%	57,0%	58,5%	55,8%	57,7%	0,143	59,6%
+SVM	56,5%	58,0%	46,9%	66,0%	51,9%	0,132	54,7%
+Árvores (RF/ET)	57,8%	61,6%	41,5%	74,1%	49,6%	0,166	59,1%
+Boosting (GB/HistGB)	55,1%	55,9%	48,3%	61,9%	51,8%	0,103	58,8%
+MLP	51,0%	51,3%	41,5%	60,5%	45,9%	0,021	52,5%
+Comitê	55,4%	57,4%	42,2%	68,7%	48,6%	0,113	56,0%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço B — otimizado, CV separada por gene (loci inéditos de Dand et al., 2025), métricas por gene (média entre homólogos), limiar 0,5; n=102; k3, N=4000
+
+Modelo	Acurácia	Precisão	Sensibilidade	Especificidade	F1 Score	MCC	ROC-AUC
+Regressão Logística	54,9%	50,0%	56,5%	53,6%	53,1%	0,100	55,7%
+SVM	53,9%	48,6%	39,1%	66,1%	43,4%	0,054	54,5%
+Árvores (RF/ET)	59,8%	58,1%	39,1%	76,8%	46,8%	0,172	58,0%
+Boosting (GB/HistGB)	58,8%	54,8%	50,0%	66,1%	52,3%	0,162	59,2%
+MLP	52,0%	45,7%	34,8%	66,1%	39,5%	0,009	49,4%
+Comitê	54,9%	50,0%	39,1%	67,9%	43,9%	0,073	52,9%
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço B — otimizado, CV separada por gene: sensibilidade por nível de evidência do locus (por gene); k3, N=4000
+
+Modelo	A — variante codificante / alvo terapêutico	B — TWAS	C — sinal dentro do gene	D — gene mais próximo (intergênico)
+Regressão Logística — limiar 0,50	4/11 (36,4%)	2/4 (50,0%)	12/15 (80,0%)	8/16 (50,0%)
+SVM — limiar 0,48	3/11 (27,3%)	1/4 (25,0%)	7/15 (46,7%)	8/16 (50,0%)
+Árvores (RF/ET) — limiar 0,57	0/11 (0,0%)	0/4 (0,0%)	1/15 (6,7%)	0/16 (0,0%)
+Boosting (GB/HistGB) — limiar 0,49	4/11 (36,4%)	2/4 (50,0%)	8/15 (53,3%)	10/16 (62,5%)
+MLP — limiar 0,35	6/11 (54,5%)	1/4 (25,0%)	8/15 (53,3%)	11/16 (68,8%)
+Comitê — limiar 0,50	3/11 (27,3%)	1/4 (25,0%)	6/15 (40,0%)	8/16 (50,0%)
+Fonte: Elaborado pelos autores (2026).
+
+
+Tabela — Teste cego, braço B — otimizado, CV separada por gene: especificidade por nível de dificuldade do negativo (por gene); k3, N=4000
+
+Modelo	Fácil (housekeeping)	Intermediário (outras doenças imunes)	Difícil (imunes não-psoríase e parálogos)
+Regressão Logística — limiar 0,50	9/16 (56,2%)	7/22 (31,8%)	14/18 (77,8%)
+SVM — limiar 0,48	9/16 (56,2%)	11/22 (50,0%)	13/18 (72,2%)
+Árvores (RF/ET) — limiar 0,57	16/16 (100,0%)	22/22 (100,0%)	18/18 (100,0%)
+Boosting (GB/HistGB) — limiar 0,49	13/16 (81,2%)	9/22 (40,9%)	13/18 (72,2%)
+MLP — limiar 0,35	6/16 (37,5%)	6/22 (27,3%)	10/18 (55,6%)
+Comitê — limiar 0,50	10/16 (62,5%)	13/22 (59,1%)	15/18 (83,3%)
+Fonte: Elaborado pelos autores (2026).

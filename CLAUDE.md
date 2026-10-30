@@ -201,7 +201,7 @@ Fluxo: `00_build_negative_candidates.py` → `00_fetch_uniprot.py --max-seqs 4` 
 1. ~~Reorganizar e amostrar negativas~~ — feito (ver acima).
 2. **INS na comparação com o TCC I:** INS era a "negativa treinada" da validação externa, mas os critérios v2 a excluem dos negativos — na v2 ela vira negativa não treinada. Decidir se força a inclusão ou se reporta a mudança.
 3. ~~CV agrupada por gene~~ — decidido manter `StratifiedKFold` (§4.1).
-7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). ~~(1) grade de representação~~ rodada em 2026-10-20; ~~(2) escolher k e N~~ k=3, N=4000 em 2026-10-29 (ver "Decisão de representação" abaixo). ~~(3) registrar o plano~~ — **experimento final definido em 2026-10-29: três braços, pré-registrados em `biomarker_pipeline/docs/plano_otimizacao.md`** (ver "Experimento final" abaixo). ~~braço 0~~ rodado em 2026-10-29 (ver "Resultado do braço 0" abaixo). ~~implementar a otimização~~ feito em 2026-10-29 (`src/09_optimize_hyperparams.py`, testado localmente com orçamentos mínimos: fluxo completo, regra de borda, reprodutibilidade, e o 08 dá resultado idêntico ao commitado no braço 0). ~~piloto na VM~~ feito em 2026-10-29 (21 min, ~US$ 1; ver registro de desvios do plano: rodada completa ≈ 13–17 h, US$ 26–33, pior caso US$ 78). Falta, na ordem do plano: rodada completa na VM → rodada completa → teste cego de cada braço → documento e apresentação.
+7. **Pipeline do TCC II:** linha de base rodada em 2026-10-20 (ver Resultados); código da grade de representação pronto em 2026-10-20 (§2). ~~(1) grade de representação~~ rodada em 2026-10-20; ~~(2) escolher k e N~~ k=3, N=4000 em 2026-10-29 (ver "Decisão de representação" abaixo). ~~(3) registrar o plano~~ — **experimento final definido em 2026-10-29: três braços, pré-registrados em `biomarker_pipeline/docs/plano_otimizacao.md`** (ver "Experimento final" abaixo). ~~braço 0~~ rodado em 2026-10-29 (ver "Resultado do braço 0" abaixo). ~~implementar a otimização~~ feito em 2026-10-29 (`src/09_optimize_hyperparams.py`, testado localmente com orçamentos mínimos: fluxo completo, regra de borda, reprodutibilidade, e o 08 dá resultado idêntico ao commitado no braço 0). ~~piloto na VM~~ feito em 2026-10-29 (21 min, ~US$ 1; ver registro de desvios do plano: rodada completa ≈ 13–17 h, US$ 26–33, pior caso US$ 78). ~~braço B~~ concluído e com teste cego em 2026-10-30 (ver "Resultado do braço B"). Falta, na ordem do plano: braço A na VM (iniciado em 2026-10-30 20:55 UTC; desligamento diário da VM às 18:00 UTC) → rodada completa → teste cego de cada braço → documento e apresentação.
 4. ~~Sequências idênticas no treino~~ — **decidido manter** (orientador, reafirmado em 2026-10-29: mostram que o modelo reconhece o que já viu). Não são erro de coleta: são entradas UniProt de **espécies diferentes** com proteína 100% idêntica (ortólogos muito conservados — ex. UBE2L3 de humano, camundongo e boi). Positivos: 7 grupos, 12 seqs redundantes (CFL1, FASLG, IL4, KLRK1, PSMA6, PTEN, UBE2L3); negativos: 6 grupos, 9 (ACOT13, PDCD5, RTRAF, SNRPG, ST8SIA4, UBE2D2) — 21 de 632. Não deduplicar; se citar no texto, dizer que são ortólogos idênticos.
 5. **Erros herdados no TCC I (`data/raw/`, congelado):** `PRDX5.fasta` tem `P83200` (fragmento de 16 aa com X); `NOS2.fasta` tem 2 seqs de NANOS2, `PRDX5.fasta` tem Prdx6, `FBXL19.fasta` tem FBXL19-AS1; `TNIP1.fasta` tem uma vírgula solta; `data/raw_negativos/HBB_housekeeping_facil.fasta` contém X/Z/B. Vale nota de limitação no documento.
 6. **`PTPN22` não é "negativa não treinada".** O TCC I descreve assim a PTPN22 de `data/input/`, mas `PTPN22_Artrite_Reumatoide.fasta` está nos negativos de treino desde o commit `cc6a498`. Conferir a seq e corrigir o texto ou o arquivo.
@@ -316,6 +316,23 @@ IC 95%: bootstrap por gene (5000 reamostragens, estratificado por classe). **Nen
 - **Negativos difíceis não são mais confundidos que os fáceis** (SVM, P(positivo) média: difícil 0,37, fácil 0,42, intermediário 0,45; positivos 0,41–0,48) → o modelo não aprendeu "imune × housekeeping"; para genes nunca vistos, devolve probabilidades pouco informativas, em torno de 0,4–0,5, qualquer que seja a classe.
 - Coerente com a validação externa das 5 proteínas (INS, PTPN22 e RUNX3 erradas).
 - **Leitura para o TCC:** resultado negativo, central e defensável — pré-registrado, teste separado por gene por construção. Os braços A e B seguem como registrados: o B testa diretamente se escolher hiperparâmetros com CV separada por gene muda isso.
+
+### Resultado do braço B — otimizado com CV separada por gene (2026-10-30)
+
+Otimização na VM de 2026-10-29 22:34 a 2026-10-30 20:54 UTC (~22 h; boosting levou ~17 h — tentativas de 6–8 min, bem acima do piloto, e uma ampliação de faixa: `gb_learning_rate` até 0,0005, +50 tentativas). Saídas em `reports/v2/otimizacao/por_gene/` e `models/v2/otimizacao/por_gene/`; teste cego rodado uma vez em 2026-10-30, depois da decisão de seguir com o braço A (para o resultado do B não influenciar essa decisão).
+
+| Modelo | CV por gene: ROC-AUC / MCC | Teste cego por gene: ROC-AUC [IC 95%] | MCC | Limiar |
+|---|---|---|---|---|
+| **MLP (principal)** | 0,62 / 0,19 | 0,49 [0,38; 0,61] | −0,04 | 0,35 |
+| Comitê | 0,61 / 0,17 | 0,53 [0,41; 0,64] | 0,07 | 0,50 |
+| LR | 0,63 / 0,17 | 0,56 [0,44; 0,67] | 0,10 | 0,50 |
+| Boosting | 0,60 / 0,16 | 0,59 [0,48; 0,70] | 0,15 | 0,49 |
+| SVM | 0,58 / 0,15 | 0,55 [0,43; 0,66] | 0,00 | 0,48 |
+| Árvores | 0,53 / 0,05 | 0,58 [0,46; 0,69] | 0,11 | 0,57 |
+
+- **Teste cego continua no acaso** (todos os IC contêm 0,5); nenhuma melhora sobre o braço 0 (SVM 0,53, LR 0,55, RF 0,57, GB 0,58).
+- **Achado metodológico central:** a CV **separada por gene** prevê o teste cego (CV ~0,53–0,63 × cego ~0,49–0,59); a CV de **genes misturados** não (CV ~0,99 × cego ~0,55). A CV agrupada é a estimativa honesta para genes novos.
+- **A busca estabilizou:** o melhor da 1ª metade das tentativas já estava a ≤ 0,02 de MCC do melhor final (incerteza da média ±0,03), e seis famílias de modelos muito diferentes convergem para MCC ~0,15–0,19 / ROC-AUC ~0,60 → o limite é a informação da representação (composição de k-mers), não os hiperparâmetros. Trabalhos futuros: embeddings de modelos de linguagem de proteínas (ESM-2), contexto biológico além da sequência (interações, vias, expressão, GO — "culpa por associação"), mais genes positivos, rótulos mais limpos (nível D).
 
 ### Arquivos perdidos em 2026-10-10
 

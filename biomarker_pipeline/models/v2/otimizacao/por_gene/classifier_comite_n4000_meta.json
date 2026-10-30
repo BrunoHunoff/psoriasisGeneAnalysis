@@ -1,0 +1,22 @@
+{
+  "model": "comite",
+  "braco": "por_gene",
+  "tag": "otimizado_por_gene",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "membros": [
+    "logistic_regression",
+    "svm",
+    "trees",
+    "boosting",
+    "mlp"
+  ],
+  "limiar": 0.5,
+  "n_train": 632
+}

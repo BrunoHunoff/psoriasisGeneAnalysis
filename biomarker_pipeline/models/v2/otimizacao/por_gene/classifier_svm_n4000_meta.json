@@ -1,0 +1,21 @@
+{
+  "model": "svm",
+  "braco": "por_gene",
+  "tag": "otimizado_por_gene",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "best_params": {
+    "kernel": "rbf",
+    "C": 7990.646995880247,
+    "gamma": 8.077836171503548e-05
+  },
+  "limiar": 0.48,
+  "n_train": 632,
+  "classifier_path": "models/v2/otimizacao/por_gene/classifier_svm_n4000.pkl"
+}

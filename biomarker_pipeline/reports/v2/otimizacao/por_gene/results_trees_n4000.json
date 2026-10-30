@@ -1,0 +1,112 @@
+{
+  "model": "trees",
+  "braco": "por_gene",
+  "tag": "otimizado_por_gene",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "validacao": "StratifiedGroupKFold 10 folds × 5 repetições, grupo = gene",
+  "objetivo": "MCC médio nas 50 avaliações, limiar 0,5",
+  "orcamento": 150,
+  "tentativas": 150,
+  "tentativas_com_falha": 0,
+  "extensoes_de_faixa": [],
+  "faixas_finais": {
+    "max_features": [
+      1,
+      2000
+    ],
+    "min_samples_leaf": [
+      1,
+      10
+    ],
+    "max_samples": [
+      0.2,
+      1.0
+    ]
+  },
+  "melhor_tentativa": 71,
+  "best_params": {
+    "tipo": "random_forest",
+    "max_features": 541,
+    "min_samples_leaf": 4,
+    "max_samples": 0.940666130651568
+  },
+  "estimador": "RandomForestClassifier(max_features=541, max_samples=0.940666130651568,\n                       min_samples_leaf=4, n_estimators=1000, n_jobs=1,\n                       random_state=42)",
+  "metrics": {
+    "mcc": {
+      "mean": 0.04980641637665605,
+      "std": 0.1986748491499699
+    },
+    "roc_auc": {
+      "mean": 0.5275308719758064,
+      "std": 0.12093263102769151
+    },
+    "accuracy": {
+      "mean": 0.5227876984126985,
+      "std": 0.08938550750296217
+    },
+    "precision": {
+      "mean": 0.5371421579443862,
+      "std": 0.16197879465516918
+    },
+    "sensitivity": {
+      "mean": 0.3047782258064516,
+      "std": 0.13435176032613613
+    },
+    "specificity": {
+      "mean": 0.7410685483870968,
+      "std": 0.11479177447048289
+    },
+    "f1": {
+      "mean": 0.38011118702120283,
+      "std": 0.141749161129814
+    }
+  },
+  "limiar": 0.57,
+  "metrics_fora_do_fold_no_limiar": {
+    "mcc": {
+      "mean": 0.1415634440158668,
+      "std": 0.01427513899906946
+    },
+    "roc_auc": {
+      "mean": 0.5246955616087166,
+      "std": 0.039421693251167816
+    },
+    "accuracy": {
+      "mean": 0.5243670886075951,
+      "std": 0.002758796799709302
+    },
+    "precision": {
+      "mean": 0.8998665223665224,
+      "std": 0.04636056151887024
+    },
+    "sensitivity": {
+      "mean": 0.05506329113924051,
+      "std": 0.005141796458630354
+    },
+    "specificity": {
+      "mean": 0.9936708860759493,
+      "std": 0.0034665984652225484
+    },
+    "f1": {
+      "mean": 0.1037067173536925,
+      "std": 0.00914802544661031
+    }
+  },
+  "ambiente": {
+    "python": "3.13.7",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.6",
+    "optuna": "5.0.0",
+    "commit": "d7f16e95c1b6e8a94573f2eb6a378864b1dc838b",
+    "maquina": "tcc-otimizacao-vm",
+    "cpus": 32
+  },
+  "concluido_em": "2026-10-30T03:51:42",
+  "duracao_horas": 4.49
+}

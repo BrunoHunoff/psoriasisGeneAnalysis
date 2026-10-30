@@ -1,0 +1,2979 @@
+{
+  "modelo": "svm",
+  "dataset": "tcc2",
+  "etapa": "otimizado_por_gene",
+  "representacao": "k3",
+  "padroes": [
+    "111"
+  ],
+  "projecao": true,
+  "n_components": 4000,
+  "hiperparametros": {
+    "kernel": "rbf",
+    "C": 7990.646995880247,
+    "gamma": 8.077836171503548e-05
+  },
+  "limiar": 0.48,
+  "executado_em": "2026-10-30T18:04:23",
+  "metricas": {
+    "por_sequencia": {
+      "n": 294,
+      "accuracy": 0.5510204081632653,
+      "precision": 0.5590551181102362,
+      "sensitivity": 0.48299319727891155,
+      "specificity": 0.6190476190476191,
+      "f1": 0.5182481751824818,
+      "mcc": 0.10299856237898782,
+      "roc_auc": 0.547457078069323
+    },
+    "por_gene": {
+      "n": 102,
+      "accuracy": 0.5098039215686274,
+      "precision": 0.4523809523809524,
+      "sensitivity": 0.41304347826086957,
+      "specificity": 0.5892857142857143,
+      "f1": 0.4318181818181818,
+      "mcc": 0.0023549302621278106,
+      "roc_auc": 0.5450310559006212
+    }
+  },
+  "sensibilidade_por_evidencia": {
+    "A": {
+      "n_genes": 11,
+      "acertos": 3,
+      "taxa": 0.2727272727272727
+    },
+    "B": {
+      "n_genes": 4,
+      "acertos": 1,
+      "taxa": 0.25
+    },
+    "C": {
+      "n_genes": 15,
+      "acertos": 7,
+      "taxa": 0.4666666666666667
+    },
+    "D": {
+      "n_genes": 16,
+      "acertos": 8,
+      "taxa": 0.5
+    }
+  },
+  "especificidade_por_nivel": {
+    "dificil": {
+      "n_genes": 18,
+      "acertos": 13,
+      "taxa": 0.7222222222222222
+    },
+    "facil": {
+      "n_genes": 16,
+      "acertos": 9,
+      "taxa": 0.5625
+    },
+    "intermediario": {
+      "n_genes": 22,
+      "acertos": 11,
+      "taxa": 0.5
+    }
+  },
+  "genes": [
+    {
+      "gene": "ACOXL",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 2,
+      "proba_media": 0.4547243637785116,
+      "pred": 0
+    },
+    {
+      "gene": "ADC",
+      "label": 1,
+      "nivel": "B",
+      "n_seqs": 3,
+      "proba_media": 0.057054400925272565,
+      "pred": 0
+    },
+    {
+      "gene": "ADCY3",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 3,
+      "proba_media": 0.20832885896427564,
+      "pred": 0
+    },
+    {
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 10,
+      "proba_media": 0.7681131723917701,
+      "pred": 1
+    },
+    {
+      "gene": "ALKAL2",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 3,
+      "proba_media": 0.6838008017107073,
+      "pred": 1
+    },
+    {
+      "gene": "ARHGAP12",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.3023894359664487,
+      "pred": 0
+    },
+    {
+      "gene": "ARID3A",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 2,
+      "proba_media": 0.023175055074229983,
+      "pred": 0
+    },
+    {
+      "gene": "ARMC12",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.35547553346971517,
+      "pred": 0
+    },
+    {
+      "gene": "BMP2",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 4,
+      "proba_media": 0.34595000737466264,
+      "pred": 0
+    },
+    {
+      "gene": "C8ORF76",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 1,
+      "proba_media": 0.4306295388181962,
+      "pred": 0
+    },
+    {
+      "gene": "CAT",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 4,
+      "proba_media": 0.2734625862638283,
+      "pred": 0
+    },
+    {
+      "gene": "CCL24",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 3,
+      "proba_media": 0.3645989999354385,
+      "pred": 0
+    },
+    {
+      "gene": "CD58",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 1,
+      "proba_media": 0.7036887844131962,
+      "pred": 1
+    },
+    {
+      "gene": "COPS3",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 4,
+      "proba_media": 0.20445921385821827,
+      "pred": 0
+    },
+    {
+      "gene": "CPVL",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 4,
+      "proba_media": 0.27976308872685374,
+      "pred": 0
+    },
+    {
+      "gene": "CSF3R",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 2,
+      "proba_media": 0.8951813269489028,
+      "pred": 1
+    },
+    {
+      "gene": "DDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 4,
+      "proba_media": 0.3506356791306039,
+      "pred": 0
+    },
+    {
+      "gene": "EIF1B",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 4,
+      "proba_media": 0.852074117362054,
+      "pred": 1
+    },
+    {
+      "gene": "ERGIC1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.06720379191464554,
+      "pred": 0
+    },
+    {
+      "gene": "ERICH1",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 1,
+      "proba_media": 0.043620037566110555,
+      "pred": 0
+    },
+    {
+      "gene": "ETS2",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 3,
+      "proba_media": 0.737609857622694,
+      "pred": 1
+    },
+    {
+      "gene": "EXD1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.4062515256810597,
+      "pred": 0
+    },
+    {
+      "gene": "FASTK",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 2,
+      "proba_media": 0.7947504126972598,
+      "pred": 1
+    },
+    {
+      "gene": "FBXL22",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 3,
+      "proba_media": 0.895507137411184,
+      "pred": 1
+    },
+    {
+      "gene": "FSD1",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 4,
+      "proba_media": 0.6356279242128944,
+      "pred": 1
+    },
+    {
+      "gene": "GDF1",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 2,
+      "proba_media": 0.01094146300916459,
+      "pred": 0
+    },
+    {
+      "gene": "GDF11",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 3,
+      "proba_media": 0.32533168742904145,
+      "pred": 0
+    },
+    {
+      "gene": "GDF7",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 3,
+      "proba_media": 0.09262116949337741,
+      "pred": 0
+    },
+    {
+      "gene": "GPR132",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 2,
+      "proba_media": 0.14603451866080178,
+      "pred": 0
+    },
+    {
+      "gene": "GRXCR1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.6231757689901292,
+      "pred": 1
+    },
+    {
+      "gene": "HCK",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 4,
+      "proba_media": 0.3573681726276944,
+      "pred": 0
+    },
+    {
+      "gene": "HHEX",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 2,
+      "proba_media": 0.18394761257301478,
+      "pred": 0
+    },
+    {
+      "gene": "HSPA6",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 3,
+      "proba_media": 0.13608082857417278,
+      "pred": 0
+    },
+    {
+      "gene": "IFNL4",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 1,
+      "proba_media": 0.02847785616765581,
+      "pred": 0
+    },
+    {
+      "gene": "IL12RB1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.23699700460375006,
+      "pred": 0
+    },
+    {
+      "gene": "IL17RA",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 2,
+      "proba_media": 0.3507987126145971,
+      "pred": 0
+    },
+    {
+      "gene": "IL17RD",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 2,
+      "proba_media": 0.10161621316646681,
+      "pred": 0
+    },
+    {
+      "gene": "IL1R2",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 4,
+      "proba_media": 0.6423832917200768,
+      "pred": 1
+    },
+    {
+      "gene": "IL1RL1",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 3,
+      "proba_media": 0.6699170612461054,
+      "pred": 1
+    },
+    {
+      "gene": "IL21",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 6,
+      "proba_media": 0.5594428569200632,
+      "pred": 1
+    },
+    {
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 9,
+      "proba_media": 0.27532298398811306,
+      "pred": 0
+    },
+    {
+      "gene": "IL3RA",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 2,
+      "proba_media": 0.40149100783925096,
+      "pred": 0
+    },
+    {
+      "gene": "IL7R",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 5,
+      "proba_media": 0.7614436818969976,
+      "pred": 1
+    },
+    {
+      "gene": "INPP5D",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 3,
+      "proba_media": 0.8575642236108619,
+      "pred": 1
+    },
+    {
+      "gene": "IRF5",
+      "label": 1,
+      "nivel": "B",
+      "n_seqs": 3,
+      "proba_media": 0.42320024420687674,
+      "pred": 0
+    },
+    {
+      "gene": "LEKR1",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 1,
+      "proba_media": 0.9027570656840233,
+      "pred": 1
+    },
+    {
+      "gene": "LILRB3",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 1,
+      "proba_media": 0.9064721075035346,
+      "pred": 1
+    },
+    {
+      "gene": "LPP",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 3,
+      "proba_media": 0.4279923380845592,
+      "pred": 0
+    },
+    {
+      "gene": "LRRC32",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 3,
+      "proba_media": 0.45595326339305126,
+      "pred": 0
+    },
+    {
+      "gene": "LSP1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.36520682291998996,
+      "pred": 0
+    },
+    {
+      "gene": "MAP3K1",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 3,
+      "proba_media": 0.1724788458399913,
+      "pred": 0
+    },
+    {
+      "gene": "MED15",
+      "label": 1,
+      "nivel": "B",
+      "n_seqs": 2,
+      "proba_media": 0.9795042956857342,
+      "pred": 1
+    },
+    {
+      "gene": "MFN2",
+      "label": 1,
+      "nivel": "B",
+      "n_seqs": 3,
+      "proba_media": 0.29873068193428853,
+      "pred": 0
+    },
+    {
+      "gene": "MRPL2",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 4,
+      "proba_media": 0.6670039524597676,
+      "pred": 1
+    },
+    {
+      "gene": "MRPL28",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 3,
+      "proba_media": 0.5143183630289901,
+      "pred": 1
+    },
+    {
+      "gene": "NCF4",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 2,
+      "proba_media": 0.8005287705370011,
+      "pred": 1
+    },
+    {
+      "gene": "NDST3",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.5295828043243206,
+      "pred": 1
+    },
+    {
+      "gene": "NFATC2",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 2,
+      "proba_media": 0.7161656293364729,
+      "pred": 1
+    },
+    {
+      "gene": "NLRP10",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.4844223185831514,
+      "pred": 1
+    },
+    {
+      "gene": "NPLOC4",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 3,
+      "proba_media": 0.3364046918902243,
+      "pred": 0
+    },
+    {
+      "gene": "NRG1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 3,
+      "proba_media": 0.33258877097808975,
+      "pred": 0
+    },
+    {
+      "gene": "NRROS",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 4,
+      "proba_media": 0.5031509354568837,
+      "pred": 1
+    },
+    {
+      "gene": "PAM",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 4,
+      "proba_media": 0.1639579613721295,
+      "pred": 0
+    },
+    {
+      "gene": "PDE4C",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 2,
+      "proba_media": 0.39759390075925116,
+      "pred": 0
+    },
+    {
+      "gene": "PDE8A",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 2,
+      "proba_media": 0.4670596510762306,
+      "pred": 0
+    },
+    {
+      "gene": "PELP1",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 4,
+      "proba_media": 0.0745634585840182,
+      "pred": 0
+    },
+    {
+      "gene": "PEPD",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 4,
+      "proba_media": 0.0549777525151592,
+      "pred": 0
+    },
+    {
+      "gene": "PGK1",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 4,
+      "proba_media": 0.7264238205155602,
+      "pred": 1
+    },
+    {
+      "gene": "PHLDB1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.18170356937025048,
+      "pred": 0
+    },
+    {
+      "gene": "PLXNC1",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 2,
+      "proba_media": 0.4972642522897779,
+      "pred": 1
+    },
+    {
+      "gene": "POU2F3",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 3,
+      "proba_media": 0.3596462775570068,
+      "pred": 0
+    },
+    {
+      "gene": "PRDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 4,
+      "proba_media": 0.10853644180633003,
+      "pred": 0
+    },
+    {
+      "gene": "PRDX3",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 4,
+      "proba_media": 0.02654671690091078,
+      "pred": 0
+    },
+    {
+      "gene": "PREX1",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 2,
+      "proba_media": 0.24063022850265497,
+      "pred": 0
+    },
+    {
+      "gene": "PRKCQ",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 3,
+      "proba_media": 0.923252479633817,
+      "pred": 1
+    },
+    {
+      "gene": "PRR5L",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 4,
+      "proba_media": 0.9444782218775726,
+      "pred": 1
+    },
+    {
+      "gene": "PTPN1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 3,
+      "proba_media": 0.4336975959782523,
+      "pred": 0
+    },
+    {
+      "gene": "RASGRP3",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 1,
+      "proba_media": 0.6564371759251567,
+      "pred": 1
+    },
+    {
+      "gene": "RFTN2",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 3,
+      "proba_media": 0.5584663650973712,
+      "pred": 1
+    },
+    {
+      "gene": "RPLP1",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 5,
+      "proba_media": 0.008907345559181492,
+      "pred": 0
+    },
+    {
+      "gene": "RPS6KA3",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 1,
+      "proba_media": 0.4824323641116238,
+      "pred": 1
+    },
+    {
+      "gene": "RWDD1",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 3,
+      "proba_media": 0.055476841873483125,
+      "pred": 0
+    },
+    {
+      "gene": "SCLY",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 4,
+      "proba_media": 0.2423973440462512,
+      "pred": 0
+    },
+    {
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 7,
+      "proba_media": 0.6773853146154705,
+      "pred": 1
+    },
+    {
+      "gene": "SNRNP48",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 2,
+      "proba_media": 0.04119394003757146,
+      "pred": 0
+    },
+    {
+      "gene": "SP140",
+      "label": 1,
+      "nivel": "C",
+      "n_seqs": 1,
+      "proba_media": 0.2308823288273584,
+      "pred": 0
+    },
+    {
+      "gene": "STAP2",
+      "label": 1,
+      "nivel": "A",
+      "n_seqs": 2,
+      "proba_media": 0.3786312729797496,
+      "pred": 0
+    },
+    {
+      "gene": "TBC1D20",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 3,
+      "proba_media": 0.5940656254874699,
+      "pred": 1
+    },
+    {
+      "gene": "TLR1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 2,
+      "proba_media": 0.8675411471161205,
+      "pred": 1
+    },
+    {
+      "gene": "TPD52L3",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 1,
+      "proba_media": 0.5999468871223794,
+      "pred": 1
+    },
+    {
+      "gene": "TRIB1",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 2,
+      "proba_media": 0.03468168816806285,
+      "pred": 0
+    },
+    {
+      "gene": "TRMU",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 4,
+      "proba_media": 0.24379663974075882,
+      "pred": 0
+    },
+    {
+      "gene": "TXNDC11",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 3,
+      "proba_media": 0.6182060507094128,
+      "pred": 1
+    },
+    {
+      "gene": "UBE2D4",
+      "label": 0,
+      "nivel": "dificil",
+      "n_seqs": 1,
+      "proba_media": 0.019882776711966484,
+      "pred": 0
+    },
+    {
+      "gene": "UBXN2A",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 3,
+      "proba_media": 0.22346702471585397,
+      "pred": 0
+    },
+    {
+      "gene": "UQCRHL",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 1,
+      "proba_media": 0.5348729142218319,
+      "pred": 1
+    },
+    {
+      "gene": "VAPA",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 4,
+      "proba_media": 0.26682491622333737,
+      "pred": 0
+    },
+    {
+      "gene": "WDR55",
+      "label": 0,
+      "nivel": "facil",
+      "n_seqs": 4,
+      "proba_media": 0.4901421966911952,
+      "pred": 1
+    },
+    {
+      "gene": "XCL2",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 1,
+      "proba_media": 0.9881505968726844,
+      "pred": 1
+    },
+    {
+      "gene": "ZBTB10",
+      "label": 1,
+      "nivel": "D",
+      "n_seqs": 2,
+      "proba_media": 0.4222528466214769,
+      "pred": 0
+    },
+    {
+      "gene": "ZFP36L1",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 3,
+      "proba_media": 0.5185484290970511,
+      "pred": 1
+    },
+    {
+      "gene": "ZNF652",
+      "label": 0,
+      "nivel": "intermediario",
+      "n_seqs": 3,
+      "proba_media": 0.4801457571745109,
+      "pred": 1
+    }
+  ],
+  "sequencias": [
+    {
+      "seq_id": "sp|Q9NUZ1|ACOXL_HUMAN",
+      "gene": "ACOXL",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.6350962746045592
+    },
+    {
+      "seq_id": "sp|Q9DBS4|ACOXL_MOUSE",
+      "gene": "ACOXL",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.274352452952464
+    },
+    {
+      "seq_id": "sp|Q96A70|AZIN2_HUMAN",
+      "gene": "ADC",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.10904308080172494
+    },
+    {
+      "seq_id": "sp|Q8BVM4|AZIN2_MOUSE",
+      "gene": "ADC",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.026635174049153318
+    },
+    {
+      "seq_id": "sp|D4A693|AZIN2_RAT",
+      "gene": "ADC",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.03548494792493943
+    },
+    {
+      "seq_id": "sp|O60266|ADCY3_HUMAN",
+      "gene": "ADCY3",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.20784670980165176
+    },
+    {
+      "seq_id": "sp|Q8VHH7|ADCY3_MOUSE",
+      "gene": "ADCY3",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.21025263938611896
+    },
+    {
+      "seq_id": "sp|P21932|ADCY3_RAT",
+      "gene": "ADCY3",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.20688722770505616
+    },
+    {
+      "seq_id": "sp|P35869|AHR_HUMAN",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.9426207302077104
+    },
+    {
+      "seq_id": "sp|P30561|AHR_MOUSE",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.6703585112075598
+    },
+    {
+      "seq_id": "sp|P41738|AHR_RAT",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.7869382516957734
+    },
+    {
+      "seq_id": "sp|O02747|AHR_RABIT",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.9154580624916688
+    },
+    {
+      "seq_id": "sp|Q8R4S2|AHR_MUSSP",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.7192423725292411
+    },
+    {
+      "seq_id": "sp|Q8R4S4|AHR_MUSSI",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.7239363635484203
+    },
+    {
+      "seq_id": "sp|Q8R4S5|AHR_MUSMM",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.7133355568358506
+    },
+    {
+      "seq_id": "sp|Q8R4S6|AHR_MUSMC",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.7192917852286369
+    },
+    {
+      "seq_id": "sp|Q8R4S7|AHR_MUSCR",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.8089856563477554
+    },
+    {
+      "seq_id": "sp|Q95LD9|AHR_DELLE",
+      "gene": "AHR",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.6809644338250848
+    },
+    {
+      "seq_id": "sp|Q99856|ARI3A_HUMAN",
+      "gene": "ARID3A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.03140859521400495
+    },
+    {
+      "seq_id": "sp|Q62431|ARI3A_MOUSE",
+      "gene": "ARID3A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.014941514934455015
+    },
+    {
+      "seq_id": "sp|Q9H3G5|CPVL_HUMAN",
+      "gene": "CPVL",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.13882282723197886
+    },
+    {
+      "seq_id": "sp|Q9D3S9|CPVL_MOUSE",
+      "gene": "CPVL",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.7724019086875111
+    },
+    {
+      "seq_id": "sp|Q4QR71|CPVL_RAT",
+      "gene": "CPVL",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.10374124554437249
+    },
+    {
+      "seq_id": "sp|Q5RFE4|CPVL_PONAB",
+      "gene": "CPVL",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.1040863734435524
+    },
+    {
+      "seq_id": "sp|P15036|ETS2_HUMAN",
+      "gene": "ETS2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.7378057946680492
+    },
+    {
+      "seq_id": "sp|P15037|ETS2_MOUSE",
+      "gene": "ETS2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.8065132519188468
+    },
+    {
+      "seq_id": "sp|A1A4L6|ETS2_BOVIN",
+      "gene": "ETS2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.6685105262811859
+    },
+    {
+      "seq_id": "sp|Q9BTV5|FSD1_HUMAN",
+      "gene": "FSD1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.6905388439477358
+    },
+    {
+      "seq_id": "sp|Q7TPM6|FSD1_MOUSE",
+      "gene": "FSD1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.535721613809457
+    },
+    {
+      "seq_id": "sp|Q05B84|FSD1_BOVIN",
+      "gene": "FSD1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.7163128890514753
+    },
+    {
+      "seq_id": "sp|Q4R539|FSD1_MACFA",
+      "gene": "FSD1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.599938350042909
+    },
+    {
+      "seq_id": "sp|Q9UNW8|GP132_HUMAN",
+      "gene": "GPR132",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.030768414545101867
+    },
+    {
+      "seq_id": "sp|Q9Z282|GP132_MOUSE",
+      "gene": "GPR132",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.2613006227765017
+    },
+    {
+      "seq_id": "sp|Q03014|HHEX_HUMAN",
+      "gene": "HHEX",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.23441346537554958
+    },
+    {
+      "seq_id": "sp|P43120|HHEX_MOUSE",
+      "gene": "HHEX",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.13348175977047996
+    },
+    {
+      "seq_id": "sp|P17066|HSP76_HUMAN",
+      "gene": "HSPA6",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.1658641026388285
+    },
+    {
+      "seq_id": "sp|Q04967|HSP76_PIG",
+      "gene": "HSPA6",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.06069036619778585
+    },
+    {
+      "seq_id": "sp|Q9N1U2|HSP76_SAGOE",
+      "gene": "HSPA6",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.18168801688590402
+    },
+    {
+      "seq_id": "sp|Q96F46|I17RA_HUMAN",
+      "gene": "IL17RA",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.3066779488283277
+    },
+    {
+      "seq_id": "sp|Q60943|I17RA_MOUSE",
+      "gene": "IL17RA",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.3949194764008665
+    },
+    {
+      "seq_id": "sp|P27930|IL1R2_HUMAN",
+      "gene": "IL1R2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.493578856632552
+    },
+    {
+      "seq_id": "sp|P27931|IL1R2_MOUSE",
+      "gene": "IL1R2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.8792632459544686
+    },
+    {
+      "seq_id": "sp|P43303|IL1R2_RAT",
+      "gene": "IL1R2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.6521680982141808
+    },
+    {
+      "seq_id": "sp|Q29612|IL1R2_CHLAE",
+      "gene": "IL1R2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.5445229660791057
+    },
+    {
+      "seq_id": "sp|Q9HBE4|IL21_HUMAN",
+      "gene": "IL21",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.6452990540967993
+    },
+    {
+      "seq_id": "sp|Q9ES17|IL21_MOUSE",
+      "gene": "IL21",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.3127813998740678
+    },
+    {
+      "seq_id": "sp|A3QPB9|IL21_RAT",
+      "gene": "IL21",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.1347784323249604
+    },
+    {
+      "seq_id": "sp|Q76LU5|IL21_BOVIN",
+      "gene": "IL21",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.8620973376439653
+    },
+    {
+      "seq_id": "sp|Q76LU6|IL21_PIG",
+      "gene": "IL21",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.5465919175634351
+    },
+    {
+      "seq_id": "sp|Q6L7I9|IL21_CANLF",
+      "gene": "IL21",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.8551090000171515
+    },
+    {
+      "seq_id": "sp|P01589|IL2RA_HUMAN",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.8900312351661002
+    },
+    {
+      "seq_id": "sp|P01590|IL2RA_MOUSE",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.30938063931430626
+    },
+    {
+      "seq_id": "sp|P26897|IL2RA_RAT",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.11670874318593027
+    },
+    {
+      "seq_id": "sp|P12342|IL2RA_BOVIN",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.012112266429152736
+    },
+    {
+      "seq_id": "sp|O02733|IL2RA_PIG",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.18147309003993317
+    },
+    {
+      "seq_id": "sp|O62802|IL2RA_CANLF",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.2557311526398802
+    },
+    {
+      "seq_id": "sp|Q5MNY4|IL2RA_MACMU",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.6481369723672366
+    },
+    {
+      "seq_id": "sp|P41690|IL2RA_FELCA",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.04110980412332418
+    },
+    {
+      "seq_id": "sp|P26898|IL2RA_SHEEP",
+      "gene": "IL2RA",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.02322295262715452
+    },
+    {
+      "seq_id": "sp|P16871|IL7RA_HUMAN",
+      "gene": "IL7R",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.9284982442863684
+    },
+    {
+      "seq_id": "sp|P16872|IL7RA_MOUSE",
+      "gene": "IL7R",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.6445814277347822
+    },
+    {
+      "seq_id": "sp|A0MSX9|IL7RA_HORSE",
+      "gene": "IL7R",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.43558443571235295
+    },
+    {
+      "seq_id": "sp|A5HJM1|IL7RA_CALJA",
+      "gene": "IL7R",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.8744617334394296
+    },
+    {
+      "seq_id": "sp|Q38IC7|IL7RA_MACFA",
+      "gene": "IL7R",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.9240925683120554
+    },
+    {
+      "seq_id": "sp|Q92835|SHIP1_HUMAN",
+      "gene": "INPP5D",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.6830844037153116
+    },
+    {
+      "seq_id": "sp|Q9ES52|SHIP1_MOUSE",
+      "gene": "INPP5D",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.9394548325548938
+    },
+    {
+      "seq_id": "sp|P97573|SHIP1_RAT",
+      "gene": "INPP5D",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.9501534345623805
+    },
+    {
+      "seq_id": "sp|Q13568|IRF5_HUMAN",
+      "gene": "IRF5",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.42804860653739285
+    },
+    {
+      "seq_id": "sp|P56477|IRF5_MOUSE",
+      "gene": "IRF5",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.4057707056479976
+    },
+    {
+      "seq_id": "sp|Q58DJ0|IRF5_BOVIN",
+      "gene": "IRF5",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.43578142043523976
+    },
+    {
+      "seq_id": "sp|Q6ZMV7|LEKR1_HUMAN",
+      "gene": "LEKR1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.9027570656840233
+    },
+    {
+      "seq_id": "sp|Q93052|LPP_HUMAN",
+      "gene": "LPP",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.42048710929770705
+    },
+    {
+      "seq_id": "sp|Q8BFW7|LPP_MOUSE",
+      "gene": "LPP",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.302945940408767
+    },
+    {
+      "seq_id": "sp|Q5XI07|LPP_RAT",
+      "gene": "LPP",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.5605439645472037
+    },
+    {
+      "seq_id": "sp|Q14392|LRC32_HUMAN",
+      "gene": "LRRC32",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.3436924951845945
+    },
+    {
+      "seq_id": "sp|G3XA59|LRC32_MOUSE",
+      "gene": "LRRC32",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.6761497357677582
+    },
+    {
+      "seq_id": "sp|Q5RF01|LRC32_PONAB",
+      "gene": "LRRC32",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.3480175592268012
+    },
+    {
+      "seq_id": "sp|Q13233|M3K1_HUMAN",
+      "gene": "MAP3K1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.21792566055728804
+    },
+    {
+      "seq_id": "sp|P53349|M3K1_MOUSE",
+      "gene": "MAP3K1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.17390462156146996
+    },
+    {
+      "seq_id": "sp|Q62925|M3K1_RAT",
+      "gene": "MAP3K1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.1256062554012159
+    },
+    {
+      "seq_id": "sp|Q96RN5|MED15_HUMAN",
+      "gene": "MED15",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.9869669430549488
+    },
+    {
+      "seq_id": "sp|Q924H2|MED15_MOUSE",
+      "gene": "MED15",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.9720416483165195
+    },
+    {
+      "seq_id": "sp|O95140|MFN2_HUMAN",
+      "gene": "MFN2",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.13271838218664528
+    },
+    {
+      "seq_id": "sp|Q80U63|MFN2_MOUSE",
+      "gene": "MFN2",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.4662733726905222
+    },
+    {
+      "seq_id": "sp|Q8R500|MFN2_RAT",
+      "gene": "MFN2",
+      "label": 1,
+      "nivel": "B",
+      "proba": 0.29720029092569816
+    },
+    {
+      "seq_id": "sp|Q15080|NCF4_HUMAN",
+      "gene": "NCF4",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.9488655452640422
+    },
+    {
+      "seq_id": "sp|P97369|NCF4_MOUSE",
+      "gene": "NCF4",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.65219199580996
+    },
+    {
+      "seq_id": "sp|Q13469|NFAC2_HUMAN",
+      "gene": "NFATC2",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.6336144868084351
+    },
+    {
+      "seq_id": "sp|Q60591|NFAC2_MOUSE",
+      "gene": "NFATC2",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.7987167718645106
+    },
+    {
+      "seq_id": "sp|Q86YC3|LRC33_HUMAN",
+      "gene": "NRROS",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.2754795854182512
+    },
+    {
+      "seq_id": "sp|Q8BMT4|LRC33_MOUSE",
+      "gene": "NRROS",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.5987988474797161
+    },
+    {
+      "seq_id": "sp|Q5BK65|LRC33_RAT",
+      "gene": "NRROS",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.5733672406573198
+    },
+    {
+      "seq_id": "sp|Q3ZBI5|LRC33_BOVIN",
+      "gene": "NRROS",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.5649580682722478
+    },
+    {
+      "seq_id": "sp|Q08493|PDE4C_HUMAN",
+      "gene": "PDE4C",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.17878040833507453
+    },
+    {
+      "seq_id": "sp|Q3UEI1|PDE4C_MOUSE",
+      "gene": "PDE4C",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.6164073931834279
+    },
+    {
+      "seq_id": "sp|O60658|PDE8A_HUMAN",
+      "gene": "PDE8A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.4910381703935221
+    },
+    {
+      "seq_id": "sp|O88502|PDE8A_MOUSE",
+      "gene": "PDE8A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.4430811317589391
+    },
+    {
+      "seq_id": "sp|Q8IZL8|PELP1_HUMAN",
+      "gene": "PELP1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.0504016036859592
+    },
+    {
+      "seq_id": "sp|Q9DBD5|PELP1_MOUSE",
+      "gene": "PELP1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.07209764354898833
+    },
+    {
+      "seq_id": "sp|Q56B11|PELP1_RAT",
+      "gene": "PELP1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.14916481832989748
+    },
+    {
+      "seq_id": "sp|Q1W1Y5|PELP1_MACMU",
+      "gene": "PELP1",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.026589768771227783
+    },
+    {
+      "seq_id": "sp|P12955|PEPD_HUMAN",
+      "gene": "PEPD",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.07477880031399813
+    },
+    {
+      "seq_id": "sp|Q11136|PEPD_MOUSE",
+      "gene": "PEPD",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.014501189198052553
+    },
+    {
+      "seq_id": "sp|Q5I0D7|PEPD_RAT",
+      "gene": "PEPD",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.020222934400077375
+    },
+    {
+      "seq_id": "sp|Q5RFB3|PEPD_PONAB",
+      "gene": "PEPD",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.11040808614850875
+    },
+    {
+      "seq_id": "sp|O60486|PLXC1_HUMAN",
+      "gene": "PLXNC1",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.532991222931185
+    },
+    {
+      "seq_id": "sp|Q9QZC2|PLXC1_MOUSE",
+      "gene": "PLXNC1",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.46153728164837077
+    },
+    {
+      "seq_id": "sp|Q9UKI9|PO2F3_HUMAN",
+      "gene": "POU2F3",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.34922688803835256
+    },
+    {
+      "seq_id": "sp|P31362|PO2F3_MOUSE",
+      "gene": "POU2F3",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.33981173303917284
+    },
+    {
+      "seq_id": "sp|P42571|PO2F3_RAT",
+      "gene": "POU2F3",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.3899002115934948
+    },
+    {
+      "seq_id": "sp|Q8TCU6|PREX1_HUMAN",
+      "gene": "PREX1",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.1234584725693407
+    },
+    {
+      "seq_id": "sp|Q69ZK0|PREX1_MOUSE",
+      "gene": "PREX1",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.3578019844359693
+    },
+    {
+      "seq_id": "sp|Q04759|KPCT_HUMAN",
+      "gene": "PRKCQ",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.8494718636105116
+    },
+    {
+      "seq_id": "sp|Q02111|KPCT_MOUSE",
+      "gene": "PRKCQ",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.9511084897769378
+    },
+    {
+      "seq_id": "sp|Q9WTQ0|KPCT_RAT",
+      "gene": "PRKCQ",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.9691770855140015
+    },
+    {
+      "seq_id": "sp|Q6MZQ0|PRR5L_HUMAN",
+      "gene": "PRR5L",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.9651556493898725
+    },
+    {
+      "seq_id": "sp|A2AVJ5|PRR5L_MOUSE",
+      "gene": "PRR5L",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.9548942984523328
+    },
+    {
+      "seq_id": "sp|A1L1K1|PRR5L_RAT",
+      "gene": "PRR5L",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.8794539818189909
+    },
+    {
+      "seq_id": "sp|Q5E9R0|PRR5L_BOVIN",
+      "gene": "PRR5L",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.9784089578490941
+    },
+    {
+      "seq_id": "sp|Q52LD8|RFTN2_HUMAN",
+      "gene": "RFTN2",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.8468920243242407
+    },
+    {
+      "seq_id": "sp|Q8CHX7|RFTN2_MOUSE",
+      "gene": "RFTN2",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.13494428179751214
+    },
+    {
+      "seq_id": "sp|Q5R458|RFTN2_PONAB",
+      "gene": "RFTN2",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.693562789170361
+    },
+    {
+      "seq_id": "sp|P05386|RLA1_HUMAN",
+      "gene": "RPLP1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.007156180467082043
+    },
+    {
+      "seq_id": "sp|P47955|RLA1_MOUSE",
+      "gene": "RPLP1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.008743222175211476
+    },
+    {
+      "seq_id": "sp|P19944|RLA1_RAT",
+      "gene": "RPLP1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.011045501759090193
+    },
+    {
+      "seq_id": "sp|Q56K14|RLA1_BOVIN",
+      "gene": "RPLP1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.007156180467082043
+    },
+    {
+      "seq_id": "sp|A1XQU7|RLA1_PIG",
+      "gene": "RPLP1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.010435642927441703
+    },
+    {
+      "seq_id": "sp|Q96I15|SCLY_HUMAN",
+      "gene": "SCLY",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.7301307229683792
+    },
+    {
+      "seq_id": "sp|Q9JLI6|SCLY_MOUSE",
+      "gene": "SCLY",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.05706390226501291
+    },
+    {
+      "seq_id": "sp|Q68FT9|SCLY_RAT",
+      "gene": "SCLY",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.16445770265459356
+    },
+    {
+      "seq_id": "sp|A2VDS1|SCLY_BOVIN",
+      "gene": "SCLY",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.01793704829701915
+    },
+    {
+      "seq_id": "sp|P37088|SCNNA_HUMAN",
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.7343132061302496
+    },
+    {
+      "seq_id": "sp|Q61180|SCNNA_MOUSE",
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.7422523474690234
+    },
+    {
+      "seq_id": "sp|P37089|SCNNA_RAT",
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.8648337508471566
+    },
+    {
+      "seq_id": "sp|P55270|SCNNA_BOVIN",
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.4048342141196332
+    },
+    {
+      "seq_id": "sp|H2Q5A1|SCNNA_PANTR",
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.7772065716801357
+    },
+    {
+      "seq_id": "sp|O97741|SCNNA_RABIT",
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.5618993981697326
+    },
+    {
+      "seq_id": "sp|Q9R1N2|SCNNA_CAVPO",
+      "gene": "SCNN1A",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.6563577138923619
+    },
+    {
+      "seq_id": "sp|Q13342|SP140_HUMAN",
+      "gene": "SP140",
+      "label": 1,
+      "nivel": "C",
+      "proba": 0.2308823288273584
+    },
+    {
+      "seq_id": "sp|Q9UGK3|STAP2_HUMAN",
+      "gene": "STAP2",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.07458905343871192
+    },
+    {
+      "seq_id": "sp|Q8R0L1|STAP2_MOUSE",
+      "gene": "STAP2",
+      "label": 1,
+      "nivel": "A",
+      "proba": 0.6826734925207872
+    },
+    {
+      "seq_id": "sp|Q96RU8|TRIB1_HUMAN",
+      "gene": "TRIB1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.009256348525955051
+    },
+    {
+      "seq_id": "sp|Q8K4K4|TRIB1_MOUSE",
+      "gene": "TRIB1",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.060107027810170646
+    },
+    {
+      "seq_id": "sp|A0A096LP55|QCR6L_HUMAN",
+      "gene": "UQCRHL",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.5348729142218319
+    },
+    {
+      "seq_id": "sp|Q9UBD3|XCL2_HUMAN",
+      "gene": "XCL2",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.9881505968726844
+    },
+    {
+      "seq_id": "sp|Q96DT7|ZBT10_HUMAN",
+      "gene": "ZBTB10",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.6192366133602731
+    },
+    {
+      "seq_id": "sp|Q9WTY8|ZBT10_RAT",
+      "gene": "ZBTB10",
+      "label": 1,
+      "nivel": "D",
+      "proba": 0.2252690798826807
+    },
+    {
+      "seq_id": "sp|Q6UX46|ALKL2_HUMAN",
+      "gene": "ALKAL2",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.8071501871825367
+    },
+    {
+      "seq_id": "sp|Q80UG6|ALKL2_MOUSE",
+      "gene": "ALKAL2",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.6552313510474264
+    },
+    {
+      "seq_id": "sp|B2RZ42|ALKL2_RAT",
+      "gene": "ALKAL2",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.5890208669021592
+    },
+    {
+      "seq_id": "sp|Q8IWW6|RHG12_HUMAN",
+      "gene": "ARHGAP12",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.3072343071242622
+    },
+    {
+      "seq_id": "sp|Q8C0D4|RHG12_MOUSE",
+      "gene": "ARHGAP12",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.29754456480863517
+    },
+    {
+      "seq_id": "sp|Q5T9G4|ARM12_HUMAN",
+      "gene": "ARMC12",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.49186966893603123
+    },
+    {
+      "seq_id": "sp|Q80X86|ARM12_MOUSE",
+      "gene": "ARMC12",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.21908139800339912
+    },
+    {
+      "seq_id": "sp|P12643|BMP2_HUMAN",
+      "gene": "BMP2",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.230075894035442
+    },
+    {
+      "seq_id": "sp|P21274|BMP2_MOUSE",
+      "gene": "BMP2",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.39383718716087524
+    },
+    {
+      "seq_id": "sp|P49001|BMP2_RAT",
+      "gene": "BMP2",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.48586233536785645
+    },
+    {
+      "seq_id": "sp|O46564|BMP2_RABIT",
+      "gene": "BMP2",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.2740246129344768
+    },
+    {
+      "seq_id": "sp|Q96K31|CH076_HUMAN",
+      "gene": "C8ORF76",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.4306295388181962
+    },
+    {
+      "seq_id": "sp|P04040|CATA_HUMAN",
+      "gene": "CAT",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.1101275885336887
+    },
+    {
+      "seq_id": "sp|P24270|CATA_MOUSE",
+      "gene": "CAT",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.3701164625796034
+    },
+    {
+      "seq_id": "sp|P04762|CATA_RAT",
+      "gene": "CAT",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.20595058246172476
+    },
+    {
+      "seq_id": "sp|P00432|CATA_BOVIN",
+      "gene": "CAT",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.4076557114802963
+    },
+    {
+      "seq_id": "sp|O00175|CCL24_HUMAN",
+      "gene": "CCL24",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.40580692536324287
+    },
+    {
+      "seq_id": "sp|Q9JKC0|CCL24_MOUSE",
+      "gene": "CCL24",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.08285237898057686
+    },
+    {
+      "seq_id": "sp|Q68Y86|CCL24_CANLF",
+      "gene": "CCL24",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.6051376954624959
+    },
+    {
+      "seq_id": "sp|P19256|LFA3_HUMAN",
+      "gene": "CD58",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.7036887844131962
+    },
+    {
+      "seq_id": "sp|Q9UNS2|CSN3_HUMAN",
+      "gene": "COPS3",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.18032038575607423
+    },
+    {
+      "seq_id": "sp|O88543|CSN3_MOUSE",
+      "gene": "COPS3",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.24136378641297926
+    },
+    {
+      "seq_id": "sp|Q68FW9|CSN3_RAT",
+      "gene": "COPS3",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.17736488652519278
+    },
+    {
+      "seq_id": "sp|A6H7B5|CSN3_BOVIN",
+      "gene": "COPS3",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.21878779673862683
+    },
+    {
+      "seq_id": "sp|Q99062|CSF3R_HUMAN",
+      "gene": "CSF3R",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.8476942789060511
+    },
+    {
+      "seq_id": "sp|P40223|CSF3R_MOUSE",
+      "gene": "CSF3R",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.9426683749917546
+    },
+    {
+      "seq_id": "sp|Q92499|DDX1_HUMAN",
+      "gene": "DDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.36261927366477165
+    },
+    {
+      "seq_id": "sp|Q91VR5|DDX1_MOUSE",
+      "gene": "DDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.39785433576270346
+    },
+    {
+      "seq_id": "sp|Q641Y8|DDX1_RAT",
+      "gene": "DDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.3825421006543435
+    },
+    {
+      "seq_id": "sp|Q0IIK5|DDX1_BOVIN",
+      "gene": "DDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.25952700644059706
+    },
+    {
+      "seq_id": "sp|O60739|EIF1B_HUMAN",
+      "gene": "EIF1B",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.852074117362054
+    },
+    {
+      "seq_id": "sp|Q9CXU9|EIF1B_MOUSE",
+      "gene": "EIF1B",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.852074117362054
+    },
+    {
+      "seq_id": "sp|P61220|EIF1B_PIG",
+      "gene": "EIF1B",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.852074117362054
+    },
+    {
+      "seq_id": "sp|Q4R4X9|EIF1B_MACFA",
+      "gene": "EIF1B",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.852074117362054
+    },
+    {
+      "seq_id": "sp|Q969X5|ERGI1_HUMAN",
+      "gene": "ERGIC1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.07015013825009496
+    },
+    {
+      "seq_id": "sp|Q9DC16|ERGI1_MOUSE",
+      "gene": "ERGIC1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.06425744557919613
+    },
+    {
+      "seq_id": "sp|Q86X53|ERIC1_HUMAN",
+      "gene": "ERICH1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.043620037566110555
+    },
+    {
+      "seq_id": "sp|Q8NHP7|EXD1_HUMAN",
+      "gene": "EXD1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.35368078494736727
+    },
+    {
+      "seq_id": "sp|Q8CDF7|EXD1_MOUSE",
+      "gene": "EXD1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.4588222664147521
+    },
+    {
+      "seq_id": "sp|Q14296|FASTK_HUMAN",
+      "gene": "FASTK",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.9279737790294721
+    },
+    {
+      "seq_id": "sp|Q9JIX9|FASTK_MOUSE",
+      "gene": "FASTK",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.6615270463650474
+    },
+    {
+      "seq_id": "sp|Q6P050|FXL22_HUMAN",
+      "gene": "FBXL22",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.9781852095945344
+    },
+    {
+      "seq_id": "sp|Q8C7B6|FXL22_MOUSE",
+      "gene": "FBXL22",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.7634654870124785
+    },
+    {
+      "seq_id": "sp|Q2HJF2|FXL22_BOVIN",
+      "gene": "FBXL22",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.9448707156265393
+    },
+    {
+      "seq_id": "sp|O95390|GDF11_HUMAN",
+      "gene": "GDF11",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.3195303728400934
+    },
+    {
+      "seq_id": "sp|Q9Z1W4|GDF11_MOUSE",
+      "gene": "GDF11",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.30915726326789933
+    },
+    {
+      "seq_id": "sp|Q9Z217|GDF11_RAT",
+      "gene": "GDF11",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.34730742617913163
+    },
+    {
+      "seq_id": "sp|P27539|GDF1_HUMAN",
+      "gene": "GDF1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.003980207733675346
+    },
+    {
+      "seq_id": "sp|P20863|GDF1_MOUSE",
+      "gene": "GDF1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.017902718284653833
+    },
+    {
+      "seq_id": "sp|Q7Z4P5|GDF7_HUMAN",
+      "gene": "GDF7",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.05682699980040627
+    },
+    {
+      "seq_id": "sp|P43029|GDF7_MOUSE",
+      "gene": "GDF7",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.08368933311379882
+    },
+    {
+      "seq_id": "sp|Q9BDW8|GDF7_CHLAE",
+      "gene": "GDF7",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.13734717556592715
+    },
+    {
+      "seq_id": "sp|A8MXD5|GRCR1_HUMAN",
+      "gene": "GRXCR1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.648796236602217
+    },
+    {
+      "seq_id": "sp|Q50H32|GRCR1_MOUSE",
+      "gene": "GRXCR1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.5975553013780414
+    },
+    {
+      "seq_id": "sp|P08631|HCK_HUMAN",
+      "gene": "HCK",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.43650244138173827
+    },
+    {
+      "seq_id": "sp|P08103|HCK_MOUSE",
+      "gene": "HCK",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.2736636223189233
+    },
+    {
+      "seq_id": "sp|P50545|HCK_RAT",
+      "gene": "HCK",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.15060781485307226
+    },
+    {
+      "seq_id": "sp|Q95M30|HCK_MACFA",
+      "gene": "HCK",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.5686988119570436
+    },
+    {
+      "seq_id": "sp|K9M1U5|IFNL4_HUMAN",
+      "gene": "IFNL4",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.02847785616765581
+    },
+    {
+      "seq_id": "sp|P42701|I12R1_HUMAN",
+      "gene": "IL12RB1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.26714464836209545
+    },
+    {
+      "seq_id": "sp|Q60837|I12R1_MOUSE",
+      "gene": "IL12RB1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.2068493608454047
+    },
+    {
+      "seq_id": "sp|Q8NFM7|I17RD_HUMAN",
+      "gene": "IL17RD",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.023056274791069732
+    },
+    {
+      "seq_id": "sp|Q8JZL1|I17RD_MOUSE",
+      "gene": "IL17RD",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.1801761515418639
+    },
+    {
+      "seq_id": "sp|Q01638|ILRL1_HUMAN",
+      "gene": "IL1RL1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.624389263151804
+    },
+    {
+      "seq_id": "sp|P14719|ILRL1_MOUSE",
+      "gene": "IL1RL1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.8137252618273386
+    },
+    {
+      "seq_id": "sp|Q62611|ILRL1_RAT",
+      "gene": "IL1RL1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.5716366587591736
+    },
+    {
+      "seq_id": "sp|P26951|IL3RA_HUMAN",
+      "gene": "IL3RA",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.7706450009105505
+    },
+    {
+      "seq_id": "sp|P26952|IL3RA_MOUSE",
+      "gene": "IL3RA",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.03233701476795135
+    },
+    {
+      "seq_id": "sp|O75022|LIRB3_HUMAN",
+      "gene": "LILRB3",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.9064721075035346
+    },
+    {
+      "seq_id": "sp|P33241|LSP1_HUMAN",
+      "gene": "LSP1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.5155336442619786
+    },
+    {
+      "seq_id": "sp|P19973|LSP1_MOUSE",
+      "gene": "LSP1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.21488000157800133
+    },
+    {
+      "seq_id": "sp|Q13084|RM28_HUMAN",
+      "gene": "MRPL28",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.34582278369990066
+    },
+    {
+      "seq_id": "sp|Q9D1B9|RM28_MOUSE",
+      "gene": "MRPL28",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.4559430237561872
+    },
+    {
+      "seq_id": "sp|Q2HJJ1|RM28_BOVIN",
+      "gene": "MRPL28",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.7411892816308827
+    },
+    {
+      "seq_id": "sp|Q5T653|RM02_HUMAN",
+      "gene": "MRPL2",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.5804190524401911
+    },
+    {
+      "seq_id": "sp|Q9D773|RM02_MOUSE",
+      "gene": "MRPL2",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.7063437937831116
+    },
+    {
+      "seq_id": "sp|Q498T4|RM02_RAT",
+      "gene": "MRPL2",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.651164252034043
+    },
+    {
+      "seq_id": "sp|Q2TA12|RM02_BOVIN",
+      "gene": "MRPL2",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.7300887115817248
+    },
+    {
+      "seq_id": "sp|O95803|NDST3_HUMAN",
+      "gene": "NDST3",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.5851011661249387
+    },
+    {
+      "seq_id": "sp|Q9EQH7|NDST3_MOUSE",
+      "gene": "NDST3",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.47406444252370256
+    },
+    {
+      "seq_id": "sp|Q86W26|NAL10_HUMAN",
+      "gene": "NLRP10",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.6901444940791832
+    },
+    {
+      "seq_id": "sp|Q8CCN1|NAL10_MOUSE",
+      "gene": "NLRP10",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.27870014308711955
+    },
+    {
+      "seq_id": "sp|Q8TAT6|NPL4_HUMAN",
+      "gene": "NPLOC4",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.3408531128915042
+    },
+    {
+      "seq_id": "sp|P60670|NPL4_MOUSE",
+      "gene": "NPLOC4",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.3217768867139556
+    },
+    {
+      "seq_id": "sp|Q9ES54|NPL4_RAT",
+      "gene": "NPLOC4",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.3465840760652129
+    },
+    {
+      "seq_id": "sp|Q02297|NRG1_HUMAN",
+      "gene": "NRG1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.21552681305877494
+    },
+    {
+      "seq_id": "sp|Q6DR98|NRG1_MOUSE",
+      "gene": "NRG1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.37898450343370815
+    },
+    {
+      "seq_id": "sp|P43322|NRG1_RAT",
+      "gene": "NRG1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.4032549964417861
+    },
+    {
+      "seq_id": "sp|P19021|AMD_HUMAN",
+      "gene": "PAM",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.13731704435407271
+    },
+    {
+      "seq_id": "sp|P97467|AMD_MOUSE",
+      "gene": "PAM",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.2666440580144169
+    },
+    {
+      "seq_id": "sp|P14925|AMD_RAT",
+      "gene": "PAM",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.17927644458190425
+    },
+    {
+      "seq_id": "sp|P10731|AMD_BOVIN",
+      "gene": "PAM",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.07259429853812417
+    },
+    {
+      "seq_id": "sp|P00558|PGK1_HUMAN",
+      "gene": "PGK1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.7062418068580922
+    },
+    {
+      "seq_id": "sp|P09411|PGK1_MOUSE",
+      "gene": "PGK1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.8209794101094677
+    },
+    {
+      "seq_id": "sp|P16617|PGK1_RAT",
+      "gene": "PGK1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.8139225893686269
+    },
+    {
+      "seq_id": "sp|Q3T0P6|PGK1_BOVIN",
+      "gene": "PGK1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.5645514757260538
+    },
+    {
+      "seq_id": "sp|Q86UU1|PHLB1_HUMAN",
+      "gene": "PHLDB1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.21297684978000092
+    },
+    {
+      "seq_id": "sp|Q6PDH0|PHLB1_MOUSE",
+      "gene": "PHLDB1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.15043028896050004
+    },
+    {
+      "seq_id": "sp|Q06830|PRDX1_HUMAN",
+      "gene": "PRDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.14891021284365308
+    },
+    {
+      "seq_id": "sp|P35700|PRDX1_MOUSE",
+      "gene": "PRDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.13292683075320008
+    },
+    {
+      "seq_id": "sp|Q63716|PRDX1_RAT",
+      "gene": "PRDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.09259593381555208
+    },
+    {
+      "seq_id": "sp|Q5E947|PRDX1_BOVIN",
+      "gene": "PRDX1",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.05971278981291491
+    },
+    {
+      "seq_id": "sp|P30048|PRDX3_HUMAN",
+      "gene": "PRDX3",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.08225258203525174
+    },
+    {
+      "seq_id": "sp|P20108|PRDX3_MOUSE",
+      "gene": "PRDX3",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.0065238343434229846
+    },
+    {
+      "seq_id": "sp|Q9Z0V6|PRDX3_RAT",
+      "gene": "PRDX3",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.014926946793000506
+    },
+    {
+      "seq_id": "sp|P35705|PRDX3_BOVIN",
+      "gene": "PRDX3",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.0024835044319678873
+    },
+    {
+      "seq_id": "sp|P18031|PTN1_HUMAN",
+      "gene": "PTPN1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.6221384495606955
+    },
+    {
+      "seq_id": "sp|P35821|PTN1_MOUSE",
+      "gene": "PTPN1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.36020405029590913
+    },
+    {
+      "seq_id": "sp|P20417|PTN1_RAT",
+      "gene": "PTPN1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.31875028807815237
+    },
+    {
+      "seq_id": "sp|Q8IV61|GRP3_HUMAN",
+      "gene": "RASGRP3",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.6564371759251567
+    },
+    {
+      "seq_id": "sp|P51812|KS6A3_HUMAN",
+      "gene": "RPS6KA3",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.4824323641116238
+    },
+    {
+      "seq_id": "sp|Q9H446|RWDD1_HUMAN",
+      "gene": "RWDD1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.05910814287038302
+    },
+    {
+      "seq_id": "sp|Q9CQK7|RWDD1_MOUSE",
+      "gene": "RWDD1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.055704643412356335
+    },
+    {
+      "seq_id": "sp|Q99ND9|RWDD1_RAT",
+      "gene": "RWDD1",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.05161773933771003
+    },
+    {
+      "seq_id": "sp|Q6IEG0|SNR48_HUMAN",
+      "gene": "SNRNP48",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.04871844453210612
+    },
+    {
+      "seq_id": "sp|Q9D361|SNR48_MOUSE",
+      "gene": "SNRNP48",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.033669435543036794
+    },
+    {
+      "seq_id": "sp|Q96BZ9|TBC20_HUMAN",
+      "gene": "TBC1D20",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.6387267941271968
+    },
+    {
+      "seq_id": "sp|Q9D9I4|TBC20_MOUSE",
+      "gene": "TBC1D20",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.3482107465363465
+    },
+    {
+      "seq_id": "sp|Q2T9Q1|TBC20_BOVIN",
+      "gene": "TBC1D20",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.7952593357988664
+    },
+    {
+      "seq_id": "sp|Q15399|TLR1_HUMAN",
+      "gene": "TLR1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.9002890549887553
+    },
+    {
+      "seq_id": "sp|Q9EPQ1|TLR1_MOUSE",
+      "gene": "TLR1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.8347932392434857
+    },
+    {
+      "seq_id": "sp|Q96J77|TPD55_HUMAN",
+      "gene": "TPD52L3",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.5999468871223794
+    },
+    {
+      "seq_id": "sp|O75648|MTU1_HUMAN",
+      "gene": "TRMU",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.11530577412312436
+    },
+    {
+      "seq_id": "sp|Q9DAT5|MTU1_MOUSE",
+      "gene": "TRMU",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.4861059950598471
+    },
+    {
+      "seq_id": "sp|B1WC37|MTU1_RAT",
+      "gene": "TRMU",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.3022852711752941
+    },
+    {
+      "seq_id": "sp|Q5RB73|MTU1_PONAB",
+      "gene": "TRMU",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.07148951860476974
+    },
+    {
+      "seq_id": "sp|Q6PKC3|TXD11_HUMAN",
+      "gene": "TXNDC11",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.8875691091961627
+    },
+    {
+      "seq_id": "sp|Q8K2W3|TXD11_MOUSE",
+      "gene": "TXNDC11",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.5960387628475344
+    },
+    {
+      "seq_id": "sp|A4FUW8|TXD11_BOVIN",
+      "gene": "TXNDC11",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.3710102800845413
+    },
+    {
+      "seq_id": "sp|Q9Y2X8|UB2D4_HUMAN",
+      "gene": "UBE2D4",
+      "label": 0,
+      "nivel": "dificil",
+      "proba": 0.019882776711966484
+    },
+    {
+      "seq_id": "sp|P68543|UBX2A_HUMAN",
+      "gene": "UBXN2A",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.5509878801728304
+    },
+    {
+      "seq_id": "sp|Q99KJ0|UBX2A_MOUSE",
+      "gene": "UBXN2A",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.044426126772989114
+    },
+    {
+      "seq_id": "sp|D3ZID8|UBX2A_RAT",
+      "gene": "UBXN2A",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.07498706720174243
+    },
+    {
+      "seq_id": "sp|Q9P0L0|VAPA_HUMAN",
+      "gene": "VAPA",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.21138996091875217
+    },
+    {
+      "seq_id": "sp|Q9WV55|VAPA_MOUSE",
+      "gene": "VAPA",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.2159414599590787
+    },
+    {
+      "seq_id": "sp|Q9Z270|VAPA_RAT",
+      "gene": "VAPA",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.23457026103649814
+    },
+    {
+      "seq_id": "sp|Q0VCY1|VAPA_BOVIN",
+      "gene": "VAPA",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.40539798297902035
+    },
+    {
+      "seq_id": "sp|Q9H6Y2|WDR55_HUMAN",
+      "gene": "WDR55",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.6706106811396686
+    },
+    {
+      "seq_id": "sp|Q9CX97|WDR55_MOUSE",
+      "gene": "WDR55",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.5133508977097309
+    },
+    {
+      "seq_id": "sp|A1L112|WDR55_RAT",
+      "gene": "WDR55",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.41133479761890107
+    },
+    {
+      "seq_id": "sp|Q58DT8|WDR55_BOVIN",
+      "gene": "WDR55",
+      "label": 0,
+      "nivel": "facil",
+      "proba": 0.36527241029648005
+    },
+    {
+      "seq_id": "sp|Q07352|TISB_HUMAN",
+      "gene": "ZFP36L1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.5248639302250886
+    },
+    {
+      "seq_id": "sp|P23950|TISB_MOUSE",
+      "gene": "ZFP36L1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.49355648612929587
+    },
+    {
+      "seq_id": "sp|P17431|TISB_RAT",
+      "gene": "ZFP36L1",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.5372248709367687
+    },
+    {
+      "seq_id": "sp|Q9Y2D9|ZN652_HUMAN",
+      "gene": "ZNF652",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.47350323583588294
+    },
+    {
+      "seq_id": "sp|Q5DU09|ZN652_MOUSE",
+      "gene": "ZNF652",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.48864376016892797
+    },
+    {
+      "seq_id": "sp|A1L1J6|ZN652_RAT",
+      "gene": "ZNF652",
+      "label": 0,
+      "nivel": "intermediario",
+      "proba": 0.4782902755187218
+    }
+  ],
+  "metricas_limiar_0_5": {
+    "por_sequencia": {
+      "n": 294,
+      "accuracy": 0.564625850340136,
+      "precision": 0.5798319327731093,
+      "sensitivity": 0.46938775510204084,
+      "specificity": 0.6598639455782312,
+      "f1": 0.518796992481203,
+      "mcc": 0.13166219644829505,
+      "roc_auc": 0.547457078069323
+    },
+    "por_gene": {
+      "n": 102,
+      "accuracy": 0.5392156862745098,
+      "precision": 0.4864864864864865,
+      "sensitivity": 0.391304347826087,
+      "specificity": 0.6607142857142857,
+      "f1": 0.43373493975903615,
+      "mcc": 0.0538361914239033,
+      "roc_auc": 0.5450310559006212
+    }
+  }
+}
