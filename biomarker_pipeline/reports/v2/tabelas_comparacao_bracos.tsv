@@ -1,0 +1,23 @@
+Tabela — Comparação dos três braços: validação cruzada de cada braço × teste cego por gene (k=3, N=4000; 102 genes inéditos, 46 positivos de loci Newly reported de Dand et al., 2025, e 56 negativos; IC 95% por bootstrap de genes estratificado por classe, 5000 reamostragens)
+
+Braço	Modelo	CV: MCC (%)	CV: ROC-AUC (%)	Teste cego: ROC-AUC [IC 95%]	Teste cego: MCC	Teste cego: sensibilidade	Teste cego: especificidade	Limiar
+Braço 0 — linha de base (CV de genes misturados)	SVM (principal)	95,3 ± 3,8	99,7 ± 0,3	0,53 [0,41; 0,65]	0,12	43,5%	67,9%	0,50
+	Regressão Logística	94,7 ± 3,2	99,6 ± 0,5	0,55 [0,43; 0,66]	0,01	45,7%	55,4%	0,50
+	Random Forest	85,5 ± 4,1	98,7 ± 0,4	0,57 [0,45; 0,68]	0,19	37,0%	80,4%	0,50
+	Gradient Boosting	87,5 ± 6,6	98,5 ± 0,9	0,58 [0,47; 0,69]	0,15	41,3%	73,2%	0,50
+	Naive Bayes	68,3 ± 6,6	93,9 ± 2,8	0,61 [0,49; 0,71]	0,15	19,6%	91,1%	0,50
+	kNN	68,1 ± 4,8	93,9 ± 1,4	0,49 [0,42; 0,56]	-0,04	2,2%	96,4%	0,50
+Braço A — otimizado, CV de genes misturados	Comitê (principal)	94,6 ± 4,3	99,6 ± 0,5	0,57 [0,45; 0,68]	0,16	45,7%	69,6%	0,49
+	Regressão Logística	93,8 ± 4,6	99,4 ± 0,8	0,55 [0,43; 0,66]	0,01	45,7%	55,4%	0,50
+	SVM	94,4 ± 4,5	99,6 ± 0,5	0,54 [0,43; 0,66]	0,05	34,8%	69,6%	0,53
+	Árvores (RF/ET)	90,7 ± 4,5	99,4 ± 0,6	0,59 [0,47; 0,70]	0,16	47,8%	67,9%	0,49
+	Boosting (GB/HistGB)	92,1 ± 4,8	99,3 ± 0,7	0,56 [0,44; 0,67]	0,06	41,3%	64,3%	0,50
+	MLP	91,2 ± 5,6	98,8 ± 1,4	0,61 [0,49; 0,72]	0,20	50,0%	69,6%	0,52
+Braço B — otimizado, CV separada por gene	MLP (principal)	18,7 ± 19,3	61,6 ± 12,5	0,49 [0,38; 0,61]	-0,04	56,5%	39,3%	0,35
+	Comitê	17,1 ± 18,5	61,3 ± 11,7	0,53 [0,41; 0,64]	0,07	39,1%	67,9%	0,50
+	Regressão Logística	16,8 ± 20,1	62,8 ± 11,9	0,56 [0,45; 0,67]	0,10	56,5%	53,6%	0,50
+	SVM	14,6 ± 18,3	58,0 ± 11,4	0,55 [0,43; 0,66]	0,00	41,3%	58,9%	0,48
+	Árvores (RF/ET)	5,0 ± 19,9	52,8 ± 12,1	0,58 [0,47; 0,69]	0,11	2,2%	100,0%	0,57
+	Boosting (GB/HistGB)	16,3 ± 19,0	60,4 ± 10,7	0,59 [0,48; 0,70]	0,15	52,2%	62,5%	0,49
+Modelo principal de cada braço: maior MCC médio na validação cruzada do próprio braço, desempate pelo ROC-AUC (regra pré-registrada). Braços A e B: métricas do teste cego no limiar ajustado na validação.
+Fonte: Elaborado pelos autores (2026).
