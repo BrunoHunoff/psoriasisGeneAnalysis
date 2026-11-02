@@ -1,0 +1,20 @@
+{
+  "model": "logistic_regression",
+  "braco": "misturado",
+  "tag": "otimizado_misturado",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "best_params": {
+    "regularizacao": "l2",
+    "C": 0.08142730426658586
+  },
+  "limiar": 0.5,
+  "n_train": 632,
+  "classifier_path": "models/v2/otimizacao/misturado/classifier_logistic_regression_n4000.pkl"
+}

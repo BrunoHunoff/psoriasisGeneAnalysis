@@ -1,0 +1,21 @@
+{
+  "model": "svm",
+  "braco": "misturado",
+  "tag": "otimizado_misturado",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "best_params": {
+    "kernel": "rbf",
+    "C": 48.19342791098892,
+    "gamma": 0.00011817459843115672
+  },
+  "limiar": 0.53,
+  "n_train": 632,
+  "classifier_path": "models/v2/otimizacao/misturado/classifier_svm_n4000.pkl"
+}

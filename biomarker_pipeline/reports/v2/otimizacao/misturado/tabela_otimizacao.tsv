@@ -1,0 +1,10 @@
+Tabela — Otimização de hiperparâmetros, braço A — CV de genes misturados (k=3, N=4000; média ± desvio padrão nas 50 avaliações da validação 5×10 do braço; modelo principal = maior MCC)
+
+Modelo	MCC	ROC-AUC	Sensibilidade	Especificidade	Limiar ajustado	MCC fora do fold no limiar	Tentativas	Melhores hiperparâmetros
+Regressão Logística	93,8% ± 4,6%	99,4% ± 0,8%	96,7% ± 3,0%	97,0% ± 3,3%	0,50	93,7% ± 1,3%	50	{"regularizacao": "l2", "C": 0.08142730426658586}
+SVM	94,4% ± 4,5%	99,6% ± 0,5%	97,0% ± 3,1%	97,3% ± 3,3%	0,53	94,3% ± 0,9%	150	{"kernel": "rbf", "C": 48.19342791098892, "gamma": 0.00011817459843115672}
+Árvores (RF/ET)	90,7% ± 4,5%	99,4% ± 0,6%	92,0% ± 5,0%	98,4% ± 2,1%	0,49	91,3% ± 0,7%	150	{"tipo": "extra_trees", "max_features": 349, "min_samples_leaf": 2, "max_samples": 0.9715725256832107}
+Boosting (GB/HistGB)	92,1% ± 4,8%	99,3% ± 0,7%	93,9% ± 4,4%	98,0% ± 2,5%	0,50	92,0% ± 0,8%	200	{"tipo": "gradient_boosting", "gb_n_estimators": 1911, "gb_learning_rate": 0.00597302529777405, "gb_max_depth": 5, "gb_subsample": 0.5332244052523378}
+MLP	91,2% ± 5,6%	98,8% ± 1,4%	94,9% ± 4,5%	96,1% ± 3,4%	0,52	91,2% ± 0,8%	100	{"camadas": 2, "neuronios_1": 51, "neuronios_2": 54, "alpha": 0.0003339273588350285, "learning_rate_init": 0.003979975465263365, "lote": 128}
+Comitê (principal)	94,6% ± 4,3%	99,6% ± 0,5%	96,6% ± 3,0%	97,9% ± 3,1%	0,49	94,9% ± 1,0%	—	{"membros": ["logistic_regression", "svm", "trees", "boosting", "mlp"]}
+Fonte: Elaborado pelos autores (2026).

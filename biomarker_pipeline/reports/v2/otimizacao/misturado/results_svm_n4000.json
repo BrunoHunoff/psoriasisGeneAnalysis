@@ -1,0 +1,107 @@
+{
+  "model": "svm",
+  "braco": "misturado",
+  "tag": "otimizado_misturado",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "validacao": "RepeatedStratifiedKFold 5×10",
+  "objetivo": "MCC médio nas 50 avaliações, limiar 0,5",
+  "orcamento": 150,
+  "tentativas": 150,
+  "tentativas_com_falha": 0,
+  "extensoes_de_faixa": [],
+  "faixas_finais": {
+    "C": [
+      0.03125,
+      32768
+    ],
+    "gamma": [
+      2.5e-07,
+      0.025
+    ]
+  },
+  "melhor_tentativa": 86,
+  "best_params": {
+    "kernel": "rbf",
+    "C": 48.19342791098892,
+    "gamma": 0.00011817459843115672
+  },
+  "estimador": "Pipeline(steps=[('scaler', StandardScaler()),\n                ('model',\n                 SVC(C=48.19342791098892, cache_size=500,\n                     gamma=0.00011817459843115672, probability=True,\n                     random_state=42))])",
+  "metrics": {
+    "mcc": {
+      "mean": 0.9439514914308037,
+      "std": 0.04498502219963548
+    },
+    "roc_auc": {
+      "mean": 0.9963035534274195,
+      "std": 0.0052992069802932865
+    },
+    "accuracy": {
+      "mean": 0.9715128968253967,
+      "std": 0.02280964162538886
+    },
+    "precision": {
+      "mean": 0.974311323631148,
+      "std": 0.031000045395836034
+    },
+    "sensitivity": {
+      "mean": 0.9696774193548388,
+      "std": 0.030859843320416688
+    },
+    "specificity": {
+      "mean": 0.9733467741935483,
+      "std": 0.033261338853553465
+    },
+    "f1": {
+      "mean": 0.9715114098495059,
+      "std": 0.022673408835408262
+    }
+  },
+  "limiar": 0.53,
+  "metrics_fora_do_fold_no_limiar": {
+    "mcc": {
+      "mean": 0.9432359325130528,
+      "std": 0.008674650224933448
+    },
+    "roc_auc": {
+      "mean": 0.9959221278641243,
+      "std": 0.0013412207216437037
+    },
+    "accuracy": {
+      "mean": 0.9715189873417722,
+      "std": 0.004362040744332331
+    },
+    "precision": {
+      "mean": 0.9782855144956827,
+      "std": 0.008309906041207587
+    },
+    "sensitivity": {
+      "mean": 0.9645569620253165,
+      "std": 0.008815435618470958
+    },
+    "specificity": {
+      "mean": 0.978481012658228,
+      "std": 0.008585227826740848
+    },
+    "f1": {
+      "mean": 0.971316546548775,
+      "std": 0.00438105574025321
+    }
+  },
+  "ambiente": {
+    "python": "3.13.7",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.6",
+    "optuna": "5.0.0",
+    "commit": "d7f16e95c1b6e8a94573f2eb6a378864b1dc838b",
+    "maquina": "tcc-otimizacao-vm",
+    "cpus": 32
+  },
+  "concluido_em": "2026-10-30T21:42:02",
+  "duracao_horas": 0.25
+}

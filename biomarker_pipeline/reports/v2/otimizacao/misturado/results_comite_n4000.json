@@ -1,0 +1,91 @@
+{
+  "model": "comite",
+  "braco": "misturado",
+  "tag": "otimizado_misturado",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "membros": [
+    "logistic_regression",
+    "svm",
+    "trees",
+    "boosting",
+    "mlp"
+  ],
+  "combinacao": "média simples das probabilidades",
+  "metrics": {
+    "mcc": {
+      "mean": 0.9458060922412598,
+      "std": 0.04322536656631164
+    },
+    "roc_auc": {
+      "mean": 0.9964868951612903,
+      "std": 0.005212784123042414
+    },
+    "accuracy": {
+      "mean": 0.972450396825397,
+      "std": 0.021888428103279862
+    },
+    "precision": {
+      "mean": 0.9797041394422064,
+      "std": 0.029309024512937203
+    },
+    "sensitivity": {
+      "mean": 0.9658467741935485,
+      "std": 0.03013869474472498
+    },
+    "specificity": {
+      "mean": 0.9790322580645161,
+      "std": 0.030784778518766896
+    },
+    "f1": {
+      "mean": 0.972287714075518,
+      "std": 0.021830633578540686
+    }
+  },
+  "limiar": 0.49,
+  "metrics_fora_do_fold_no_limiar": {
+    "mcc": {
+      "mean": 0.949432000287671,
+      "std": 0.010229850823036447
+    },
+    "roc_auc": {
+      "mean": 0.9962025316455696,
+      "std": 0.0007436986929027661
+    },
+    "accuracy": {
+      "mean": 0.9746835443037976,
+      "std": 0.005102694777404138
+    },
+    "precision": {
+      "mean": 0.9783943654667228,
+      "std": 0.009072576683589092
+    },
+    "sensitivity": {
+      "mean": 0.9708860759493672,
+      "std": 0.0023681375865657506
+    },
+    "specificity": {
+      "mean": 0.978481012658228,
+      "std": 0.009258695467296053
+    },
+    "f1": {
+      "mean": 0.974606632677439,
+      "std": 0.005012480479308475
+    }
+  },
+  "ambiente": {
+    "python": "3.13.7",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.6",
+    "optuna": "5.0.0",
+    "commit": "d7f16e95c1b6e8a94573f2eb6a378864b1dc838b",
+    "maquina": "tcc-otimizacao-vm",
+    "cpus": 32
+  },
+  "concluido_em": "2026-11-02T03:15:01"
+}

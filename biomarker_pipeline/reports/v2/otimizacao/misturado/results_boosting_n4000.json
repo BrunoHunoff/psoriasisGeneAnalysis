@@ -1,0 +1,164 @@
+{
+  "model": "boosting",
+  "braco": "misturado",
+  "tag": "otimizado_misturado",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "n_components": 4000,
+  "validacao": "RepeatedStratifiedKFold 5×10",
+  "objetivo": "MCC médio nas 50 avaliações, limiar 0,5",
+  "orcamento": 100,
+  "tentativas": 200,
+  "tentativas_com_falha": 0,
+  "extensoes_de_faixa": [
+    {
+      "apos_tentativas": 100,
+      "faixas": {
+        "gb_max_depth": [
+          1,
+          11
+        ]
+      }
+    },
+    {
+      "apos_tentativas": 150,
+      "faixas": {
+        "gb_n_estimators": [
+          100,
+          3900
+        ],
+        "gb_learning_rate": [
+          0.0005,
+          0.5
+        ]
+      }
+    }
+  ],
+  "faixas_finais": {
+    "gb_n_estimators": [
+      100,
+      3900
+    ],
+    "gb_learning_rate": [
+      0.0005,
+      0.5
+    ],
+    "gb_max_depth": [
+      1,
+      11
+    ],
+    "gb_subsample": [
+      0.5,
+      1.0
+    ],
+    "hgb_max_iter": [
+      100,
+      2000
+    ],
+    "hgb_learning_rate": [
+      0.005,
+      0.5
+    ],
+    "hgb_max_leaf_nodes": [
+      4,
+      64
+    ],
+    "hgb_min_samples_leaf": [
+      5,
+      50
+    ],
+    "hgb_l2_regularization": [
+      1e-06,
+      10.0
+    ],
+    "hgb_max_features": [
+      0.05,
+      1.0
+    ]
+  },
+  "melhor_tentativa": 122,
+  "best_params": {
+    "tipo": "gradient_boosting",
+    "gb_n_estimators": 1911,
+    "gb_learning_rate": 0.00597302529777405,
+    "gb_max_depth": 5,
+    "gb_subsample": 0.5332244052523378
+  },
+  "estimador": "GradientBoostingClassifier(learning_rate=0.00597302529777405, max_depth=5,\n                           n_estimators=1911, random_state=42,\n                           subsample=0.5332244052523378)",
+  "metrics": {
+    "mcc": {
+      "mean": 0.9214903098173504,
+      "std": 0.04809359919649989
+    },
+    "roc_auc": {
+      "mean": 0.9932390372983871,
+      "std": 0.006778003804725858
+    },
+    "accuracy": {
+      "mean": 0.9597867063492064,
+      "std": 0.024725777491086863
+    },
+    "precision": {
+      "mean": 0.9802294614478414,
+      "std": 0.024523508947194742
+    },
+    "sensitivity": {
+      "mean": 0.9391935483870969,
+      "std": 0.04414376095342833
+    },
+    "specificity": {
+      "mean": 0.9802620967741936,
+      "std": 0.024509935616778063
+    },
+    "f1": {
+      "mean": 0.9585738401586403,
+      "std": 0.025937438785270217
+    }
+  },
+  "limiar": 0.5,
+  "metrics_fora_do_fold_no_limiar": {
+    "mcc": {
+      "mean": 0.9204256863290509,
+      "std": 0.008439513497447773
+    },
+    "roc_auc": {
+      "mean": 0.992457138279122,
+      "std": 0.0015036631937454168
+    },
+    "accuracy": {
+      "mean": 0.9598101265822786,
+      "std": 0.004198259228297997
+    },
+    "precision": {
+      "mean": 0.9795693820157746,
+      "std": 0.005966366001131124
+    },
+    "sensitivity": {
+      "mean": 0.9392405063291139,
+      "std": 0.005444509662685235
+    },
+    "specificity": {
+      "mean": 0.980379746835443,
+      "std": 0.005800728727792195
+    },
+    "f1": {
+      "mean": 0.958966547844008,
+      "std": 0.004289362138803691
+    }
+  },
+  "ambiente": {
+    "python": "3.13.7",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.6",
+    "optuna": "5.0.0",
+    "commit": "d7f16e95c1b6e8a94573f2eb6a378864b1dc838b",
+    "maquina": "tcc-otimizacao-vm",
+    "cpus": 32
+  },
+  "concluido_em": "2026-11-02T03:09:09",
+  "duracao_horas": 52.64
+}

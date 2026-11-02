@@ -1,0 +1,23 @@
+{
+  "model": "boosting",
+  "braco": "misturado",
+  "tag": "otimizado_misturado",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "best_params": {
+    "tipo": "gradient_boosting",
+    "gb_n_estimators": 1911,
+    "gb_learning_rate": 0.00597302529777405,
+    "gb_max_depth": 5,
+    "gb_subsample": 0.5332244052523378
+  },
+  "limiar": 0.5,
+  "n_train": 632,
+  "classifier_path": "models/v2/otimizacao/misturado/classifier_boosting_n4000.pkl"
+}

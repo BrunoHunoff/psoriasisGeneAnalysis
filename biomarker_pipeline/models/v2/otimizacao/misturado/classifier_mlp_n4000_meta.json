@@ -1,0 +1,24 @@
+{
+  "model": "mlp",
+  "braco": "misturado",
+  "tag": "otimizado_misturado",
+  "dataset": "tcc2",
+  "representation": "k3",
+  "patterns": [
+    "111"
+  ],
+  "projection": true,
+  "random_state": 42,
+  "n_components": 4000,
+  "best_params": {
+    "camadas": 2,
+    "neuronios_1": 51,
+    "neuronios_2": 54,
+    "alpha": 0.0003339273588350285,
+    "learning_rate_init": 0.003979975465263365,
+    "lote": 128
+  },
+  "limiar": 0.52,
+  "n_train": 632,
+  "classifier_path": "models/v2/otimizacao/misturado/classifier_mlp_n4000.pkl"
+}
